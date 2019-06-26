@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "traverse",
+  "name": "Traverse",
+  "version": "$version",
+  "environment": "*",
+  "license": "LGPL-3.0",
+  "icon": "assets/traverse/icon.png",
+  "entrypoints": {
+    "main": [
+      "io.github.terraformersmc.traverse.Traverse"
+    ]
+  },
+  "contact": {
+    "homepage": "https://minecraft.curseforge.com/projects/traverse",
+    "issues": "https://github.com/TerraformersMC/Traverse/issues"
+  },
+  "depends": {
+    "fabric": "*",
+    "terraform": "*"
+  },
+  "authors": [
+    "Prospector"
+  ],
+  "contributors": [
+  ],
+  "description": "Adds some cool biomes and stuff",
+  "mixins": [
+    "mixins.traverse.json"
+  ]
+}

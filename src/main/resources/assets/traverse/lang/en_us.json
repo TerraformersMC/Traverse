@@ -1,0 +1,21 @@
+{
+  "biome.traverse.autumnal_woods": "Autumnal Woods",
+  "biome.traverse.woodlands": "Woodlands",
+  "biome.traverse.mini_jungle": "Mini Jungle",
+  "biome.traverse.meadow": "Meadow",
+  "biome.traverse.coniferous_forest": "Coniferous Forest",
+  "biome.traverse.raised_coniferous_forest": "Raised Coniferous Forest",
+
+  "block.traverse.red_autumnal_leaves": "Red Autumnal Leaves",
+  "block.traverse.brown_autumnal_leaves": "Brown Autumnal Leaves",
+  "block.traverse.orange_autumnal_leaves": "Orange Autumnal Leaves",
+  "block.traverse.yellow_autumnal_leaves": "Yellow Autumnal Leaves",
+  "block.traverse.red_autumnal_sapling": "Red Autumnal Sapling",
+  "block.traverse.brown_autumnal_sapling": "Brown Autumnal Sapling",
+  "block.traverse.orange_autumnal_sapling": "Orange Autumnal Sapling",
+  "block.traverse.yellow_autumnal_sapling": "Yellow Autumnal Sapling",
+
+  "block.traverse.fir_log": "Fir Log",
+  "block.traverse.fir_leaves": "Fir Leaves",
+  "block.traverse.fir_sapling": "Fir Sapling"
+}
