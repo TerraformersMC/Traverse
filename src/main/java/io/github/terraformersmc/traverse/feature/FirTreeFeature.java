@@ -79,16 +79,16 @@ public class FirTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
                 int k3 = 0;
 
                 for (int l3 = 0; l3 <= leavesHeight; ++l3) {
-                    int j4 = pos.getY() + height - l3;
+                    int leavesY = pos.getY() + height - l3;
 
-                    for (int i2 = pos.getX() - i3; i2 <= pos.getX() + i3; ++i2) {
-                        int j2 = i2 - pos.getX();
+                    for (int leavesX = pos.getX() - i3; leavesX <= pos.getX() + i3; ++leavesX) {
+                        int j2 = leavesX - pos.getX();
 
-                        for (int k2 = pos.getZ() - i3; k2 <= pos.getZ() + i3; ++k2) {
-                            int l2 = k2 - pos.getZ();
+                        for (int leavesZ = pos.getZ() - i3; leavesZ <= pos.getZ() + i3; ++leavesZ) {
+                            int l2 = leavesZ - pos.getZ();
 
                             if (Math.abs(j2) != i3 || Math.abs(l2) != i3 || i3 <= 0) {
-                                BlockPos leavesPos = new BlockPos(i2, j4, k2);
+                                BlockPos leavesPos = new BlockPos(leavesX, leavesY, leavesZ);
                                 if (isAirOrLeaves(world, leavesPos)) {
                                     setBlockState(world, leavesPos, leaves);
                                 }

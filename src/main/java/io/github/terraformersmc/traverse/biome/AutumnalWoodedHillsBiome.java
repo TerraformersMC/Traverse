@@ -12,13 +12,13 @@ import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public class AutumnalWoodsBiome extends Biome {
+public class AutumnalWoodedHillsBiome extends Biome {
 
     static final ConfiguredSurfaceBuilder SURFACE_BUILDER = new ConfiguredSurfaceBuilder<>(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG);
     static final Precipitation PRECIPITATION = Precipitation.RAIN;
     static final Category CATEGORY = Category.FOREST;
-    static final float DEPTH = 0.2F;
-    static final float SCALE = 0.05F;
+    static final float DEPTH = 0.45F;
+    static final float SCALE = 0.3F;
     static final float TEMPERATURE = 0.8F;
     static final float DOWNFALL = 0.4F;
     static final int WATER_COLOR = 0x3F76E4;
@@ -27,7 +27,7 @@ public class AutumnalWoodsBiome extends Biome {
     static final int FOLIAGE_COLOR = 0xD2D31F;
     static final String PARENT = null;
 
-    public AutumnalWoodsBiome() {
+    public AutumnalWoodedHillsBiome() {
         super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);

@@ -1,10 +1,12 @@
 {
+  "biome.traverse.arid_highlands": "Arid Highlands",
+  "biome.traverse.autumnal_wooded_hills": "Autumnal Wooded Hills",
   "biome.traverse.autumnal_woods": "Autumnal Woods",
-  "biome.traverse.woodlands": "Woodlands",
-  "biome.traverse.mini_jungle": "Mini Jungle",
-  "biome.traverse.meadow": "Meadow",
   "biome.traverse.coniferous_forest": "Coniferous Forest",
+  "biome.traverse.meadow": "Meadow",
+  "biome.traverse.mini_jungle": "Mini Jungle",
   "biome.traverse.raised_coniferous_forest": "Raised Coniferous Forest",
+  "biome.traverse.woodlands": "Woodlands",
 
   "block.traverse.red_autumnal_leaves": "Red Autumnal Leaves",
   "block.traverse.brown_autumnal_leaves": "Brown Autumnal Leaves",

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:brown_autumnal_sapling",
+    "traverse:red_autumnal_sapling",
+    "traverse:yellow_autumnal_sapling",
+    "traverse:orange_autumnal_sapling",
+    "traverse:fir_sapling"
+  ]
+}

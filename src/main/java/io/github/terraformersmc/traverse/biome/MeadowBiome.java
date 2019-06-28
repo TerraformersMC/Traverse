@@ -12,22 +12,22 @@ import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public class AutumnalWoodsBiome extends Biome {
+public class MeadowBiome extends Biome {
 
     static final ConfiguredSurfaceBuilder SURFACE_BUILDER = new ConfiguredSurfaceBuilder<>(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG);
     static final Precipitation PRECIPITATION = Precipitation.RAIN;
-    static final Category CATEGORY = Category.FOREST;
-    static final float DEPTH = 0.2F;
-    static final float SCALE = 0.05F;
+    static final Category CATEGORY = Category.PLAINS;
+    static final float DEPTH = 0.1F;
+    static final float SCALE = 0.0F;
     static final float TEMPERATURE = 0.8F;
-    static final float DOWNFALL = 0.4F;
+    static final float DOWNFALL = 0.7F;
     static final int WATER_COLOR = 0x3F76E4;
     static final int WATER_FOG_COLOR = 0x50533;
-    static final int GRASS_COLOR = 0xD6C23D;
-    static final int FOLIAGE_COLOR = 0xD2D31F;
+    static final int GRASS_COLOR = 0x65CC53;
+    static final int FOLIAGE_COLOR = 0x5DD64A;
     static final String PARENT = null;
 
-    public AutumnalWoodsBiome() {
+    public MeadowBiome() {
         super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
@@ -36,17 +36,14 @@ public class AutumnalWoodsBiome extends Biome {
         DefaultBiomeFeatures.addDefaultStructures(this);
         DefaultBiomeFeatures.addDefaultLakes(this);
         DefaultBiomeFeatures.addDungeons(this);
-        DefaultBiomeFeatures.addForestFlowers(this);
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
         DefaultBiomeFeatures.addDefaultDisks(this);
-        DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addForestGrass(this);
         DefaultBiomeFeatures.addDefaultMushrooms(this);
         DefaultBiomeFeatures.addDefaultVegetation(this);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFrozenTopLayer(this);
-        TraverseDefaultBiomeFeatures.addAutumnalWoodsTrees(this);
+        TraverseDefaultBiomeFeatures.addMeadowFeatures(this);
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
