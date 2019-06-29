@@ -1,6 +1,7 @@
 package io.github.terraformersmc.traverse.surfacebuilder;
 
 import io.github.terraformersmc.traverse.Traverse;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;

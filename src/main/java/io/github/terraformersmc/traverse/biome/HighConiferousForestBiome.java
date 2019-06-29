@@ -10,31 +10,28 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.MineshaftFeature;
 import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 import net.minecraft.world.gen.feature.PillagerOutpostFeatureConfig;
-import net.minecraft.world.gen.feature.VillageFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public class WoodlandsBiome extends Biome {
+public class HighConiferousForestBiome extends Biome {
 
     static final ConfiguredSurfaceBuilder SURFACE_BUILDER = new ConfiguredSurfaceBuilder<>(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG);
     static final Precipitation PRECIPITATION = Precipitation.RAIN;
     static final Category CATEGORY = Category.FOREST;
-    static final float DEPTH = 0.15F;
-    static final float SCALE = 0.05F;
-    static final float TEMPERATURE = 0.8F;
-    static final float DOWNFALL = 0.4F;
+    static final float DEPTH = 1.6F;
+    static final float SCALE = 0.4F;
+    static final float TEMPERATURE = 0.3F;
+    static final float DOWNFALL = 0.9F;
     static final int WATER_COLOR = 0x3F76E4;
     static final int WATER_FOG_COLOR = 0x50533;
-    static final int GRASS_COLOR = 0x99A955;
-    static final int FOLIAGE_COLOR = 0x849E4A;
+    static final int GRASS_COLOR = 0x338235;
+    static final int FOLIAGE_COLOR = 0x338235;
     static final String PARENT = null;
 
-    public WoodlandsBiome() {
+    public HighConiferousForestBiome() {
         super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
-        this.addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/plains/town_centers", 6));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
         this.addStructureFeature(Feature.PILLAGER_OUTPOST, new PillagerOutpostFeatureConfig(0.004D));
-        this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
         DefaultBiomeFeatures.addLandCarvers(this);
         DefaultBiomeFeatures.addDefaultStructures(this);
@@ -50,7 +47,7 @@ public class WoodlandsBiome extends Biome {
         DefaultBiomeFeatures.addDefaultVegetation(this);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFrozenTopLayer(this);
-        TraverseDefaultBiomeFeatures.addWoodlandsTrees(this);
+        TraverseDefaultBiomeFeatures.addConiferousForestTrees(this);
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
