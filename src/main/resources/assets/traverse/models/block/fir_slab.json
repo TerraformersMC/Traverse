@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "traverse:block/fir_planks",
+    "top": "traverse:block/fir_planks",
+    "side": "traverse:block/fir_planks"
+  }
+}

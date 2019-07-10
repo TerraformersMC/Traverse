@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "traverse:block/fir_slab" },
+    "type=top": { "model": "traverse:block/fir_slab_top" },
+    "type=double": { "model": "traverse:block/fir_planks" }
+  }
+}

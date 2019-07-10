@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom",
+  "textures": {
+    "bottom": "traverse:block/fir_door_bottom",
+    "top": "traverse:block/fir_door_top"
+  }
+}

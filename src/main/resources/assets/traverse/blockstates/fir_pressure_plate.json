@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "traverse:block/fir_pressure_plate" },
+    "powered=true": { "model": "traverse:block/fir_pressure_plate_down" }
+  }
+}
