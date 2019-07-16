@@ -34,6 +34,10 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Desert Shrubland
 		OverworldBiomes.addContinentalBiome(DESERT_SHRUBLAND, OverworldClimate.DRY, 0.8);
 
+		// Forest Island
+		OverworldBiomes.addBiomeVariant(Biomes.DEEP_OCEAN, FOREST_ISLAND, 0.10);
+		OverworldBiomes.addShoreBiome(FOREST_ISLAND, FOREST_ISLAND, 1.0);
+
 		// High Coniferous Forest
 		OverworldBiomes.addContinentalBiome(HIGH_CONIFEROUS_FOREST, OverworldClimate.TEMPERATE, 0.2);
 		OverworldBiomes.addContinentalBiome(HIGH_CONIFEROUS_FOREST, OverworldClimate.COOL, 0.075);

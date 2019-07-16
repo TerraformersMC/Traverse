@@ -19,6 +19,7 @@ public class TraverseBiomes {
 	public static final Biome CONIFEROUS_FOREST = add("coniferous_forest", new ConiferousForestBiome());
 	public static final Biome CONIFEROUS_WOODED_HILLS = add("coniferous_wooded_hills", new ConiferousWoodedHillsBiome());
 	public static final Biome DESERT_SHRUBLAND = add("desert_shrubland", new DesertShrublandBiome());
+	public static final Biome FOREST_ISLAND = add("forest_island", new ForestIslandBiome());
 	public static final Biome HIGH_CONIFEROUS_FOREST = add("high_coniferous_forest", new HighConiferousForestBiome());
 	public static final Biome ROLLING_HILLS = add("rolling_hills", new RollingHillsBiome());
 	public static final Biome LUSH_SWAMP = add("lush_swamp", new LushSwampBiome());
