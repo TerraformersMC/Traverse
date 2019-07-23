@@ -21,9 +21,9 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modCompile "io.github.terraformersmc:terraform:${project.terraform_version}"
+	modCompile "com.terraformersmc:terraform:${project.terraform_version}"
 
-	include "io.github.terraformersmc:terraform:${project.terraform_version}"
+	include "com.terraformersmc:terraform:${project.terraform_version}"
 }
 
 processResources {
