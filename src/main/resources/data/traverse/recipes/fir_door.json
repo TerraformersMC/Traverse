@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PP",
+		"PP",
+		"PP"
+	],
+	"key": {
+		"P": {
+			"item": "traverse:fir_planks"
+		}
+	},
+	"result": {
+		"item": "traverse:fir_door",
+		"count": 3
+	}
+}
