@@ -8,7 +8,7 @@
   "icon": "assets/traverse/icon.png",
   "entrypoints": {
     "main": [
-      "io.github.terraformersmc.traverse.Traverse"
+      "com.terraformersmc.traverse.Traverse"
     ]
   },
   "contact": {
@@ -20,12 +20,11 @@
     "terraform": "*"
   },
   "authors": [
-    "Prospector"
+    "Prospector",
+    "NeusFear",
+    "coderbot"
   ],
   "contributors": [
   ],
-  "description": "Adds some cool biomes and stuff",
-  "mixins": [
-    "mixins.traverse.json"
-  ]
+  "description": "Adds some cool biomes and stuff"
 }
