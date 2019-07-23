@@ -1,6 +1,5 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.util.BiomeFog;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
