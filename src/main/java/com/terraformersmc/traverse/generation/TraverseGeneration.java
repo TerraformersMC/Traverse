@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.generation;
 
+import com.terraformersmc.terraform.biomeapi.OverworldBiomesExt;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.fabricmc.fabric.api.biomes.v1.FabricBiomes;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -61,6 +62,7 @@ public class TraverseGeneration extends TraverseBiomes {
 
 		// Rolling Hills
 		OverworldBiomes.addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
+		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
 
 		// Snowy Coniferous Forest
 		OverworldBiomes.addContinentalBiome(SNOWY_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.5);
