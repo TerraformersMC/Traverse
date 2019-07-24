@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.feature;
 
+import com.terraformersmc.terraform.feature.FallenLogFeature;
 import com.terraformersmc.terraform.feature.TerraformOakTreeFeature;
 import com.terraformersmc.terraform.feature.TerraformSwampTreeFeature;
 import com.terraformersmc.traverse.Traverse;
@@ -25,6 +26,7 @@ public class TraverseFeatures {
 	public static final JungleGroundBushFeature OAK_SHRUB = add("oak_shrub", new JungleGroundBushFeature(DefaultFeatureConfig::deserialize, Blocks.OAK_LOG.getDefaultState(), Blocks.OAK_LEAVES.getDefaultState()));
 	public static final FirTreeFeature FIR_TREE = add("fir_tree", new FirTreeFeature(DefaultFeatureConfig::deserialize, false));
 	public static final TerraformSwampTreeFeature TALL_SWAMP_TREE = add("tall_swamp_tree", new TerraformSwampTreeFeature(DefaultFeatureConfig::deserialize, false, 7));
+	public static final FallenLogFeature FALLEN_OAK_TREE = add("fallen_oak_tree", new FallenLogFeature(DefaultFeatureConfig::deserialize, false, Blocks.OAK_LOG.getDefaultState(), 3, 2));
 
 	public static <F extends Feature<? extends FeatureConfig>> F add(String name, F feature) {
 		FEATURES.put(new Identifier(Traverse.MOD_ID, name), feature);

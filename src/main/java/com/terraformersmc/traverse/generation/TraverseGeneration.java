@@ -34,16 +34,9 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Desert Shrubland
 		OverworldBiomes.addContinentalBiome(DESERT_SHRUBLAND, OverworldClimate.DRY, 0.8);
 
-		// Forest Island
-		OverworldBiomes.addBiomeVariant(Biomes.DEEP_OCEAN, FOREST_ISLAND, 0.10);
-		OverworldBiomes.addShoreBiome(FOREST_ISLAND, FOREST_ISLAND, 1.0);
-
 		// High Coniferous Forest
 		OverworldBiomes.addContinentalBiome(HIGH_CONIFEROUS_FOREST, OverworldClimate.TEMPERATE, 0.2);
 		OverworldBiomes.addContinentalBiome(HIGH_CONIFEROUS_FOREST, OverworldClimate.COOL, 0.075);
-
-		// Rolling Hills
-		OverworldBiomes.addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
 
 		// Lush Swamp
 		OverworldBiomes.addBiomeVariant(Biomes.SWAMP, LUSH_SWAMP, 0.2);
@@ -57,10 +50,17 @@ public class TraverseGeneration extends TraverseBiomes {
 		OverworldBiomes.addContinentalBiome(MINI_JUNGLE, OverworldClimate.TEMPERATE, 0.2);
 		OverworldBiomes.addBiomeVariant(Biomes.JUNGLE, MINI_JUNGLE, 0.15);
 
-		// Rocky Plateau
-		OverworldBiomes.addContinentalBiome(ROCKY_PLATEAU, OverworldClimate.DRY, 0.1);
-		OverworldBiomes.addContinentalBiome(ROCKY_PLATEAU, OverworldClimate.COOL, 0.5);
-		OverworldBiomes.addContinentalBiome(ROCKY_PLATEAU, OverworldClimate.TEMPERATE, 0.4);
+		// Plains Plateau
+		OverworldBiomes.addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.DRY, 0.1);
+		OverworldBiomes.addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.COOL, 0.5);
+		OverworldBiomes.addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.TEMPERATE, 0.4);
+		OverworldBiomes.setRiverBiome(PLAINS_PLATEAU, null);
+
+		// Rocky Edge
+		OverworldBiomes.addEdgeBiome(PLAINS_PLATEAU, ROCKY_EDGE, 1.0);
+
+		// Rolling Hills
+		OverworldBiomes.addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
 
 		// Snowy Coniferous Forest
 		OverworldBiomes.addContinentalBiome(SNOWY_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.5);
@@ -71,14 +71,26 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Snowy High Coniferous Forest
 		OverworldBiomes.addContinentalBiome(SNOWY_HIGH_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.125);
 
+		// Wooded Island
+		OverworldBiomes.addBiomeVariant(Biomes.DEEP_OCEAN, WOODED_ISLAND, 0.10);
+		OverworldBiomes.addShoreBiome(WOODED_ISLAND, WOODED_ISLAND, 1.0);
+
+		// Wooded Plateau
+		OverworldBiomes.addHillsBiome(PLAINS_PLATEAU, WOODED_PLATEAU, 1.0);
+
 		// Woodlands
 		OverworldBiomes.addContinentalBiome(WOODLANDS, OverworldClimate.COOL, 1);
 		OverworldBiomes.addContinentalBiome(WOODLANDS, OverworldClimate.TEMPERATE, 1);
 
 		// Spawn Biomes
 		FabricBiomes.addSpawnBiome(ARID_HIGHLANDS);
+		FabricBiomes.addSpawnBiome(AUTUMNAL_WOODS);
 		FabricBiomes.addSpawnBiome(CONIFEROUS_FOREST);
+		FabricBiomes.addSpawnBiome(DESERT_SHRUBLAND);
+		FabricBiomes.addSpawnBiome(WOODED_ISLAND);
 		FabricBiomes.addSpawnBiome(MEADOW);
+		FabricBiomes.addSpawnBiome(ROLLING_HILLS);
+		FabricBiomes.addSpawnBiome(SNOWY_CONIFEROUS_FOREST);
 		FabricBiomes.addSpawnBiome(WOODLANDS);
 	}
 
