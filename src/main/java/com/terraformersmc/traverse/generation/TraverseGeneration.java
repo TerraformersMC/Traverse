@@ -17,7 +17,7 @@ public class TraverseGeneration extends TraverseBiomes {
 	private static BiomeConfig config;
 
 	public static void register() {
-		config = Traverse.BIOME_CONFIG_HANDLER.getBiomeConfig(true);
+		config = Traverse.BIOME_CONFIG_HANDLER.getBiomeConfig();
 
 		// Arid Highlands
 		addContinentalBiome(ARID_HIGHLANDS, OverworldClimate.DRY, 2);
