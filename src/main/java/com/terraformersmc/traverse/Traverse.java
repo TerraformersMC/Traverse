@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse;
 
+import com.terraformersmc.terraform.config.BiomeConfigHandler;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.feature.TraverseFeatures;
@@ -10,7 +11,7 @@ import net.fabricmc.api.ModInitializer;
 public class Traverse implements ModInitializer {
 
 	public static final String MOD_ID = "traverse";
-	private static boolean registered = false;
+	public static final BiomeConfigHandler BIOME_CONFIG_HANDLER = new BiomeConfigHandler(MOD_ID);
 
 	@Override
 	public void onInitialize() {
@@ -18,14 +19,11 @@ public class Traverse implements ModInitializer {
 	}
 
 	public static void register() {
-		if (!registered) {
-			TraverseBlocks.register();
-			TraverseSurfaceBuilders.register();
-			TraverseFeatures.register();
-			TraverseBiomes.register();
-			TraverseGeneration.register();
-			registered = true;
-		}
+		TraverseBlocks.register();
+		TraverseSurfaceBuilders.register();
+		TraverseFeatures.register();
+		TraverseBiomes.register();
+		TraverseGeneration.register();
 	}
 
 }
