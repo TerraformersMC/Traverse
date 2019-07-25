@@ -3,7 +3,7 @@ pipeline {
    stages {
       stage ('Build') {
          when {
-            branch 'master'
+            branch '1.14.4'
          }
          steps {
             sh "rm -rf build/libs/"
