@@ -90,6 +90,7 @@ public class TraverseGeneration extends TraverseBiomes {
 		OverworldBiomes.addHillsBiome(PLAINS_PLATEAU, WOODED_PLATEAU, 1.0);
 
 		// Woodlands
+		addContinentalBiome(WOODLANDS, OverworldClimate.DRY, 1);
 		addContinentalBiome(WOODLANDS, OverworldClimate.COOL, 1);
 		addContinentalBiome(WOODLANDS, OverworldClimate.TEMPERATE, 1);
 
