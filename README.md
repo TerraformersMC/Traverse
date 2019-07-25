@@ -1,6 +1,6 @@
 # Traverse
 
-![Traverse](https://i.imgur.com/ezG6I1H.png)
+[![Traverse](https://i.imgur.com/ezG6I1H.png)](https://www.curseforge.com/minecraft/mc-mods/traverse)
 
 <p align="center">
 Traverse aims to expand upon, but not replace or overshadow, Minecraft biomes. Traverse embraces the simplistic nature of many vanilla biomes and the goal is to have the biomes fit in just right so that Mojang could add them into the base game and nobody would complain that they felt out of place.
