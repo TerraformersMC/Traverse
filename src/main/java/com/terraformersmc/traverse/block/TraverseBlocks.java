@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.block;
 
 import com.terraformersmc.terraform.block.*;
 import com.terraformersmc.terraform.feature.TerraformOakTreeFeature;
+import com.terraformersmc.terraform.util.RecipeUtil;
 import com.terraformersmc.terraform.util.TerraformSaplingGenerator;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.feature.FirTreeFeature;
@@ -61,6 +62,7 @@ public class TraverseBlocks {
 		if (item != null) {
 			item.appendBlocks(Item.BLOCK_ITEMS, item);
 			ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
+			RecipeUtil.registerCompostableBlock(block);
 		}
 		return block;
 	}
