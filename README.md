@@ -31,7 +31,7 @@ Visit the <a href="https://github.com/TerraformersMC/Traverse/wiki">Traverse Wik
 * [Lush Swamp](https://github.com/TerraformersMC/Traverse/wiki/Lush-Swamp)
 * [Meadow](https://github.com/TerraformersMC/Traverse/wiki/Meadow)
 * [Mini Jungle](https://github.com/TerraformersMC/Traverse/wiki/Mini-Jungle)
-* [Rocky Plateau](https://github.com/TerraformersMC/Traverse/wiki/Rocky-Plateau)
+* [Plains Plateau](https://github.com/TerraformersMC/Traverse/wiki/Plains-Plateau)
 * [Rolling Hills](https://github.com/TerraformersMC/Traverse/wiki/Rolling-Hills)
 * [Snowy Coniferous Forest](https://github.com/TerraformersMC/Traverse/wiki/Snowy-Coniferous-Forest)
 * [Wooded Island](https://github.com/TerraformersMC/Traverse/wiki/Wooded-Island)
