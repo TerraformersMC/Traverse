@@ -12,10 +12,10 @@ import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public class ForestIslandBiome extends Biome {
+public class WoodedIslandBiome extends Biome {
 
 	/*
-	 * FOREST_ISLAND = register("forest_island", TerrestriaBiome.builder()
+	 * WOODED_ISLAND = register("forest_island", TerrestriaBiome.builder()
 	 * 				.configuredSurfaceBuilder(TerrestriaSurfaces.BEACH, SurfaceBuilder.GRASS_CONFIG)
 	 * 				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST)
 	 * 				.depth(0.1F)
@@ -45,7 +45,7 @@ public class ForestIslandBiome extends Biome {
 	static final int WATER_FOG_COLOR = 0x50533;
 	static final String PARENT = null;
 
-	public ForestIslandBiome() {
+	public WoodedIslandBiome() {
 		super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
 		this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
 		this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
@@ -65,7 +65,6 @@ public class ForestIslandBiome extends Biome {
 		DefaultBiomeFeatures.addLessKelp(this);
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		TraverseDefaultBiomeFeatures.addAridHighlandsShrubs(this);
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 3, 2, 3));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 6, 3, 3));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 5, 3, 3));

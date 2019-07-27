@@ -16,6 +16,7 @@
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
+    "fabricloader": ">=0.4.0",
     "fabric": "*",
     "terraform": "*"
   },
@@ -26,5 +27,5 @@
   ],
   "contributors": [
   ],
-  "description": "Adds some cool biomes and stuff"
+  "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes"
 }

@@ -1,20 +1,16 @@
 package com.terraformersmc.traverse.biome;
 
-import com.google.common.collect.Lists;
 import com.terraformersmc.traverse.feature.TraverseFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 
 public class TraverseDefaultBiomeFeatures {
 
-	public static void addAridHighlandsShrubs(Biome biome) {
-		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(TraverseFeatures.OAK_SHRUB, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(0, 0.5F, 1)));
+	public static void addShrubs(Biome biome, int count) {
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(TraverseFeatures.OAK_SHRUB, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(0, 0.5F, count)));
 	}
 
 	public static void addAutumnalWoodsTrees(Biome biome) {
@@ -23,6 +19,14 @@ public class TraverseDefaultBiomeFeatures {
 			new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT, FeatureConfig.DEFAULT, FeatureConfig.DEFAULT},
 			new float[]{0.25F, 0.25F, 0.25F, 0.25F},
 			Feature.NORMAL_TREE, FeatureConfig.DEFAULT), Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(10, 0.1F, 1)));
+	}
+
+	public static void addCliffsMineables(Biome biome) {
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Biome.configureFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.DIRT.getDefaultState(), 33), Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 70)));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Biome.configureFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.GRAVEL.getDefaultState(), 33), Decorator.COUNT_RANGE, new RangeDecoratorConfig(8, 0, 0, 70)));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Biome.configureFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.GRANITE.getDefaultState(), 33), Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 70)));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Biome.configureFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.DIORITE.getDefaultState(), 33), Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 70)));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, Biome.configureFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.ANDESITE.getDefaultState(), 33), Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 70)));
 	}
 
 	public static void addConiferousForestTrees(Biome biome) {
@@ -64,18 +68,16 @@ public class TraverseDefaultBiomeFeatures {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.WATERLILY, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(4)));
 	}
 
-	public static void addRockyPlateauFeatures(Biome biome) {
-		biome.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, Biome.configureFeature(Feature.FOREST_ROCK, new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1), Decorator.FOREST_ROCK, new CountDecoratorConfig(1)));
-		biome.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, Biome.configureFeature(Feature.DISK, new DiskFeatureConfig(Blocks.STONE.getDefaultState(), 9, 2, Lists.newArrayList(Blocks.GRASS_BLOCK.getDefaultState())), Decorator.COUNT_TOP_SOLID, new CountDecoratorConfig(3)));
-		biome.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, Biome.configureFeature(Feature.DISK, new DiskFeatureConfig(Blocks.COARSE_DIRT.getDefaultState(), 3, 2, Lists.newArrayList(Blocks.GRASS_BLOCK.getDefaultState())), Decorator.COUNT_TOP_SOLID, new CountDecoratorConfig(3)));
+	public static void addRockyEdgeFeatures(Biome biome) {
+		biome.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Biome.configureFeature(Feature.FOREST_ROCK, new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1), Decorator.CHANCE_HEIGHTMAP, new ChanceDecoratorConfig(5)));
 	}
 
-	public static void addWoodlandsTrees(Biome biome) {
+	public static void addWoodlandsTrees(Biome biome, int count) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfig(
-			new Feature[]{Feature.NORMAL_TREE},
-			new FeatureConfig[]{FeatureConfig.DEFAULT},
-			new float[]{0.2F},
-			TraverseFeatures.OAK_SHRUB, FeatureConfig.DEFAULT), Decorator.COUNT_HEIGHTMAP, new CountDecoratorConfig(5)));
+			new Feature[]{TraverseFeatures.OAK_SHRUB, TraverseFeatures.FALLEN_OAK_TREE},
+			new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT},
+			new float[]{0.2F, 0.3F},
+			Feature.NORMAL_TREE, FeatureConfig.DEFAULT), Decorator.COUNT_HEIGHTMAP, new CountDecoratorConfig(count)));
 	}
 
 }
