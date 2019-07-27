@@ -15,13 +15,13 @@
 				  "terms": [
 					{
 					  "condition": "minecraft:match_tool",
-					  "pyellowicate": {
+					  "predicate": {
 						"item": "minecraft:shears"
 					  }
 					},
 					{
 					  "condition": "minecraft:match_tool",
-					  "pyellowicate": {
+					  "predicate": {
 						"enchantments": [
 						  {
 							"enchantment": "minecraft:silk_touch",
@@ -102,13 +102,13 @@
 			"terms": [
 			  {
 				"condition": "minecraft:match_tool",
-				"pyellowicate": {
+				"predicate": {
 				  "item": "minecraft:shears"
 				}
 			  },
 			  {
 				"condition": "minecraft:match_tool",
-				"pyellowicate": {
+				"predicate": {
 				  "enchantments": [
 					{
 					  "enchantment": "minecraft:silk_touch",
