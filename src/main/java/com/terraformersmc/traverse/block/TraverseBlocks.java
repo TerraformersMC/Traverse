@@ -7,6 +7,7 @@ import com.terraformersmc.terraform.util.TerraformSaplingGenerator;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.feature.FirTreeFeature;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -85,6 +86,21 @@ public class TraverseBlocks {
 		for (Identifier id : BLOCKS.keySet()) {
 			Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
 		}
+		FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
+		flammableRegistry.add(FIR_PLANKS, 5, 20);
+		flammableRegistry.add(FIR_SLAB, 5, 20);
+		flammableRegistry.add(FIR_FENCE_GATE, 5, 20);
+		flammableRegistry.add(FIR_FENCE, 5, 20);
+		flammableRegistry.add(FIR_STAIRS, 5, 20);
+		flammableRegistry.add(FIR_LOG, 5, 5);
+		flammableRegistry.add(STRIPPED_FIR_LOG, 5, 5);
+		flammableRegistry.add(STRIPPED_FIR_WOOD, 5, 5);
+		flammableRegistry.add(FIR_WOOD, 5, 5);
+		flammableRegistry.add(FIR_LEAVES, 30, 60);
+		flammableRegistry.add(RED_AUTUMNAL_LEAVES, 30, 60);
+		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);
+		flammableRegistry.add(ORANGE_AUTUMNAL_LEAVES, 30, 60);
+		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
 	}
 
 }
