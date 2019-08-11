@@ -8,6 +8,7 @@ import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.feature.FirTreeFeature;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -86,6 +87,17 @@ public class TraverseBlocks {
 		for (Identifier id : BLOCKS.keySet()) {
 			Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
 		}
+		addFuels();
+		addFlammables();
+	}
+
+	private static void addFuels() {
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+		fuelRegistry.add(FIR_FENCE, 300);
+		fuelRegistry.add(FIR_FENCE_GATE, 300);
+	}
+
+	private static void addFlammables() {
 		FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
 		flammableRegistry.add(FIR_PLANKS, 5, 20);
 		flammableRegistry.add(FIR_SLAB, 5, 20);
