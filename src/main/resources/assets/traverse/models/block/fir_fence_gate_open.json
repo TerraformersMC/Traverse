@@ -1,5 +1,5 @@
 {
-  "parent": "block/template_fence_gate",
+  "parent": "block/template_fence_gate_open",
   "textures": {
     "texture": "traverse:block/fir_planks"
   }
