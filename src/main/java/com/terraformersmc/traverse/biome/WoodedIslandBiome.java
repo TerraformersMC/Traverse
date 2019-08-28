@@ -14,26 +14,6 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class WoodedIslandBiome extends Biome {
 
-	/*
-	 * WOODED_ISLAND = register("forest_island", TerrestriaBiome.builder()
-	 * 				.configuredSurfaceBuilder(TerrestriaSurfaces.BEACH, SurfaceBuilder.GRASS_CONFIG)
-	 * 				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST)
-	 * 				.depth(0.1F)
-	 * 				.scale(0.6F)
-	 * 				.temperature(0.8F)
-	 * 				.downfall(0.8F)
-	 * 				.waterColor(4159204)
-	 * 				.waterFogColor(329011)
-	 * 				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, FOREST_FLOWERS, MINEABLES, ORES,
-	 * 						FOREST_TREES, DEFAULT_FLOWERS, FOREST_GRASS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS,
-	 * 						FROZEN_TOP_LAYER, MORE_SEAGRASS, LESS_KELP)
-	 * 				.addStructureFeature(Feature.STRONGHOLD)
-	 * 				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
-	 * 				.addDefaultSpawnEntries()
-	 * 				.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
-	 * 				.build());
-	 */
-
 	static final ConfiguredSurfaceBuilder SURFACE_BUILDER = new ConfiguredSurfaceBuilder<>(TraverseSurfaceBuilders.FOREST_ISLAND, SurfaceBuilder.GRASS_CONFIG);
 	static final Precipitation PRECIPITATION = Precipitation.RAIN;
 	static final Category CATEGORY = Category.FOREST;

@@ -36,6 +36,7 @@ public class WoodedPlateauBiome extends Biome {
 		DefaultBiomeFeatures.addForestFlowers(this);
 		DefaultBiomeFeatures.addMineables(this);
 		DefaultBiomeFeatures.addDefaultOres(this);
+		DefaultBiomeFeatures.addEmeraldOre(this);
 		DefaultBiomeFeatures.addDefaultDisks(this);
 		DefaultBiomeFeatures.addForestTrees(this);
 		DefaultBiomeFeatures.addDefaultFlowers(this);

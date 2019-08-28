@@ -34,6 +34,7 @@ public class CliffsBiome extends Biome {
 		DefaultBiomeFeatures.addDungeons(this);
 		TraverseDefaultBiomeFeatures.addCliffsMineables(this);
 		DefaultBiomeFeatures.addDefaultOres(this);
+		DefaultBiomeFeatures.addEmeraldOre(this);
 		DefaultBiomeFeatures.addDefaultDisks(this);
 		DefaultBiomeFeatures.addDefaultGrass(this);
 		DefaultBiomeFeatures.addDefaultFlowers(this);

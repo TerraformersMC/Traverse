@@ -33,6 +33,7 @@ public class RockyEdgeBiome extends Biome {
 		DefaultBiomeFeatures.addPlainsTallGrass(this);
 		DefaultBiomeFeatures.addMineables(this);
 		DefaultBiomeFeatures.addDefaultOres(this);
+		DefaultBiomeFeatures.addEmeraldOre(this);
 		DefaultBiomeFeatures.addDefaultDisks(this);
 		DefaultBiomeFeatures.addPlainsFeatures(this);
 		DefaultBiomeFeatures.addDefaultMushrooms(this);
