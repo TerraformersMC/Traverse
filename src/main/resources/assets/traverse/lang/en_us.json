@@ -42,5 +42,7 @@
   "block.traverse.fir_fence": "Fir Fence",
   "block.traverse.fir_fence_gate": "Fir Fence Gate",
   "block.traverse.fir_door": "Fir Door",
-  "block.traverse.fir_trapdoor": "Fir Trapdoor"
+  "block.traverse.fir_trapdoor": "Fir Trapdoor",
+  "item.traverse.fir_boat": "Fir Boat",
+  "entity.traverse.fir_boat": "Fir Boat"
 }

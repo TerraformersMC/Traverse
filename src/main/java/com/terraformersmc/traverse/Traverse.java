@@ -3,6 +3,7 @@ package com.terraformersmc.traverse;
 import com.terraformersmc.terraform.config.BiomeConfigHandler;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.entity.TraverseEntities;
 import com.terraformersmc.traverse.feature.TraverseFeatures;
 import com.terraformersmc.traverse.generation.TraverseGeneration;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
@@ -20,6 +21,7 @@ public class Traverse implements ModInitializer {
 
 	public static void register() {
 		TraverseBlocks.register();
+		TraverseEntities.register();
 		TraverseSurfaceBuilders.register();
 		TraverseFeatures.register();
 		TraverseBiomes.register();
