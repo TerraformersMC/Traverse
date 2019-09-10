@@ -5,17 +5,20 @@ import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.SurfaceConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 import java.util.Random;
 import java.util.function.Function;
 
-public class SandWithPatchesSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
+public class PatchesSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 
 	private final double threshold;
+	private final TernarySurfaceConfig configLess;
 
-	public SandWithPatchesSurfaceBuilder(Function<Dynamic<?>, ? extends TernarySurfaceConfig> function_1, double threshold) {
+	public PatchesSurfaceBuilder(Function<Dynamic<?>, ? extends TernarySurfaceConfig> function_1, TernarySurfaceConfig configLess, double threshold) {
 		super(function_1);
+		this.configLess = configLess;
 		this.threshold = threshold;
 	}
 
@@ -24,7 +27,7 @@ public class SandWithPatchesSurfaceBuilder extends SurfaceBuilder<TernarySurface
 		if (noise > threshold) {
 			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, long_1, config);
 		} else {
-			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, long_1, SurfaceBuilder.SAND_CONFIG);
+			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, long_1, configLess);
 		}
 
 	}

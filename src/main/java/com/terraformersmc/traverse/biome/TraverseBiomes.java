@@ -13,6 +13,7 @@ public class TraverseBiomes {
 	private static final Map<Identifier, Biome> BIOMES = new HashMap<>();
 
 	public static final Biome ARID_HIGHLANDS = add("arid_highlands", new AridHighlandsBiome());
+	public static final Biome ARID_SLOPES = add("arid_slopes", new AridSlopesBiome());
 	public static final Biome AUTUMNAL_WOODED_HILLS = add("autumnal_wooded_hills", new AutumnalWoodedHillsBiome());
 	public static final Biome AUTUMNAL_WOODS = add("autumnal_woods", new AutumnalWoodsBiome());
 	public static final Biome CLIFFS = add("cliffs", new CliffsBiome());
@@ -23,6 +24,7 @@ public class TraverseBiomes {
 	public static final Biome LUSH_SWAMP = add("lush_swamp", new LushSwampBiome());
 	public static final Biome MEADOW = add("meadow", new MeadowBiome());
 	public static final Biome MINI_JUNGLE = add("mini_jungle", new MiniJungleBiome());
+	public static final Biome PARCHED_PLATEAU = add("parched_plateau", new ParchedPlateauBiome());
 	public static final Biome PLAINS_PLATEAU = add("plains_plateau", new PlainsPlateauBiome());
 	public static final Biome ROCKY_EDGE = add("rocky_edge", new RockyEdgeBiome());
 	public static final Biome ROLLING_HILLS = add("rolling_hills", new RollingHillsBiome());

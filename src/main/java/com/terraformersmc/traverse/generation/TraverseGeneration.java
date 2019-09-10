@@ -22,6 +22,10 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Arid Highlands
 		addContinentalBiome(ARID_HIGHLANDS, OverworldClimate.DRY, 2);
 
+		// Arid Slopes
+		addContinentalBiome(ARID_SLOPES, OverworldClimate.DRY, 1);
+		addContinentalBiome(ARID_SLOPES, OverworldClimate.TEMPERATE, 0.2);
+
 		// Autumnal Wooded Hills
 		OverworldBiomes.addHillsBiome(AUTUMNAL_WOODS, AUTUMNAL_WOODED_HILLS, 1);
 
@@ -59,6 +63,9 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Mini Jungle
 		addContinentalBiome(MINI_JUNGLE, OverworldClimate.TEMPERATE, 0.2);
 		addBiomeVariant(Biomes.JUNGLE, MINI_JUNGLE, 0.15);
+
+		// Parched Plateau
+		OverworldBiomes.addHillsBiome(ARID_SLOPES, PARCHED_PLATEAU, 1);
 
 		// Plains Plateau
 		addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.DRY, 0.1);

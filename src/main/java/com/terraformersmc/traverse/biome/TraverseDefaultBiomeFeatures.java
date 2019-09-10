@@ -13,6 +13,15 @@ public class TraverseDefaultBiomeFeatures {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(TraverseFeatures.OAK_SHRUB, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(0, 0.5F, count)));
 	}
 
+	public static void addAridSlopesFeatures(Biome biome) {
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfig(
+			new Feature[]{TraverseFeatures.OAK_SHRUB, TraverseFeatures.FALLEN_OAK_TREE},
+			new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT},
+			new float[]{0.45F, 0.45F},
+			Feature.NORMAL_TREE, FeatureConfig.DEFAULT), Decorator.COUNT_HEIGHTMAP, new CountDecoratorConfig(3)));
+		biome.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Biome.configureFeature(Feature.FOREST_ROCK, new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1), Decorator.CHANCE_HEIGHTMAP, new ChanceDecoratorConfig(3)));
+	}
+
 	public static void addAutumnalWoodsTrees(Biome biome) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfig(
 			new Feature[]{TraverseFeatures.RED_AUTUMNAL_TREE, TraverseFeatures.BROWN_AUTUMNAL_TREE, TraverseFeatures.ORANGE_AUTUMNAL_TREE, TraverseFeatures.YELLOW_AUTUMNAL_TREE},
@@ -66,6 +75,10 @@ public class TraverseDefaultBiomeFeatures {
 			new float[]{0.1F},
 			TraverseFeatures.MINI_JUNGLE_TREE, FeatureConfig.DEFAULT), Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(50, 0.1F, 1)));
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.WATERLILY, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(4)));
+	}
+
+	public static void addParchedPlateauFeatures(Biome biome) {
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(TraverseFeatures.FALLEN_OAK_TREE, FeatureConfig.DEFAULT, Decorator.CHANCE_HEIGHTMAP, new ChanceDecoratorConfig(30)));
 	}
 
 	public static void addRockyEdgeFeatures(Biome biome) {

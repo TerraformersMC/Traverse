@@ -16,9 +16,11 @@ public class TraverseSurfaceBuilders {
 
 	private static final Map<Identifier, SurfaceBuilder<? extends SurfaceConfig>> SURFACE_BUILDERS = new HashMap<>();
 
-	public static final SurfaceBuilder<TernarySurfaceConfig> ARID_HIGHLANDS = add("arid_highlands", new SandWithPatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, 0.9D));
-	public static final SurfaceBuilder<TernarySurfaceConfig> DESERT_SHRUBLAND = add("desert_shrubland", new SandWithPatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, 1.5D));
-	public static final SurfaceBuilder<TernarySurfaceConfig> FOREST_ISLAND = add("forest_island", new BeachSurfaceBuilder(TernarySurfaceConfig::deserialize, 62, v -> Blocks.SAND.getDefaultState()));
+	public static final SurfaceBuilder<TernarySurfaceConfig> ARID_HIGHLANDS = add("arid_highlands", new PatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, SurfaceBuilder.SAND_CONFIG, 0.9D));
+	public static final SurfaceBuilder<TernarySurfaceConfig> ARID_SLOPES = add("arid_slopes", new PatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, SurfaceBuilder.GRASS_CONFIG, 1.5D));
+	public static final SurfaceBuilder<TernarySurfaceConfig> DESERT_SHRUBLAND = add("desert_shrubland", new PatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, SurfaceBuilder.SAND_CONFIG, 1.5D));
+	public static final SurfaceBuilder<TernarySurfaceConfig> PARCHED_PLATEAU = add("parched_plateau", new PatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, SurfaceBuilder.STONE_CONFIG, 1.7D));
+	public static final SurfaceBuilder<TernarySurfaceConfig> WOODED_ISLAND = add("wooded_island", new BeachSurfaceBuilder(TernarySurfaceConfig::deserialize, 62, v -> Blocks.SAND.getDefaultState()));
 
 	public static <S extends SurfaceBuilder<? extends SurfaceConfig>> S add(String name, S feature) {
 		SURFACE_BUILDERS.put(new Identifier(Traverse.MOD_ID, name), feature);
