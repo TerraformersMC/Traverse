@@ -4,38 +4,39 @@ import com.mojang.datafixers.Dynamic;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableIntBoundingBox;
+import net.minecraft.util.math.BlockBox;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
+import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public class FirTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
+public class FirTreeFeature extends AbstractTreeFeature<BranchedTreeFeatureConfig> {
 
     private final int minHeight;
     private final BlockState log;
     private final BlockState leaves;
 
-    public FirTreeFeature(final Function<Dynamic<?>, ? extends DefaultFeatureConfig> function, final boolean worldGen) {
+    public FirTreeFeature(final Function<Dynamic<?>, ? extends BranchedTreeFeatureConfig> function, final boolean worldGen) {
         this(function, worldGen, 15);
     }
 
-    public FirTreeFeature(final Function<Dynamic<?>, ? extends DefaultFeatureConfig> function, final boolean worldGen, int minHeight) {
+    public FirTreeFeature(final Function<Dynamic<?>, ? extends BranchedTreeFeatureConfig> function, final boolean worldGen, int minHeight) {
         this(function, worldGen, minHeight, TraverseBlocks.FIR_LOG.getDefaultState(), TraverseBlocks.FIR_LEAVES.getDefaultState());
     }
 
-    public FirTreeFeature(final Function<Dynamic<?>, ? extends DefaultFeatureConfig> function, final boolean worldGen, int minHeight, BlockState log, BlockState leaves) {
-        super(function, worldGen);
+    public FirTreeFeature(final Function<Dynamic<?>, ? extends BranchedTreeFeatureConfig> function, final boolean worldGen, int minHeight, BlockState log, BlockState leaves) {
+        super(function);
         this.minHeight = minHeight;
         this.log = log;
         this.leaves = leaves;
     }
 
-    @Override
-    protected boolean generate(final Set<BlockPos> blocks, final ModifiableTestableWorld world, final Random random, final BlockPos pos, final MutableIntBoundingBox box) {
+	@Override
+    protected boolean generate(final ModifiableTestableWorld world, final Random random, final BlockPos pos, final Set<BlockPos> trunkSet, final Set<BlockPos> leafSet,  final BlockBox box, BranchedTreeFeatureConfig config) {
         int height = random.nextInt(15) + minHeight;
         int logHeight = 4 + random.nextInt(2);
         int leavesHeight = height - logHeight;
@@ -114,7 +115,7 @@ public class FirTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
 
                 for (int k4 = 0; k4 < height - i4; ++k4) {
                     if (isAirOrLeaves(world, pos.up(k4)) || isReplaceablePlant(world, pos.up(k4))) {
-                        this.setBlockState(blocks, world, pos.up(k4), this.log, box);
+                        this.setBlockState(world, pos.up(k4), this.log, box);
                     }
                 }
                 return true;

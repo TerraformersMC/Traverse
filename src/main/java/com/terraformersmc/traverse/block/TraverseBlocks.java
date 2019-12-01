@@ -1,7 +1,6 @@
 package com.terraformersmc.traverse.block;
 
 import com.terraformersmc.terraform.block.*;
-import com.terraformersmc.terraform.feature.TerraformOakTreeFeature;
 import com.terraformersmc.terraform.util.RecipeUtil;
 import com.terraformersmc.terraform.util.TerraformSaplingGenerator;
 import com.terraformersmc.traverse.Traverse;
@@ -16,7 +15,12 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.gen.feature.OakTreeFeature;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliage.PineFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.SimpleStateProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,16 +31,21 @@ public class TraverseBlocks {
 	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
 
 	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new TerraformLeavesBlock(), ItemGroup.DECORATIONS);
-	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new TerraformOakTreeFeature(DefaultFeatureConfig::deserialize, true, Blocks.DARK_OAK_LOG.getDefaultState(), RED_AUTUMNAL_LEAVES.getDefaultState()))), ItemGroup.DECORATIONS);
+	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize2),
+		() -> new BranchedTreeFeatureConfig.Builder(new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(TraverseBlocks.RED_AUTUMNAL_LEAVES.getDefaultState()), new BlobFoliagePlacer(2, 0)).build())));
 	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new TerraformLeavesBlock(), ItemGroup.DECORATIONS);
-	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new TerraformOakTreeFeature(DefaultFeatureConfig::deserialize, true, 5, Blocks.OAK_LOG.getDefaultState(), BROWN_AUTUMNAL_LEAVES.getDefaultState()))), ItemGroup.DECORATIONS);
+	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize2),
+		() -> new BranchedTreeFeatureConfig.Builder(new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.getDefaultState()), new BlobFoliagePlacer(2, 0)).build())));
 	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new TerraformLeavesBlock(), ItemGroup.DECORATIONS);
-	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new TerraformOakTreeFeature(DefaultFeatureConfig::deserialize, true, Blocks.OAK_LOG.getDefaultState(), ORANGE_AUTUMNAL_LEAVES.getDefaultState()))), ItemGroup.DECORATIONS);
+	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize2),
+		() -> new BranchedTreeFeatureConfig.Builder(new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES.getDefaultState()), new BlobFoliagePlacer(2, 0)).build())));
 	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new TerraformLeavesBlock(), ItemGroup.DECORATIONS);
-	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new TerraformOakTreeFeature(DefaultFeatureConfig::deserialize, true, 6, Blocks.BIRCH_LOG.getDefaultState(), YELLOW_AUTUMNAL_LEAVES.getDefaultState()))), ItemGroup.DECORATIONS);
+	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize2),
+		() -> new BranchedTreeFeatureConfig.Builder(new SimpleStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()), new SimpleStateProvider(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES.getDefaultState()), new BlobFoliagePlacer(2, 0)).build())));
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).build()), ItemGroup.BUILDING_BLOCKS);
-	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new FirTreeFeature(DefaultFeatureConfig::deserialize, true))), ItemGroup.DECORATIONS);
+	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize2),
+		() -> new BranchedTreeFeatureConfig.Builder(new SimpleStateProvider(TraverseBlocks.FIR_LOG.getDefaultState()), new SimpleStateProvider(TraverseBlocks.FIR_LEAVES.getDefaultState()), new PineFoliagePlacer(2, 0)).build())));
 	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", new LogBlock(MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", new LogBlock(MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.DARK_OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);

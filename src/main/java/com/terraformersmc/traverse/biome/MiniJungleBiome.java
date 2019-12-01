@@ -26,8 +26,8 @@ public class MiniJungleBiome extends Biome {
 
 	public MiniJungleBiome() {
 		super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
-		this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
-		this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
+		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
+		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
 		DefaultBiomeFeatures.addLandCarvers(this);
 		DefaultBiomeFeatures.addDefaultStructures(this);
 		DefaultBiomeFeatures.addDefaultLakes(this);
@@ -44,7 +44,7 @@ public class MiniJungleBiome extends Biome {
 		DefaultBiomeFeatures.addJungleVegetation(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 		TraverseDefaultBiomeFeatures.addMiniJungleVegetation(this);
-		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, configureFeature(Feature.SEAGRASS, new SeagrassFeatureConfig(64, 0.6D), Decorator.TOP_SOLID_HEIGHTMAP, DecoratorConfig.DEFAULT));
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
