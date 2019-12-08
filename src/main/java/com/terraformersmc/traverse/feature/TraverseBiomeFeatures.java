@@ -22,6 +22,8 @@ public class TraverseBiomeFeatures {
 	public static final BranchedTreeFeatureConfig YELLOW_AUTUMNAL_TREE_CONFIG;
 	public static final BranchedTreeFeatureConfig BROWN_AUTUMNAL_TREE_CONFIG;
 	public static final BranchedTreeFeatureConfig FIR_TREE_CONFIG;
+	private static final TreeFeatureConfig OAK_SHRUB_CONFIG;
+	private static final FallenLogFeatureConfig FALLEN_OAK_LOG_CONFIG;
 	private static final BranchedTreeFeatureConfig TALL_SWAMP_TREE_CONFIG;
 	private static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
@@ -50,6 +52,12 @@ public class TraverseBiomeFeatures {
 				new BlobFoliagePlacer(3, 0)
 		).baseHeight(7).heightRandA(3).foliageHeight(3).maxWaterDepth(1).treeDecorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
+		OAK_SHRUB_CONFIG = new TreeFeatureConfig.Builder(
+				new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).build();
+
+		FALLEN_OAK_LOG_CONFIG = new FallenLogFeatureConfig.Builder(
+				new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).baseLength(3).lengthRandom(2).build();
+
 		WeightedStateProvider provider = new WeightedStateProvider();
 
 		provider.addState(Blocks.POPPY.getDefaultState(), 12);
@@ -66,9 +74,21 @@ public class TraverseBiomeFeatures {
 	}
 
 	public static void addShrubs(Biome biome, int count) {
-		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(new TreeFeatureConfig.Builder(
-			new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).build())
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(OAK_SHRUB_CONFIG)
 			.createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.5F, count))));
+	}
+
+	public static void addAridSlopesFeatures(Biome biome) {
+		biome.addFeature(
+				GenerationStep.Feature.VEGETAL_DECORATION,
+				Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
+						ImmutableList.of(
+								Feature.JUNGLE_GROUND_BUSH.configure(OAK_SHRUB_CONFIG).withChance(0.45F),
+								TraverseFeatures.FALLEN_OAK_TREE.configure(FALLEN_OAK_LOG_CONFIG).withChance(0.45F)
+						),
+						Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
+						.createDecoratedFeature(Decorator.COUNT_HEIGHTMAP.configure(new CountDecoratorConfig(3))));
+		biome.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1)).createDecoratedFeature(Decorator.FOREST_ROCK.configure(new CountDecoratorConfig(3))));
 	}
 
 	public static void addAutumnalWoodsTrees(Biome biome) {
@@ -98,11 +118,9 @@ public class TraverseBiomeFeatures {
 	}
 
 	public static void addDesertShrublandFeatures(Biome biome) {
-		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(new TreeFeatureConfig.Builder(
-			new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).build())
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(OAK_SHRUB_CONFIG)
 			.createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))));
-		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(new TreeFeatureConfig.Builder(
-			new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).build())
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.configure(OAK_SHRUB_CONFIG)
 			.createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))));
 	}
 
@@ -147,11 +165,9 @@ public class TraverseBiomeFeatures {
 		biome.addFeature(
 			GenerationStep.Feature.VEGETAL_DECORATION,
 			Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
-				ImmutableList.of(Feature.JUNGLE_GROUND_BUSH.configure(new TreeFeatureConfig.Builder(
-					new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).build())
+				ImmutableList.of(Feature.JUNGLE_GROUND_BUSH.configure(OAK_SHRUB_CONFIG)
 					.withChance(0.2F),
-					TraverseFeatures.FALLEN_OAK_TREE.configure(new FallenLogFeatureConfig.Builder(
-						new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleStateProvider(Blocks.OAK_LEAVES.getDefaultState())).baseLength(3).lengthRandom(2).build())
+					TraverseFeatures.FALLEN_OAK_TREE.configure(FALLEN_OAK_LOG_CONFIG)
 						.withChance(0.3F)),
 				Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
 				.createDecoratedFeature(Decorator.COUNT_HEIGHTMAP.configure(new CountDecoratorConfig(count))));
