@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
@@ -29,8 +30,8 @@ public class ConiferousForestBiome extends Biome {
 
     public ConiferousForestBiome() {
         super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
-        this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
-        this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
+		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
+		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
         DefaultBiomeFeatures.addLandCarvers(this);
         DefaultBiomeFeatures.addDefaultStructures(this);
         DefaultBiomeFeatures.addDefaultLakes(this);
@@ -45,7 +46,7 @@ public class ConiferousForestBiome extends Biome {
         DefaultBiomeFeatures.addDefaultVegetation(this);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFrozenTopLayer(this);
-        TraverseDefaultBiomeFeatures.addConiferousForestTrees(this);
+		TraverseBiomeFeatures.addConiferousForestTrees(this);
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
         this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
@@ -63,12 +64,12 @@ public class ConiferousForestBiome extends Biome {
     }
 
     @Override
-    public int getGrassColorAt(final BlockPos pos) {
+    public int getGrassColorAt(double x, double z) {
         return GRASS_COLOR;
     }
 
     @Override
-    public int getFoliageColorAt(final BlockPos pos) {
+    public int getFoliageColorAt() {
         return FOLIAGE_COLOR;
     }
 

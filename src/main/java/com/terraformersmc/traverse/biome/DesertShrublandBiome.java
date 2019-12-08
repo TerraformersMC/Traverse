@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
@@ -24,11 +25,11 @@ public class DesertShrublandBiome extends Biome {
 
 	public DesertShrublandBiome() {
 		super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
-		this.addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 6));
-		this.addStructureFeature(Feature.PILLAGER_OUTPOST, new PillagerOutpostFeatureConfig(0.004D));
-		this.addStructureFeature(Feature.DESERT_PYRAMID, FeatureConfig.DEFAULT);
-		this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
-		this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
+		this.addStructureFeature(Feature.VILLAGE.configure(new VillageFeatureConfig("village/desert/town_centers", 6)));
+		this.addStructureFeature(Feature.DESERT_PYRAMID.configure(FeatureConfig.DEFAULT));
+		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
+		this.addStructureFeature(Feature.PILLAGER_OUTPOST.configure(FeatureConfig.DEFAULT));
+		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
 		DefaultBiomeFeatures.addLandCarvers(this);
 		DefaultBiomeFeatures.addDefaultStructures(this);
 		DefaultBiomeFeatures.addDesertLakes(this);
@@ -44,7 +45,7 @@ public class DesertShrublandBiome extends Biome {
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addDesertFeatures(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		TraverseDefaultBiomeFeatures.addDesertShrublandFeatures(this);
+		TraverseBiomeFeatures.addDesertShrublandFeatures(this);
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 4, 2, 3));
 		this.addSpawn(EntityCategory.AMBIENT, new SpawnEntry(EntityType.BAT, 10, 8, 8));
 		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SPIDER, 100, 4, 4));
