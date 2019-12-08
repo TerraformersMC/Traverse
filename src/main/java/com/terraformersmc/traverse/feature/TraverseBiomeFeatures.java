@@ -3,8 +3,7 @@ package com.terraformersmc.traverse.feature;
 import com.google.common.collect.ImmutableList;
 import com.terraformersmc.terraform.feature.FallenLogFeatureConfig;
 import com.terraformersmc.traverse.block.TraverseBlocks;
-import com.terraformersmc.traverse.feature.TraverseFeatures;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
@@ -12,7 +11,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.PineFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleStateProvider;
@@ -27,19 +25,19 @@ public class TraverseBiomeFeatures {
 	private static final BranchedTreeFeatureConfig TALL_SWAMP_TREE_CONFIG;
 	private static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
-	private static BranchedTreeFeatureConfig oakLike(BlockState trunk) {
+	private static BranchedTreeFeatureConfig oakLike(Block trunk, Block leaves) {
 		return new BranchedTreeFeatureConfig.Builder(
-				new SimpleStateProvider(Blocks.OAK_LOG.getDefaultState()),
-				new SimpleStateProvider(trunk),
+				new SimpleStateProvider(trunk.getDefaultState()),
+				new SimpleStateProvider(leaves.getDefaultState()),
 				new BlobFoliagePlacer(2, 0)
 		).baseHeight(4).heightRandA(2).foliageHeight(3).noVines().build();
 	}
 
 	static {
-		RED_AUTUMNAL_TREE_CONFIG = oakLike(TraverseBlocks.RED_AUTUMNAL_LEAVES.getDefaultState());
-		ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES.getDefaultState());
-		YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES.getDefaultState());
-		BROWN_AUTUMNAL_TREE_CONFIG = oakLike(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.getDefaultState());
+		RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES);
+		ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES);
+		YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES);
+		BROWN_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.BROWN_AUTUMNAL_LEAVES);
 		FIR_TREE_CONFIG = new BranchedTreeFeatureConfig.Builder(
 				new SimpleStateProvider(TraverseBlocks.FIR_LOG.getDefaultState()),
 				new SimpleStateProvider(TraverseBlocks.FIR_LEAVES.getDefaultState()),
@@ -129,7 +127,7 @@ public class TraverseBiomeFeatures {
 	public static void addMeadowVegetation(Biome biome) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.GRASS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(15))));
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(LUSH_FLOWER_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_32.configure(new CountDecoratorConfig(10))));
-		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.2F, 1))));
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_WITH_MORE_BEEHIVES_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.2F, 1))));
 	}
 
 	public static void addMiniJungleVegetation(Biome biome) {
