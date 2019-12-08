@@ -9,6 +9,9 @@
   "entrypoints": {
     "main": [
       "com.terraformersmc.traverse.Traverse"
+    ],
+    "client": [
+      "com.terraformersmc.traverse.TraverseClient"
     ]
   },
   "contact": {

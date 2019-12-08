@@ -22,7 +22,7 @@ public class TraverseEntities {
 	public static EntityType<TerraformBoatEntity> FIR_BOAT;
 
 	public static void register() {
-//		FIR_BOAT = registerBoat("fir", TraverseBlocks.FIR_PLANKS, BoatEntity.Type.OAK, () -> FIR_BOAT);
+		FIR_BOAT = registerBoat("fir", TraverseBlocks.FIR_PLANKS, BoatEntity.Type.OAK, () -> FIR_BOAT);
 	}
 
 	private static EntityType<TerraformBoatEntity> registerBoat(String name, ItemConvertible planks, BoatEntity.Type vanilla, Supplier<EntityType<TerraformBoatEntity>> boatSupplier) {
