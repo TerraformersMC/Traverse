@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -32,7 +33,7 @@ public class CliffsBiome extends Biome {
 		DefaultBiomeFeatures.addDefaultStructures(this);
 		DefaultBiomeFeatures.addDefaultLakes(this);
 		DefaultBiomeFeatures.addDungeons(this);
-		TraverseDefaultBiomeFeatures.addCliffsMineables(this);
+		TraverseBiomeFeatures.addCliffsMineables(this);
 		DefaultBiomeFeatures.addDefaultOres(this);
 		DefaultBiomeFeatures.addEmeraldOre(this);
 		DefaultBiomeFeatures.addDefaultDisks(this);

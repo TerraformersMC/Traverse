@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
@@ -49,7 +50,7 @@ public class AridHighlandsBiome extends Biome {
 		DefaultBiomeFeatures.addDefaultVegetation(this);
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		TraverseDefaultBiomeFeatures.addShrubs(this, 1);
+		TraverseBiomeFeatures.addShrubs(this, 1);
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 3, 2, 3));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 6, 3, 3));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 5, 3, 3));

@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
@@ -44,7 +45,7 @@ public class DesertShrublandBiome extends Biome {
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addDesertFeatures(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		TraverseDefaultBiomeFeatures.addDesertShrublandFeatures(this);
+		TraverseBiomeFeatures.addDesertShrublandFeatures(this);
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 4, 2, 3));
 		this.addSpawn(EntityCategory.AMBIENT, new SpawnEntry(EntityType.BAT, 10, 8, 8));
 		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SPIDER, 100, 4, 4));

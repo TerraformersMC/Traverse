@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -43,7 +44,7 @@ public class MiniJungleBiome extends Biome {
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addJungleVegetation(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		TraverseDefaultBiomeFeatures.addMiniJungleVegetation(this);
+		TraverseBiomeFeatures.addMiniJungleVegetation(this);
 		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
