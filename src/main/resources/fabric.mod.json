@@ -11,7 +11,7 @@
       "com.terraformersmc.traverse.Traverse"
     ],
     "client": [
-      "com.terraformersmc.traverse.TraverseClient"
+      "com.terraformersmc.traverse.client.TraverseClient"
     ]
   },
   "contact": {
