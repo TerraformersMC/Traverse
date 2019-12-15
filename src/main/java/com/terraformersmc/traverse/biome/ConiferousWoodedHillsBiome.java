@@ -70,7 +70,7 @@ public class ConiferousWoodedHillsBiome extends Biome {
     }
 
     @Override
-    public int getFoliageColorAt() {
+    public int getFoliageColor() {
         return FOLIAGE_COLOR;
     }
 

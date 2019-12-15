@@ -76,7 +76,7 @@ public class AridHighlandsBiome extends Biome {
 	}
 
 	@Override
-	public int getFoliageColorAt() {
+	public int getFoliageColor() {
 		return FOLIAGE_COLOR;
 	}
 
