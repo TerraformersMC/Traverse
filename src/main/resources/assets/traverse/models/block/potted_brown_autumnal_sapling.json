@@ -1,0 +1,6 @@
+{
+  "parent": "block/flower_pot_cross",
+  "textures": {
+    "plant": "traverse:block/brown_autumnal_sapling"
+  }
+}

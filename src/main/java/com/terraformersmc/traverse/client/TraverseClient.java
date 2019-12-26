@@ -20,16 +20,17 @@ public class TraverseClient implements ClientModInitializer {
 		registerTextures();
 	}
 
-	public static void registerEntityRenderers() {
+	private static void registerEntityRenderers() {
 		EntityRendererRegistry.INSTANCE.register(TraverseEntities.FIR_BOAT, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
 	}
 
-	public static void registerRenderLayers() {
+	private static void registerRenderLayers() {
 		RenderLayer cutout = RenderLayer.getCutout();
 		BlockRenderLayerMap.INSTANCE.putBlocks(cutout, TraverseBlocks.FIR_SAPLING, TraverseBlocks.FIR_DOOR, TraverseBlocks.FIR_TRAPDOOR);
+		BlockRenderLayerMap.INSTANCE.putBlocks(cutout, TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING, TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING, TraverseBlocks.POTTED_ORANGE_AUTUMNAL_SAPLING, TraverseBlocks.POTTED_YELLOW_AUTUMNAL_SAPLING, TraverseBlocks.POTTED_FIR_SAPLING);
 	}
 
-	public static void registerTextures() {
+	private static void registerTextures() {
 		Identifier texture = TraverseBlocks.FIR_SIGN.getTexture();
 		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, texture));
 	}

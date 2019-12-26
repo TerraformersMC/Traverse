@@ -1,0 +1,6 @@
+{
+  "parent": "block/flower_pot_cross",
+  "textures": {
+    "plant": "traverse:block/fir_sapling"
+  }
+}
