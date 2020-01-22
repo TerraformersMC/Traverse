@@ -31,7 +31,7 @@ public class TraverseEntities {
 		Item item = Registry.register(Registry.ITEM, id, new TerraformBoatItem((world, x, y, z) -> {
 			TerraformBoatEntity entity = boatSupplier.get().create(world);
 			if (entity != null) {
-				entity.setPosition(x, y, z);
+				entity.setPos(x, y, z);
 			}
 			return entity;
 		}, new Item.Settings().maxCount(1).group(ItemGroup.TRANSPORTATION)));

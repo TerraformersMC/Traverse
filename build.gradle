@@ -28,6 +28,8 @@ dependencies {
 	modCompile "com.terraformersmc:terraform:${project.terraform_version}"
 
 	include "com.terraformersmc:terraform:${project.terraform_version}"
+
+	compileOnly "com.google.code.findbugs:jsr305:3.0.2"
 }
 
 processResources {
