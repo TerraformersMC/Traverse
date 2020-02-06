@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.terraform.biome.builder.BuilderBiomeSettings;
 import com.terraformersmc.terraform.util.TerraformBiomeSets;
 import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import net.minecraft.entity.EntityCategory;
@@ -29,7 +30,7 @@ public class LushSwampBiome extends Biome {
 	static final String PARENT = null;
 
 	public LushSwampBiome() {
-		super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
+		super(new BuilderBiomeSettings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
 		this.addStructureFeature(Feature.SWAMP_HUT.configure(FeatureConfig.DEFAULT));
 		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
 		DefaultBiomeFeatures.addLandCarvers(this);

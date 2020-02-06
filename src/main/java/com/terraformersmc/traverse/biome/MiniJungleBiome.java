@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.terraform.biome.builder.BuilderBiomeSettings;
 import com.terraformersmc.traverse.feature.TraverseBiomeFeatures;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
@@ -26,7 +27,7 @@ public class MiniJungleBiome extends Biome {
 	static final String PARENT = null;
 
 	public MiniJungleBiome() {
-		super(new Settings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
+		super(new BuilderBiomeSettings().surfaceBuilder(SURFACE_BUILDER).precipitation(PRECIPITATION).category(CATEGORY).depth(DEPTH).scale(SCALE).temperature(TEMPERATURE).downfall(DOWNFALL).waterColor(WATER_COLOR).waterFogColor(WATER_FOG_COLOR).parent(PARENT));
 		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
 		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
 		DefaultBiomeFeatures.addLandCarvers(this);
@@ -45,7 +46,7 @@ public class MiniJungleBiome extends Biome {
 		DefaultBiomeFeatures.addJungleVegetation(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 		TraverseBiomeFeatures.addMiniJungleVegetation(this);
-		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)));
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 12, 4, 4));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 10, 4, 4));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
