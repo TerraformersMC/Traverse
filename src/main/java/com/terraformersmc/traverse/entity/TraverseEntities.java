@@ -14,8 +14,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class TraverseEntities {
@@ -29,10 +31,14 @@ public class TraverseEntities {
 		Identifier id = new Identifier(Traverse.MOD_ID, name + "_boat");
 		Identifier skin = new Identifier(Traverse.MOD_ID, "textures/entity/boat/" + name + ".png");
 		Item item = Registry.register(Registry.ITEM, id, new TerraformBoatItem((world, x, y, z) -> {
-			TerraformBoatEntity entity = boatSupplier.get().create(world);
-			if (entity != null) {
-				entity.setPos(x, y, z);
-			}
+			TerraformBoatEntity entity = Objects.requireNonNull(boatSupplier.get().create(world), "null boat from EntityType::create");
+
+			entity.updatePosition(x, y, z);
+			entity.setVelocity(Vec3d.ZERO);
+			entity.prevX = x;
+			entity.prevY = y;
+			entity.prevZ = z;
+
 			return entity;
 		}, new Item.Settings().maxCount(1).group(ItemGroup.TRANSPORTATION)));
 		TerraformBoat boat = new TerraformBoat(item.asItem(), planks.asItem(), skin, vanilla);
