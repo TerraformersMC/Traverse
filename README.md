@@ -1,5 +1,3 @@
-# Traverse
-
 [![Traverse](https://i.imgur.com/ezG6I1H.png)](https://www.curseforge.com/minecraft/mc-mods/traverse)
 
 <p align="center">
