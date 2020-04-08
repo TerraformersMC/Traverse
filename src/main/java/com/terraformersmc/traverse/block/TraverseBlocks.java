@@ -13,7 +13,9 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.OakTreeFeature;
@@ -28,22 +30,22 @@ public class TraverseBlocks {
 
 	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
 	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-		() -> TraverseBiomeFeatures.RED_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+			() -> TraverseBiomeFeatures.RED_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
 	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-		() -> TraverseBiomeFeatures.BROWN_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+			() -> TraverseBiomeFeatures.BROWN_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
 	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-		() -> TraverseBiomeFeatures.ORANGE_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+			() -> TraverseBiomeFeatures.ORANGE_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
 	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-		() -> TraverseBiomeFeatures.YELLOW_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+			() -> TraverseBiomeFeatures.YELLOW_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).build()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-		() -> TraverseBiomeFeatures.FIR_TREE_CONFIG)), ItemGroup.DECORATIONS);
-	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", new LogBlock(MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
-	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", new LogBlock(MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
+			() -> TraverseBiomeFeatures.FIR_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", createLog(MaterialColor.BROWN, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
+	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MaterialColor.WOOD, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.DARK_OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_WOOD = add("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.DARK_OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LEAVES = add("fir_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
@@ -124,6 +126,10 @@ public class TraverseBlocks {
 		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(ORANGE_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
+	}
+
+	private static PillarBlock createLog(MaterialColor topColor, MaterialColor sideColor) {
+		return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> blockState.get(PillarBlock.AXIS) == Direction.Axis.Y ? topColor : sideColor).strength(2.0F).sounds(BlockSoundGroup.WOOD));
 	}
 
 }
