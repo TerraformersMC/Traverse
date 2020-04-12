@@ -113,8 +113,7 @@ buildAndAttemptRelease {
 		}
 		if (latestCommit) {
 			if (processedLine.startsWith("\"") && processedLine.endsWith("\"")) {
-				processedLine = processedLine.replaceFirst("\"", "")
-				processedLine = processedLine.replaceFirst("\"", "")
+				processedLine = processedLine.substring(1, processedLine.length() - 1)
 			}
 			if (processedLine.contains("#release")) {
 				if (processedLine.contains("#release stable")) {
