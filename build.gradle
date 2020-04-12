@@ -112,9 +112,6 @@ buildAndAttemptRelease {
 			return
 		}
 		if (latestCommit) {
-			if (processedLine.startsWith("\"") && processedLine.endsWith("\"")) {
-				processedLine = processedLine.substring(1, processedLine.length() - 1)
-			}
 			if (processedLine.contains("#release")) {
 				if (processedLine.contains("#release stable")) {
 					releaseType = "stable"
@@ -148,7 +145,7 @@ buildAndAttemptRelease {
 					}
 					if (string.startsWith("\"")) {
 						try {
-							def matches = string =~ /"(.*)"/
+							def matches = string =~ /"(.*?)"/
 							def message = matches[0][1]
 							println "   Read as message: $message"
 							if (!message.isAllWhitespace()) {
@@ -184,7 +181,7 @@ buildAndAttemptRelease {
 		println "This build IS scheduled to be released"
 		releaseChangelog = changes.toString()
 		println releaseChangelog
-//		dependsOn tasks.getByName("curseforge")
+		dependsOn tasks.getByName("curseforge")
 	} else {
 		println "This build is NOT scheduled to be released"
 	}
