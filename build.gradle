@@ -134,8 +134,10 @@ buildAndAttemptRelease {
 		if (release) {
 			if (project.changelog_type == "commit_change_tags") {
 				def splitLine = line.split(/\#change /)
+				println "Adding changelog lines for commit $line"
 				def firstSplit = true
 				splitLine.each { string ->
+					println " Commit: $line - has string: $string"
 					if (firstSplit) {
 						firstSplit = false
 						return
@@ -144,6 +146,7 @@ buildAndAttemptRelease {
 						try {
 							def matches = string =~ /"(.*)"/
 							def message = matches[0][1]
+							println "   Read as message: $message"
 							if (!message.isAllWhitespace()) {
 								if (changes.length() == 0) {
 									changes << "- $message"
@@ -176,7 +179,8 @@ buildAndAttemptRelease {
 	if (release) {
 		println "This build IS scheduled to be released"
 		releaseChangelog = changes.toString()
-		dependsOn tasks.getByName("curseforge")
+		println releaseChangelog
+//		dependsOn tasks.getByName("curseforge")
 	} else {
 		println "This build is NOT scheduled to be released"
 	}
