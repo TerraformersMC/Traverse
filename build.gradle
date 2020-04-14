@@ -99,7 +99,7 @@ task buildAndAttemptRelease {
 
 buildAndAttemptRelease {
 	def changes = StringBuilder.newInstance()
-	def proc = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"\$NEWCOMMIT\$ %B\"".execute()
+	def proc = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"{NEWCOMMIT} %B\"".execute()
 	def latestCommit = true
 	def release = false
 	def cancel = false
@@ -114,7 +114,7 @@ buildAndAttemptRelease {
 
 	proc.in.eachLine { line -> // Loops over the lines the git log command returns
 		def processedLine = line
-		if (processedLine.contains("\$NEWCOMMIT\$")) {
+		if (processedLine.contains("{NEWCOMMIT}")) {
 			commit++
 		}
 		if (cancel) {
