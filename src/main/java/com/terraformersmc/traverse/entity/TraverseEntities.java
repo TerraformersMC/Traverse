@@ -1,11 +1,8 @@
 package com.terraformersmc.traverse.entity;
 
-import com.terraformersmc.terraform.entity.TerraformBoat;
-import com.terraformersmc.terraform.entity.TerraformBoatEntity;
-import com.terraformersmc.terraform.item.TerraformBoatItem;
-import com.terraformersmc.traverse.Traverse;
-import com.terraformersmc.traverse.block.TraverseBlocks;
-import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
+import java.util.Objects;
+import java.util.function.Supplier;
+
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -17,8 +14,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Objects;
-import java.util.function.Supplier;
+import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
+
+import com.terraformersmc.terraform.entity.TerraformBoat;
+import com.terraformersmc.terraform.entity.TerraformBoatEntity;
+import com.terraformersmc.terraform.item.TerraformBoatItem;
+import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.block.TraverseBlocks;
 
 public class TraverseEntities {
 	public static EntityType<TerraformBoatEntity> FIR_BOAT;
@@ -44,9 +46,9 @@ public class TraverseEntities {
 		TerraformBoat boat = new TerraformBoat(item.asItem(), planks.asItem(), skin, vanilla);
 
 		EntityType<TerraformBoatEntity> type = FabricEntityTypeBuilder.<TerraformBoatEntity>create(
-			EntityCategory.MISC, (entity, world) -> new TerraformBoatEntity(entity, world, boat))
-			.size(EntityDimensions.fixed(1.375F, 0.5625F))
-			.build();
+				EntityCategory.MISC, (entity, world) -> new TerraformBoatEntity(entity, world, boat))
+				.size(EntityDimensions.fixed(1.375F, 0.5625F))
+				.build();
 
 		return Registry.register(Registry.ENTITY_TYPE, id, type);
 	}

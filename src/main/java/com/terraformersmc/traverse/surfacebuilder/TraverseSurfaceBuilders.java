@@ -1,7 +1,8 @@
 package com.terraformersmc.traverse.surfacebuilder;
 
-import com.terraformersmc.terraform.surface.BeachSurfaceBuilder;
-import com.terraformersmc.traverse.Traverse;
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -9,8 +10,8 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.terraformersmc.terraform.surface.BeachSurfaceBuilder;
+import com.terraformersmc.traverse.Traverse;
 
 public class TraverseSurfaceBuilders {
 
@@ -20,7 +21,7 @@ public class TraverseSurfaceBuilders {
 	public static final SurfaceBuilder<TernarySurfaceConfig> DESERT_SHRUBLAND = add("desert_shrubland", new SandWithPatchesSurfaceBuilder(TernarySurfaceConfig::deserialize, 1.5D));
 	public static final SurfaceBuilder<TernarySurfaceConfig> FOREST_ISLAND = add("forest_island", new BeachSurfaceBuilder(TernarySurfaceConfig::deserialize, 62, v -> Blocks.SAND.getDefaultState()));
 
-	public static <S extends SurfaceBuilder<? extends SurfaceConfig>> S add(String name, S feature) {
+	private static <S extends SurfaceBuilder<? extends SurfaceConfig>> S add(String name, S feature) {
 		SURFACE_BUILDERS.put(new Identifier(Traverse.MOD_ID, name), feature);
 		return feature;
 	}
