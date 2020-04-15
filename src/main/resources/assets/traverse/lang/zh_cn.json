@@ -53,7 +53,7 @@
   "block.traverse.fir_fence": "冷杉木栅栏",
   "block.traverse.fir_fence_gate": "冷杉木栅栏门",
   "block.traverse.fir_door": "冷杉木门",
-  "block.traverse.fir_trapdoor": "冷杉木活板门"
+  "block.traverse.fir_trapdoor": "冷杉木活板门",
   "item.traverse.fir_boat": "冷杉木船",
   "entity.traverse.fir_boat": "冷杉木船"
 }
