@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.ModifiableTestableWorld;
-import net.minecraft.world.gen.feature.AbstractTreeFeature;
+import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -36,7 +36,7 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 	}
 
 	protected static boolean placeTrunkBlock(ModifiableTestableWorld modifiableTestableWorld, Random random, BlockPos blockPos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig, Direction.Axis axis) {
-		if (AbstractTreeFeature.canReplace(modifiableTestableWorld, blockPos)) {
+		if (TreeFeature.canReplace(modifiableTestableWorld, blockPos)) {
 			method_27404(modifiableTestableWorld, blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis), blockBox);
 			set.add(blockPos.toImmutable());
 			return true;

@@ -2,7 +2,7 @@ package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.terraform.biome.builder.BuilderBiomeSettings;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
-import net.minecraft.entity.EntityCategory;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
@@ -46,24 +46,24 @@ public class WoodedIslandBiome extends Biome {
 		DefaultBiomeFeatures.addLessKelp(this);
 		DefaultBiomeFeatures.addSprings(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 3, 2, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.SHEEP, 6, 3, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.PIG, 5, 3, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 5, 3, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.COW, 4, 3, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.HORSE, 1, 1, 3));
-		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.DONKEY, 1, 1, 1));
-		this.addSpawn(EntityCategory.AMBIENT, new SpawnEntry(EntityType.BAT, 10, 8, 8));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SPIDER, 100, 4, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SKELETON, 100, 4, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.CREEPER, 100, 4, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SLIME, 100, 4, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ENDERMAN, 10, 1, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.WITCH, 5, 1, 1));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ZOMBIE, 19, 4, 4));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1, 1));
-		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.HUSK, 80, 4, 4));
-		this.addSpawn(EntityCategory.CREATURE, new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.RABBIT, 3, 2, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.SHEEP, 6, 3, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.PIG, 5, 3, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.CHICKEN, 5, 3, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.COW, 4, 3, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.HORSE, 1, 1, 3));
+		this.addSpawn(SpawnGroup.CREATURE, new SpawnEntry(EntityType.DONKEY, 1, 1, 1));
+		this.addSpawn(SpawnGroup.AMBIENT, new SpawnEntry(EntityType.BAT, 10, 8, 8));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.SPIDER, 100, 4, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.SKELETON, 100, 4, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.CREEPER, 100, 4, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.SLIME, 100, 4, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.ENDERMAN, 10, 1, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.WITCH, 5, 1, 1));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.ZOMBIE, 19, 4, 4));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1, 1));
+		this.addSpawn(SpawnGroup.MONSTER, new SpawnEntry(EntityType.HUSK, 80, 4, 4));
+		this.addSpawn(SpawnGroup.CREATURE, new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4));
 	}
 
 }
