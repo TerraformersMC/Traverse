@@ -1,5 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -8,11 +10,8 @@ import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.BoulderFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.VillageFeatureConfig;
+import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
-import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 
 public class PlainsPlateauBiomes {
 	private static final TerraformBiome.Template PLATEAU_TEMPLATE = new TerraformBiome.Template(TraverseBiomes.BIOME_TEMPLATE.builder()
@@ -26,7 +25,7 @@ public class PlainsPlateauBiomes {
 
 	static final Biome PLAINS_PLATEAU = PLATEAU_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS, DefaultFeature.PLAINS_FEATURES)
-			.addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/plains/town_centers", 6))
+			.addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/plains/town_centers", 6))
 			.category(Biome.Category.PLAINS)
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.RABBIT, 3, 2, 3))
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.HORSE, 5, 2, 6))

@@ -1,17 +1,14 @@
 package com.terraformersmc.traverse.block;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.FenceGateBlock;
-import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.LogBlock;
-import net.minecraft.block.MaterialColor;
-import net.minecraft.block.SlabBlock;
+import com.terraformersmc.terraform.block.*;
+import com.terraformersmc.terraform.util.RecipeUtil;
+import com.terraformersmc.terraform.util.TerraformSaplingGenerator;
+import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -21,23 +18,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-
-import com.terraformersmc.terraform.block.StrippableLogBlock;
-import com.terraformersmc.terraform.block.TerraformButtonBlock;
-import com.terraformersmc.terraform.block.TerraformDoorBlock;
-import com.terraformersmc.terraform.block.TerraformPressurePlateBlock;
-import com.terraformersmc.terraform.block.TerraformSaplingBlock;
-import com.terraformersmc.terraform.block.TerraformSignBlock;
-import com.terraformersmc.terraform.block.TerraformStairsBlock;
-import com.terraformersmc.terraform.block.TerraformTrapdoorBlock;
-import com.terraformersmc.terraform.block.TerraformWallSignBlock;
-import com.terraformersmc.terraform.util.RecipeUtil;
-import com.terraformersmc.terraform.util.TerraformSaplingGenerator;
-import com.terraformersmc.traverse.Traverse;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TraverseBlocks {
 
@@ -45,21 +27,16 @@ public class TraverseBlocks {
 	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
 
 	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
-	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-			() -> TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
-	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-			() -> TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
-	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-			() -> TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new LeavesBlock(Block.Settings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
-	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-			() -> TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).build()), ItemGroup.BUILDING_BLOCKS);
-	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> new OakTreeFeature(BranchedTreeFeatureConfig::deserialize),
-			() -> TraverseFeatureConfigs.FIR_TREE_CONFIG)), ItemGroup.DECORATIONS);
+	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.FIR_TREE_CONFIG)), ItemGroup.DECORATIONS);
 	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", createLog(MaterialColor.BROWN, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
 	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MaterialColor.WOOD, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MaterialColor.BROWN, FabricBlockSettings.copy(Blocks.DARK_OAK_LOG).build()), ItemGroup.BUILDING_BLOCKS);
