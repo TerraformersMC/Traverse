@@ -17,7 +17,7 @@ public class TraverseFeatures {
 
 	public static final FoliagePlacerType<NoneFoliagePlacer> NONE_FOLIAGE_PLACER = InvokerFoliagePlacerType.callRegister("traverse:none", dynamic -> new NoneFoliagePlacer());
 
-	public static <F extends Feature<? extends FeatureConfig>> F add(String name, F feature) {
+	private static <F extends Feature<? extends FeatureConfig>> F add(String name, F feature) {
 		FEATURES.put(new Identifier(Traverse.MOD_ID, name), feature);
 		return feature;
 	}
@@ -27,4 +27,5 @@ public class TraverseFeatures {
 			Registry.register(Registry.FEATURE, id, FEATURES.get(id));
 		}
 	}
+
 }

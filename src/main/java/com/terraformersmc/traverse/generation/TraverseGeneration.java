@@ -1,16 +1,18 @@
 package com.terraformersmc.traverse.generation;
 
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
+
+import net.fabricmc.fabric.api.biomes.v1.FabricBiomes;
+import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
+
 import com.terraformersmc.terraform.biomeapi.OverworldBiomesExt;
 import com.terraformersmc.terraform.config.BiomeConfig;
 import com.terraformersmc.terraform.config.BiomeConfigNode;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.fabricmc.fabric.api.biomes.v1.FabricBiomes;
-import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
-import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 
 public class TraverseGeneration extends TraverseBiomes {
 

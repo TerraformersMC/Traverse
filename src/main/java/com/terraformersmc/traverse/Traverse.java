@@ -19,12 +19,7 @@ public class Traverse implements ModInitializer {
 	public static final String MOD_ID = "traverse";
 	public static final BiomeConfigHandler BIOME_CONFIG_HANDLER = new BiomeConfigHandler(MOD_ID);
 
-	@Override
-	public void onInitialize() {
-		register();
-	}
-
-	public static void register() {
+	private static void register() {
 		TraverseBlocks.register();
 		TraverseEntities.register();
 		TraverseSurfaceBuilders.register();
@@ -37,6 +32,11 @@ public class Traverse implements ModInitializer {
 				item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
 			}
 		})).build();
+	}
+
+	@Override
+	public void onInitialize() {
+		register();
 	}
 
 }
