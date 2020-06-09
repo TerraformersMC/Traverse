@@ -1,26 +1,21 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.DecoratorConfig;
+import net.minecraft.world.gen.decorator.*;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.SeagrassFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 
 public class LushSwampBiomes {
 	static final Biome LUSH_SWAMP = TraverseBiomes.BIOME_TEMPLATE.builder()
 			.configureSurfaceBuilder(SurfaceBuilder.SWAMP, SurfaceBuilder.GRASS_CONFIG)
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.SWAMP_VEGETATION, DefaultFeature.FOSSILS)
-			.addStructureFeature(Feature.SWAMP_HUT)
+			.addStructureFeature(DefaultBiomeFeatures.SWAMP_HUT)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))))
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.FLOWER.configure(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_32.configure(new CountDecoratorConfig(1))))

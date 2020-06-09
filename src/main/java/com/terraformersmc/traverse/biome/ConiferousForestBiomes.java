@@ -5,6 +5,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 
 import com.terraformersmc.terraform.biome.builder.DefaultFeature;
@@ -15,7 +16,7 @@ public class ConiferousForestBiomes {
 	private static final TerraformBiome.Template CONIFEROUS_FOREST_TEMPLATE = new TerraformBiome.Template(TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(7, 0.1F, 1))))
-			.addStructureFeature(Feature.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
 			.category(Biome.Category.FOREST)
 			.addDefaultSpawnEntries()
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))

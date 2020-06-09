@@ -9,6 +9,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.BoulderFeatureConfig;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
@@ -25,7 +26,7 @@ public class PlainsPlateauBiomes {
 
 	static final Biome PLAINS_PLATEAU = PLATEAU_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS, DefaultFeature.PLAINS_FEATURES)
-			.addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/plains/town_centers", 6))
+			.addStructureFeature(DefaultBiomeFeatures.PLAINS_VILLAGE)
 			.category(Biome.Category.PLAINS)
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.RABBIT, 3, 2, 3))
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.HORSE, 5, 2, 6))

@@ -5,19 +5,18 @@ import com.terraformersmc.terraform.biome.builder.DefaultFeature;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
-import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 
 public class WoodlandsBiomes {
 	static final Biome WOODLANDS = TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
-			.addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/plains/town_centers", 6))
-			.addStructureFeature(Feature.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.PLAINS_VILLAGE)
+			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
 					Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 							ImmutableList.of(Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)

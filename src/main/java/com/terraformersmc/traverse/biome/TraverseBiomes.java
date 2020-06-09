@@ -17,6 +17,7 @@ import java.util.Map;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.MineshaftFeature;
 import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
@@ -32,8 +33,8 @@ public class TraverseBiomes {
 	static final TerraformBiome.Template BIOME_TEMPLATE = new TerraformBiome.Template(TerraformBiome.builder()
 			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
 			.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER)
-			.addStructureFeature(Feature.STRONGHOLD)
-			.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+			.addStructureFeature(DefaultBiomeFeatures.STRONGHOLD)
+			.addStructureFeature(DefaultBiomeFeatures.NORMAL_MINESHAFT)
 			.precipitation(Biome.Precipitation.RAIN)
 			.waterColor(0x3F76E4)
 			.waterFogColor(0x50533)

@@ -3,7 +3,7 @@ package com.terraformersmc.traverse.biome;
 import com.terraformersmc.terraform.biome.builder.DefaultFeature;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;

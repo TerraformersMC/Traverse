@@ -28,15 +28,15 @@ public class TraverseFeatureConfigs {
 			new SpruceFoliagePlacer(2, 1, 0, 2, 5, 3),
 			new StraightTrunkPlacer(15, 15, 4),
 			new TwoLayersFeatureSize(2, 0, 2)
-	).method_27374().build();
+	).ignoreVines().build();
 	public static final TreeFeatureConfig TALL_SWAMP_TREE_CONFIG = new TreeFeatureConfig.Builder(
 			new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
 			new BlobFoliagePlacer(3, 0, 0, 0, 3),
 			new StraightTrunkPlacer(7, 3, 0),
 			new TwoLayersFeatureSize(1, 0, 1)
-	).baseHeight(1).method_27376(ImmutableList.of(new LeaveVineTreeDecorator())).build();
-	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new BushFoliagePlacer(2, 0, 1, 0, 2), new StraightTrunkPlacer(1, 0, 0), new TwoLayersFeatureSize(0, 0, 0))).method_27375(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build();
+	).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
+	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new BushFoliagePlacer(2, 0, 1, 0, 2), new StraightTrunkPlacer(1, 0, 0), new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build();
 	public static final TreeFeatureConfig FALLEN_OAK_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new NoneFoliagePlacer(), new FallenTrunkPlacer(3, 2, 0), new TwoLayersFeatureSize(0, 0, 0)).build();
 	public static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
@@ -47,7 +47,7 @@ public class TraverseFeatureConfigs {
 				new BlobFoliagePlacer(2, 0, 0, 0, 3),
 				new StraightTrunkPlacer(height, 2, 0),
 				new TwoLayersFeatureSize(1, 0, 1)
-		).method_27374().build();
+		).ignoreVines().build();
 	}
 
 	static {
