@@ -20,7 +20,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
 	}
 
 	@Override
-	protected FoliagePlacerType<?> method_28843() {
+	protected FoliagePlacerType<?> getType() {
 		return TraverseFeatures.NONE_FOLIAGE_PLACER;
 	}
 
