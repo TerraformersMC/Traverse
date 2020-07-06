@@ -17,6 +17,7 @@ public class ConiferousForestBiomes {
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(7, 0.1F, 1))))
 			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.category(Biome.Category.FOREST)
 			.addDefaultSpawnEntries()
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))

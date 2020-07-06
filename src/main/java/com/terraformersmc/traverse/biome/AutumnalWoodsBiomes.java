@@ -16,6 +16,7 @@ import net.minecraft.world.gen.feature.RandomFeatureConfig;
 public class AutumnalWoodsBiomes {
 	private static final TerraformBiome.Template AUTUMNAL_WOODS_TEMPLATE = new TerraformBiome.Template(TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.addCustomFeature(
 					GenerationStep.Feature.VEGETAL_DECORATION,
 					Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(

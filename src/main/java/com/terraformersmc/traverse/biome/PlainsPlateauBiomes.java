@@ -26,6 +26,7 @@ public class PlainsPlateauBiomes {
 	static final Biome PLAINS_PLATEAU = PLATEAU_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS, DefaultFeature.PLAINS_FEATURES)
 			.addStructureFeature(DefaultBiomeFeatures.PLAINS_VILLAGE)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.category(Biome.Category.PLAINS)
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.RABBIT, 3, 2, 3))
 			.addSpawnEntry(new Biome.SpawnEntry(EntityType.HORSE, 5, 2, 6))
@@ -35,6 +36,7 @@ public class PlainsPlateauBiomes {
 	static final Biome ROCKY_EDGE = PLATEAU_TEMPLATE.builder()
 			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.STONE_CONFIG)
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS)
+			.addStructureFeature(DefaultBiomeFeatures.MOUNTAIN_RUINED_PORTAL)
 			.addCustomFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new ForestRockFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 1)).createDecoratedFeature(Decorator.FOREST_ROCK.configure(new CountDecoratorConfig(3))))
 			.category(Biome.Category.PLAINS)
 			.depth(0.9F)
@@ -42,6 +44,7 @@ public class PlainsPlateauBiomes {
 
 	static final Biome WOODED_PLATEAU = PLATEAU_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.FOREST_TREES, DefaultFeature.FOREST_GRASS, DefaultFeature.FOREST_FLOWERS)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.category(Biome.Category.FOREST)
 			.build();
 }

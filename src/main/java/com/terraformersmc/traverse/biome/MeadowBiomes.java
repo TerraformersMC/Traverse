@@ -15,6 +15,7 @@ public class MeadowBiomes {
 			.addDefaultFeatures(DefaultFeature.LAKES)
 			.addStructureFeature(DefaultBiomeFeatures.PLAINS_VILLAGE)
 			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.GRASS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(15))))
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(TraverseFeatureConfigs.LUSH_FLOWER_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_32.configure(new CountDecoratorConfig(10))))
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_WITH_MORE_BEEHIVES_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.2F, 1))))
