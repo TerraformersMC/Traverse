@@ -19,6 +19,7 @@ public class AridHighlandsBiomes {
 			.addDefaultFeatures(DefaultFeature.DESERT_LAKES, DefaultFeature.DESERT_DEAD_BUSHES, DefaultFeature.DESERT_VEGETATION, DefaultFeature.DESERT_FEATURES, DefaultFeature.DEFAULT_FLOWERS, DefaultFeature.SAVANNA_GRASS, DefaultFeature.SAVANNA_TREES)
 			.addStructureFeature(DefaultBiomeFeatures.DESERT_VILLAGE)
 			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.DESERT_RUINED_PORTAL)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
 					.createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.5F, 1))))
 			.precipitation(Biome.Precipitation.NONE)

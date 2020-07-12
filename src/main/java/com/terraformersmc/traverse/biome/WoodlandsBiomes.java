@@ -17,6 +17,7 @@ public class WoodlandsBiomes {
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
 			.addStructureFeature(DefaultBiomeFeatures.PLAINS_VILLAGE)
 			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
+			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
 			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
 					Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 							ImmutableList.of(Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
