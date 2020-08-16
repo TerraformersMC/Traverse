@@ -5,7 +5,7 @@ import com.terraformersmc.terraform.entity.TerraformBoatEntity;
 import com.terraformersmc.terraform.item.TerraformBoatItem;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
-import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -33,7 +33,7 @@ public class TraverseEntities {
 
 		EntityType<TerraformBoatEntity> type = FabricEntityTypeBuilder.<TerraformBoatEntity>create(
 				SpawnGroup.MISC, (entity, world) -> new TerraformBoatEntity(entity, world, boat))
-				.size(EntityDimensions.fixed(1.375F, 0.5625F))
+				.dimensions(EntityDimensions.fixed(1.375F, 0.5625F))
 				.build();
 
 		return Registry.register(Registry.ENTITY_TYPE, id, type);

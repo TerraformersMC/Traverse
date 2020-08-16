@@ -10,14 +10,17 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.BlockView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,13 +30,13 @@ public class TraverseBlocks {
 	private static final Map<Identifier, BlockItem> ITEMS = new HashMap<>();
 	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
 
-	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
+	public static final Block RED_AUTUMNAL_LEAVES = add("red_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block RED_AUTUMNAL_SAPLING = add("red_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
-	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
+	public static final Block BROWN_AUTUMNAL_LEAVES = add("brown_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block BROWN_AUTUMNAL_SAPLING = add("brown_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
-	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
+	public static final Block ORANGE_AUTUMNAL_LEAVES = add("orange_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block ORANGE_AUTUMNAL_SAPLING = add("orange_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
-	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
+	public static final Block YELLOW_AUTUMNAL_LEAVES = add("yellow_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block YELLOW_AUTUMNAL_SAPLING = add("yellow_autumnal_sapling", new TerraformSaplingBlock(new TerraformSaplingGenerator(() -> TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG)), ItemGroup.DECORATIONS);
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
@@ -42,7 +45,7 @@ public class TraverseBlocks {
 	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MaterialColor.WOOD, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MaterialColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_WOOD = add("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MaterialColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block FIR_LEAVES = add("fir_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
+	public static final Block FIR_LEAVES = add("fir_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block FIR_SLAB = add("fir_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_PRESSURE_PLATE = add("fir_pressure_plate", new TerraformPressurePlateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).breakByTool(FabricToolTags.AXES)), ItemGroup.REDSTONE);
 	public static final Block FIR_FENCE = add("fir_fence", new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).breakByTool(FabricToolTags.AXES)), ItemGroup.DECORATIONS);
@@ -126,6 +129,13 @@ public class TraverseBlocks {
 	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MaterialColor> materialColor)`
 	private static PillarBlock createLog(MaterialColor topColor, MaterialColor sideColor) {
 		return new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
+	}
+
+	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
+		return false;
+	}
+	public static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+		return type == EntityType.OCELOT || type == EntityType.PARROT;
 	}
 
 }
