@@ -1,46 +1,41 @@
 package com.terraformersmc.traverse.biome;
 
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DEFAULT_FLOWERS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DEFAULT_GRASS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DEFAULT_MUSHROOMS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DEFAULT_VEGETATION;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DISKS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.DUNGEONS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.EMERALD_ORE;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.FROZEN_TOP_LAYER;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.LAKES;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.LAND_CARVERS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.ORES;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.SPRINGS;
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.STRUCTURES;
-
+import com.terraformersmc.terraform.biome.builder.TerraformBiomeBuilder;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-import com.terraformersmc.terraform.biome.builder.TerraformBiome;
+import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class CliffsBiomes {
-	static final Biome CLIFFS = TerraformBiome.builder()
+	private static int getSkyColor(float temperature) {
+		float f = temperature / 3.0F;
+		f = MathHelper.clamp(f, -1.0F, 1.0F);
+		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
+	}
+
+	static final Biome CLIFFS = TerraformBiomeBuilder.create()
 			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.STONE_CONFIG)
-			.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, LAKES, EMERALD_ORE, ORES, DISKS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER, DEFAULT_GRASS, DEFAULT_FLOWERS)
-			.addStructureFeature(DefaultBiomeFeatures.STRONGHOLD)
-			.addStructureFeature(DefaultBiomeFeatures.NORMAL_MINESHAFT)
-			.addStructureFeature(DefaultBiomeFeatures.MOUNTAIN_RUINED_PORTAL)
-			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.DIRT.getDefaultState(), 33)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 70))))
-			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.GRAVEL.getDefaultState(), 33)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 0, 0, 70))))
-			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.GRANITE.getDefaultState(), 33)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 70))))
-			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.DIORITE.getDefaultState(), 33)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 70))))
-			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, Blocks.ANDESITE.getDefaultState(), 33)).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 70))))
+			.addDefaultFeatures(LAND_CARVERS, DEFAULT_UNDERGROUND_STRUCTURES, DUNGEONS, LAKES, EMERALD_ORE, ORES, DISKS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER, DEFAULT_GRASS, DEFAULT_FLOWERS)
+			.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD)
+			.addStructureFeature(ConfiguredStructureFeatures.MINESHAFT)
+			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN)
+			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIRT.getDefaultState(), 33)).method_30377(70).spreadHorizontally().repeat(10))
+			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRAVEL.getDefaultState(), 33)).method_30377(70).spreadHorizontally().repeat(8))
+			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRANITE.getDefaultState(), 33)).method_30377(70).spreadHorizontally().repeat(10))
+			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIORITE.getDefaultState(), 33)).method_30377(70).spreadHorizontally().repeat(10))
+			.addCustomFeature(GenerationStep.Feature.UNDERGROUND_ORES, Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.ANDESITE.getDefaultState(), 33)).method_30377(70).spreadHorizontally().repeat(10))
 			.precipitation(Biome.Precipitation.RAIN)
 			.addDefaultSpawnEntries()
 			.category(Biome.Category.PLAINS)
-			.waterColor(0x3F76E4)
-			.waterFogColor(0x50533)
+			.effects(TraverseBiomes.createDefaultBiomeEffects()
+					.waterColor(0x3F76E4)
+					.waterFogColor(0x50533))
 			.depth(3.6F)
 			.scale(0.2F)
 			.temperature(0.3F)

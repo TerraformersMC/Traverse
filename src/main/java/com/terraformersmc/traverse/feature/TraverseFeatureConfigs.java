@@ -5,7 +5,7 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.decorator.LeaveVineTreeDecorator;
+import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -15,6 +15,7 @@ import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.tree.LeaveVineTreeDecorator;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class TraverseFeatureConfigs {
@@ -25,18 +26,18 @@ public class TraverseFeatureConfigs {
 	public static final TreeFeatureConfig FIR_TREE_CONFIG = new TreeFeatureConfig.Builder(
 			new SimpleBlockStateProvider(TraverseBlocks.FIR_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(TraverseBlocks.FIR_LEAVES.getDefaultState()),
-			new SpruceFoliagePlacer(2, 1, 0, 2, 5, 3),
+			new SpruceFoliagePlacer(UniformIntDistribution.of(2, 1), UniformIntDistribution.of(0, 2), UniformIntDistribution.of(5, 3)),
 			new StraightTrunkPlacer(15, 15, 4),
 			new TwoLayersFeatureSize(2, 0, 2)
 	).ignoreVines().build();
 	public static final TreeFeatureConfig TALL_SWAMP_TREE_CONFIG = new TreeFeatureConfig.Builder(
 			new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
-			new BlobFoliagePlacer(3, 0, 0, 0, 3),
+			new BlobFoliagePlacer(UniformIntDistribution.of(3, 0), UniformIntDistribution.of(0, 0), 3),
 			new StraightTrunkPlacer(7, 3, 0),
 			new TwoLayersFeatureSize(1, 0, 1)
 	).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
-	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new BushFoliagePlacer(2, 0, 1, 0, 2), new StraightTrunkPlacer(1, 0, 0), new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build();
+	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new BushFoliagePlacer(UniformIntDistribution.of(2, 0), UniformIntDistribution.of(1, 0), 2), new StraightTrunkPlacer(1, 0, 0), new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build();
 	public static final TreeFeatureConfig FALLEN_OAK_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new NoneFoliagePlacer(), new FallenTrunkPlacer(3, 2, 0), new TwoLayersFeatureSize(0, 0, 0)).build();
 	public static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
@@ -44,7 +45,7 @@ public class TraverseFeatureConfigs {
 		return new TreeFeatureConfig.Builder(
 				new SimpleBlockStateProvider(trunk.getDefaultState()),
 				new SimpleBlockStateProvider(leaves.getDefaultState()),
-				new BlobFoliagePlacer(2, 0, 0, 0, 3),
+				new BlobFoliagePlacer(UniformIntDistribution.of(2, 0), UniformIntDistribution.of(0, 0), 3),
 				new StraightTrunkPlacer(height, 2, 0),
 				new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines().build();

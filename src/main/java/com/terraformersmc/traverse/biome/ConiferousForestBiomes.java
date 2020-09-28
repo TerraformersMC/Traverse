@@ -1,28 +1,30 @@
 package com.terraformersmc.traverse.biome;
 
+import com.terraformersmc.terraform.biome.builder.BiomeTemplate;
+import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.Feature;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
-import com.terraformersmc.terraform.biome.builder.TerraformBiome;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
-
 public class ConiferousForestBiomes {
-	private static final TerraformBiome.Template CONIFEROUS_FOREST_TEMPLATE = new TerraformBiome.Template(TraverseBiomes.BIOME_TEMPLATE.builder()
+	private static final BiomeTemplate CONIFEROUS_FOREST_TEMPLATE = new BiomeTemplate(TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(7, 0.1F, 1))))
-			.addStructureFeature(DefaultBiomeFeatures.PILLAGER_OUTPOST)
-			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
+			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(7, 0.1F, 1))))
+			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
+			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
 			.category(Biome.Category.FOREST)
 			.addDefaultSpawnEntries()
-			.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
-			.grassColor(0x338235)
-			.foliageColor(0x338235)
+			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4))
+			.effects(TraverseBiomes.createDefaultBiomeEffects()
+					.grassColor(0x338235)
+					.foliageColor(0x338235)
+			)
 			.temperature(0.6F)
 			.downfall(0.9F)
 	);
@@ -43,12 +45,14 @@ public class ConiferousForestBiomes {
 			.temperature(0.3F)
 			.build();
 
-	private static final TerraformBiome.Template SNOWY_CONIFEROUS_FOREST_TEMPLATE = new TerraformBiome.Template(CONIFEROUS_FOREST_TEMPLATE.builder()
+	private static final BiomeTemplate SNOWY_CONIFEROUS_FOREST_TEMPLATE = new BiomeTemplate(CONIFEROUS_FOREST_TEMPLATE.builder()
 			.addDefaultFeature(DefaultFeature.SWEET_BERRY_BUSHES_SNOWY)
 			.precipitation(Biome.Precipitation.SNOW)
 			.category(Biome.Category.TAIGA)
-			.grassColor(0x338251)
-			.foliageColor(0x338251)
+			.effects(TraverseBiomes.createDefaultBiomeEffects()
+					.grassColor(0x338251)
+					.foliageColor(0x338251)
+			)
 			.temperature(-0.5F)
 	);
 

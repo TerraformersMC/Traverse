@@ -1,22 +1,25 @@
 package com.terraformersmc.traverse.biome;
 
 import com.google.common.collect.ImmutableList;
+import com.terraformersmc.terraform.biome.builder.BiomeTemplate;
 import com.terraformersmc.terraform.biome.builder.DefaultFeature;
-import com.terraformersmc.terraform.biome.builder.TerraformBiome;
+import com.terraformersmc.terraform.biome.builder.TerraformBiomeBuilder;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 
 public class AutumnalWoodsBiomes {
-	private static final TerraformBiome.Template AUTUMNAL_WOODS_TEMPLATE = new TerraformBiome.Template(TraverseBiomes.BIOME_TEMPLATE.builder()
+	private static final BiomeTemplate AUTUMNAL_WOODS_TEMPLATE = new BiomeTemplate(TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
-			.addStructureFeature(DefaultBiomeFeatures.STANDARD_RUINED_PORTAL)
+			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
 			.addCustomFeature(
 					GenerationStep.Feature.VEGETAL_DECORATION,
 					Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
@@ -26,13 +29,15 @@ public class AutumnalWoodsBiomes {
 									Feature.TREE.configure(TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG).withChance(0.25F),
 									Feature.TREE.configure(TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG).withChance(0.25F)
 							),
-							Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
-							.createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
+							ConfiguredFeatures.OAK))
+								.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(10, 0.1F, 1))))
 			.category(Biome.Category.FOREST)
 			.addDefaultSpawnEntries()
-			.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
-			.grassColor(0xD6C23D)
-			.foliageColor(0xD2D31F)
+			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4))
+			.effects(TraverseBiomes.createDefaultBiomeEffects()
+					.grassColor(0xD6C23D)
+					.foliageColor(0xD2D31F)
+			)
 			.temperature(0.8F)
 			.downfall(0.4F)
 	);

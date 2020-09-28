@@ -20,8 +20,7 @@
   },
   "depends": {
     "fabricloader": ">=0.7.2",
-    "fabric": ">=0.4.1",
-    "terraform": "*"
+    "fabric": ">=0.4.1"
   },
   "authors": [
     "Prospector",

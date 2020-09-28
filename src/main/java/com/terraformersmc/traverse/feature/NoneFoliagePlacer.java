@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ModifiableTestableWorld;
+import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
@@ -13,10 +14,10 @@ import java.util.Random;
 import java.util.Set;
 
 public class NoneFoliagePlacer extends FoliagePlacer {
-	public static final Codec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> method_28846(instance).apply(instance, (radius, randomRadius, offset, randomOffset) -> new NoneFoliagePlacer()));
+	public static final Codec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> fillFoliagePlacerFields(instance).apply(instance, (uniformIntDistribution, uniformIntDistribution2) -> new NoneFoliagePlacer()));
 
 	public NoneFoliagePlacer() {
-		super(0, 0, 0, 0);
+		super(UniformIntDistribution.of(0, 0), UniformIntDistribution.of(0, 0));
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
 	}
 
 	@Override
-	public int getHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
+	public int getRandomHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
 		return 0;
 	}
 

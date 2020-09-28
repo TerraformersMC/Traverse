@@ -1,18 +1,17 @@
 package com.terraformersmc.traverse.generation;
 
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-
-import net.fabricmc.fabric.api.biomes.v1.FabricBiomes;
-import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
-import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
-
-import com.terraformersmc.terraform.biomeapi.OverworldBiomesExt;
 import com.terraformersmc.terraform.config.BiomeConfig;
 import com.terraformersmc.terraform.config.BiomeConfigNode;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 
 public class TraverseGeneration extends TraverseBiomes {
 
@@ -51,29 +50,29 @@ public class TraverseGeneration extends TraverseBiomes {
 		addContinentalBiome(HIGH_CONIFEROUS_FOREST, OverworldClimate.COOL, 0.075);
 
 		// Lush Swamp
-		addBiomeVariant(Biomes.SWAMP, LUSH_SWAMP, 0.2);
+		addBiomeVariant(BiomeKeys.SWAMP, LUSH_SWAMP, 0.2);
 
 		// Meadow
 		addContinentalBiome(MEADOW, OverworldClimate.TEMPERATE, 0.9);
 		addContinentalBiome(MEADOW, OverworldClimate.COOL, 0.9);
-		addBiomeVariant(Biomes.PLAINS, MEADOW, 0.2, OverworldClimate.COOL, OverworldClimate.TEMPERATE);
+		addBiomeVariant(BiomeKeys.PLAINS, MEADOW, 0.2, OverworldClimate.COOL, OverworldClimate.TEMPERATE);
 
 		// Mini Jungle
 		addContinentalBiome(MINI_JUNGLE, OverworldClimate.TEMPERATE, 0.2);
-		addBiomeVariant(Biomes.JUNGLE, MINI_JUNGLE, 0.15);
+		addBiomeVariant(BiomeKeys.JUNGLE, MINI_JUNGLE, 0.15);
 
 		// Plains Plateau
 		addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.DRY, 0.1);
 		addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.COOL, 0.5);
 		addContinentalBiome(PLAINS_PLATEAU, OverworldClimate.TEMPERATE, 0.4);
-		OverworldBiomes.setRiverBiome(PLAINS_PLATEAU, null);
+		OverworldBiomes.setRiverBiome(PLAINS_PLATEAU, PLAINS_PLATEAU);
 
 		// Rocky Edge
 		OverworldBiomes.addEdgeBiome(PLAINS_PLATEAU, ROCKY_EDGE, 1.0);
 
 		// Rolling Hills
 		addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
-		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
+//		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
 
 		// Snowy Coniferous Forest
 		addContinentalBiome(SNOWY_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.5);
@@ -85,7 +84,7 @@ public class TraverseGeneration extends TraverseBiomes {
 		addContinentalBiome(SNOWY_HIGH_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.125);
 
 		// Wooded Island
-		addBiomeVariant(Biomes.DEEP_OCEAN, WOODED_ISLAND, 0.10);
+		addBiomeVariant(BiomeKeys.DEEP_OCEAN, WOODED_ISLAND, 0.10);
 		OverworldBiomes.addShoreBiome(WOODED_ISLAND, WOODED_ISLAND, 1.0);
 
 		// Wooded Plateau
@@ -97,34 +96,36 @@ public class TraverseGeneration extends TraverseBiomes {
 		addContinentalBiome(WOODLANDS, OverworldClimate.TEMPERATE, 1);
 
 		// Spawn Biomes
-		FabricBiomes.addSpawnBiome(ARID_HIGHLANDS);
-		FabricBiomes.addSpawnBiome(AUTUMNAL_WOODS);
-		FabricBiomes.addSpawnBiome(CONIFEROUS_FOREST);
-		FabricBiomes.addSpawnBiome(DESERT_SHRUBLAND);
-		FabricBiomes.addSpawnBiome(MEADOW);
-		FabricBiomes.addSpawnBiome(ROLLING_HILLS);
-		FabricBiomes.addSpawnBiome(SNOWY_CONIFEROUS_FOREST);
-		FabricBiomes.addSpawnBiome(WOODLANDS);
+//		FabricBiomes.addSpawnBiome(ARID_HIGHLANDS);
+//		FabricBiomes.addSpawnBiome(AUTUMNAL_WOODS);
+//		FabricBiomes.addSpawnBiome(CONIFEROUS_FOREST);
+//		FabricBiomes.addSpawnBiome(DESERT_SHRUBLAND);
+//		FabricBiomes.addSpawnBiome(MEADOW);
+//		FabricBiomes.addSpawnBiome(ROLLING_HILLS);
+//		FabricBiomes.addSpawnBiome(SNOWY_CONIFEROUS_FOREST);
+//		FabricBiomes.addSpawnBiome(WOODLANDS);
 
 		Traverse.BIOME_CONFIG_HANDLER.save();
 	}
 
-	private static void addBiomeVariant(Biome parent, Biome biome, double defaultChance, OverworldClimate... climates) {
+	private static void addBiomeVariant(RegistryKey<Biome> parent, RegistryKey<Biome> biome, double defaultChance, OverworldClimate... climates) {
 		boolean enable = !config.isFrozen();
 
-		BiomeConfigNode.Variant variant = config.variant(Registry.BIOME.getId(biome).getPath(), new BiomeConfigNode.Variant(enable, defaultChance));
-		enable = variant.isEnabled();
+		if (biome != null) {
+			BiomeConfigNode.Variant variant = config.variant(biome.getValue().getPath(), new BiomeConfigNode.Variant(enable, defaultChance));
+			enable = variant.isEnabled();
 
-		double chance = variant.getVariantChance();
-		if (biome != null && enable && chance > 0.0) {
-			OverworldBiomes.addBiomeVariant(parent, biome, chance, climates);
+			double chance = variant.getVariantChance();
+			if (enable && chance > 0.0) {
+				OverworldBiomes.addBiomeVariant(parent, biome, chance, climates);
+			}
 		}
 	}
 
-	private static void addContinentalBiome(Biome biome, OverworldClimate climate, double defaultWeight) {
+	private static void addContinentalBiome(RegistryKey<Biome> biome, OverworldClimate climate, double defaultWeight) {
 		boolean enable = !config.isFrozen();
 
-		BiomeConfigNode.Continental continental = config.continental(Registry.BIOME.getId(biome).getPath(), new BiomeConfigNode.Continental(enable, defaultWeight));
+		BiomeConfigNode.Continental continental = config.continental(biome.getValue().getPath(), new BiomeConfigNode.Continental(enable, defaultWeight));
 		enable = continental.isEnabled();
 
 		double weight = continental.getWeight();

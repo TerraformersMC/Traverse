@@ -27,11 +27,15 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modCompile "com.terraformersmc:terraform:${project.terraform_version}"
 
-	include "com.terraformersmc:terraform:${project.terraform_version}"
+	includeMod "com.terraformersmc.terraform-api:terraform-biome-api-v1:${project.terraform_biome_api_version}"
+	includeMod "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biome_builder_api_version}"
+	includeMod "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+}
 
-	compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+def includeMod(String dep) {
+	dependencies.compile(dep)
+	dependencies.include(dep)
 }
 
 processResources {
