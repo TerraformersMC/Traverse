@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -19,13 +20,13 @@ public class LushSwampBiomes {
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.SWAMP_VEGETATION, DefaultFeature.FOSSILS)
 			.addStructureFeature(ConfiguredStructureFeatures.SWAMP_HUT)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_SWAMP)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.SEAGRASS_SWAMP)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.1F, 1))))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.FLOWER_SWAMP)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_GRASS_NORMAL)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_WATERLILLY)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.BROWN_MUSHROOM_SWAMP)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.RED_MUSHROOM_SWAMP)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.SEAGRASS_SWAMP)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.LUSH_SWAMP_TREES)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.FLOWER_SWAMP)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_GRASS_NORMAL)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_WATERLILLY)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.BROWN_MUSHROOM_SWAMP)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.RED_MUSHROOM_SWAMP)
 			.addDefaultSpawnEntries()
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.SLIME, 1, 1, 1))
 			.slimeSpawnBiome()

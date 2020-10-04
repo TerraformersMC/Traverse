@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityType;
@@ -20,10 +21,8 @@ public class DesertShrublandBiomes {
 			.addStructureFeature(ConfiguredStructureFeatures.VILLAGE_DESERT)
 			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
-					.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.1F, 1))))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
-					.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.1F, 1))))
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.DESERT_SHRUBS)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.DESERT_SHRUBS)
 			.precipitation(Biome.Precipitation.NONE)
 			.addDefaultAmbientSpawnEntries()
 			.addDefaultMonsterSpawnEntries()

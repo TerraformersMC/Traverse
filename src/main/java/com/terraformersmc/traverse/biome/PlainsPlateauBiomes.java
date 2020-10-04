@@ -1,7 +1,8 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.BiomeTemplate;
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -37,16 +38,10 @@ public class PlainsPlateauBiomes {
 			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.STONE_CONFIG)
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN)
-			.addCustomFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new SingleStateFeatureConfig(Blocks.COBBLESTONE.getDefaultState())).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).repeatRandomly(2))
-			.
-
-					category(Biome.Category.PLAINS)
-			.
-
-					depth(0.9F)
-			.
-
-					build();
+			.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, TraverseConfiguredFeatures.ROCKY_EDGE_BOULDER)
+			.category(Biome.Category.PLAINS)
+			.depth(0.9F)
+			.build();
 
 	static final Biome WOODED_PLATEAU = PLATEAU_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.FOREST_TREES, DefaultFeature.FOREST_GRASS, DefaultFeature.FOREST_FLOWERS)

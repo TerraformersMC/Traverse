@@ -2,6 +2,8 @@ package com.terraformersmc.traverse.feature;
 
 import com.google.common.collect.ImmutableList;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.feature.placer.FallenTrunkPlacer;
+import com.terraformersmc.traverse.feature.placer.NoneFoliagePlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.Heightmap;

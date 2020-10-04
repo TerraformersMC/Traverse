@@ -1,7 +1,8 @@
 package com.terraformersmc.traverse.biome;
 
 import com.google.common.collect.ImmutableList;
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
@@ -15,9 +16,9 @@ public class MiniJungleBiomes {
 	static final Biome MINI_JUNGLE = TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.JUNGLE_GRASS, DefaultFeature.JUNGLE_VEGETATION, DefaultFeature.EXTRA_DEFAULT_FLOWERS, DefaultFeature.BAMBOO)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_JUNGLE)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.SEAGRASS_SWAMP.decorate(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(ConfiguredFeatures.FANCY_OAK.withChance(0.1F)), ConfiguredFeatures.JUNGLE_TREE)).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(50, 0.1F, 1))))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.FLOWER_SWAMP)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_SEAGRASS)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_TREES)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.FLOWER_SWAMP)
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.PARROT, 40, 1, 2))
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.PANDA, 1, 1, 2))
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.CHICKEN, 10, 4, 4))

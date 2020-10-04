@@ -1,7 +1,8 @@
 package com.terraformersmc.traverse.biome;
 
 import com.google.common.collect.ImmutableList;
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -20,14 +21,7 @@ public class WoodlandsBiomes {
 			.addStructureFeature(ConfiguredStructureFeatures.VILLAGE_PLAINS)
 			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-					Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
-							ImmutableList.of(Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
-											.withChance(0.2F),
-									Feature.TREE.configure(TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG)
-											.withChance(0.3F)),
-							ConfiguredFeatures.OAK))
-							.decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(7))))
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.WOODLANDS_TREES)
 			.addDefaultSpawnEntries()
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4))
 			.category(Biome.Category.FOREST)

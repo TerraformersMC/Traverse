@@ -28,9 +28,8 @@ dependencies {
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	includeMod "com.terraformersmc.terraform-api:terraform-biome-api-v1:${project.terraform_biome_api_version}"
-	includeMod "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biome_builder_api_version}"
-	includeMod "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	includeMod "com.terraformersmc.terraform-api-experimental:terraform-biome-builder-api-v1:${project.terraform_biome_builder_api_version}"
+	includeMod "com.terraformersmc.terraform-api-experimental:terraform-legacy-v0:${project.terraform_wood_api_version}"
 }
 
 def includeMod(String dep) {

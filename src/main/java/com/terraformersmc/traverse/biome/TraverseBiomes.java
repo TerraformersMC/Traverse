@@ -1,7 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.BiomeTemplate;
-import com.terraformersmc.terraform.biome.builder.TerraformBiomeBuilder;
+import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
+import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
 import com.terraformersmc.traverse.Traverse;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +16,7 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
 
 public class TraverseBiomes {
 

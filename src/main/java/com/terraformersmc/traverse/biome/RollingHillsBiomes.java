@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -14,9 +15,9 @@ public class RollingHillsBiomes {
 	static final Biome ROLLING_HILLS = TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(TraverseFeatureConfigs.LUSH_FLOWER_CONFIG).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).repeat(10))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(ConfiguredFeatures.Configs.GRASS_CONFIG).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE).repeat(3))
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.OAK.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.2F, 1))))
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.ROLLING_HILLS_GRASS)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.LUSH_FLOWERS)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.ROLLING_HILLS_TREES)
 			.addDefaultSpawnEntries()
 			.category(Biome.Category.PLAINS)
 			.depth(0.4F)

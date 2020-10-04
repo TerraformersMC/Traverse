@@ -1,4 +1,4 @@
-package com.terraformersmc.traverse.feature;
+package com.terraformersmc.traverse.feature.placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,7 +22,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
 
 	@Override
 	protected FoliagePlacerType<?> getType() {
-		return TraverseFeatures.NONE_FOLIAGE_PLACER;
+		return TraversePlacerTypes.NONE_FOLIAGE_PLACER;
 	}
 
 	@Override

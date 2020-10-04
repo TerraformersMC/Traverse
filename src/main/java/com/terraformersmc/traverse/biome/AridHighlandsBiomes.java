@@ -1,18 +1,13 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class AridHighlandsBiomes {
@@ -22,8 +17,7 @@ public class AridHighlandsBiomes {
 			.addStructureFeature(ConfiguredStructureFeatures.VILLAGE_DESERT)
 			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT)
-			.addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG)
-					.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(0, 0.5F, 1))))
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.ARID_SHRUBS)
 			.precipitation(Biome.Precipitation.NONE)
 			.addDefaultAmbientSpawnEntries()
 			.addDefaultMonsterSpawnEntries()

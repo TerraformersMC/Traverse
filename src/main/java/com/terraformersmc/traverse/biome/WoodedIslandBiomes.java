@@ -1,12 +1,11 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class WoodedIslandBiomes {
