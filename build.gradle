@@ -33,7 +33,7 @@ dependencies {
 }
 
 def includeMod(String dep) {
-	dependencies.compile(dep)
+	dependencies.modCompile(dep)
 	dependencies.include(dep)
 }
 
