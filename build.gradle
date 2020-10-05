@@ -33,7 +33,12 @@ dependencies {
 }
 
 def includeMod(String dep) {
-	dependencies.modCompile(dep)
+	File file = file('../dev.txt');
+	if (file.exists()) {
+		dependencies.compile(dep)
+	} else {
+		dependencies.modCompile(dep)
+	}
 	dependencies.include(dep)
 }
 
