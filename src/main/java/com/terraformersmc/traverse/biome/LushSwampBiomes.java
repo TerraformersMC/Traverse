@@ -1,21 +1,37 @@
 package com.terraformersmc.traverse.biome;
 
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.DEFAULT_MUSHROOMS;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.DEFAULT_UNDERGROUND_STRUCTURES;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.DEFAULT_VEGETATION;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.DUNGEONS;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.FROZEN_TOP_LAYER;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.LAND_CARVERS;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.MINEABLES;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.ORES;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.SPRINGS;
+
+import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
 import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
+import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class LushSwampBiomes {
-	static final Biome LUSH_SWAMP = TraverseBiomes.BIOME_TEMPLATE.builder()
+	static final BiomeTemplate BIOME_TEMPLATE_NO_DISKS = new BiomeTemplate(TerraformBiomeBuilder.create()
+			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
+			.addDefaultFeatures(LAND_CARVERS, DEFAULT_UNDERGROUND_STRUCTURES, DUNGEONS, MINEABLES, ORES, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER)
+			.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD)
+			.addStructureFeature(ConfiguredStructureFeatures.MINESHAFT)
+			.precipitation(Biome.Precipitation.RAIN)
+			.effects(TraverseBiomes.createDefaultBiomeEffects()));
+
+	static final Biome LUSH_SWAMP = BIOME_TEMPLATE_NO_DISKS.builder()
 			.configureSurfaceBuilder(SurfaceBuilder.SWAMP, SurfaceBuilder.GRASS_CONFIG)
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.SWAMP_VEGETATION, DefaultFeature.FOSSILS)
 			.addStructureFeature(ConfiguredStructureFeatures.SWAMP_HUT)
