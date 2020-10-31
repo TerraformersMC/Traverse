@@ -29,7 +29,6 @@ public class LushSwampBiomes {
 			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.RED_MUSHROOM_SWAMP)
 			.addDefaultSpawnEntries()
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.SLIME, 1, 1, 1))
-			.slimeSpawnBiome()
 			.category(Biome.Category.SWAMP)
 			.depth(-0.2F)
 			.scale(0.1F)

@@ -2,14 +2,12 @@ package com.terraformersmc.traverse.generation;
 
 import com.terraformersmc.terraform.config.BiomeConfig;
 import com.terraformersmc.terraform.config.BiomeConfigNode;
+import com.terraformersmc.terraform.overworldbiomes.OverworldBiomesExt;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 
@@ -72,7 +70,7 @@ public class TraverseGeneration extends TraverseBiomes {
 
 		// Rolling Hills
 		addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
-//		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
+		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
 
 		// Snowy Coniferous Forest
 		addContinentalBiome(SNOWY_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.5);

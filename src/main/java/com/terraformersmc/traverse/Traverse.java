@@ -26,7 +26,7 @@ public class Traverse implements ModInitializer {
 		TraverseBiomes.register();
 		TraverseGeneration.register();
 
-		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getStackForRender()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
+		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
 			if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
 				item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
 			}

@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
 import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
+import com.terraformersmc.terraform.biomebuilder.TerraformSlimeSpawnBiomes;
 import com.terraformersmc.traverse.Traverse;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -75,6 +76,8 @@ public class TraverseBiomes {
 		for (Identifier id : BIOMES.keySet()) {
 			BuiltinRegistries.add(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
+
+		TerraformSlimeSpawnBiomes.addSlimeSpawnBiome(LUSH_SWAMP);
 	}
 
 }

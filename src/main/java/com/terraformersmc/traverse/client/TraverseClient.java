@@ -10,7 +10,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 
-import com.terraformersmc.terraform.registry.SpriteIdentifierRegistry;
+import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.entity.TraverseEntities;
 

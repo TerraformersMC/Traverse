@@ -1,8 +1,8 @@
 package com.terraformersmc.traverse.entity;
 
-import com.terraformersmc.terraform.entity.TerraformBoat;
-import com.terraformersmc.terraform.entity.TerraformBoatEntity;
-import com.terraformersmc.terraform.item.TerraformBoatItem;
+import com.terraformersmc.terraform.boat.TerraformBoat;
+import com.terraformersmc.terraform.boat.TerraformBoatEntity;
+import com.terraformersmc.terraform.boat.TerraformBoatItem;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;

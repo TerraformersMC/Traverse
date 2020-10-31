@@ -20,10 +20,10 @@ public class TraverseConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> DESERT_SHRUBS = register("desert_shrubs", OAK_SHRUB.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.1F, 1))));
 
 	/* Autumnal Trees */
-	public static final ConfiguredFeature<?, ?> RED_AUTUMNAL_TREE = register("red_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG));
-	public static final ConfiguredFeature<?, ?> ORANGE_AUTUMNAL_TREE = register("orange_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG));
-	public static final ConfiguredFeature<?, ?> YELLOW_AUTUMNAL_TREE = register("yellow_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG));
-	public static final ConfiguredFeature<?, ?> BROWN_AUTUMNAL_TREE = register("brown_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG));
+	public static final ConfiguredFeature<TreeFeatureConfig, ?> RED_AUTUMNAL_TREE = register("red_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG));
+	public static final ConfiguredFeature<TreeFeatureConfig, ?> ORANGE_AUTUMNAL_TREE = register("orange_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG));
+	public static final ConfiguredFeature<TreeFeatureConfig, ?> YELLOW_AUTUMNAL_TREE = register("yellow_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG));
+	public static final ConfiguredFeature<TreeFeatureConfig, ?> BROWN_AUTUMNAL_TREE = register("brown_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG));
 	public static final ConfiguredFeature<?, ?> AUTUMNAL_TREES = register("autumnal_trees",
 			Feature.RANDOM_SELECTOR.configure(
 					new RandomFeatureConfig(
@@ -46,7 +46,7 @@ public class TraverseConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> LOW_ANDESITE = register("low_andesite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.ANDESITE.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(10));
 
 	/* Fir Trees */
-	public static final ConfiguredFeature<?, ?> FIR_TREE = register("fir_tree", Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG));
+	public static final ConfiguredFeature<TreeFeatureConfig, ?> FIR_TREE = register("fir_tree", Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG));
 	public static final ConfiguredFeature<?, ?> CONIFEROUS_TREES = register("coniferous_trees", FIR_TREE.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(7, 0.1F, 1))));
 
 	/* Swamp Trees */
