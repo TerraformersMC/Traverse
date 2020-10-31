@@ -28,6 +28,7 @@ public class AutumnalWoodsBiomes {
 	static final Biome AUTUMNAL_WOODS = AUTUMNAL_WOODS_TEMPLATE.builder()
 			.depth(0.2F)
 			.scale(0.05F)
+			.playerSpawnFriendly()
 			.build();
 
 	static final Biome AUTUMNAL_WOODED_HILLS = AUTUMNAL_WOODS_TEMPLATE.builder()

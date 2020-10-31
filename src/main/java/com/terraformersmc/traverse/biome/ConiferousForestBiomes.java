@@ -33,6 +33,7 @@ public class ConiferousForestBiomes {
 	static final Biome CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE.builder()
 			.depth(0.4F)
 			.scale(0.4F)
+			.playerSpawnFriendly()
 			.build();
 
 	static final Biome CONIFEROUS_WOOODED_HILLS = CONIFEROUS_FOREST_TEMPLATE.builder()
@@ -60,6 +61,7 @@ public class ConiferousForestBiomes {
 	static final Biome SNOWY_CONIFEROUS_FOREST = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
 			.depth(0.4F)
 			.scale(0.4F)
+			.playerSpawnFriendly()
 			.build();
 
 	static final Biome SNOWY_CONIFEROUS_WOOODED_HILLS = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()

@@ -32,5 +32,6 @@ public class AridHighlandsBiomes {
 					.grassColor(0xBACD78)
 					.foliageColor(0x80A02E)
 			)
+			.playerSpawnFriendly()
 			.build();
 }

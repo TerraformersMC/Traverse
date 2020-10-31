@@ -33,5 +33,6 @@ public class WoodlandsBiomes {
 					.grassColor(0x99A955)
 					.foliageColor(0x849E4A)
 			)
+			.playerSpawnFriendly()
 			.build();
 }

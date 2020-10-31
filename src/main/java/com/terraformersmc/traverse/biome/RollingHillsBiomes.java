@@ -28,5 +28,6 @@ public class RollingHillsBiomes {
 					.grassColor(0x7FE03E)
 					.foliageColor(0x58EA33)
 			)
+			.playerSpawnFriendly()
 			.build();
 }

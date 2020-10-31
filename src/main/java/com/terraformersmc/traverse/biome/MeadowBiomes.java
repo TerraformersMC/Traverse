@@ -25,5 +25,6 @@ public class MeadowBiomes {
 					.grassColor(0x65CC53)
 					.foliageColor(0x5DD64A)
 			)
+			.playerSpawnFriendly()
 			.build();
 }

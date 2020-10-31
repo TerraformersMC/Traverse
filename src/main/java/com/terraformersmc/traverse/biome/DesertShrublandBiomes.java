@@ -33,5 +33,6 @@ public class DesertShrublandBiomes {
 			.scale(0.125F)
 			.temperature(2.0F)
 			.downfall(0.0F)
+			.playerSpawnFriendly()
 			.build();
 }

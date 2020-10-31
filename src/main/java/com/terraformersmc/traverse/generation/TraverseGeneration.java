@@ -93,16 +93,6 @@ public class TraverseGeneration extends TraverseBiomes {
 		addContinentalBiome(WOODLANDS, OverworldClimate.COOL, 1);
 		addContinentalBiome(WOODLANDS, OverworldClimate.TEMPERATE, 1);
 
-		// Spawn Biomes
-//		FabricBiomes.addSpawnBiome(ARID_HIGHLANDS);
-//		FabricBiomes.addSpawnBiome(AUTUMNAL_WOODS);
-//		FabricBiomes.addSpawnBiome(CONIFEROUS_FOREST);
-//		FabricBiomes.addSpawnBiome(DESERT_SHRUBLAND);
-//		FabricBiomes.addSpawnBiome(MEADOW);
-//		FabricBiomes.addSpawnBiome(ROLLING_HILLS);
-//		FabricBiomes.addSpawnBiome(SNOWY_CONIFEROUS_FOREST);
-//		FabricBiomes.addSpawnBiome(WOODLANDS);
-
 		Traverse.BIOME_CONFIG_HANDLER.save();
 	}
 
