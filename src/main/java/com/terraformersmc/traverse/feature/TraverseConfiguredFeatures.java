@@ -39,11 +39,11 @@ public class TraverseConfiguredFeatures {
 							new CountExtraDecoratorConfig(10, 0.1F, 1))));
 
 	/* Low Ores */
-	public static final ConfiguredFeature<?, ?> LOW_DIRT = register("low_dirt", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIRT.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(10));
-	public static final ConfiguredFeature<?, ?> LOW_GRAVEL = register("low_gravel", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRAVEL.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(8));
-	public static final ConfiguredFeature<?, ?> LOW_GRANITE = register("low_granite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRANITE.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(10));
-	public static final ConfiguredFeature<?, ?> LOW_DIORITE = register("low_diorite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIORITE.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(10));
-	public static final ConfiguredFeature<?, ?> LOW_ANDESITE = register("low_andesite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.ANDESITE.getDefaultState(), 33)).method_30377(70)).spreadHorizontally()).repeat(10));
+	public static final ConfiguredFeature<?, ?> LOW_DIRT = register("low_dirt", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIRT.getDefaultState(), 33)).rangeOf(70)).spreadHorizontally()).repeat(10));
+	public static final ConfiguredFeature<?, ?> LOW_GRAVEL = register("low_gravel", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRAVEL.getDefaultState(), 33)).rangeOf(70)).spreadHorizontally()).repeat(8));
+	public static final ConfiguredFeature<?, ?> LOW_GRANITE = register("low_granite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.GRANITE.getDefaultState(), 33)).rangeOf(70)).spreadHorizontally()).repeat(10));
+	public static final ConfiguredFeature<?, ?> LOW_DIORITE = register("low_diorite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.DIORITE.getDefaultState(), 33)).rangeOf(70)).spreadHorizontally()).repeat(10));
+	public static final ConfiguredFeature<?, ?> LOW_ANDESITE = register("low_andesite", ((Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Blocks.ANDESITE.getDefaultState(), 33)).rangeOf(70)).spreadHorizontally()).repeat(10));
 
 	/* Fir Trees */
 	public static final ConfiguredFeature<TreeFeatureConfig, ?> FIR_TREE = register("fir_tree", Feature.TREE.configure(TraverseFeatureConfigs.FIR_TREE_CONFIG));

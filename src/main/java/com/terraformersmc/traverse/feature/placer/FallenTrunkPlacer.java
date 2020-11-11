@@ -32,7 +32,7 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 
 	@Override
 	public List<FoliagePlacer.TreeNode> generate(ModifiableTestableWorld world, Random random, int trunkHeight, BlockPos pos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig) {
-		method_27400(world, pos.down());
+		setToDirt(world, pos.down());
 
 		// Axis
 		Direction.Axis axis = random.nextBoolean() ? Direction.Axis.X : Direction.Axis.Z;
@@ -47,7 +47,7 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 
 	protected static boolean placeTrunkBlock(ModifiableTestableWorld modifiableTestableWorld, Random random, BlockPos blockPos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig, Direction.Axis axis) {
 		if (TreeFeature.canReplace(modifiableTestableWorld, blockPos)) {
-			method_27404(modifiableTestableWorld, blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis), blockBox);
+			setBlockState(modifiableTestableWorld, blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis), blockBox);
 			set.add(blockPos.toImmutable());
 			return true;
 		} else {
