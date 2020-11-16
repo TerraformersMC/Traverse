@@ -15,7 +15,7 @@
     ]
   },
   "contact": {
-    "homepage": "https://minecraft.curseforge.com/projects/traverse",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
@@ -29,7 +29,15 @@
   ],
   "contributors": [
     "coderbot16",
-    "SuperCoder79"
+    "SuperCoder79",
+    "200542053",
+    "DoloresMcDoodle",
+    "PinkGoosik",
+    "taowaren",
+    "bentterp",
+    "Hugman76",
+    "JanThomas118",
+    "feliclaria"
   ],
   "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes"
 }
