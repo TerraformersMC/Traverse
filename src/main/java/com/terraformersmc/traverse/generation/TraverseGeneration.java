@@ -31,7 +31,6 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Cliffs
 		addContinentalBiome(CLIFFS, OverworldClimate.TEMPERATE, 0.4);
 		addContinentalBiome(CLIFFS, OverworldClimate.COOL, 0.6);
-		addContinentalBiome(CLIFFS, OverworldClimate.SNOWY, 0.8);
 
 		// Coniferous Forest
 		addContinentalBiome(CONIFEROUS_FOREST, OverworldClimate.TEMPERATE, 0.8);
@@ -71,6 +70,10 @@ public class TraverseGeneration extends TraverseBiomes {
 		// Rolling Hills
 		addContinentalBiome(ROLLING_HILLS, OverworldClimate.COOL, 0.7);
 		OverworldBiomesExt.addCenterBiome(CLIFFS, ROLLING_HILLS);
+
+		// Snowy Cliffs
+		addContinentalBiome(SNOWY_CLIFFS, OverworldClimate.SNOWY, 0.8);
+		OverworldBiomesExt.addCenterBiome(SNOWY_CLIFFS, BiomeKeys.SNOWY_TAIGA_HILLS);
 
 		// Snowy Coniferous Forest
 		addContinentalBiome(SNOWY_CONIFEROUS_FOREST, OverworldClimate.SNOWY, 0.5);
