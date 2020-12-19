@@ -4,9 +4,9 @@ import com.terraformersmc.terraform.config.BiomeConfigHandler;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.entity.TraverseEntities;
-import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.generation.TraverseGeneration;
 import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
+import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemStack;
@@ -25,6 +25,7 @@ public class Traverse implements ModInitializer {
 		TraverseSurfaceBuilders.register();
 		TraverseBiomes.register();
 		TraverseGeneration.register();
+		TraverseVillagerTypes.register();
 
 		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
 			if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
