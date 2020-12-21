@@ -1,0 +1,11 @@
+{
+  "Autumnal Woods, Woodlands, and Rolling Hills": {
+    "name": "autumnal_woods_woodlands_and_rolling_hills",
+    "panoramaId": "traverse:textures/gui/panorama/panorama",
+    "musicId": "minecraft:music.menu",
+    "movementSettings": {
+      "addedY": 0.0
+    }
+  }
+}
+}
