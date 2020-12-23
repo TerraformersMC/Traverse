@@ -16,8 +16,8 @@ public class TraverseConfiguredFeatures {
 
 	/* Shrubs */
 	public static final ConfiguredFeature<?, ?> OAK_SHRUB = register("oak_shrub", Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG));
-	public static final ConfiguredFeature<?, ?> ARID_SHRUBS = register("arid_shrubs", OAK_SHRUB.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(0, 0.5F, 1))));
-	public static final ConfiguredFeature<?, ?> DESERT_SHRUBS = register("desert_shrubs", OAK_SHRUB.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(2, 0.1F, 1))));
+	public static final ConfiguredFeature<?, ?> ARID_SHRUBS = register("arid_shrubs", OAK_SHRUB.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(0, 0.5F, 1))));
+	public static final ConfiguredFeature<?, ?> DESERT_SHRUBS = register("desert_shrubs", OAK_SHRUB.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(1, 0.1F, 1))));
 
 	/* Autumnal Trees */
 	public static final ConfiguredFeature<TreeFeatureConfig, ?> RED_AUTUMNAL_TREE = register("red_autumnal_tree", Feature.TREE.configure(TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG));

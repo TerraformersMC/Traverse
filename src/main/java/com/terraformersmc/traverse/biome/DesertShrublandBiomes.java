@@ -22,7 +22,6 @@ public class DesertShrublandBiomes {
 			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_DESERT)
 			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.DESERT_SHRUBS)
-			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.DESERT_SHRUBS)
 			.precipitation(Biome.Precipitation.NONE)
 			.addDefaultAmbientSpawnEntries()
 			.addDefaultMonsterSpawnEntries()
