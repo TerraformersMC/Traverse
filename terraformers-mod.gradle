@@ -1,0 +1,76 @@
+apply plugin: 'maven-publish'
+
+apply from: 'fabric-mod.gradle'
+
+version = getVersion()
+
+static String getVersion() {
+	def version = "unknown"
+	def branchLines = "git branch --show-current".execute().in.readLines()
+	if (!branchLines.isEmpty()) {
+		version = branchLines.get(0)
+	}
+
+	def tagLines = "git describe --tags --exact-match --abbrev=0".execute().in.readLines()
+	def release = false
+	if (!tagLines.isEmpty()) {
+		def line = tagLines.get(0)
+		def regex = /v([0-9].[0-9].[0-9])/
+		if (line.matches(regex)) {
+			version = (line =~ regex)[0][1] // gets 1st match group of 1st match
+			release = true
+		}
+	}
+	if (!release) {
+		def lastTag = "git describe --tags --abbrev=0".execute().in.readLines()
+		def lastCommit = "git rev-parse --short HEAD".execute().in.readLines()
+		if (!lastTag.isEmpty() && !lastCommit.isEmpty()) {
+			version = lastTag.get(0) + "+" + version + "." + lastCommit.get(0)
+		}
+	}
+	return version
+}
+
+ext.mod = { String localOverrideKey, Object dep ->
+	File file = file("../.${localOverrideKey}-local");
+	if (file.exists()) {
+		dependencies.implementation(dep)
+	} else {
+		dependencies.modImplementation(dep)
+	}
+}
+
+ext.includeMod = { String localOverrideKey, Object dep ->
+	mod(localOverrideKey, dep)
+	dependencies.include(dep)
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
+			}
+
+			afterEvaluate {
+				artifact remapJar
+			}
+		}
+	}
+
+	setupRepositories(repositories)
+}
+
+void setupRepositories(RepositoryHandler repositories) {
+	//repositories.mavenLocal() // uncomment for testing
+	def ENV = System.getenv()
+	if (ENV.MAVEN_URL) {
+		repositories.maven {
+			url ENV.MAVEN_URL
+			credentials {
+				username ENV.MAVEN_USERNAME
+				password ENV.MAVEN_PASSWORD
+			}
+		}
+	}
+}
