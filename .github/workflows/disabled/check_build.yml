@@ -31,7 +31,7 @@ jobs:
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew buildAndAttemptRelease publishToMavenLocal --stacktrace --parallel
+        run: ./gradlew build --stacktrace --parallel
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '11' }} # Only upload artifacts built from LTS java on one OS
         uses: actions/upload-artifact@v2

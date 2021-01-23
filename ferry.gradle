@@ -24,6 +24,90 @@ task buildAndAttemptRelease {
 
 }
 
+task testChangelog {
+
+}
+
+testChangelog {
+	def changes = StringBuilder.newInstance()
+	def lastTagCommit = "git rev-list --tags --skip=1 --max-count=1".execute().in.readLines().get(0)
+	def lastTag = "git describe --tags --abbrev=0 $lastTagCommit".execute().in.readLines().get(0)
+	def currentTag = "git describe --tags --abbrev=0".execute().in.readLines().get(0)
+	def commits = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%s\" $lastTag..$currentTag".execute()
+	println "Last version: $lastTag"
+	println "Current version: $currentTag"
+	def releaseType = project.default_release_type
+
+	if (currentTag.contains("-alpha")) {
+		releaseType = "alpha"
+		curseReleaseType = "alpha"
+		stabilitySuffix = " (Alpha)"
+	} else if (currentTag.contains("-beta")) {
+		releaseType = "beta"
+		curseReleaseType = "beta"
+		stabilitySuffix = " (Beta)"
+	} else if (currentTag.contains("-pre")) {
+		releaseType = "pre"
+		curseReleaseType = "beta"
+		stabilitySuffix = " (Pre-Release)"
+	} else if (currentTag.contains("-rc")) {
+		releaseType = "rc"
+		curseReleaseType = "beta"
+		stabilitySuffix = " (Release Candidate)"
+	} else if (!currentTag.contains("-")) {
+		releaseType = "stable"
+	}
+	println "Release type: $releaseType"
+
+	commits.in.eachLine { line -> // Loops over the lines the git log command returns
+		def processedLine = line.toString()
+		if (project.changelog_type == "commit_change_tags") {
+			def splitLine = processedLine.split(/\#change /)
+			println "Adding changelog lines for commit $processedLine"
+			def firstSplit = true
+			splitLine.each { string ->
+				println " Commit: $processedLine - has string: $string"
+				if (firstSplit) {
+					firstSplit = false
+					return
+				}
+				if (string.startsWith("\"")) {
+					try {
+						def matches = string =~ /"(.*?)"/
+						def message = matches[0][1]
+						println "   Read as message: $message"
+						if (!message.isAllWhitespace()) {
+							if (changes.length() == 0) {
+								changes << "- $message"
+							} else {
+								changes << "\n- $message"
+							}
+						}
+					} catch (Exception e) {
+						println "Exception adding changelog message: $string"
+					}
+				}
+			}
+		} else if (project.changelog_type == "literal_commits") {
+			if (project.changelog_hide_unimportant_commits.toBoolean() && processedLine.startsWith("Merge") && processedLine.contains("branch")) {
+				return
+			}
+			if (changes.length() == 0) {
+				changes << "- $processedLine"
+			} else {
+				changes << "\n- $processedLine"
+			}
+		}
+	}
+	commits.err.eachLine { line -> println line }
+	commits.waitFor()
+	println "Changelog:"
+	releaseChangelog = changes.toString()
+	println releaseChangelog
+//	dependsOn tasks.getByName("curseforge")
+//	dependsOn build
+}
+
 buildAndAttemptRelease {
 	def changes = StringBuilder.newInstance()
 	def proc = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%s\"".execute()
