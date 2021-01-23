@@ -86,7 +86,7 @@ void generateChangelog() {
 	commits.err.eachLine { line -> println line }
 	commits.waitFor()
 	println "Changelog:"
-	releaseChangelog = changes.toString()
+	project.releaseChangelog = changes.toString()
 	println project.releaseChangelog
 }
 
