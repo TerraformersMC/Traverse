@@ -93,6 +93,8 @@ void generateChangelog() {
 buildAndAttemptRelease {
 	generateChangelog()
 	dependsOn tasks.getByName("curseforge")
+	dependsOn github
+	dependsOn publishModrinth
 	dependsOn build
 }
 
