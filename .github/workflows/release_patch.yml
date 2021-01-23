@@ -35,6 +35,9 @@ jobs:
             })
       - name: Fetch tags
         run: git fetch --tags
+      - name: Get current tag
+        id: current-tag
+        uses: WyriHaximus/github-action-get-previous-tag@1.0.0
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Setup jdk ${{ matrix.java }}
@@ -45,7 +48,7 @@ jobs:
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
       - name: Build
-        run: ./gradlew generateChangelog build publish curseforge github publishModrinth --stacktrace --parallel -PlastTag="${{ steps.previous-tag.outputs.tag }}" -PcurrentTag="v${{ steps.semver.outputs.patch }}"
+        run: ./gradlew generateChangelog build publish curseforge github publishModrinth --stacktrace --parallel -PlastTag="${{ steps.previous-tag.outputs.tag }}" -PcurrentTag="v${{ steps.current-tag.outputs.tag }}"
         env:
           MAVEN_URL: ${{ secrets.MAVEN_URL }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}

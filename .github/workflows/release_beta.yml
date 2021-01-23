@@ -1,4 +1,4 @@
-name: Release Stable
+name: Next Beta
 on: [workflow_dispatch] # Manual trigger
 jobs:
   build:
@@ -17,6 +17,11 @@ jobs:
       - name: Get previous tag
         id: previous-tag
         uses: WyriHaximus/github-action-get-previous-tag@1.0.0
+      - name: Get SemVer increments
+        id: semver
+        uses: WyriHaximus/github-action-next-semvers@v1.0
+        with:
+          version: ${{ steps.previous-tag.outputs.tag }}
       - name: Create version tag
         uses: actions/github-script@v3
         with:
@@ -30,13 +35,18 @@ jobs:
               github.git.createRef({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                ref: "refs/tags/v" + match[1],
+                ref: "refs/tags/v" + match[1] + "-beta." + betaIncrement,
                 sha: context.sha
               })
             }
+      - name: Fetch tags
+        run: git fetch --tags
+      - name: Get current tag
+        id: current-tag
+        uses: WyriHaximus/github-action-get-previous-tag@1.0.0
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: setup jdk ${{ matrix.java }}
+      - name: Setup jdk ${{ matrix.java }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
@@ -44,8 +54,16 @@ jobs:
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
       - name: Build
-        run: ./gradlew buildAndAttemptRelease publish --stacktrace --parallel
-      - name: capture build artifacts
+        run: ./gradlew generateChangelog build publish curseforge github publishModrinth --stacktrace --parallel -PlastTag="${{ steps.previous-tag.outputs.tag }}" -PcurrentTag="v${{ steps.current-tag.outputs.tag }}"
+        env:
+          MAVEN_URL: ${{ secrets.MAVEN_URL }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_API_KEY }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          DISCORD_ANNOUNCEMENT_WEBHOOK: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK }}
+      - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '11' }} # Only upload artifacts built from LTS java on one OS
         uses: actions/upload-artifact@v2
         with:

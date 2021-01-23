@@ -146,6 +146,9 @@ task github {
 		releaseBuilder.name("$project.project_name v$version for $project.minecraft_version")
 		releaseBuilder.body(releaseChangelog)
 		releaseBuilder.commitish(getBranch())
+		if (releaseType != "stable") {
+			releaseBuilder.prerelease(true)
+		}
 
 		def ghRelease = releaseBuilder.create()
 		ghRelease.uploadAsset(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"), "application/java-archive");
@@ -260,7 +263,7 @@ task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
 
 String getVersion() {
 	def version = "unknown"
-	if (project.hasProperty("currentTag")){
+	if (project.hasProperty("currentTag")) {
 		return project.currentTag.replace("v", "")
 	}
 	def branchLines = "git branch --show-current".execute().in.readLines()
