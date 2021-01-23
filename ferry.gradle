@@ -146,7 +146,7 @@ task github {
 		releaseBuilder.name("$project.project_name v$version for $project.minecraft_version")
 		releaseBuilder.body(releaseChangelog)
 		releaseBuilder.commitish(getBranch())
-		if (releaseType != "stable") {
+		if (ext.releaseType != "stable") {
 			releaseBuilder.prerelease(true)
 		}
 
