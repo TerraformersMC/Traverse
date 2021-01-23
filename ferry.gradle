@@ -21,12 +21,12 @@ apply plugin: com.modrinth.minotaur.Minotaur
 
 apply from: 'terraformers-mod.gradle'
 
-String curseReleaseType = "release"
-String releaseChangelog = "No Changelog Available"
-String stabilitySuffix = ""
-String curseforgeDownloadLink = null
-String modrinthDownloadLink = null
-String githubDownloadLink = null
+ext.curseReleaseType = "release"
+ext.releaseChangelog = "No Changelog Available"
+ext.stabilitySuffix = ""
+ext.curseforgeDownloadLink = null
+ext.modrinthDownloadLink = null
+ext.githubDownloadLink = null
 
 task buildAndAttemptRelease {
 
@@ -86,8 +86,8 @@ void generateChangelog() {
 	commits.err.eachLine { line -> println line }
 	commits.waitFor()
 	println "Changelog:"
-	project.releaseChangelog = changes.toString()
-	println project.releaseChangelog
+	releaseChangelog = changes.toString()
+	println releaseChangelog
 }
 
 buildAndAttemptRelease {
