@@ -8,32 +8,39 @@ buildscript {
 	dependencies {
 		classpath "net.dumbcode.gradlehook:GradleHook:1.3.1"
 		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+		classpath "org.kohsuke:github-api:1.114"
+		classpath "org.ajoberstar.grgit:grgit-gradle:4.1.0"
+		classpath "gradle.plugin.com.modrinth.minotaur:Minotaur:1.1.0"
 	}
 }
 
 apply plugin: net.dumbcode.gradlehook.GradleWebhookPlugin
 apply plugin: com.matthewprenger.cursegradle.CurseGradlePlugin
+apply plugin: org.ajoberstar.grgit.gradle.GrgitPlugin
+apply plugin: com.modrinth.minotaur.Minotaur
 
 apply from: 'terraformers-mod.gradle'
 
-def curseReleaseType = "release"
-def releaseChangelog = "No Changelog Available"
-def stabilitySuffix = ""
+String curseReleaseType = "release"
+String releaseChangelog = "No Changelog Available"
+String stabilitySuffix = ""
+String curseforgeDownloadLink = null
+String modrinthDownloadLink = null
+String githubDownloadLink = null
 
 task buildAndAttemptRelease {
 
 }
 
-task testChangelog {
-
-}
-
-testChangelog {
+void generateChangelog() {
 	def changes = StringBuilder.newInstance()
-	def lastTagCommit = "git rev-list --tags --skip=1 --max-count=1".execute().in.readLines().get(0)
-	def lastTag = "git describe --tags --abbrev=0 $lastTagCommit".execute().in.readLines().get(0)
-	def currentTag = "git describe --tags --abbrev=0".execute().in.readLines().get(0)
-	def commits = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%s\" $lastTag..$currentTag".execute()
+	if (!project.hasProperty("lastTag") || !project.hasProperty("currentTag")) {
+		println "Missing lastTag or currentTag parameters, aborting changelog creation"
+		return;
+	}
+	def lastTag = project.getProperty("lastTag")
+	def currentTag = project.getProperty("currentTag")
+	def commits = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%b\" $lastTag..$currentTag".execute()
 	println "Last version: $lastTag"
 	println "Current version: $currentTag"
 	def releaseType = project.default_release_type
@@ -61,41 +68,18 @@ testChangelog {
 
 	commits.in.eachLine { line -> // Loops over the lines the git log command returns
 		def processedLine = line.toString()
-		if (project.changelog_type == "commit_change_tags") {
-			def splitLine = processedLine.split(/\#change /)
-			println "Adding changelog lines for commit $processedLine"
-			def firstSplit = true
-			splitLine.each { string ->
-				println " Commit: $processedLine - has string: $string"
-				if (firstSplit) {
-					firstSplit = false
-					return
-				}
-				if (string.startsWith("\"")) {
-					try {
-						def matches = string =~ /"(.*?)"/
-						def message = matches[0][1]
-						println "   Read as message: $message"
-						if (!message.isAllWhitespace()) {
-							if (changes.length() == 0) {
-								changes << "- $message"
-							} else {
-								changes << "\n- $message"
-							}
-						}
-					} catch (Exception e) {
-						println "Exception adding changelog message: $string"
-					}
-				}
-			}
-		} else if (project.changelog_type == "literal_commits") {
-			if (project.changelog_hide_unimportant_commits.toBoolean() && processedLine.startsWith("Merge") && processedLine.contains("branch")) {
-				return
-			}
+		if (processedLine.startsWith("\"")) {
+			processedLine = processedLine.substring(1)
+		}
+		println "Reading line: $processedLine"
+
+		if (processedLine.startsWith("- ")) {
+			println "Adding changelog line:"
+			println "  $processedLine"
 			if (changes.length() == 0) {
-				changes << "- $processedLine"
+				changes << processedLine
 			} else {
-				changes << "\n- $processedLine"
+				changes << "\n$processedLine"
 			}
 		}
 	}
@@ -103,103 +87,19 @@ testChangelog {
 	commits.waitFor()
 	println "Changelog:"
 	releaseChangelog = changes.toString()
-	println releaseChangelog
-//	dependsOn tasks.getByName("curseforge")
-//	dependsOn build
+	println project.releaseChangelog
 }
 
 buildAndAttemptRelease {
-	def changes = StringBuilder.newInstance()
-	def proc = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%s\"".execute()
-	def latestCommit = true
-	def release = false
-	def cancel = false
-	def releaseType = project.default_release_type
-
-	proc.in.eachLine { line -> // Loops over the lines the git log command returns
-		def processedLine = line.toString()
-		if (cancel) {
-			return
-		}
-		if (latestCommit) {
-			if (processedLine.contains("#release")) {
-				if (processedLine.contains("#release stable")) {
-					releaseType = "stable"
-				} else if (processedLine.contains("#release beta")) {
-					releaseType = "beta"
-					curseReleaseType = "beta"
-					stabilitySuffix = " (Beta)"
-				} else if (processedLine.contains("#release alpha")) {
-					releaseType = "alpha"
-					curseReleaseType = "alpha"
-					stabilitySuffix = " (Alpha)"
-				}
-				release = true
-			}
-		}
-		if (!latestCommit && processedLine.contains("#release")) {
-			// Cancel if it finds another release (that isn't the first one)
-			cancel = true
-			return
-		}
-		if (release) {
-			if (project.changelog_type == "commit_change_tags") {
-				def splitLine = processedLine.split(/\#change /)
-				println "Adding changelog lines for commit $processedLine"
-				def firstSplit = true
-				splitLine.each { string ->
-					println " Commit: $processedLine - has string: $string"
-					if (firstSplit) {
-						firstSplit = false
-						return
-					}
-					if (string.startsWith("\"")) {
-						try {
-							def matches = string =~ /"(.*?)"/
-							def message = matches[0][1]
-							println "   Read as message: $message"
-							if (!message.isAllWhitespace()) {
-								if (changes.length() == 0) {
-									changes << "- $message"
-								} else {
-									changes << "\n- $message"
-								}
-							}
-						} catch (Exception e) {
-							println "Exception adding changelog message: $string"
-						}
-					}
-				}
-			} else if (project.changelog_type == "literal_commits") {
-				if (project.changelog_hide_unimportant_commits.toBoolean() && processedLine.startsWith("Merge") && processedLine.contains("branch")) {
-					return
-				}
-				if (changes.length() == 0) {
-					changes << "- $processedLine"
-				} else {
-					changes << "\n- $processedLine"
-				}
-			}
-		}
-		if (latestCommit) {
-			latestCommit = false
-		}
-	}
-	proc.err.eachLine { line -> println line }
-	proc.waitFor()
-	if (release) {
-		println "This build IS scheduled to be released"
-		releaseChangelog = changes.toString()
-		println releaseChangelog
-		dependsOn tasks.getByName("curseforge")
-	} else {
-		println "This build is NOT scheduled to be released"
-	}
+	generateChangelog()
+	dependsOn tasks.getByName("curseforge")
 	dependsOn build
 }
 
 curseforge {
-	apiKey = System.getenv().CURSEFORGE_TOKEN ? System.getenv().CURSEFORGE_TOKEN : "###"
+	if (System.getenv().CURSEFORGE_TOKEN) {
+		apiKey = System.getenv().CURSEFORGE_TOKEN
+	}
 	project {
 		id = project.curseforge_id
 		releaseType = curseReleaseType
@@ -233,44 +133,29 @@ curseforge {
 }
 
 tasks.getByName("curseforge").doLast {
-	if (System.getenv().DISCORD_ANNOUNCEMENT_WEBHOOK) {
-		println "Preparing webhook"
-		def fileId = (tasks.getByName("curseforge$curseforge_id").property("mainArtifact"))['fileID']
-		def curseforge_download = "https://www.curseforge.com/minecraft/mc-mods/$project.curseforge_slug/files/$fileId"
-		def github_download = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-		def release_url = curseforge_download
-		def discordChangelog = createDiscordChangelog(release_url)
+	def fileId = (tasks.getByName("curseforge$curseforge_id").property("mainArtifact"))['fileID']
+	curseforgeDownloadLink = "https://www.curseforge.com/minecraft/mc-mods/$project.curseforge_slug/files/$fileId";
+	sendDiscordWebhook()
+}
 
-		def result = DiscordBuilder.createForm {
-			if (project.use_project_username.toBoolean()) {
-				avatar_url = project.project_logo
-				username = project.project_name
-			}
-			embed {
-				color = Integer.decode(project.project_color)
-				author {
-					name = project.project_name + stabilitySuffix
-					url = project.project_url
-				}
-				thumbnail { url = project.project_logo }
-				title = "$project.project_name v$version for $project.minecraft_version Released"
-				url = release_url
-				field {
-					name = "Changes:"
-					value = discordChangelog
-				}
-				field {
-					name = "Downloads:"
-					value = "[$curseforge_emote CurseForge]($curseforge_download)"
-				}
-				footer {
-					text = "A $project.loader_name Mod"
-					icon_url = project.loader_icon
-				}
-			}
-		}.send(System.getenv().DISCORD_ANNOUNCEMENT_WEBHOOK)
+task github {
+	onlyIf {
+		System.getenv().GITHUB_TOKEN
+	}
 
-		println "Discord Webhook Response: " + result.responseCode
+	doLast {
+		def github = GitHub.connectUsingOAuth(System.getenv().GITHUB_TOKEN as String)
+		def repository = github.getRepository(System.getenv().GITHUB_REPOSITORY)
+
+		def releaseBuilder = new org.kohsuke.github.GHReleaseBuilder(repository, project.getProperty("currentTag"))
+		releaseBuilder.name("$project.project_name v$version for $project.minecraft_version")
+		releaseBuilder.body(releaseChangelog)
+		releaseBuilder.commitish(getBranch())
+
+		def ghRelease = releaseBuilder.create()
+		ghRelease.uploadAsset(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"), "application/java-archive");
+		githubDownloadLink = ghRelease.getHtmlUrl()
+		sendDiscordWebhook()
 	}
 }
 
@@ -297,4 +182,83 @@ ext.createDiscordChangelog = { fullChangelogUrl ->
 		}
 	}
 	return webhookChangelog.toString()
+}
+
+void sendDiscordWebhook() {
+	println "CurseForge download: $curseforgeDownloadLink"
+	println "Modrinth download: $modrinthDownloadLink"
+	println "GitHub download: $githubDownloadLink"
+	if (curseforgeDownloadLink != null && modrinthDownloadLink != null && githubDownloadLink != null && System.getenv().DISCORD_ANNOUNCEMENT_WEBHOOK) {
+		println "Preparing webhook"
+		def release_url = curseforgeDownloadLink
+		def discordChangelog = createDiscordChangelog(release_url)
+
+		def result = DiscordBuilder.createForm {
+			if (project.use_project_username.toBoolean()) {
+				avatar_url = project.project_logo
+				username = project.project_name
+			}
+			embed {
+				color = Integer.decode(project.project_color)
+				author {
+					name = project.project_name + stabilitySuffix
+					url = project.project_url
+				}
+				thumbnail { url = project.project_logo }
+				title = "$project.project_name v$version for $project.minecraft_version Released"
+				url = release_url
+				field {
+					name = "Changes:"
+					value = discordChangelog
+				}
+				field {
+					name = "Downloads:"
+					value = "[$curseforge_emote CurseForge]($curseforgeDownloadLink)\n[$modrinth_emote Modrinth]($modrinthDownloadLink)\n[$github_emote GitHub]($githubDownloadLink)"
+				}
+				footer {
+					text = "A $project.loader_name Mod"
+					icon_url = project.loader_icon
+				}
+			}
+		}.send(System.getenv().DISCORD_ANNOUNCEMENT_WEBHOOK)
+
+		println "Discord Webhook Response: " + result.responseCode
+	}
+}
+
+String getBranch() {
+	def ENV = System.getenv()
+	if (ENV.GITHUB_REF) {
+		def branch = ENV.GITHUB_REF
+		return branch.substring(branch.lastIndexOf("/") + 1)
+	}
+
+	if (grgit == null) {
+		return "unknown"
+	}
+
+	def branch = grgit.branch.current().name
+	return branch.substring(branch.lastIndexOf("/") + 1)
+}
+
+task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
+	token = System.getenv().MODRINTH_TOKEN
+	projectId = project.modrinth_id
+	versionNumber = project.version
+	versionName = "$project.project_name v$version for $project.minecraft_version"
+	uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+	changelog = releaseChangelog
+	releaseType = curseReleaseType
+	project.modrinth_game_versions.split(", ").each {
+		String gameVersion -> addGameVersion gameVersion
+	}
+	project.modrinth_mod_loaders.split(", ").each {
+		String modLoader -> addLoader modLoader
+	}
+	doLast {
+		if (wasUploadSuccessful()) {
+			modrinthDownloadLink = "https://modrinth.com/mod/$project.modrinth_slug/version/$uploadInfo.id"
+			sendDiscordWebhook()
+		}
+	}
 }
