@@ -139,7 +139,7 @@ task github {
 	}
 
 	doLast {
-		def github = GitHub.connectUsingOAuth(System.getenv().GITHUB_TOKEN as String)
+		def github = org.kohsuke.github.GitHub.connectUsingOAuth(System.getenv().GITHUB_TOKEN as String)
 		def repository = github.getRepository(System.getenv().GITHUB_REPOSITORY)
 
 		def releaseBuilder = new org.kohsuke.github.GHReleaseBuilder(repository, project.getProperty("currentTag"))
