@@ -46,6 +46,14 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew buildAndAttemptRelease publish --stacktrace --parallel -PlastTag="${{ steps.previous-tag.outputs.tag }}" -PcurrentTag="v${{ steps.semver.outputs.patch }}"
+        env:
+          MAVEN_URL: ${{ secrets.MAVEN_URL }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_API_KEY }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          DISCORD_ANNOUNCEMENT_WEBHOOK: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK }}
       - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '11' }} # Only upload artifacts built from LTS java on one OS
         uses: actions/upload-artifact@v2

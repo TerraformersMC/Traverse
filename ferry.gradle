@@ -99,6 +99,8 @@ buildAndAttemptRelease {
 curseforge {
 	if (System.getenv().CURSEFORGE_TOKEN) {
 		apiKey = System.getenv().CURSEFORGE_TOKEN
+	} else {
+		println "No CURSEFORGE_TOKEN specified"
 	}
 	project {
 		id = project.curseforge_id
