@@ -30,6 +30,7 @@ ext.stabilitySuffix = ""
 ext.curseforgeDownloadLink = null
 ext.modrinthDownloadLink = null
 ext.githubDownloadLink = null
+ext.releaseType = project.default_release_type
 
 task generateChangelog {
 	def changes = StringBuilder.newInstance()
@@ -42,7 +43,6 @@ task generateChangelog {
 	def commits = "git log --max-count=$project.changelog_max_commit_search --pretty=format:\"%b\" $lastTag..$currentTag".execute()
 	println "Last version: $lastTag"
 	println "Current version: $currentTag"
-	def releaseType = project.default_release_type
 
 	if (currentTag.contains("-alpha")) {
 		releaseType = "alpha"
@@ -146,7 +146,7 @@ task github {
 		releaseBuilder.name("$project.project_name v$version for $project.minecraft_version")
 		releaseBuilder.body(releaseChangelog)
 		releaseBuilder.commitish(getBranch())
-		if (ext.releaseType != "stable") {
+		if (releaseType != "stable") {
 			releaseBuilder.prerelease(true)
 		}
 
