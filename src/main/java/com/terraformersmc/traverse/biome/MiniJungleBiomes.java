@@ -19,6 +19,8 @@ public class MiniJungleBiomes {
 			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_SEAGRASS)
 			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_TREES)
 			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ConfiguredFeatures.FLOWER_SWAMP)
+			.addDefaultAmbientSpawnEntries()
+			.addDefaultMonsterSpawnEntries()
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.PARROT, 40, 1, 2))
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.PANDA, 1, 1, 2))
 			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.CHICKEN, 10, 4, 4))
