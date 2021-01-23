@@ -28,11 +28,7 @@ ext.curseforgeDownloadLink = null
 ext.modrinthDownloadLink = null
 ext.githubDownloadLink = null
 
-task buildAndAttemptRelease {
-
-}
-
-void generateChangelog() {
+task generateChangelog {
 	def changes = StringBuilder.newInstance()
 	if (!project.hasProperty("lastTag") || !project.hasProperty("currentTag")) {
 		println "Missing lastTag or currentTag parameters, aborting changelog creation"
@@ -88,14 +84,6 @@ void generateChangelog() {
 	println "Changelog:"
 	releaseChangelog = changes.toString()
 	println releaseChangelog
-}
-
-buildAndAttemptRelease {
-	generateChangelog()
-	dependsOn tasks.getByName("curseforge")
-	dependsOn tasks.getByName("github")
-	dependsOn tasks.getByName("publishModrinth")
-	dependsOn build
 }
 
 curseforge {
