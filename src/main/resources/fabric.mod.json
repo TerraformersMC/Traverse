@@ -4,7 +4,7 @@
   "name": "Traverse",
   "version": "$version",
   "environment": "*",
-  "license": "LGPL-3.0",
+  "license": "LGPL-3.0-only",
   "icon": "assets/traverse/icon.png",
   "entrypoints": {
     "main": [
