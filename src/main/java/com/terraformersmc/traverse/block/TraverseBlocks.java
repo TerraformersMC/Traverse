@@ -49,10 +49,10 @@ public class TraverseBlocks {
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.FIR_TREE)), ItemGroup.DECORATIONS);
-	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", createLog(MaterialColor.BROWN, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
-	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MaterialColor.WOOD, MaterialColor.WOOD), ItemGroup.BUILDING_BLOCKS);
-	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MaterialColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
-	public static final Block FIR_WOOD = add("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MaterialColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", createLog(MapColor.BROWN, MapColor.OAK_TAN), ItemGroup.BUILDING_BLOCKS);
+	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MapColor.OAK_TAN, MapColor.OAK_TAN), ItemGroup.BUILDING_BLOCKS);
+	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
+	public static final Block FIR_WOOD = add("fir_wood", new StrippableLogBlock(() -> STRIPPED_FIR_WOOD, MapColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LEAVES = add("fir_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.HOES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)), ItemGroup.DECORATIONS);
 	public static final Block FIR_SLAB = add("fir_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_PRESSURE_PLATE = add("fir_pressure_plate", new TerraformPressurePlateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).breakByTool(FabricToolTags.AXES)), ItemGroup.REDSTONE);
@@ -134,8 +134,8 @@ public class TraverseBlocks {
 	}
 
 
-	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MaterialColor> materialColor)`
-	private static PillarBlock createLog(MaterialColor topColor, MaterialColor sideColor) {
+	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MapColor> mapColor)`
+	private static PillarBlock createLog(MapColor topColor, MapColor sideColor) {
 		return new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
 	}
 

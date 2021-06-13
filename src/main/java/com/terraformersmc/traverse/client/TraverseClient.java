@@ -23,7 +23,7 @@ public class TraverseClient implements ClientModInitializer {
 	}
 
 	private static void registerEntityRenderers() {
-		EntityRendererRegistry.INSTANCE.register(TraverseEntities.FIR_BOAT, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
+		EntityRendererRegistry.INSTANCE.register(TraverseEntities.FIR_BOAT, context -> new BoatEntityRenderer(context));
 	}
 
 	private static void registerRenderLayers() {
