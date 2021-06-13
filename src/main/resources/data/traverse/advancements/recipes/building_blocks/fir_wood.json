@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "traverse:fir_log"
+            "items": [
+              "traverse:fir_log"
+            ]
           }
         ]
       }
