@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:brown_autumnal_leaves",
+    "traverse:red_autumnal_leaves",
+    "traverse:yellow_autumnal_leaves",
+    "traverse:orange_autumnal_leaves",
+    "traverse:fir_leaves"
+  ]
+}

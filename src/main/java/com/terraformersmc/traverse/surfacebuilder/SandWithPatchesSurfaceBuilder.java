@@ -19,11 +19,11 @@ public class SandWithPatchesSurfaceBuilder extends SurfaceBuilder<TernarySurface
 	}
 
 	@Override
-	public void generate(Random random, Chunk chunk, Biome biome, int int_1, int int_2, int int_3, double noise, BlockState blockState_1, BlockState blockState_2, int int_4, long long_1, TernarySurfaceConfig config) {
+	public void generate(Random random, Chunk chunk, Biome biome, int int_1, int int_2, int int_3, double noise, BlockState blockState_1, BlockState blockState_2, int int_4, int int_5, long long_1, TernarySurfaceConfig config) {
 		if (noise > threshold) {
-			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, long_1, config);
+			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, int_5, long_1, config);
 		} else {
-			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, long_1, SurfaceBuilder.SAND_CONFIG);
+			SurfaceBuilder.DEFAULT.generate(random, chunk, biome, int_1, int_2, int_3, noise, blockState_1, blockState_2, int_4, int_5, long_1, SurfaceBuilder.SAND_CONFIG);
 		}
 
 	}
