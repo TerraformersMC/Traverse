@@ -33,7 +33,7 @@ public class TraverseFeatureConfigs {
 			new StraightTrunkPlacer(15, 15, 4),
 			new SimpleBlockStateProvider(TraverseBlocks.FIR_LEAVES.getDefaultState()),
 			new SimpleBlockStateProvider(TraverseBlocks.FIR_SAPLING.getDefaultState()),
-			new SpruceFoliagePlacer(UniformIntProvider.create(1, 2), UniformIntProvider.create(0, 2), UniformIntProvider.create(3, 5)),
+			new SpruceFoliagePlacer(UniformIntProvider.create(1, 3), UniformIntProvider.create(0, 2), UniformIntProvider.create(3, 8)),
 			new TwoLayersFeatureSize(2, 0, 2)
 	).ignoreVines().build();
 	public static final TreeFeatureConfig TALL_SWAMP_TREE_CONFIG = new TreeFeatureConfig.Builder(
@@ -54,7 +54,7 @@ public class TraverseFeatureConfigs {
 				new StraightTrunkPlacer(height, 2, 0),
 				new SimpleBlockStateProvider(leaves.getDefaultState()),
 				new SimpleBlockStateProvider(sapling.getDefaultState()),
-				new BlobFoliagePlacer(UniformIntProvider.create(0, 2), ConstantIntProvider.create(0), 3),
+				new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
 				new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines().build();
 	}
