@@ -4,20 +4,13 @@ import com.terraformersmc.terraform.leaves.ComposterRecipes;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.tree.block.TerraformSaplingBlock;
-import com.terraformersmc.terraform.wood.block.StrippableLogBlock;
-import com.terraformersmc.terraform.wood.block.TerraformButtonBlock;
-import com.terraformersmc.terraform.wood.block.TerraformDoorBlock;
-import com.terraformersmc.terraform.wood.block.TerraformPressurePlateBlock;
-import com.terraformersmc.terraform.wood.block.TerraformStairsBlock;
-import com.terraformersmc.terraform.wood.block.TerraformTrapdoorBlock;
+import com.terraformersmc.terraform.wood.block.*;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -49,6 +42,7 @@ public class TraverseBlocks {
 
 	public static final Block FIR_PLANKS = add("fir_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_SAPLING = add("fir_sapling", new TerraformSaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.FIR_TREE)), ItemGroup.DECORATIONS);
+
 	public static final Block STRIPPED_FIR_LOG = add("stripped_fir_log", createLog(MapColor.BROWN, MapColor.OAK_TAN), ItemGroup.BUILDING_BLOCKS);
 	public static final Block STRIPPED_FIR_WOOD = add("stripped_fir_wood", createLog(MapColor.OAK_TAN, MapColor.OAK_TAN), ItemGroup.BUILDING_BLOCKS);
 	public static final Block FIR_LOG = add("fir_log", new StrippableLogBlock(() -> STRIPPED_FIR_LOG, MapColor.BROWN, FabricBlockSettings.copyOf(Blocks.DARK_OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
@@ -142,6 +136,7 @@ public class TraverseBlocks {
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
 		return false;
 	}
+
 	public static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
 		return type == EntityType.OCELOT || type == EntityType.PARROT;
 	}

@@ -14,7 +14,7 @@ public class TraverseSaplingGenerator extends SaplingGenerator {
 		this.tree = tree;
 	}
 
-	protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
+	protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bl) {
 		return this.tree.get();
 	}
 }
