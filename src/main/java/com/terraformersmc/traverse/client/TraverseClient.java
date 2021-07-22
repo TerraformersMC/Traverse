@@ -1,18 +1,15 @@
 package com.terraformersmc.traverse.client;
 
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.TexturedRenderLayers;
-import net.minecraft.client.render.entity.BoatEntityRenderer;
-import net.minecraft.client.util.SpriteIdentifier;
-import net.minecraft.util.Identifier;
-
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
+import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
+import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
-
-import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
-import com.terraformersmc.traverse.block.TraverseBlocks;
-import com.terraformersmc.traverse.entity.TraverseEntities;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
+import net.minecraft.client.util.SpriteIdentifier;
+import net.minecraft.util.Identifier;
 
 public class TraverseClient implements ClientModInitializer {
 	@Override
@@ -23,7 +20,7 @@ public class TraverseClient implements ClientModInitializer {
 	}
 
 	private static void registerEntityRenderers() {
-		EntityRendererRegistry.INSTANCE.register(TraverseEntities.FIR_BOAT, context -> new BoatEntityRenderer(context));
+		TerraformBoatClientHelper.registerModelLayer(new Identifier(Traverse.MOD_ID, "fir"));
 	}
 
 	private static void registerRenderLayers() {
