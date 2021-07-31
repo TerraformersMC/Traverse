@@ -43,7 +43,7 @@ public class TraverseFeatureConfigs {
 			new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), 3),
 			new TwoLayersFeatureSize(1, 0, 1)
 	).decorators(ImmutableList.of(new LeavesVineTreeDecorator())).build();
-	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new StraightTrunkPlacer(1, 0, 0), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_SAPLING.getDefaultState()), new BushFoliagePlacer(UniformIntProvider.create(0, 2), UniformIntProvider.create(0, 1), 2), new TwoLayersFeatureSize(0, 0, 0))).build();
+	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new StraightTrunkPlacer(1, 0, 0), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_SAPLING.getDefaultState()), new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build();
 	public static final TreeFeatureConfig FALLEN_OAK_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()), new FallenTrunkPlacer(3, 2, 0), new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Blocks.OAK_SAPLING.getDefaultState()), new NoneFoliagePlacer(), new TwoLayersFeatureSize(0, 0, 0)).build();
 	public static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
