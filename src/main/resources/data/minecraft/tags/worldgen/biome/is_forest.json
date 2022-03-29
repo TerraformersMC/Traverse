@@ -3,6 +3,8 @@
   "values": [
     "traverse:wooded_island",
     "traverse:woodlands",
-    "traverse:autumnal_woods"
+    "traverse:autumnal_woods",
+    "traverse:coniferous_forest",
+    "traverse:snowy_coniferous_forest"
   ]
 }

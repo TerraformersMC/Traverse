@@ -4,6 +4,8 @@
     "traverse:woodlands",
     "traverse:arid_highlands",
     "traverse:meadows",
-    "traverse:desert_shrubland"
+    "traverse:desert_shrubland",
+    "traverse:coniferous_forest",
+    "traverse:snowy_coniferous_forest"
   ]
 }

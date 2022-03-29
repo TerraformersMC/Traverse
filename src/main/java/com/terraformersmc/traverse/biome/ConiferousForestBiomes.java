@@ -1,78 +1,73 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
-import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
-import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
+
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
-import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class ConiferousForestBiomes {
-	private static final BiomeTemplate CONIFEROUS_FOREST_TEMPLATE = new BiomeTemplate(TraverseBiomes.BIOME_TEMPLATE.builder()
-			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
-			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.CONIFEROUS_TREES)
-			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
-			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
+	private static final Biome.Builder CONIFEROUS_FOREST_TEMPLATE = TraverseBiomes.BIOME_TEMPLATE
+			.generationSettings(generationSettings(false))
+			.spawnSettings(spawnSettings())
 			.category(Biome.Category.FOREST)
-			.addDefaultSpawnEntries()
-			.addSpawnEntry(new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4))
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338235)
-					.foliageColor(0x338235)
+					.foliageColor(0x338235).build()
 			)
 			.temperature(0.6F)
-			.downfall(0.9F)
-	);
+			.downfall(0.9F);
 
-	static final Biome CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(0.4F)
-			.scale(0.4F)
-			.playerSpawnFriendly()
+	static final Biome CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE
+			//.depth(0.4F)
+			//.scale(0.4F)
+			//.playerSpawnFriendly()
 			.build();
 
-	static final Biome CONIFEROUS_WOOODED_HILLS = CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(1F)
-			.scale(0.3F)
-			.build();
-
-	static final Biome HIGH_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE.builder()
+	/*static final Biome HIGH_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE.builder()
 			.depth(1.6F)
 			.scale(0.4F)
 			.temperature(0.3F)
-			.build();
+			.build();*/
 
-	private static final BiomeTemplate SNOWY_CONIFEROUS_FOREST_TEMPLATE = new BiomeTemplate(CONIFEROUS_FOREST_TEMPLATE.builder()
-			.addDefaultFeature(DefaultFeature.SWEET_BERRY_BUSHES_SNOWY)
+	static final Biome SNOWY_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE
+			.generationSettings(generationSettings(true))
 			.precipitation(Biome.Precipitation.SNOW)
 			.category(Biome.Category.TAIGA)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338251)
-					.foliageColor(0x338251)
+					.foliageColor(0x338251).build()
 			)
-			.temperature(-0.5F)
-	);
+			//.depth(0.4F)
+			//.scale(0.4F)
+			//.playerSpawnFriendly()
+			.temperature(-0.5F).build();
 
-	static final Biome SNOWY_CONIFEROUS_FOREST = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(0.4F)
-			.scale(0.4F)
-			.playerSpawnFriendly()
-			.build();
-
-	static final Biome SNOWY_CONIFEROUS_WOOODED_HILLS = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(1F)
-			.scale(0.3F)
-			.build();
-
-	static final Biome SNOWY_HIGH_CONIFEROUS_FOREST = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
+	/*static final Biome SNOWY_HIGH_CONIFEROUS_FOREST = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
 			.depth(1.6F)
 			.scale(0.4F)
 			.temperature(-0.6F)
-			.build();
+			.build();*/
+
+	private static GenerationSettings generationSettings(boolean snowy){
+		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
+		//DefaultBiomeFeatures.addDefaultLakes(builder);
+		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.CONIFEROUS_TREES);
+		if (snowy){
+			DefaultBiomeFeatures.addSweetBerryBushesSnowy(builder);
+		}
+		return builder.build();
+	}
+
+	private static SpawnSettings spawnSettings(){
+		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
+		return builder.build();
+	}
 }
