@@ -1,3 +1,4 @@
+/*
 package com.terraformersmc.traverse.surfacebuilder;
 
 import com.mojang.serialization.Codec;
@@ -30,3 +31,4 @@ public class SandWithPatchesSurfaceBuilder extends SurfaceBuilder<TernarySurface
 
 }
 
+*/

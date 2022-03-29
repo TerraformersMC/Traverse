@@ -1,14 +1,8 @@
 package com.terraformersmc.traverse.generation;
 
 import com.terraformersmc.terraform.config.BiomeConfig;
-import com.terraformersmc.terraform.config.BiomeConfigNode;
-import com.terraformersmc.terraform.overworldbiomes.OverworldBiomesExt;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
-import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 
 public class TraverseGeneration extends TraverseBiomes {
@@ -18,6 +12,7 @@ public class TraverseGeneration extends TraverseBiomes {
 	public static void register() {
 		config = Traverse.BIOME_CONFIG_HANDLER.getBiomeConfig();
 
+		/*
 		// Arid Highlands
 		addContinentalBiome(ARID_HIGHLANDS, OverworldClimate.DRY, 2);
 
@@ -95,11 +90,12 @@ public class TraverseGeneration extends TraverseBiomes {
 		addContinentalBiome(WOODLANDS, OverworldClimate.DRY, 1);
 		addContinentalBiome(WOODLANDS, OverworldClimate.COOL, 1);
 		addContinentalBiome(WOODLANDS, OverworldClimate.TEMPERATE, 1);
+		*/
 
 		Traverse.BIOME_CONFIG_HANDLER.save();
 	}
 
-	private static void addBiomeVariant(RegistryKey<Biome> parent, RegistryKey<Biome> biome, double defaultChance, OverworldClimate... climates) {
+	/*private static void addBiomeVariant(RegistryKey<Biome> parent, RegistryKey<Biome> biome, double defaultChance, OverworldClimate... climates) {
 		boolean enable = !config.isFrozen();
 
 		if (biome != null) {
@@ -123,6 +119,6 @@ public class TraverseGeneration extends TraverseBiomes {
 		if (enable && weight > 0.0) {
 			OverworldBiomes.addContinentalBiome(biome, climate, weight);
 		}
-	}
+	}*/
 
 }
