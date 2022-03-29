@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
@@ -36,7 +37,7 @@ public class AridHighlandsBiomes {
 		DefaultBiomeFeatures.addDefaultFlowers(builder);
 		DefaultBiomeFeatures.addSavannaGrass(builder);
 		DefaultBiomeFeatures.addSavannaTrees(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.ARID_SHRUBS);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.ARID_SHRUBS);
 		return builder.build();
 	}
 

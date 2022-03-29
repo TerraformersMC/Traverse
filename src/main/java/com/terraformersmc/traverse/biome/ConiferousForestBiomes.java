@@ -4,6 +4,7 @@ import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
 import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
@@ -16,7 +17,7 @@ import net.minecraft.world.gen.feature.Feature;
 public class ConiferousForestBiomes {
 	private static final BiomeTemplate CONIFEROUS_FOREST_TEMPLATE = new BiomeTemplate(TraverseBiomes.BIOME_TEMPLATE.builder()
 			.addDefaultFeatures(DefaultFeature.LAKES, DefaultFeature.FOREST_FLOWERS, DefaultFeature.FOREST_GRASS)
-			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.CONIFEROUS_TREES)
+			.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.CONIFEROUS_TREES)
 			.addStructureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
 			.category(Biome.Category.FOREST)

@@ -1,21 +1,13 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
-import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
-import com.terraformersmc.traverse.feature.TraverseFeatureConfigs;
-import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class DesertShrublandBiomes {
 	static final Biome DESERT_SHRUBLAND = TraverseBiomes.BIOME_TEMPLATE
@@ -39,7 +31,7 @@ public class DesertShrublandBiomes {
 		DefaultBiomeFeatures.addDesertFeatures(builder);
 		DefaultBiomeFeatures.addDefaultFlowers(builder);
 		DefaultBiomeFeatures.addDefaultGrass(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.DESERT_SHRUBS);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.DESERT_SHRUBS);
 		return builder.build();
 	}
 
