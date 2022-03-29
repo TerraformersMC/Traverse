@@ -4,17 +4,18 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
 public class TraverseSaplingGenerator extends SaplingGenerator {
-	public final Supplier<ConfiguredFeature<TreeFeatureConfig, ?>> tree;
+	public final Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> tree;
 
-	public TraverseSaplingGenerator(Supplier<ConfiguredFeature<TreeFeatureConfig, ?>> tree) {
+	public TraverseSaplingGenerator(Supplier<RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>>> tree) {
 		this.tree = tree;
 	}
 
-	protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bl) {
+	protected RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> getTreeFeature(Random random, boolean bl) {
 		return this.tree.get();
 	}
 }
