@@ -15,12 +15,14 @@ dependencies {
 	mod "fabric-loader", "net.fabricmc:fabric-loader:$project.loader_version"
 	mod "fabric-api", "net.fabricmc.fabric-api:fabric-api:$project.fabric_version"
 
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:$project.terraform_biome_builder_api_version"
+	//includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:$project.terraform_biome_builder_api_version"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-config-api-v1:$project.terraform_config_api_version"
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:$project.terraform_overworld_biome_extensions_api_version"
+	//includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:$project.terraform_overworld_biome_extensions_api_version"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-surfaces-api-v1:$project.terraform_surfaces_api_version"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:$project.terraform_tree_api_version"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:$project.terraform_wood_api_version"
+
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
 }
 
 repositories {
@@ -28,4 +30,5 @@ repositories {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/'
 	}
+	maven { url = 'https://maven.minecraftforge.net/' }
 }

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:woodlands",
+    "traverse:arid_highlands",
+    "traverse:meadows",
+    "traverse:desert_shrubland"
+  ]
+}

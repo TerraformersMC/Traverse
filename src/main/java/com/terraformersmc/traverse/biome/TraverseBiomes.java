@@ -1,9 +1,8 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
-import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
-import com.terraformersmc.terraform.biomebuilder.TerraformSlimeSpawnBiomes;
 import com.terraformersmc.traverse.Traverse;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -11,13 +10,14 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
 
 public class TraverseBiomes {
 
@@ -29,13 +29,54 @@ public class TraverseBiomes {
 
 	private static final Map<Identifier, Biome> BIOMES = new HashMap<>();
 
-	static final BiomeTemplate BIOME_TEMPLATE = new BiomeTemplate(TerraformBiomeBuilder.create()
-			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
-			.addDefaultFeatures(LAND_CARVERS, DEFAULT_UNDERGROUND_STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER)
-			.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD)
-			.addStructureFeature(ConfiguredStructureFeatures.MINESHAFT)
+	static final Biome.Builder BIOME_TEMPLATE = new Biome.Builder()
+			//.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
 			.precipitation(Biome.Precipitation.RAIN)
-			.effects(createDefaultBiomeEffects()));
+			.effects(createDefaultBiomeEffects().build());
+
+	public static GenerationSettings.Builder createDefaultGenerationSettings(){
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		DefaultBiomeFeatures.addLandCarvers(builder);
+		DefaultBiomeFeatures.addDungeons(builder);
+		DefaultBiomeFeatures.addMineables(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultVegetation(builder);
+		DefaultBiomeFeatures.addSprings(builder);
+		DefaultBiomeFeatures.addFrozenTopLayer(builder);
+		return builder;
+	}
+
+	public static SpawnSettings.Builder createDefaultSpawnSettings(){
+		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+		addDefaultCreatureSpawnEntries(spawnSettings);
+		addDefaultAmbientSpawnEntries(spawnSettings);
+		addDefaultMonsterSpawnEntries(spawnSettings);
+		return spawnSettings;
+	}
+
+	public static void addDefaultCreatureSpawnEntries(SpawnSettings.Builder builder) {
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 12, 4, 4))
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PIG, 10, 4, 4))
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.CHICKEN, 10, 4, 4))
+		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.COW, 8, 4, 4));
+	}
+
+	public static void addDefaultAmbientSpawnEntries(SpawnSettings.Builder builder) {
+		builder.spawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 8, 8));
+	}
+
+	public static void addDefaultMonsterSpawnEntries(SpawnSettings.Builder builder) {
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 95, 4, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 100, 4, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 100, 4, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 100, 4, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4))
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.WITCH, 5, 1, 1));
+	}
 
 	public static BiomeEffects.Builder createDefaultBiomeEffects() {
 		return new BiomeEffects.Builder()
@@ -78,7 +119,7 @@ public class TraverseBiomes {
 			BuiltinRegistries.add(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
 
-		TerraformSlimeSpawnBiomes.addSlimeSpawnBiome(LUSH_SWAMP);
+		//TerraformSlimeSpawnBiomes.addSlimeSpawnBiome(LUSH_SWAMP);
 	}
 
 }

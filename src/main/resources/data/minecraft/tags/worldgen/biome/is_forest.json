@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "traverse:wooded_island",
+    "traverse:woodlands",
+    "traverse:autumnal_woods"
+  ]
+}
