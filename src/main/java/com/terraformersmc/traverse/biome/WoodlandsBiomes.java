@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
@@ -31,7 +32,7 @@ public class WoodlandsBiomes {
 		//DefaultBiomeFeatures.addDefaultLakes(builder);
 		DefaultBiomeFeatures.addForestFlowers(builder);
 		DefaultBiomeFeatures.addForestGrass(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.WOODLANDS_TREES);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.WOODLANDS_TREES);
 		return builder.build();
 	}
 

@@ -7,14 +7,26 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.CountConfig;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.OreConfiguredFeatures;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.RandomFeatureConfig;
+import net.minecraft.world.gen.feature.RandomFeatureEntry;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
+import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.TreePlacedFeatures;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+
+import java.util.List;
 
 public class TraverseConfiguredFeatures {
 
-	/* Shrubs */
+
 	static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> OAK_SHRUB = register("oak_shrub", Feature.TREE, TraverseFeatureConfigs.OAK_SHRUB_CONFIG);
 
 	/* Autumnal Trees */
@@ -38,32 +50,18 @@ public class TraverseConfiguredFeatures {
 
 	/* Lush Vegetation */
 	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> LUSH_FLOWERS = register("lush_flowers", Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
-	public static final RegistryEntry<ConfiguredFeature<?, ?>> MEADOW_GRASS = register("meadow_grass", Feature.RANDOM_PATCH, VegetationConfiguredFeatures.GRASS_CONFIG);
-	public static final RegistryEntry<ConfiguredFeature<?, ?>> ROLLING_HILLS_GRASS = register("rolling_hills_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.Configs.GRASS_CONFIG);
+	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> MEADOW_GRASS = register("meadow_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32));
+	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> ROLLING_HILLS_GRASS = register("rolling_hills_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32));
 
 	/* Mini Jungle */
-	public static final ConfiguredFeature<?, ?> MINI_JUNGLE_SEAGRASS = register("mini_jungle_seagrass", ConfiguredFeatures.SEAGRASS_SWAMP.decorate(ConfiguredFeatures.Decorators.TOP_SOLID_HEIGHTMAP));
-	public static final ConfiguredFeature<?, ?> MINI_JUNGLE_TREES = register("mini_jungle_trees", Feature.RANDOM_SELECTOR.configure(
+	public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> MINI_JUNGLE_TREES = register("mini_jungle_trees", Feature.RANDOM_SELECTOR,
 			new RandomFeatureConfig(
-					ImmutableList.of(ConfiguredFeatures.FANCY_OAK.withChance(0.1F)),
-					ConfiguredFeatures.JUNGLE_TREE
-			))
-			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP)
-			.decorate(Decorator.COUNT_EXTRA.configure(
-					new CountExtraDecoratorConfig(50, 0.1F, 1))));
+					ImmutableList.of(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_CHECKED,0.1F)),
+					TreePlacedFeatures.JUNGLE_TREE
+			));
 
 	/* Rocky Edge */
-	public static final ConfiguredFeature<?, ?> ROCKY_EDGE_BOULDER = register("rocky_edge_boulder", Feature.FOREST_ROCK.configure(new SingleStateFeatureConfig(Blocks.COBBLESTONE.getDefaultState())).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).repeatRandomly(2));
-
-	/* Woodlands */
-	public static final ConfiguredFeature<?, ?> WOODLANDS_TREES = register("woodlands_trees", Feature.RANDOM_SELECTOR.configure(
-			new RandomFeatureConfig(
-					ImmutableList.of(
-							Feature.TREE.configure(TraverseFeatureConfigs.OAK_SHRUB_CONFIG).withChance(0.2F),
-							Feature.TREE.configure(TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG).withChance(0.3F)
-					), ConfiguredFeatures.OAK))
-			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP)
-			.decorate(Decorator.COUNT.configure(new CountConfig(7))));
+	public static final RegistryEntry<ConfiguredFeature<SingleStateFeatureConfig, ?>> ROCKY_EDGE_BOULDER = register("rocky_edge_boulder", Feature.FOREST_ROCK, new SingleStateFeatureConfig(Blocks.COBBLESTONE.getDefaultState()));
 
 	static  <FC extends FeatureConfig, F extends Feature<FC>> RegistryEntry<ConfiguredFeature<FC, ?>> register(String id, F feature, FC config) {
 		return register(id, new ConfiguredFeature<>(feature, config));

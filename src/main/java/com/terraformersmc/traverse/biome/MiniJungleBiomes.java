@@ -1,6 +1,7 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
@@ -31,8 +32,8 @@ public class MiniJungleBiomes {
 		//DefaultBiomeFeatures.addJungleVegetation(builder);
 		DefaultBiomeFeatures.addExtraDefaultFlowers(builder);
 		DefaultBiomeFeatures.addBamboo(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_SEAGRASS)
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraverseConfiguredFeatures.MINI_JUNGLE_TREES)
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.MINI_JUNGLE_SEAGRASS);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.MINI_JUNGLE_TREES);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FLOWER_SWAMP);
 		return builder.build();
 	}

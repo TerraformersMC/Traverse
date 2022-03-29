@@ -3,6 +3,7 @@ package com.terraformersmc.traverse.biome;
 import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
 import com.terraformersmc.terraform.biomebuilder.DefaultFeature;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -38,7 +39,7 @@ public class PlainsPlateauBiomes {
 			.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.STONE_CONFIG)
 			.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS)
 			.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL_MOUNTAIN)
-			.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, TraverseConfiguredFeatures.ROCKY_EDGE_BOULDER)
+			.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, TraversePlacedFeatures.ROCKY_EDGE_BOULDER)
 			.category(Biome.Category.PLAINS)
 			.depth(0.9F)
 			.build();
