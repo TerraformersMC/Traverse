@@ -3,6 +3,7 @@ package com.terraformersmc.traverse;
 import com.terraformersmc.terraform.config.BiomeConfigHandler;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.generation.TraverseGeneration;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
@@ -27,6 +28,7 @@ public class Traverse implements ModInitializer, TerraBlenderApi {
 		TraverseBlocks.register();
 		TraverseBoatTypes.register();
 		TraverseSurfaceRules.register();
+		TraversePlacedFeatures.init();
 		TraverseBiomes.register();
 		TraverseGeneration.register();
 		TraverseVillagerTypes.register();

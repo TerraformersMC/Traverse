@@ -91,6 +91,9 @@ public class TraversePlacedFeatures {
 							), TreePlacedFeatures.OAK_CHECKED));
 	public static final RegistryEntry<PlacedFeature> WOODLANDS_TREES = createPlacedFeature("woodlands_trees", WOODLANDS_TREES_CONFIGURED, PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, SquarePlacementModifier.of(), CountPlacementModifier.of(7));
 
+	public static void init(){
+	}
+
 	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {
 		List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
 		list.add(BiomePlacementModifier.of());

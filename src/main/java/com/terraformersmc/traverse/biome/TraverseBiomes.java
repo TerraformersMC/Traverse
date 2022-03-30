@@ -46,6 +46,15 @@ public class TraverseBiomes {
 		return builder;
 	}
 
+	static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
+		DefaultBiomeFeatures.addLandCarvers(generationSettings);
+		DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
+		DefaultBiomeFeatures.addDungeons(generationSettings);
+		DefaultBiomeFeatures.addMineables(generationSettings);
+		DefaultBiomeFeatures.addSprings(generationSettings);
+		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+	}
+
 	public static SpawnSettings.Builder createDefaultSpawnSettings(){
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
 		addDefaultCreatureSpawnEntries(spawnSettings);

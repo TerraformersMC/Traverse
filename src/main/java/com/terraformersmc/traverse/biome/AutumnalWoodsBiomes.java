@@ -6,10 +6,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class AutumnalWoodsBiomes {
 
@@ -34,11 +38,16 @@ public class AutumnalWoodsBiomes {
 			.build();*/
 
 	private static GenerationSettings generationSettings(){
-		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
-		//DefaultBiomeFeatures.addDefaultLakes(builder);
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addForestFlowers(builder);
-		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.AUTUMNAL_TREES);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultVegetation(builder);
 		return builder.build();
 	}
 

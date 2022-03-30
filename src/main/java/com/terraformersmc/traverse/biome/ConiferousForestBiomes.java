@@ -6,9 +6,12 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class ConiferousForestBiomes {
 	private static final Biome.Builder CONIFEROUS_FOREST_TEMPLATE = TraverseBiomes.BIOME_TEMPLATE
@@ -54,13 +57,19 @@ public class ConiferousForestBiomes {
 			.build();*/
 
 	private static GenerationSettings generationSettings(boolean snowy){
-		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
-		//DefaultBiomeFeatures.addDefaultLakes(builder);
-		DefaultBiomeFeatures.addForestFlowers(builder);
-		DefaultBiomeFeatures.addForestGrass(builder);
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		addBasicFeatures(builder);
+		DefaultBiomeFeatures.addLargeFerns(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.CONIFEROUS_TREES);
-		if (snowy){
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addTaigaGrass(builder);
+		DefaultBiomeFeatures.addDefaultVegetation(builder);
+		if (snowy) {
 			DefaultBiomeFeatures.addSweetBerryBushesSnowy(builder);
+		} else {
+			DefaultBiomeFeatures.addSweetBerryBushes(builder);
 		}
 		return builder.build();
 	}

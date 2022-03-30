@@ -5,9 +5,12 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class DesertShrublandBiomes {
 	static final Biome DESERT_SHRUBLAND = TraverseBiomes.BIOME_TEMPLATE
@@ -23,13 +26,17 @@ public class DesertShrublandBiomes {
 			.build();
 
 	private static GenerationSettings generationSettings(){
-		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
-		//DefaultBiomeFeatures.addDesertLakes(builder);
-		DefaultBiomeFeatures.addDesertDeadBushes(builder);
-		DefaultBiomeFeatures.addDesertVegetation(builder);
-		DefaultBiomeFeatures.addDesertFeatures(builder);
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		DefaultBiomeFeatures.addFossils(builder);
+		addBasicFeatures(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
 		DefaultBiomeFeatures.addDefaultFlowers(builder);
 		DefaultBiomeFeatures.addDefaultGrass(builder);
+		DefaultBiomeFeatures.addDesertDeadBushes(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDesertVegetation(builder);
+		DefaultBiomeFeatures.addDesertFeatures(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.DESERT_SHRUBS);
 		return builder.build();
 	}

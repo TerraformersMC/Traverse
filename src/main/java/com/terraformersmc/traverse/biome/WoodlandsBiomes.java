@@ -11,6 +11,8 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
+
 public class WoodlandsBiomes {
 	static final Biome WOODLANDS = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings())
@@ -28,11 +30,16 @@ public class WoodlandsBiomes {
 			.build();
 
 	private static GenerationSettings generationSettings(){
-		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
-		//DefaultBiomeFeatures.addDefaultLakes(builder);
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addForestFlowers(builder);
-		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.WOODLANDS_TREES);
+		DefaultBiomeFeatures.addDefaultFlowers(builder);
+		DefaultBiomeFeatures.addForestGrass(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultVegetation(builder);
 		return builder.build();
 	}
 
