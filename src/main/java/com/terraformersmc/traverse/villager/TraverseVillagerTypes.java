@@ -14,7 +14,7 @@ public class TraverseVillagerTypes extends TraverseBiomes {
 		register(VillagerType.PLAINS, CONIFEROUS_FOREST/*, CONIFEROUS_WOODED_HILLS, HIGH_CONIFEROUS_FOREST*/);
 		register(VillagerType.DESERT, DESERT_SHRUBLAND);
 		register(VillagerType.SWAMP, LUSH_SWAMP);
-		register(VillagerType.PLAINS, MEADOW);
+		register(VillagerType.PLAINS, FLATLANDS);
 		register(VillagerType.JUNGLE, MINI_JUNGLE);
 		register(VillagerType.PLAINS, PLAINS_PLATEAU/*, ROCKY_EDGE*/, WOODED_PLATEAU);
 		register(VillagerType.PLAINS, ROLLING_HILLS);

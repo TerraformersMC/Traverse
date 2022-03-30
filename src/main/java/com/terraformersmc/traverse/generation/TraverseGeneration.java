@@ -29,7 +29,7 @@ public class TraverseGeneration extends Region {
 			builder.replaceBiome(BiomeKeys.FOREST, TraverseBiomes.AUTUMNAL_WOODS);
 			builder.replaceBiome(BiomeKeys.TAIGA, TraverseBiomes.CONIFEROUS_FOREST);
 			builder.replaceBiome(BiomeKeys.BIRCH_FOREST, TraverseBiomes.WOODLANDS);
-			//builder.replaceBiome(BiomeKeys.DESERT, TraverseBiomes.DESERT_SHRUBLAND);
+			builder.replaceBiome(BiomeKeys.DESERT, TraverseBiomes.DESERT_SHRUBLAND);
 		});
 	}
 

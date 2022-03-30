@@ -1,18 +1,12 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
-public class MeadowBiomes {
-	static final Biome MEADOW = TraverseBiomes.BIOME_TEMPLATE
+public class FlatlandsBiomes {
+	static final Biome FLATLANDS = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings())
 			.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
 			.category(Biome.Category.PLAINS)
