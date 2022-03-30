@@ -21,12 +21,12 @@ public abstract class MinecraftServerMixin {
     @Shadow public abstract SaveProperties getSaveProperties();
 
     @Inject(method = "createWorlds", at = @At("RETURN"))
-    private void cinderscapes_hackyAddSurfaceRules(WorldGenerationProgressListener $$0, CallbackInfo ci) {
-        cinderscapes_appendSurfaceRule(this.getSaveProperties(), DimensionOptions.OVERWORLD, TraverseSurfaceRules.TRAVERSE_MATERIAL_RULE);
+    private void traverse_hackyAddSurfaceRules(WorldGenerationProgressListener $$0, CallbackInfo ci) {
+        traverse_appendSurfaceRule(this.getSaveProperties(), DimensionOptions.OVERWORLD, TraverseSurfaceRules.TRAVERSE_MATERIAL_RULE);
 
     }
 
-    private static void cinderscapes_appendSurfaceRule(SaveProperties worldData, RegistryKey<DimensionOptions> optionsRegistryKey, MaterialRules.MaterialRule materialRule) {
+    private static void traverse_appendSurfaceRule(SaveProperties worldData, RegistryKey<DimensionOptions> optionsRegistryKey, MaterialRules.MaterialRule materialRule) {
         if (worldData == null) { // For some reason mods can make world data null as seen in some user crash logs, this makes that issue clearer for us.
             throw new NullPointerException("Minecraft server's world data is null, this should be impossible...");
         }
