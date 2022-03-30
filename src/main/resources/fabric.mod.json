@@ -10,18 +10,27 @@
     "main": [
       "com.terraformersmc.traverse.Traverse"
     ],
+    "terrablender": [
+      "com.terraformersmc.traverse.Traverse"
+    ],
     "client": [
       "com.terraformersmc.traverse.client.TraverseClient"
     ]
   },
-  "accessWidener": "traverse.accesswidener",
+  "mixins": [
+    "traverse.mixins.json"
+  ],
+  "accessWidener": "traverse.aw",
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
     "fabricloader": ">=0.7.2",
-    "fabric": ">=0.4.1"
+    "fabric": ">=0.4.1",
+    "minecraft": ">=1.18.2",
+    "java": ">=17",
+    "terrablender": "*"
   },
   "authors": [
     "Prospector",

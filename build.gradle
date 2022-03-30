@@ -5,7 +5,7 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.3/ferry.gradle'
 
 loom {
-	accessWidenerPath = file("src/main/resources/traverse.accesswidener")
+	accessWidenerPath = file("src/main/resources/traverse.aw")
 }
 
 dependencies {

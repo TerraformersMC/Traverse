@@ -5,7 +5,7 @@ import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.generation.TraverseGeneration;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
-import com.terraformersmc.traverse.surfacebuilder.TraverseSurfaceBuilders;
+import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -23,7 +23,7 @@ public class Traverse implements ModInitializer, TerraBlenderApi {
 	private static void register() {
 		TraverseBlocks.register();
 		TraverseBoatTypes.register();
-		TraverseSurfaceBuilders.register();
+		TraverseSurfaceRules.register();
 		TraverseBiomes.register();
 		TraverseGeneration.register();
 		TraverseVillagerTypes.register();

@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class WoodedIslandBiomes {
 	static final Biome WOODED_ISLAND = TraverseBiomes.BIOME_TEMPLATE
-			//.configureSurfaceBuilder(TraverseSurfaceBuilders.WOODED_ISLAND, SurfaceBuilder.GRASS_CONFIG)
+			//.configureSurfaceBuilder(TraverseSurfaceRules.WOODED_ISLAND, SurfaceBuilder.GRASS_CONFIG)
 			//.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
