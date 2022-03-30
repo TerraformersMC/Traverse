@@ -18,7 +18,6 @@ public class PlainsPlateauBiomes {
 			.downfall(0.2F);
 
 	static final Biome PLAINS_PLATEAU = PLATEAU_TEMPLATE
-			//.addDefaultFeatures(DefaultFeature.PLAINS_TALL_GRASS, DefaultFeature.PLAINS_FEATURES)
 			.generationSettings(generationSettings(() -> {
 				GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
 				//DefaultBiomeFeatures.addDefaultLakes(builder);

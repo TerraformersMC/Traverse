@@ -1,13 +1,37 @@
 package com.terraformersmc.traverse.generation;
 
+import com.mojang.datafixers.util.Pair;
 import com.terraformersmc.terraform.config.BiomeConfig;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.biome.source.util.MultiNoiseUtil;
+import terrablender.api.Region;
+import terrablender.api.RegionType;
 
-public class TraverseGeneration extends TraverseBiomes {
+import java.util.function.Consumer;
+
+public class TraverseGeneration extends Region {
 
 	private static BiomeConfig config;
+
+	public TraverseGeneration(Identifier name, int weight) {
+		super(name, RegionType.OVERWORLD, weight);
+	}
+
+	@Override
+	public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
+		this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
+			builder.replaceBiome(BiomeKeys.FOREST, TraverseBiomes.AUTUMNAL_WOODS);
+			builder.replaceBiome(BiomeKeys.TAIGA, TraverseBiomes.CONIFEROUS_FOREST);
+			builder.replaceBiome(BiomeKeys.BIRCH_FOREST, TraverseBiomes.WOODLANDS);
+			//builder.replaceBiome(BiomeKeys.DESERT, TraverseBiomes.DESERT_SHRUBLAND);
+		});
+	}
 
 	public static void register() {
 		config = Traverse.BIOME_CONFIG_HANDLER.getBiomeConfig();

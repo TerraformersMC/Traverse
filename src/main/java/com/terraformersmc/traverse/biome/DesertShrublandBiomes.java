@@ -11,7 +11,6 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class DesertShrublandBiomes {
 	static final Biome DESERT_SHRUBLAND = TraverseBiomes.BIOME_TEMPLATE
-			//.configureSurfaceBuilder(TraverseSurfaceRules.DESERT_SHRUBLAND, SurfaceBuilder.GRASS_CONFIG)
 			.generationSettings(generationSettings())
 			.precipitation(Biome.Precipitation.NONE)
 			.spawnSettings(spawnSettings())

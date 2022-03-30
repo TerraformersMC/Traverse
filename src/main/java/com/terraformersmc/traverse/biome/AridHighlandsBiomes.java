@@ -12,7 +12,6 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class AridHighlandsBiomes {
 	static final Biome ARID_HIGHLANDS = TraverseBiomes.BIOME_TEMPLATE
-			//.configureSurfaceBuilder(TraverseSurfaceRules.ARID_HIGHLANDS, SurfaceBuilder.GRASS_CONFIG)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
 			.precipitation(Biome.Precipitation.NONE)

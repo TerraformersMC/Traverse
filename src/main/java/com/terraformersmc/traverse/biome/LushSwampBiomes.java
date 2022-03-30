@@ -15,7 +15,6 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 public class LushSwampBiomes {
 
 	static final Biome LUSH_SWAMP = new Biome.Builder()
-			//.configureSurfaceBuilder(SurfaceBuilder.SWAMP, SurfaceBuilder.GRASS_CONFIG)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
 			.precipitation(Biome.Precipitation.RAIN)

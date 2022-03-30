@@ -17,9 +17,6 @@
       "com.terraformersmc.traverse.client.TraverseClient"
     ]
   },
-  "mixins": [
-    "traverse.mixins.json"
-  ],
   "accessWidener": "traverse.aw",
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
