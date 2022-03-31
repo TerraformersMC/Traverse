@@ -37,10 +37,10 @@ public class TraversePlacedFeatures {
 	public static final RegistryEntry<PlacedFeature> DESERT_SHRUBS = createPlacedFeature("desert_shrubs", TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, SquarePlacementModifier.of(), PlacedFeatures.createCountExtraModifier(1, 0.1f, 1));
 
 	/* Autumnal Trees */
-	private static final RegistryEntry<PlacedFeature> RED_AUTUMNAL_TREE = createPlacedFeature("red_autumnal_tree", TraverseConfiguredFeatures.RED_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> ORANGE_AUTUMNAL_TREE = createPlacedFeature("orange_autumnal_tree", TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> YELLOW_AUTUMNAL_TREE = createPlacedFeature("yellow_autumnal_tree", TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> BROWN_AUTUMNAL_TREE = createPlacedFeature("brown_autumnal_tree", TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE);
+	private static final RegistryEntry<PlacedFeature> RED_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("red_autumnal_tree", TraverseConfiguredFeatures.RED_AUTUMNAL_TREE);
+	private static final RegistryEntry<PlacedFeature> ORANGE_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("orange_autumnal_tree", TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE);
+	private static final RegistryEntry<PlacedFeature> YELLOW_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("yellow_autumnal_tree", TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE);
+	private static final RegistryEntry<PlacedFeature> BROWN_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("brown_autumnal_tree", TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE);
 	private static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> AUTUMNAL_TREES_CONFIGURED = register("autumnal_trees",
 			Feature.RANDOM_SELECTOR,
 			new RandomFeatureConfig(
@@ -86,8 +86,8 @@ public class TraversePlacedFeatures {
 	private static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> WOODLANDS_TREES_CONFIGURED = register("woodlands_trees", Feature.RANDOM_SELECTOR,
 					new RandomFeatureConfig(
 							ImmutableList.of(
-									new RandomFeatureEntry(createPlacedFeature("oak_shrub", TraverseConfiguredFeatures.OAK_SHRUB), 0.2F),
-									new RandomFeatureEntry(createPlacedFeature("fallen_oak_tree", register("fallen_aok_tree", Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG)), 0.3F)
+									new RandomFeatureEntry(createPlacedFeatureWithoutBiomeFilter("oak_shrub", TraverseConfiguredFeatures.OAK_SHRUB), 0.2F),
+									new RandomFeatureEntry(createPlacedFeatureWithoutBiomeFilter("fallen_oak_tree", register("fallen_aok_tree", Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG)), 0.3F)
 							), TreePlacedFeatures.OAK_CHECKED));
 	public static final RegistryEntry<PlacedFeature> WOODLANDS_TREES = createPlacedFeature("woodlands_trees", WOODLANDS_TREES_CONFIGURED, PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, SquarePlacementModifier.of(), CountPlacementModifier.of(7));
 
@@ -97,6 +97,11 @@ public class TraversePlacedFeatures {
 	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {
 		List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
 		list.add(BiomePlacementModifier.of());
+		return createPlacedFeature(id, feature, list);
+	}
+
+	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeatureWithoutBiomeFilter(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {
+		List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
 		return createPlacedFeature(id, feature, list);
 	}
 
