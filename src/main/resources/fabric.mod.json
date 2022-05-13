@@ -18,6 +18,9 @@
     ]
   },
   "accessWidener": "traverse.aw",
+  "mixins": [
+    "mixins.traverse.json"
+  ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
@@ -26,8 +29,7 @@
     "fabricloader": ">=0.7.2",
     "fabric": ">=0.4.1",
     "minecraft": ">=1.18.2",
-    "java": ">=17",
-    "terrablender": "*"
+    "java": ">=17"
   },
   "authors": [
     "Prospector",

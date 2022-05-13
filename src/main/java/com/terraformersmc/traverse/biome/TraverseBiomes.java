@@ -32,7 +32,7 @@ public class TraverseBiomes {
 			.precipitation(Biome.Precipitation.RAIN)
 			.effects(createDefaultBiomeEffects().build());
 
-	public static GenerationSettings.Builder createDefaultGenerationSettings(){
+	public static GenerationSettings.Builder createDefaultGenerationSettings() {
 		GenerationSettings.Builder builder = new GenerationSettings.Builder();
 		DefaultBiomeFeatures.addLandCarvers(builder);
 		DefaultBiomeFeatures.addDungeons(builder);
@@ -55,7 +55,7 @@ public class TraverseBiomes {
 		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
 	}
 
-	public static SpawnSettings.Builder createDefaultSpawnSettings(){
+	public static SpawnSettings.Builder createDefaultSpawnSettings() {
 		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
 		addDefaultCreatureSpawnEntries(spawnSettings);
 		addDefaultAmbientSpawnEntries(spawnSettings);
@@ -95,24 +95,13 @@ public class TraverseBiomes {
 
 	public static final RegistryKey<Biome> ARID_HIGHLANDS = add("arid_highlands", AridHighlandsBiomes.ARID_HIGHLANDS);
 	public static final RegistryKey<Biome> AUTUMNAL_WOODS = add("autumnal_woods", AutumnalWoodsBiomes.AUTUMNAL_WOODS);
-	//public static final RegistryKey<Biome> AUTUMNAL_WOODED_HILLS = add("autumnal_wooded_hills", AutumnalWoodsBiomes.AUTUMNAL_WOODED_HILLS);
-	public static final RegistryKey<Biome> CLIFFS = add("cliffs", CliffsBiomes.CLIFFS);
 	public static final RegistryKey<Biome> CONIFEROUS_FOREST = add("coniferous_forest", ConiferousForestBiomes.CONIFEROUS_FOREST);
-	//public static final RegistryKey<Biome> CONIFEROUS_WOODED_HILLS = add("coniferous_wooded_hills", ConiferousForestBiomes.CONIFEROUS_WOOODED_HILLS);
 	public static final RegistryKey<Biome> DESERT_SHRUBLAND = add("desert_shrubland", DesertShrublandBiomes.DESERT_SHRUBLAND);
-	//public static final RegistryKey<Biome> HIGH_CONIFEROUS_FOREST = add("high_coniferous_forest", ConiferousForestBiomes.HIGH_CONIFEROUS_FOREST);
 	public static final RegistryKey<Biome> LUSH_SWAMP = add("lush_swamp", LushSwampBiomes.LUSH_SWAMP);
 	public static final RegistryKey<Biome> FLATLANDS = add("flatlands", FlatlandsBiomes.FLATLANDS);
 	public static final RegistryKey<Biome> MINI_JUNGLE = add("mini_jungle", MiniJungleBiomes.MINI_JUNGLE);
-	public static final RegistryKey<Biome> PLAINS_PLATEAU = add("plains_plateau", PlainsPlateauBiomes.PLAINS_PLATEAU);
-	//public static final RegistryKey<Biome> ROCKY_EDGE = add("rocky_edge", PlainsPlateauBiomes.ROCKY_EDGE);
 	public static final RegistryKey<Biome> ROLLING_HILLS = add("rolling_hills", RollingHillsBiomes.ROLLING_HILLS);
-	public static final RegistryKey<Biome> SNOWY_CLIFFS = add("snowy_cliffs", CliffsBiomes.SNOWY_CLIFFS);
 	public static final RegistryKey<Biome> SNOWY_CONIFEROUS_FOREST = add("snowy_coniferous_forest", ConiferousForestBiomes.SNOWY_CONIFEROUS_FOREST);
-	//public static final RegistryKey<Biome> SNOWY_CONIFEROUS_WOODED_HILLS = add("snowy_coniferous_wooded_hills", ConiferousForestBiomes.SNOWY_CONIFEROUS_WOOODED_HILLS);
-	//public static final RegistryKey<Biome> SNOWY_HIGH_CONIFEROUS_FOREST = add("snowy_high_coniferous_forest", ConiferousForestBiomes.SNOWY_HIGH_CONIFEROUS_FOREST);
-	public static final RegistryKey<Biome> WOODED_ISLAND = add("wooded_island", WoodedIslandBiomes.WOODED_ISLAND);
-	public static final RegistryKey<Biome> WOODED_PLATEAU = add("wooded_plateau", PlainsPlateauBiomes.WOODED_PLATEAU);
 	public static final RegistryKey<Biome> WOODLANDS = add("woodlands", WoodlandsBiomes.WOODLANDS);
 
 	static RegistryKey<Biome> add(String name, Biome biome) {
@@ -125,8 +114,6 @@ public class TraverseBiomes {
 		for (Identifier id : BIOMES.keySet()) {
 			BuiltinRegistries.add(BuiltinRegistries.BIOME, id, BIOMES.get(id));
 		}
-
-		//TerraformSlimeSpawnBiomes.addSlimeSpawnBiome(LUSH_SWAMP);
 	}
 
 }
