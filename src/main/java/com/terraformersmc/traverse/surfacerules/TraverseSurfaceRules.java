@@ -1,6 +1,5 @@
 package com.terraformersmc.traverse.surfacerules;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.terraformersmc.traverse.Traverse;
@@ -11,15 +10,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules.MaterialRule;
 import net.minecraft.world.gen.surfacebuilder.VanillaSurfaceRules;
 
-import static net.minecraft.world.gen.surfacebuilder.MaterialRules.condition;
-import static net.minecraft.world.gen.surfacebuilder.MaterialRules.sequence;
+import static net.minecraft.world.gen.surfacebuilder.MaterialRules.*;
 
 public class TraverseSurfaceRules {
 
@@ -36,9 +33,7 @@ public class TraverseSurfaceRules {
 	}
 
 	public static MaterialRule createRules(){
-		MaterialRule defaultGrass = condition(MaterialRules.STONE_DEPTH_FLOOR, sequence(
-				condition(MaterialRules.water(-1, 0), block(Blocks.GRASS_BLOCK)),
-				block(Blocks.DIRT)));
+		MaterialRule defaultGrass = VanillaSurfaceRules.createDefaultRule(true, false, true);
 		MaterialRule sandAndSandstone = sequence(condition(MaterialRules.STONE_DEPTH_CEILING, block(Blocks.SANDSTONE)), block(Blocks.SAND));
 		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND), new SandWithPatchesSurfaceRule(1.5D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
 		MaterialRule aridHighlands = condition(MaterialRules.biome(TraverseBiomes.ARID_HIGHLANDS), new SandWithPatchesSurfaceRule(0.9D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
@@ -51,6 +46,9 @@ public class TraverseSurfaceRules {
 						condition(MaterialRules.aboveY(YOffset.fixed(62), 0),
 								condition(MaterialRules.not(MaterialRules.aboveY(YOffset.fixed(63), 0)),
 										condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0), block(Blocks.WATER))))));
+		// I have no idea how to do this...  Still trying to understand if it's even possible to make islands in 1.18.
+		//MaterialRule woodedIsland = condition(MaterialRules.biome(TraverseBiomes.WOODED_ISLAND),
+		//				condition(stoneDepth(62, true, VerticalSurfaceType.CEILING), block(Blocks.STONE)));
 
 		return sequence(condition(MaterialRules.surface(), sequence(desertShrubland, aridHighlands, cliffs, lushSwamp)), defaultGrass);
 	}

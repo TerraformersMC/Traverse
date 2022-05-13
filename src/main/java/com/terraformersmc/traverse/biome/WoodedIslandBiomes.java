@@ -8,6 +8,8 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
+
 public class WoodedIslandBiomes {
 	static final Biome WOODED_ISLAND = TraverseBiomes.BIOME_TEMPLATE
 			//.configureSurfaceBuilder(TraverseSurfaceRules.WOODED_ISLAND, SurfaceBuilder.GRASS_CONFIG)
@@ -21,12 +23,16 @@ public class WoodedIslandBiomes {
 			.downfall(0.8F)
 			.build();
 	private static GenerationSettings generationSettings(){
-		GenerationSettings.Builder builder = TraverseBiomes.createDefaultGenerationSettings();
-		//DefaultBiomeFeatures.addDefaultLakes(builder);
+		GenerationSettings.Builder builder = new GenerationSettings.Builder();
+		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addForestFlowers(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addDefaultDisks(builder);
+		DefaultBiomeFeatures.addForestTrees(builder);
 		DefaultBiomeFeatures.addDefaultFlowers(builder);
 		DefaultBiomeFeatures.addForestGrass(builder);
-		DefaultBiomeFeatures.addForestTrees(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addDefaultVegetation(builder);
 		DefaultBiomeFeatures.addLessKelp(builder);
 		return builder.build();
 	}
