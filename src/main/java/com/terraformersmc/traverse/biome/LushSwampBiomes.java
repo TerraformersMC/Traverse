@@ -1,6 +1,5 @@
 package com.terraformersmc.traverse.biome;
 
-import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -10,7 +9,8 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.OceanPlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+
+import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class LushSwampBiomes {
 
@@ -32,24 +32,15 @@ public class LushSwampBiomes {
 
 	public static GenerationSettings generationSettings(){
 		GenerationSettings.Builder builder = new GenerationSettings.Builder();
-		DefaultBiomeFeatures.addLandCarvers(builder);
-		DefaultBiomeFeatures.addDungeons(builder);
-		DefaultBiomeFeatures.addMineables(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addDefaultMushrooms(builder);
-		DefaultBiomeFeatures.addDefaultVegetation(builder);
-		DefaultBiomeFeatures.addSprings(builder);
-		DefaultBiomeFeatures.addFrozenTopLayer(builder);
-		//DefaultBiomeFeatures.addLakes();
-		DefaultBiomeFeatures.addSwampVegetation(builder);
 		DefaultBiomeFeatures.addFossils(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_SWAMP);
+		addBasicFeatures(builder);
+		DefaultBiomeFeatures.addDefaultOres(builder);
+		DefaultBiomeFeatures.addClayDisk(builder);
 		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.LUSH_SWAMP_TREES);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.FLOWER_SWAMP);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_WATERLILY);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.BROWN_MUSHROOM_SWAMP);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.RED_MUSHROOM_SWAMP);
+		DefaultBiomeFeatures.addSwampFeatures(builder);
+		DefaultBiomeFeatures.addDefaultMushrooms(builder);
+		DefaultBiomeFeatures.addSwampVegetation(builder);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_SWAMP);
 		return builder.build();
 	}
 

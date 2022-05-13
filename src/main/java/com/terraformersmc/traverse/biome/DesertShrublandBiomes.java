@@ -5,7 +5,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
@@ -31,13 +30,13 @@ public class DesertShrublandBiomes {
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addDefaultOres(builder);
 		DefaultBiomeFeatures.addDefaultDisks(builder);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.DESERT_SHRUBS);
 		DefaultBiomeFeatures.addDefaultFlowers(builder);
 		DefaultBiomeFeatures.addDefaultGrass(builder);
 		DefaultBiomeFeatures.addDesertDeadBushes(builder);
 		DefaultBiomeFeatures.addDefaultMushrooms(builder);
 		DefaultBiomeFeatures.addDesertVegetation(builder);
 		DefaultBiomeFeatures.addDesertFeatures(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.DESERT_SHRUBS);
 		return builder.build();
 	}
 
