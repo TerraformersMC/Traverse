@@ -10,9 +10,6 @@
     "main": [
       "com.terraformersmc.traverse.Traverse"
     ],
-    "terrablender": [
-      "com.terraformersmc.traverse.Traverse"
-    ],
     "client": [
       "com.terraformersmc.traverse.client.TraverseClient"
     ]
