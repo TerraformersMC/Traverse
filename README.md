@@ -1,5 +1,7 @@
 [![Traverse](https://i.imgur.com/ezG6I1H.png)](https://www.curseforge.com/minecraft/mc-mods/traverse)
 
+### NOTE: Traverse for 1.18.2 is in ALPHA. Biomes are not currently generating in new chunks, but the alpha should allow you to upgrade your existing Traverse worlds to 1.18.2. As always, make sure to make backups and report any issues you find
+
 <p align="center">
 Traverse aims to expand upon, but not replace or overshadow, Minecraft biomes. Traverse embraces the simplistic nature of many vanilla biomes and the goal is to have the biomes fit in just right so that Mojang could add them into the base game and nobody would complain that they felt out of place.
 </p>
