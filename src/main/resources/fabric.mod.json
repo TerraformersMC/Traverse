@@ -12,6 +12,9 @@
     ],
     "client": [
       "com.terraformersmc.traverse.client.TraverseClient"
+    ],
+    "fabric-datagen": [
+      "com.terraformersmc.traverse.data.TraverseDatagen"
     ]
   },
   "accessWidener": "traverse.aw",
