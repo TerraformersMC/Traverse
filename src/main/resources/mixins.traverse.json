@@ -9,13 +9,12 @@
   "mixins": [
     "ChunkGeneratorSettingsAccessor",
     "MinecraftServerMixin",
-    "MixinBiomeSource",
     "MixinChunkHeightAndBiomeFix",
     "MixinLevelStorageSession",
-    "MixinMultiNoiseBiomeSource",
     "MixinSchemas",
     "MixinServerWorld",
     "MixinSlimeEntity",
+    "MixinVanillaBiomeParameters",
     "NoiseChunkGeneratorAccessor"
   ]
 }
