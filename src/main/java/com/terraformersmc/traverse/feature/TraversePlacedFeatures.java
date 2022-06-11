@@ -87,7 +87,7 @@ public class TraversePlacedFeatures {
 							), TreePlacedFeatures.OAK_CHECKED));
 	public static final RegistryEntry<PlacedFeature> WOODLANDS_TREES = createPlacedFeature("woodlands_trees", WOODLANDS_TREES_CONFIGURED, CountPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector())));
 
-	public static void init(){
+	public static void init() {
 	}
 
 	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {

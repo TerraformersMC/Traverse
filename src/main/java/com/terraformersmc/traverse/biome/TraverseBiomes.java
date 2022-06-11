@@ -1,6 +1,12 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.Traverse;
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.impl.biome.modification.BiomeSelectionContextImpl;
+import net.fabricmc.fabric.impl.registry.sync.FabricRegistry;
+import net.fabricmc.fabric.impl.resource.loader.FabricModResourcePack;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
@@ -8,10 +14,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.*;
+import net.minecraft.world.biome.source.BiomeAccess;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 import java.util.HashMap;
@@ -25,7 +29,7 @@ public class TraverseBiomes {
 		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
 	}
 
-	private static final Map<Identifier, Biome> BIOMES = new HashMap<>();
+	public static final Map<RegistryKey<Biome>, Biome> BIOMES = new HashMap<>();
 
 	static final Biome.Builder BIOME_TEMPLATE = new Biome.Builder()
 			//.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
@@ -93,26 +97,33 @@ public class TraverseBiomes {
 				.fogColor(0xC0D8FF);
 	}
 
-	public static final RegistryKey<Biome> ARID_HIGHLANDS = add("arid_highlands", AridHighlandsBiomes.ARID_HIGHLANDS);
+//	public static final RegistryKey<Biome> ARID_HIGHLANDS = add("arid_highlands", AridHighlandsBiomes.ARID_HIGHLANDS);
 	public static final RegistryKey<Biome> AUTUMNAL_WOODS = add("autumnal_woods", AutumnalWoodsBiomes.AUTUMNAL_WOODS);
 	public static final RegistryKey<Biome> CONIFEROUS_FOREST = add("coniferous_forest", ConiferousForestBiomes.CONIFEROUS_FOREST);
 	public static final RegistryKey<Biome> DESERT_SHRUBLAND = add("desert_shrubland", DesertShrublandBiomes.DESERT_SHRUBLAND);
 	public static final RegistryKey<Biome> LUSH_SWAMP = add("lush_swamp", LushSwampBiomes.LUSH_SWAMP);
 	public static final RegistryKey<Biome> FLATLANDS = add("flatlands", FlatlandsBiomes.FLATLANDS);
-	public static final RegistryKey<Biome> MINI_JUNGLE = add("mini_jungle", MiniJungleBiomes.MINI_JUNGLE);
-	public static final RegistryKey<Biome> ROLLING_HILLS = add("rolling_hills", RollingHillsBiomes.ROLLING_HILLS);
+//	public static final RegistryKey<Biome> MINI_JUNGLE = add("mini_jungle", MiniJungleBiomes.MINI_JUNGLE);
+//	public static final RegistryKey<Biome> ROLLING_HILLS = add("rolling_hills", RollingHillsBiomes.ROLLING_HILLS);
 	public static final RegistryKey<Biome> SNOWY_CONIFEROUS_FOREST = add("snowy_coniferous_forest", ConiferousForestBiomes.SNOWY_CONIFEROUS_FOREST);
 	public static final RegistryKey<Biome> WOODLANDS = add("woodlands", WoodlandsBiomes.WOODLANDS);
 
-	static RegistryKey<Biome> add(String name, Biome biome) {
+	static RegistryKey<Biome> add(String name) {
 		Identifier id = new Identifier(Traverse.MOD_ID, name);
-		BIOMES.put(id, biome);
+
 		return RegistryKey.of(Registry.BIOME_KEY, id);
 	}
 
+	static RegistryKey<Biome> add(String name, Biome biome) {
+		RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Traverse.MOD_ID, name));
+		BIOMES.put(key, biome);
+		return key;
+	}
+
 	public static void register() {
-		for (Identifier id : BIOMES.keySet()) {
-			BuiltinRegistries.add(BuiltinRegistries.BIOME, id, BIOMES.get(id));
+		for (RegistryKey<Biome> key : BIOMES.keySet()) {
+			BuiltinRegistries.add(BuiltinRegistries.BIOME, key, BIOMES.get(key));
+			Traverse.LOGGER.debug("TraverseBiomes.register: '" + key.getValue() + "' received ID: " + BuiltinRegistries.BIOME.getRawId(BIOMES.get(key)));
 		}
 	}
 

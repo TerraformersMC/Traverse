@@ -14,7 +14,7 @@
       "com.terraformersmc.traverse.client.TraverseClient"
     ]
   },
-  "accessWidener": "traverse.aw",
+  "accessWidener": "traverse.accesswidener",
   "mixins": [
     "mixins.traverse.json"
   ],

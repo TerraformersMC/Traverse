@@ -14,11 +14,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Traverse implements ModInitializer/*, TerraBlenderApi*/ {
-
 	public static final String MOD_ID = "traverse";
-	public static final BiomeConfigHandler BIOME_CONFIG_HANDLER = new BiomeConfigHandler(MOD_ID);
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+//	public static final BiomeConfigHandler BIOME_CONFIG_HANDLER = new BiomeConfigHandler(MOD_ID);
 
 	private static void register() {
 		TraverseBlocks.register();

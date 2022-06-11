@@ -28,15 +28,15 @@ public class TraverseSurfaceRules {
 		return feature;
 	}*/
 
-	private static MaterialRule block(Block block){
+	private static MaterialRule block(Block block) {
 		return MaterialRules.block(block.getDefaultState());
 	}
 
-	public static MaterialRule createRules(){
+	public static MaterialRule createRules() {
 		MaterialRule defaultGrass = VanillaSurfaceRules.createDefaultRule(true, false, true);
 		MaterialRule sandAndSandstone = sequence(condition(MaterialRules.STONE_DEPTH_CEILING, block(Blocks.SANDSTONE)), block(Blocks.SAND));
 		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND), new SandWithPatchesSurfaceRule(1.5D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
-		MaterialRule aridHighlands = condition(MaterialRules.biome(TraverseBiomes.ARID_HIGHLANDS), new SandWithPatchesSurfaceRule(0.9D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
+//		MaterialRule aridHighlands = condition(MaterialRules.biome(TraverseBiomes.ARID_HIGHLANDS), new SandWithPatchesSurfaceRule(0.9D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
 		MaterialRule lushSwamp = condition(MaterialRules.biome(TraverseBiomes.LUSH_SWAMP),
 				condition(MaterialRules.STONE_DEPTH_FLOOR,
 						condition(MaterialRules.aboveY(YOffset.fixed(62), 0),
@@ -46,7 +46,7 @@ public class TraverseSurfaceRules {
 		//MaterialRule woodedIsland = condition(MaterialRules.biome(TraverseBiomes.WOODED_ISLAND),
 		//				condition(stoneDepth(62, true, VerticalSurfaceType.CEILING), block(Blocks.STONE)));
 
-		return sequence(condition(MaterialRules.surface(), sequence(desertShrubland, aridHighlands, lushSwamp)), defaultGrass);
+		return sequence(condition(MaterialRules.surface(), sequence(desertShrubland, /*aridHighlands, */lushSwamp)), defaultGrass);
 	}
 
 	public static void register() {
