@@ -34,14 +34,19 @@ public class TraverseSurfaceRules {
 
 	public static MaterialRule createRules() {
 		MaterialRule defaultGrass = VanillaSurfaceRules.createDefaultRule(true, false, true);
-		MaterialRule sandAndSandstone = sequence(condition(MaterialRules.STONE_DEPTH_CEILING, block(Blocks.SANDSTONE)), block(Blocks.SAND));
-		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND), new SandWithPatchesSurfaceRule(1.5D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
-//		MaterialRule aridHighlands = condition(MaterialRules.biome(TraverseBiomes.ARID_HIGHLANDS), new SandWithPatchesSurfaceRule(0.9D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
+		MaterialRule sandAndSandstone = sequence(condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH,
+				block(Blocks.SAND)), block(Blocks.SANDSTONE));
+
+		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND),
+				new SandWithPatchesSurfaceRule(1.5D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
+//		MaterialRule aridHighlands = condition(MaterialRules.biome(TraverseBiomes.ARID_HIGHLANDS),
+//				new SandWithPatchesSurfaceRule(0.9D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
 		MaterialRule lushSwamp = condition(MaterialRules.biome(TraverseBiomes.LUSH_SWAMP),
 				condition(MaterialRules.STONE_DEPTH_FLOOR,
 						condition(MaterialRules.aboveY(YOffset.fixed(62), 0),
 								condition(MaterialRules.not(MaterialRules.aboveY(YOffset.fixed(63), 0)),
-										condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0), block(Blocks.WATER))))));
+										condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0),
+												block(Blocks.WATER))))));
 		// I have no idea how to do this...  Still trying to understand if it's even possible to make islands in 1.18.
 		//MaterialRule woodedIsland = condition(MaterialRules.biome(TraverseBiomes.WOODED_ISLAND),
 		//				condition(stoneDepth(62, true, VerticalSurfaceType.CEILING), block(Blocks.STONE)));

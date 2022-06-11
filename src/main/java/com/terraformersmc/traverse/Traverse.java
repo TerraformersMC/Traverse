@@ -1,6 +1,5 @@
 package com.terraformersmc.traverse;
 
-import com.terraformersmc.terraform.config.BiomeConfigHandler;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
@@ -21,15 +20,12 @@ public class Traverse implements ModInitializer/*, TerraBlenderApi*/ {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-//	public static final BiomeConfigHandler BIOME_CONFIG_HANDLER = new BiomeConfigHandler(MOD_ID);
-
 	private static void register() {
 		TraverseBlocks.register();
 		TraverseBoatTypes.register();
 		TraverseSurfaceRules.register();
 		TraversePlacedFeatures.init();
 		TraverseBiomes.register();
-//		TraverseGeneration.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
 
@@ -45,9 +41,4 @@ public class Traverse implements ModInitializer/*, TerraBlenderApi*/ {
 		register();
 	}
 
-//	@Override
-//	public void onTerraBlenderInitialized() {
-//		Regions.register(new TraverseGeneration(new Identifier(MOD_ID, "overworld"), 5));
-//		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, TraverseSurfaceRules.createRules());
-//	}
 }

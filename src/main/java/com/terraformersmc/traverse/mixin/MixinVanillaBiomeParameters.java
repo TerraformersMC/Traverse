@@ -17,9 +17,10 @@ import java.util.Random;
 
 @Mixin(VanillaBiomeParameters.class)
 public abstract class MixinVanillaBiomeParameters {
-	// Provide a seed with some meat to make sure we get a pseudorandom distribution.
-	// I really want to XOR this with the world seed if I can figure out how to get the seed.
-	private final static Random random = new Random(1358858879180991417L);
+	// Provide a random seed with some meat to get a better initial pseudorandom values.
+	// I really wanted to XOR this with the world seed but there is no world when this runs.
+	// OTOH that means the results are deterministic so we know we get all the biomes.
+	private final static Random random = new Random(7357857879180991417L);
 
 	@Inject(at = @At(value = "RETURN"),
 			method = "getRegularBiome",
@@ -76,7 +77,7 @@ public abstract class MixinVanillaBiomeParameters {
 				newBiomeKey = Optional.of(TraverseBiomes.DESERT_SHRUBLAND);
 			} else if (biomeKey.equals(BiomeKeys.SWAMP) || (humidity == 4 && temperature > 2 && temperature < 5)) {
 				// 1.18.2, at least, does not give me a good place to hook in for SWAMP, so I'm winging it.
-				// I don't love this setting but it fits in OK, usually tucked along a jungle biome...
+				// I don't love this setting but it fits in OK, often tucked along a jungle biome or river...
 				newBiomeKey = Optional.of(TraverseBiomes.LUSH_SWAMP);
 			} else if (biomeKey.equals(BiomeKeys.PLAINS)) {
 				newBiomeKey = Optional.of(TraverseBiomes.FLATLANDS);
