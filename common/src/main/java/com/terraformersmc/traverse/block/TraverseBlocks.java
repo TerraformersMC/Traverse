@@ -127,7 +127,6 @@ public class TraverseBlocks {
 		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
 	}
 
-
 	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MapColor> mapColor)`
 	private static PillarBlock createLog(MapColor topColor, MapColor sideColor) {
 		return new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(2.0F).sounds(BlockSoundGroup.WOOD));
@@ -140,5 +139,4 @@ public class TraverseBlocks {
 	public static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
 		return type == EntityType.OCELOT || type == EntityType.PARROT;
 	}
-
 }

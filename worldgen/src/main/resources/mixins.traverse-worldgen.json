@@ -10,7 +10,6 @@
     "AccessorChunkGeneratorSettings",
     "AccessorNoiseChunkGenerator",
     "MixinMinecraftServer",
-    "MixinServerWorld",
     "MixinVanillaBiomeParameters"
   ]
 }

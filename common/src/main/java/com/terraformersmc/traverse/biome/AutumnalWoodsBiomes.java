@@ -23,15 +23,7 @@ public class AutumnalWoodsBiomes {
 			)
 			.temperature(0.8F)
 			.downfall(0.4F)
-			//.depth(0.2F)
-			//.scale(0.05F)
-			//.playerSpawnFriendly()
 			.build();
-
-	/*static final Biome AUTUMNAL_WOODED_HILLS = AUTUMNAL_WOODS_TEMPLATE.builder()
-			.depth(0.45F)
-			.scale(0.3F)
-			.build();*/
 
 	private static GenerationSettings generationSettings(){
 		GenerationSettings.Builder builder = new GenerationSettings.Builder();

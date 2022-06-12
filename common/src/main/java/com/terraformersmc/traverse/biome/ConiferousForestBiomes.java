@@ -1,12 +1,10 @@
 package com.terraformersmc.traverse.biome;
 
-
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
@@ -26,16 +24,7 @@ public class ConiferousForestBiomes {
 			.downfall(0.9F);
 
 	static final Biome CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE
-			//.depth(0.4F)
-			//.scale(0.4F)
-			//.playerSpawnFriendly()
 			.build();
-
-	/*static final Biome HIGH_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(1.6F)
-			.scale(0.4F)
-			.temperature(0.3F)
-			.build();*/
 
 	static final Biome SNOWY_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE
 			.generationSettings(generationSettings(true))
@@ -45,16 +34,7 @@ public class ConiferousForestBiomes {
 					.grassColor(0x338251)
 					.foliageColor(0x338251).build()
 			)
-			//.depth(0.4F)
-			//.scale(0.4F)
-			//.playerSpawnFriendly()
 			.temperature(-0.5F).build();
-
-	/*static final Biome SNOWY_HIGH_CONIFEROUS_FOREST = SNOWY_CONIFEROUS_FOREST_TEMPLATE.builder()
-			.depth(1.6F)
-			.scale(0.4F)
-			.temperature(-0.6F)
-			.build();*/
 
 	private static GenerationSettings generationSettings(boolean snowy){
 		GenerationSettings.Builder builder = new GenerationSettings.Builder();

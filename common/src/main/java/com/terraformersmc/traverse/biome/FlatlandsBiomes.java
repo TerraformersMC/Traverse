@@ -13,15 +13,12 @@ public class FlatlandsBiomes {
 			.generationSettings(generationSettings())
 			.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
 			.category(Biome.Category.PLAINS)
-			//.depth(0.1F)
-			//.scale(0F)
 			.temperature(0.8F)
 			.downfall(0.7F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x65CC53)
 					.foliageColor(0x5DD64A).build()
 			)
-			//.playerSpawnFriendly()
 			.build();
 
 	private static GenerationSettings generationSettings(){

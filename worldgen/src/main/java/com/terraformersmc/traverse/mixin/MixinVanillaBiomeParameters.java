@@ -17,7 +17,7 @@ import java.util.Random;
 
 @Mixin(VanillaBiomeParameters.class)
 public abstract class MixinVanillaBiomeParameters {
-	// Provide a random seed with some meat to get a better initial pseudorandom values.
+	// Seed with some meat to it for our RNG to get a better initial pseudorandom values.
 	// I really wanted to XOR this with the world seed but there is no world when this runs.
 	// OTOH that means the results are deterministic so we know we get all the biomes.
 	private final static Random random = new Random(7357857879180991417L);
@@ -66,7 +66,7 @@ public abstract class MixinVanillaBiomeParameters {
 		Optional<RegistryKey<Biome>> newBiomeKey = Optional.empty();
 
 		// 20% chance to replace vanilla biomes
-		if (biomeKey.getValue().getNamespace().equals("minecraft") && random.nextDouble() < 0.2f) {
+		if (biomeKey.getValue().getNamespace().equals("minecraft") && random.nextDouble() < 0.25f) {
 			if (biomeKey.equals(BiomeKeys.FOREST)) {
 				newBiomeKey = Optional.of(TraverseBiomes.AUTUMNAL_WOODS);
 			} else if (biomeKey.equals(BiomeKeys.TAIGA)) {

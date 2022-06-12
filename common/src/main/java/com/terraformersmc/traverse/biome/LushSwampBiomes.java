@@ -19,8 +19,6 @@ public class LushSwampBiomes {
 			.spawnSettings(spawnSettings())
 			.precipitation(Biome.Precipitation.RAIN)
 			.category(Biome.Category.SWAMP)
-			//.depth(-0.2F)
-			//.scale(0.1F)
 			.temperature(0.8F)
 			.downfall(0.9F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

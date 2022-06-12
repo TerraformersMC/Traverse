@@ -26,7 +26,6 @@ import java.util.List;
 
 public class TraverseConfiguredFeatures {
 
-
 	static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> OAK_SHRUB = register("oak_shrub", Feature.TREE, TraverseFeatureConfigs.OAK_SHRUB_CONFIG);
 
 	/* Autumnal Trees */

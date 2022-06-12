@@ -16,15 +16,12 @@ public class WoodlandsBiomes {
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
 			.category(Biome.Category.FOREST)
-			//.depth(0.15F)
-			//.scale(0.05F)
 			.temperature(0.8F)
 			.downfall(0.4F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x99A955)
 					.foliageColor(0x849E4A).build()
 			)
-			//.playerSpawnFriendly()
 			.build();
 
 	private static GenerationSettings generationSettings(){

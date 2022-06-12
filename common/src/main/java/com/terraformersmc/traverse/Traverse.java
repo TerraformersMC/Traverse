@@ -38,5 +38,4 @@ public class Traverse implements ModInitializer {
 	public void onInitialize() {
 		register();
 	}
-
 }

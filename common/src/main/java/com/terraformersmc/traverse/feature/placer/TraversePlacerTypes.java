@@ -10,5 +10,4 @@ public class TraversePlacerTypes {
 
 	public static void register() {
 	}
-
 }
