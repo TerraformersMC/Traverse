@@ -1,8 +1,17 @@
 plugins {
+	id 'java'
+	id 'maven-publish'
+	id 'idea'
+	id 'eclipse'
 	id 'fabric-loom' version '0.12-SNAPSHOT'
+	// id 'io.github.juuxel.loom-quiltflower-mini' version '1.2.1'
 }
 
 apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.3/ferry.gradle'
+
+static def formatVersion(project, version) {
+	return version;
+}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -16,14 +25,91 @@ dependencies {
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_tree_api_version}"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 
-	modImplementation(include(project(path: ':common')))
-	modImplementation(include(project(path: ':client')))
-	modImplementation(include(project(path: ':worldgen')))
+	afterEvaluate {
+		subprojects.each {
+			testmodImplementation sourceSets.main.output
+			implementation project(path: "${it.name}", configuration: "namedElements")
+			include project("${it.name}:")
+		}
+	}
 }
 
-repositories {
-	maven {
-		name = 'TerraformersMC'
-		url = 'https://maven.terraformersmc.com/'
+allprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'eclipse'
+	apply plugin: 'maven-publish'
+	apply plugin: 'fabric-loom'
+	// apply plugin: 'io.github.juuxel.loom-quiltflower-mini'
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+
+	group = project.maven_group
+
+	sourceSets {
+		testmod {
+			compileClasspath += main.compileClasspath
+			runtimeClasspath += main.runtimeClasspath
+		}
 	}
+
+	// quiltflower {
+	// 	addToRuntimeClasspath.set(true)
+	// }
+
+	configurations {
+		dev {
+			canBeResolved = false
+			canBeConsumed = true
+		}
+	}
+
+	jar {
+		classifier = "dev"
+	}
+
+	afterEvaluate {
+		processResources {
+			inputs.property "version", project.version
+
+			filesMatching("fabric.mod.json") {
+				expand "version": project.version
+			}
+		}
+	}
+
+	//task sourcesJar(type: Jar, dependsOn: classes) {
+	//	classifier = "sources"
+	//	from sourceSets.main.allSource
+	//}
+
+	tasks.withType(JavaCompile) {
+		it.options.encoding = "UTF-8"
+		it.options.release = 17
+	}
+
+	repositories {
+		maven {
+			name = 'TerraformersMC'
+			url = 'https://maven.terraformersmc.com/'
+		}
+	}
+}
+
+subprojects {
+	dependencies {
+		minecraft "com.mojang:minecraft:${project.minecraft_version}"
+		mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+		modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+		modImplementation "com.terraformersmc.terraform-api:terraform-config-api-v1:${project.terraform_config_api_version}"
+		modImplementation "com.terraformersmc.terraform-api:terraform-surfaces-api-v1:${project.terraform_surfaces_api_version}"
+		modImplementation "com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_tree_api_version}"
+		modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	}
+
+	runClient.enabled = false
 }

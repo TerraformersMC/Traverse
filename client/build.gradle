@@ -1,40 +1,9 @@
-plugins {
-	id 'fabric-loom' version '0.12-SNAPSHOT'
-}
+archivesBaseName = "traverse-client"
+version = formatVersion(project, "5.0.0")
 
-apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.3/ferry.gradle'
+loom {
+}
 
 dependencies {
-	minecraft "com.mojang:minecraft:$project.minecraft_version"
-	mappings "net.fabricmc:yarn:$project.yarn_mappings:v2"
-
-	mod "fabric-loader", "net.fabricmc:fabric-loader:$project.loader_version"
-	mod "fabric-api", "net.fabricmc.fabric-api:fabric-api:$project.fabric_version"
-
-	mod "terraform-api", "com.terraformersmc.terraform-api:terraform-config-api-v1:$project.terraform_config_api_version"
-	mod "terraform-api", "com.terraformersmc.terraform-api:terraform-surfaces-api-v1:$project.terraform_surfaces_api_version"
-	mod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:$project.terraform_tree_api_version"
-	mod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:$project.terraform_wood_api_version"
-
-	implementation project(path: ':common', configuration: 'dev')
-}
-
-repositories {
-	maven {
-		name = 'TerraformersMC'
-		url = 'https://maven.terraformersmc.com/'
-	}
-}
-
-runClient.enabled = false
-
-configurations {
-	dev {
-		canBeResolved = false
-		canBeConsumed = true
-	}
-}
-
-artifacts {
-	dev jar
+	implementation project(path: ':common')
 }
