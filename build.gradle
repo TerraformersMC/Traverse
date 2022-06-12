@@ -1,26 +1,24 @@
 plugins {
-	id 'fabric-loom' version '0.11-SNAPSHOT'
+	id 'fabric-loom' version '0.12-SNAPSHOT'
 }
 
 apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.3/ferry.gradle'
 
-loom {
-	accessWidenerPath = file("src/main/resources/traverse.accesswidener")
-}
-
 dependencies {
-	minecraft "com.mojang:minecraft:$project.minecraft_version"
-	mappings "net.fabricmc:yarn:$project.yarn_mappings:v2"
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
-	mod "fabric-loader", "net.fabricmc:fabric-loader:$project.loader_version"
-	mod "fabric-api", "net.fabricmc.fabric-api:fabric-api:$project.fabric_version"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-config-api-v1:$project.terraform_config_api_version"
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-surfaces-api-v1:$project.terraform_surfaces_api_version"
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:$project.terraform_tree_api_version"
-	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:$project.terraform_wood_api_version"
+	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-config-api-v1:${project.terraform_config_api_version}"
+	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-surfaces-api-v1:${project.terraform_surfaces_api_version}"
+	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_tree_api_version}"
+	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 
-//	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
+	modImplementation(include(project(path: ':common')))
+	modImplementation(include(project(path: ':client')))
+	modImplementation(include(project(path: ':worldgen')))
 }
 
 repositories {
@@ -28,5 +26,4 @@ repositories {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/'
 	}
-//	maven { url = 'https://maven.minecraftforge.net/' }
 }

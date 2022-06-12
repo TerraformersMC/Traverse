@@ -5,7 +5,6 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
-import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -16,14 +15,13 @@ import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Traverse implements ModInitializer/*, TerraBlenderApi*/ {
+public class Traverse implements ModInitializer {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	private static void register() {
 		TraverseBlocks.register();
 		TraverseBoatTypes.register();
-		TraverseSurfaceRules.register();
 		TraversePlacedFeatures.init();
 		TraverseBiomes.register();
 		TraverseVillagerTypes.register();

@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(ChunkSection.class)
-public class MixinChunkSection {
+public abstract class MixinChunkSection {
 	@Shadow
 	private @Final @Mutable PalettedContainer<RegistryEntry<Biome>> biomeContainer;
 

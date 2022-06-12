@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import java.net.Proxy;
 
 @Mixin(MinecraftServer.class)
-public abstract class MinecraftServerMixin {
+public abstract class MixinMinecraftServer {
     @Shadow public abstract SaveProperties getSaveProperties();
 
 	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/SaveLoader;dynamicRegistryManager()Lnet/minecraft/util/registry/DynamicRegistryManager$Immutable;", shift = At.Shift.AFTER),
@@ -39,7 +39,7 @@ public abstract class MinecraftServerMixin {
 			locals = LocalCapture.NO_CAPTURE)
 	private void traverse$captureServer(Thread serverThread, LevelStorage.Session session, ResourcePackManager dataPackManager, SaveLoader saveLoader, Proxy proxy, DataFixer dataFixer, @Nullable MinecraftSessionService sessionService, @Nullable GameProfileRepository gameProfileRepo, @Nullable UserCache userCache, WorldGenerationProgressListenerFactory worldGenerationProgressListenerFactory, CallbackInfo ci) {
 		TraverseServerAccess.capture((MinecraftServer)(Object) this);
-		Traverse.LOGGER.debug("MinecraftServerMixin.captureServer captured.");
+		Traverse.LOGGER.debug("MixinMinecraftServer.captureServer captured.");
 	}
 
     @Inject(method = "createWorlds", at = @At("RETURN"), expect = 1, require = -1)
@@ -57,8 +57,8 @@ public abstract class MinecraftServerMixin {
         }
         ChunkGenerator chunkGenerator = dimensionOptions.getChunkGenerator();
         if (chunkGenerator instanceof NoiseChunkGenerator) {
-            Object noiseGeneratorSettings = ((NoiseChunkGeneratorAccessor) chunkGenerator).traverse$getSettings().value();
-            ((ChunkGeneratorSettingsAccessor) noiseGeneratorSettings).traverse$setSurfaceRule(MaterialRules.sequence(materialRule, ((ChunkGeneratorSettings) noiseGeneratorSettings).surfaceRule()));
+            Object noiseGeneratorSettings = ((AccessorNoiseChunkGenerator) chunkGenerator).traverse$getSettings().value();
+            ((AccessorChunkGeneratorSettings) noiseGeneratorSettings).traverse$setSurfaceRule(MaterialRules.sequence(materialRule, ((ChunkGeneratorSettings) noiseGeneratorSettings).surfaceRule()));
         }
     }
 

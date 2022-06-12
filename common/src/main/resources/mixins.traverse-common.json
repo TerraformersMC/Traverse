@@ -7,14 +7,9 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ChunkGeneratorSettingsAccessor",
-    "MinecraftServerMixin",
     "MixinChunkHeightAndBiomeFix",
     "MixinLevelStorageSession",
     "MixinSchemas",
-    "MixinServerWorld",
-    "MixinSlimeEntity",
-    "MixinVanillaBiomeParameters",
-    "NoiseChunkGeneratorAccessor"
+    "MixinSlimeEntity"
   ]
 }

@@ -1,20 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "traverse",
-  "name": "Traverse",
+  "id": "traverse-common",
+  "name": "Traverse common module",
   "version": "$version",
   "environment": "*",
   "license": "LGPL-3.0-only",
   "icon": "assets/traverse/icon.png",
+  "entrypoints": {
+    "main": [
+      "com.terraformersmc.traverse.Traverse"
+    ]
+  },
+  "mixins": [
+    "mixins.traverse-common.json"
+  ],
   "custom": {
     "parent": {
       "id": "traverse",
       "name": "Traverse",
       "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes",
       "icon": "assets/traverse/icon.png"
+    },
+    "modmenu": {
+      "badges": [ "library" ]
     }
   },
-    "contact": {
+  "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },

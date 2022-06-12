@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(NoiseChunkGenerator.class)
-public interface NoiseChunkGeneratorAccessor {
+public interface AccessorNoiseChunkGenerator {
     @Accessor("settings")
     RegistryEntry<ChunkGeneratorSettings> traverse$getSettings();
 }

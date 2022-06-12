@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(ChunkGeneratorSettings.class)
-public interface ChunkGeneratorSettingsAccessor {
+public interface AccessorChunkGeneratorSettings {
     @Accessor("surfaceRule") @Mutable
     void traverse$setSurfaceRule(MaterialRules.MaterialRule ruleSource);
 }
