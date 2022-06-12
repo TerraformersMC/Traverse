@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "traverse:lush_swamp",
-    "traverse:arid_highlands",
     "traverse:flatlands",
     "traverse:desert_shrubland"
   ]

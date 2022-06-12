@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "traverse:arid_highlands",
     "traverse:desert_shrubland"
   ]
 }

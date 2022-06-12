@@ -2,10 +2,7 @@
   "replace": false,
   "values": [
     "traverse:lush_swamp",
-    "traverse:rolling_hills",
-    "traverse:mini_jungle",
     "traverse:woodlands",
-    "traverse:arid_highlands",
     "traverse:flatlands",
     "traverse:desert_shrubland",
     "traverse:coniferous_forest",
