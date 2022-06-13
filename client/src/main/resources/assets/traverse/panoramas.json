@@ -1,10 +1,12 @@
 {
   "autumnal_woods_woodlands_and_rolling_hills": {
-    "music": "minecraft:music.menu",
-    "panoramas": [
+    "musicSound": {
+      "sound": "minecraft:music.menu"
+    },
+    "cubemaps": [
       {
-        "backgroundId": "traverse:textures/gui/panorama/panorama",
-        "movementSettings": {
+        "cubemapId": "traverse:textures/gui/panorama/panorama",
+        "visualControl": {
           "addedY": 0.0
         }
       }
