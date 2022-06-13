@@ -7,5 +7,6 @@ public class TraverseDatagen implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
 		dataGenerator.addProvider(TraverseBlockTagProvider::new);
+		dataGenerator.addProvider(TraverseItemTagProvider::new);
 	}
 }
