@@ -9,6 +9,9 @@
   "entrypoints": {
     "main": [
       "com.terraformersmc.traverse.Traverse"
+    ],
+    "fabric-datagen": [
+      "com.terraformersmc.traverse.data.TraverseDatagen"
     ]
   },
   "mixins": [

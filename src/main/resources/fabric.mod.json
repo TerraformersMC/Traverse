@@ -14,12 +14,7 @@
       "icon": "assets/traverse/icon.png"
     }
   },
-  "entrypoints": {
-    "main": [
-      "com.terraformersmc.traverse.Traverse"
-    ]
-  },
-    "contact": {
+  "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
