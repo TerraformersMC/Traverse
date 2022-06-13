@@ -12,6 +12,32 @@ apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.3/
 static def formatVersion(project, version) {
 	return version;
 }
+loom {
+	accessWidenerPath = file("src/main/resources/traverse.aw")
+
+	runs {
+		datagen {
+			server()
+
+			name = "Data Generation"
+			runDir = "build/datagen"
+
+			vmArg("-Dfabric-api.datagen")
+			vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
+		}
+	}
+}
+assemble.dependsOn(runDatagen)
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+				"src/main/generated"
+			]
+		}
+	}
+}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
