@@ -14,7 +14,18 @@ loom {
 		}
 	}
 }
-assemble.dependsOn(runDatagen)
+
+// This is a sad, janky thing that Minecraft makes me do.
+tasks.register('copyCommon', Copy) {
+	from "src/main/generated/data/traverse-common"
+	into "src/main/generated/data/traverse"
+}
+tasks.register('removeCommon', Delete) {
+	delete "src/main/generated/data/traverse-common"
+}
+copyCommon.dependsOn(runDatagen)
+removeCommon.dependsOn(copyCommon)
+assemble.dependsOn(removeCommon)
 
 sourceSets {
 	main {
