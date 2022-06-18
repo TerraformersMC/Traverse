@@ -17,6 +17,9 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.BOATS)
 			.add(TraverseBoatTypes.fir.getItem());
 
+		this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
+			.add(TraverseBoatTypes.fir.getChestItem());
+
 		this.getOrCreateTagBuilder(ItemTags.LEAVES)
 			.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.asItem())
 			.add(TraverseBlocks.RED_AUTUMNAL_LEAVES.asItem())

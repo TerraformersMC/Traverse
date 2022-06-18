@@ -15,7 +15,6 @@ public class WoodlandsBiomes {
 	static final Biome WOODLANDS = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.FOREST)
 			.temperature(0.8F)
 			.downfall(0.4F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

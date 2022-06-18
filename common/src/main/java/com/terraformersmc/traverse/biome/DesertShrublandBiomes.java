@@ -16,7 +16,6 @@ public class DesertShrublandBiomes {
 			.generationSettings(generationSettings())
 			.precipitation(Biome.Precipitation.NONE)
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.DESERT)
 			.temperature(2.0F)
 			.downfall(0.0F)
 			.build();

@@ -12,7 +12,6 @@ public class FlatlandsBiomes {
 	static final Biome FLATLANDS = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings())
 			.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
-			.category(Biome.Category.PLAINS)
 			.temperature(0.8F)
 			.downfall(0.7F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

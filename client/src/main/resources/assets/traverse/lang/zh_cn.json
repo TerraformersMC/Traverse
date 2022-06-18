@@ -10,17 +10,17 @@
   "biome.traverse.rolling_hills": "罗灵丘陵",
   "biome.traverse.snowy_coniferous_forest": "雪地针叶森林",
   "biome.traverse.woodlands": "林地",
-  
+
   "block.traverse.red_autumnal_leaves": "红秋树叶",
   "block.traverse.brown_autumnal_leaves": "棕秋树叶",
   "block.traverse.orange_autumnal_leaves": "橙秋树叶",
   "block.traverse.yellow_autumnal_leaves": "金秋树叶",
-  
+
   "block.traverse.red_autumnal_sapling": "红秋树苗",
   "block.traverse.brown_autumnal_sapling": "棕秋树苗",
   "block.traverse.orange_autumnal_sapling": "橙秋树苗",
   "block.traverse.yellow_autumnal_sapling": "金秋树苗",
-   
+
   "block.traverse.potted_red_autumnal_sapling": "红秋树苗盆栽",
   "block.traverse.potted_brown_autumnal_sapling": "棕秋树苗盆栽",
   "block.traverse.potted_orange_autumnal_sapling": "橙秋树苗盆栽",
@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "冷杉木栅栏门",
   "block.traverse.fir_door": "冷杉木门",
   "block.traverse.fir_trapdoor": "冷杉木活板门",
-  "item.traverse.fir_boat": "冷杉木船",
-  "entity.traverse.fir_boat": "冷杉木船"
+  "item.traverse.fir_boat": "冷杉木船"
 }

@@ -26,7 +26,7 @@ import java.nio.file.Path;
 public class MixinLevelStorageSession {
 	@Shadow
 	@Final
-	private Path directory;
+	private LevelStorage.LevelSave directory;
 
 	@Unique
 	private static final Logger TRAVERSE_LOGGER = LoggerFactory.getLogger("TraverseRegistrySyncFix");
@@ -52,7 +52,7 @@ public class MixinLevelStorageSession {
 	@Inject(method = "readLevelProperties", at = @At("HEAD"))
 	public void readWorldProperties(CallbackInfoReturnable<SaveProperties> callbackInfo) {
 		try {
-			if (traverse_readIdMapFile(new File(new File(directory.toFile(), "data"), "fabricDynamicRegistry.dat"))) {
+			if (traverse_readIdMapFile(new File(new File(directory.path().toFile(), "data"), "fabricDynamicRegistry.dat"))) {
 				TRAVERSE_LOGGER.info("[Traverse - Registry Sync Fix] Loaded registry data");
 			}
 		} catch (FileNotFoundException e) {

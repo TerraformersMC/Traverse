@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Puerta de valla de abeto gigante",
   "block.traverse.fir_door": "Puerta de abeto gigante",
   "block.traverse.fir_trapdoor": "Trampilla de abeto gigante",
-  "item.traverse.fir_boat": "Bote de abeto gigante",
-  "entity.traverse.fir_boat": "Bote de abeto gigante"
+  "item.traverse.fir_boat": "Bote de abeto gigante"
 }
