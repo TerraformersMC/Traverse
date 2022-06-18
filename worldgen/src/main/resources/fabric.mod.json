@@ -9,11 +9,13 @@
   "entrypoints": {
     "main": [
       "com.terraformersmc.traverse.TraverseWorldgen"
+    ],
+    "terrablender": [
+      "com.terraformersmc.traverse.biomegen.TraverseTerraBlenderGeneration"
     ]
   },
   "accessWidener": "traverse-worldgen.accesswidener",
   "mixins": [
-    "mixins.traverse-worldgen.json"
   ],
   "custom": {
     "parent": {

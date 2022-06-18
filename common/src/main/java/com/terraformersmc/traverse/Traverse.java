@@ -8,6 +8,7 @@ import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
@@ -37,5 +38,9 @@ public class Traverse implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		register();
+
+		if (!FabricLoader.getInstance().isModLoaded("traverse-worldgen")) {
+			Traverse.LOGGER.info("No Traverse worldgen module present; Traverse biomes will not generate.");
+		}
 	}
 }

@@ -1,15 +1,16 @@
 package com.terraformersmc.traverse;
 
-import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class TraverseWorldgen implements ModInitializer {
-	private static void register() {
-		TraverseSurfaceRules.register();
-	}
 
 	@Override
 	public void onInitialize() {
-		register();
+		if (FabricLoader.getInstance().isModLoaded("terrablender")) {
+			Traverse.LOGGER.info("Enabling Traverse's TerraBlender worldgen module.");
+		} else {
+			Traverse.LOGGER.warn("Traverse world generation disabled; TerraBlender is not present.");
+		}
 	}
 }

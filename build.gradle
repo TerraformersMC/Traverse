@@ -25,6 +25,10 @@ dependencies {
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform_tree_api_version}"
 	includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 
+	if (findProject(':worldgen') != null) {
+		modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
+	}
+
 	afterEvaluate {
 		subprojects.each {
 			testmodImplementation sourceSets.main.output
@@ -93,6 +97,11 @@ allprojects {
 		maven {
 			name = 'TerraformersMC'
 			url = 'https://maven.terraformersmc.com/'
+		}
+
+		// TerraBlender
+		maven {
+			url = 'https://maven.minecraftforge.net/'
 		}
 	}
 }
