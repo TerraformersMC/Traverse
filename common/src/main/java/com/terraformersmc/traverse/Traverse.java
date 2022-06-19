@@ -16,9 +16,14 @@ import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+
 public class Traverse implements ModInitializer {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	private static Boolean initialized = false;
+	private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
 
 	private static void register() {
 		TraverseBlocks.register();
@@ -41,6 +46,20 @@ public class Traverse implements ModInitializer {
 
 		if (!FabricLoader.getInstance().isModLoaded("traverse-worldgen")) {
 			Traverse.LOGGER.info("No Traverse worldgen module present; Traverse biomes will not generate.");
+		}
+
+		// At this point Traverse is completely initialized.
+		initialized = true;
+		for (Runnable callback : runnables) {
+			callback.run();
+		}
+	}
+
+	public static void callbackWhenInitialized(Runnable callback) {
+		if (initialized) {
+			callback.run();
+		} else {
+			runnables.add(callback);
 		}
 	}
 }

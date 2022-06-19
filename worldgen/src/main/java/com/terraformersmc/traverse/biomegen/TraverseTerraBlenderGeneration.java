@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
-public class TraverseTerraBlenderGeneration extends Region implements TerraBlenderApi {
+public class TraverseTerraBlenderGeneration extends Region implements Runnable, TerraBlenderApi {
 
 	public TraverseTerraBlenderGeneration() {
 		super(new Identifier(Traverse.MOD_ID, "overworld"), RegionType.OVERWORLD, 5);
@@ -36,6 +36,14 @@ public class TraverseTerraBlenderGeneration extends Region implements TerraBlend
 
 	@Override
 	public void onTerraBlenderInitialized() {
+		// We can't do registration stuff until both Traverse and TerraBlender are ready.
+		// The run() method below will be called when Traverse is done initializing.
+		Traverse.callbackWhenInitialized(this);
+	}
+
+	// Initialize TerraBlender as our biome placement provider.
+	@Override
+	public void run() {
 		// Register the Traverse surface rules; this must happen before we call addSurfaceRules().
 		TraverseSurfaceRules.register();
 
