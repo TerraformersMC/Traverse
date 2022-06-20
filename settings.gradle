@@ -10,3 +10,6 @@ pluginManagement {
 }
 
 rootProject.name = "traverse"
+include "client"
+include "common"
+include "worldgen"

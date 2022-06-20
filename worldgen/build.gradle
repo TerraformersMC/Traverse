@@ -1,0 +1,13 @@
+archivesBaseName = "traverse-worldgen"
+version = formatVersion(project, "5.0.0")
+
+loom {
+	accessWidenerPath = file("src/main/resources/traverse-worldgen.accesswidener")
+}
+
+dependencies {
+	// TerraBlender is our biome API overlord.
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
+
+	implementation project(path: ':common')
+}

@@ -1,17 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "traverse",
-  "name": "Traverse",
+  "id": "traverse-client",
+  "name": "Traverse client module",
   "version": "$version",
-  "environment": "*",
+  "environment": "client",
   "license": "LGPL-3.0-only",
   "icon": "assets/traverse/icon.png",
+  "entrypoints": {
+    "client": [
+      "com.terraformersmc.traverse.TraverseClient"
+    ]
+  },
+  "mixins": [
+  ],
   "custom": {
     "parent": {
       "id": "traverse",
       "name": "Traverse",
       "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes",
       "icon": "assets/traverse/icon.png"
+    },
+    "modmenu": {
+      "badges": [ "library" ]
     }
   },
   "contact": {
