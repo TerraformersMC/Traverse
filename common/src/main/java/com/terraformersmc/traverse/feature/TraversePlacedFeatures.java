@@ -66,8 +66,8 @@ public class TraversePlacedFeatures {
 
 	/* Lush Vegetation */
 	public static final RegistryEntry<PlacedFeature> LUSH_FLOWERS = createPlacedFeature("lush_flowers", TraverseConfiguredFeatures.LUSH_FLOWERS, RarityFilterPlacementModifier.of(32), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector())));
-	public static final RegistryEntry<PlacedFeature> MEADOW_GRASS = createPlacedFeature("meadow_grass", TraverseConfiguredFeatures.MEADOW_GRASS, VegetationPlacedFeatures.modifiers(15));
-	public static final RegistryEntry<PlacedFeature> MEADOW_TREES = createPlacedFeature("meadow_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(0, 0.2F, 1), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector())));
+	public static final RegistryEntry<PlacedFeature> FLATLANDS_GRASS = createPlacedFeature("flatlands_grass", TraverseConfiguredFeatures.FLATLANDS_GRASS, VegetationPlacedFeatures.modifiers(15));
+	public static final RegistryEntry<PlacedFeature> FLATLANDS_TREES = createPlacedFeature("flatlands_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(0, 0.2F, 1), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector())));
 	public static final RegistryEntry<PlacedFeature> ROLLING_HILLS_GRASS = createPlacedFeature("rolling_hills_grass", TraverseConfiguredFeatures.ROLLING_HILLS_GRASS, VegetationPlacedFeatures.modifiers(3));
 	public static final RegistryEntry<PlacedFeature> ROLLING_HILLS_TREES = createPlacedFeature("rolling_hills_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(2, 0.2f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.DIRT, Direction.DOWN.getVector())));
 

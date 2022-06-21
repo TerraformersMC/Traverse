@@ -49,7 +49,7 @@ public class TraverseConfiguredFeatures {
 
 	/* Lush Vegetation */
 	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> LUSH_FLOWERS = register("lush_flowers", Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
-	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> MEADOW_GRASS = register("meadow_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32));
+	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> FLATLANDS_GRASS = register("flatlands_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32));
 	public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> ROLLING_HILLS_GRASS = register("rolling_hills_grass", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32));
 
 	/* Mini Jungle */

@@ -21,21 +21,13 @@ Visit the <a href="https://github.com/TerraformersMC/Traverse/wiki">Traverse Wik
 
 #### Biomes:
 
-* [Arid Highlands](https://github.com/TerraformersMC/Traverse/wiki/Arid-Highlands)
 * [Autumnal Woods](https://github.com/TerraformersMC/Traverse/wiki/Autumnal-Woods)
-* [Cliffs](https://github.com/TerraformersMC/Traverse/wiki/Cliffs)
 * [Coniferous Forest](https://github.com/TerraformersMC/Traverse/wiki/Coniferous-Forest)
 * [Desert Shrubland](https://github.com/TerraformersMC/Traverse/wiki/Desert-Shrubland)
+* [Flatlands](https://github.com/TerraformersMC/Traverse/wiki/Flatlands)
 * [Lush Swamp](https://github.com/TerraformersMC/Traverse/wiki/Lush-Swamp)
-* [Meadow](https://github.com/TerraformersMC/Traverse/wiki/Meadow)
-* [Mini Jungle](https://github.com/TerraformersMC/Traverse/wiki/Mini-Jungle)
-* [Plains Plateau](https://github.com/TerraformersMC/Traverse/wiki/Plains-Plateau)
-* [Rolling Hills](https://github.com/TerraformersMC/Traverse/wiki/Rolling-Hills)
 * [Snowy Coniferous Forest](https://github.com/TerraformersMC/Traverse/wiki/Snowy-Coniferous-Forest)
-* [Wooded Island](https://github.com/TerraformersMC/Traverse/wiki/Wooded-Island)
 * [Woodlands](https://github.com/TerraformersMC/Traverse/wiki/Woodlands)
-
-##### Some biomes contain variants to increase variety
 
 ##### Images of the biomes can be found on the CurseForge [Images page](https://www.curseforge.com/minecraft/mc-mods/traverse/screenshots).
 
