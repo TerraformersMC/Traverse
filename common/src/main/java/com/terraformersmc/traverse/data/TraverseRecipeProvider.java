@@ -129,4 +129,9 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 			.criterion("has_logs", InventoryChangedCriterion.Conditions.items(TraverseBlocks.STRIPPED_FIR_LOG))
 			.offerTo(exporter, new Identifier(Traverse.MOD_ID, "stripped_fir_wood"));
 	}
+
+	@Override
+	protected Identifier getRecipeIdentifier(Identifier identifier) {
+		return new Identifier(Traverse.MOD_ID, identifier.getPath());
+	}
 }

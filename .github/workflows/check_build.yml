@@ -30,6 +30,8 @@ jobs:
       - name: Make Gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
+      - name: Data Gen
+        run: ./gradlew runDatagen --stacktrace
       - name: Build
         run: ./gradlew build --stacktrace --parallel
       - name: Capture build artifacts

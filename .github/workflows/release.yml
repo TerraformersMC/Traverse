@@ -44,6 +44,8 @@ jobs:
       - name: Make Gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
+      - name: Data Gen
+        run: ./gradlew runDatagen --stacktrace -PlastTag="v${{ github.event.inputs.previousVersion }}" -PcurrentTag="v${{ github.event.inputs.version }}"
       - name: Build
         run: ./gradlew generateChangelog build publish curseforge github publishModrinth --stacktrace -PlastTag="v${{ github.event.inputs.previousVersion }}" -PcurrentTag="v${{ github.event.inputs.version }}"
         env:

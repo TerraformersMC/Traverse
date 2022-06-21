@@ -1,5 +1,4 @@
 archivesBaseName = "traverse-worldgen"
-version = formatVersion(project, "5.0.0")
 
 loom {
 	accessWidenerPath = file("src/main/resources/traverse-worldgen.accesswidener")

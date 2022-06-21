@@ -1,5 +1,4 @@
 archivesBaseName = "traverse-client"
-version = formatVersion(project, "5.0.0")
 
 loom {
 }
