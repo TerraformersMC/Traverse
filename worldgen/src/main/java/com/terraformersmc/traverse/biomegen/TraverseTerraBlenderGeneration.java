@@ -26,11 +26,11 @@ public class TraverseTerraBlenderGeneration extends Region implements Runnable, 
 		this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
 			builder.replaceBiome(BiomeKeys.FOREST, AUTUMNAL_WOODS);
 			builder.replaceBiome(BiomeKeys.TAIGA, CONIFEROUS_FOREST);
-			builder.replaceBiome(BiomeKeys.BIRCH_FOREST, WOODLANDS);
 			builder.replaceBiome(BiomeKeys.DESERT, DESERT_SHRUBLAND);
-			builder.replaceBiome(BiomeKeys.SWAMP, LUSH_SWAMP);
 			builder.replaceBiome(BiomeKeys.PLAINS, FLATLANDS);
+			builder.replaceBiome(BiomeKeys.SWAMP, LUSH_SWAMP);
 			builder.replaceBiome(BiomeKeys.SNOWY_TAIGA, SNOWY_CONIFEROUS_FOREST);
+			builder.replaceBiome(BiomeKeys.BIRCH_FOREST, WOODLANDS);
 		});
 	}
 
