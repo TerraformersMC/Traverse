@@ -57,7 +57,7 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
 			.offerTo(exporter, new Identifier(Traverse.MOD_ID, "fir_fence"));
 
-		new ShapedRecipeJsonBuilder(TraverseBlocks.FIR_FENCE_GATE, 3)
+		new ShapedRecipeJsonBuilder(TraverseBlocks.FIR_FENCE_GATE, 1)
 			.group("wooden_fence_gate")
 			.pattern("SPS")
 			.pattern("SPS")
