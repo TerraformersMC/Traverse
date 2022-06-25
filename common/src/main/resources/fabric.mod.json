@@ -10,7 +10,10 @@
     "main": [
       "com.terraformersmc.traverse.Traverse"
     ],
-    "fabric-datagen": [
+    "terraform-biome-remapper": [
+      "com.terraformersmc.traverse.biome.TraverseBiomeRemappings"
+    ],
+      "fabric-datagen": [
       "com.terraformersmc.traverse.data.TraverseDatagen"
     ]
   },

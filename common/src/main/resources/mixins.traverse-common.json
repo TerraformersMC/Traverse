@@ -7,9 +7,6 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "MixinChunkHeightAndBiomeFix",
-    "MixinLevelStorageSession",
-    "MixinSchemas",
     "MixinSlimeEntity"
   ]
 }
