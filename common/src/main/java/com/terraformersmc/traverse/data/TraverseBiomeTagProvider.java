@@ -3,6 +3,7 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -19,9 +20,19 @@ public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryT
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_FOREST.id()))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
-			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.add(TraverseBiomes.WOODLANDS);
 
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_TAIGA.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.DESERT.id()))
+			.add(TraverseBiomes.DESERT_SHRUBLAND);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.PLAINS.id()))
+			.add(TraverseBiomes.FLATLANDS);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SWAMP.id()))
+			.add(TraverseBiomes.LUSH_SWAMP);
 
 		// biome structure generation tags
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.MINESHAFT_HAS_STRUCTURE.id()))
