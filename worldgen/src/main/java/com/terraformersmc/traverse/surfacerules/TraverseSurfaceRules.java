@@ -30,7 +30,7 @@ public class TraverseSurfaceRules {
 				block(Blocks.SAND)), block(Blocks.SANDSTONE));
 
 		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND),
-				new SandWithPatchesSurfaceRule(1.5D, NoiseParametersKeys.SURFACE, defaultGrass, sandAndSandstone));
+				new SandWithPatchesSurfaceRule(0.01D, NoiseParametersKeys.BADLANDS_SURFACE, sandAndSandstone, defaultGrass));
 		MaterialRule lushSwamp = condition(MaterialRules.biome(TraverseBiomes.LUSH_SWAMP),
 				condition(MaterialRules.STONE_DEPTH_FLOOR,
 						condition(MaterialRules.aboveY(YOffset.fixed(62), 0),
@@ -63,7 +63,7 @@ public class TraverseSurfaceRules {
 			MaterialRules.BlockStateRule followup2 = elseRun.apply(context);
 			final DoublePerlinNoiseSampler doublePerlinNoiseSampler = context.surfaceBuilder.getNoiseSampler(this.noise);
 			return (x, y, z) -> {
-				double noise = doublePerlinNoiseSampler.sample(x, 0.0, y);
+				double noise = doublePerlinNoiseSampler.sample(x, 0.0, z);
 				if (noise > threshold){
 					return followup1.tryApply(x, y, z);
 				} else {

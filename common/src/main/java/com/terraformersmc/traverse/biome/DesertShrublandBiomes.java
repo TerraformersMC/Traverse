@@ -16,6 +16,10 @@ public class DesertShrublandBiomes {
 			.generationSettings(generationSettings())
 			.precipitation(Biome.Precipitation.NONE)
 			.spawnSettings(spawnSettings())
+			.effects(TraverseBiomes.createDefaultBiomeEffects()
+					.grassColor(0xBFB755)
+					.foliageColor(0xAEA42A).build()
+			)
 			.category(Biome.Category.DESERT)
 			.temperature(2.0F)
 			.downfall(0.0F)
@@ -33,6 +37,7 @@ public class DesertShrublandBiomes {
 		DefaultBiomeFeatures.addDesertDeadBushes(builder);
 		DefaultBiomeFeatures.addDefaultMushrooms(builder);
 		DefaultBiomeFeatures.addDesertVegetation(builder);
+		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, TraversePlacedFeatures.DESERT_EXTRA_CACTUS);
 		DefaultBiomeFeatures.addDesertFeatures(builder);
 		return builder.build();
 	}
