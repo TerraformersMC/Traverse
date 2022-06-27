@@ -38,7 +38,7 @@ public class TraverseSurfaceRules {
 										condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0),
 												block(Blocks.WATER))))));
 
-		return sequence(condition(MaterialRules.surface(), sequence(desertShrubland, lushSwamp)), defaultGrass);
+		return sequence(condition(MaterialRules.surface(), sequence(desertShrubland, lushSwamp, defaultGrass)), defaultGrass);
 	}
 
 	public static void register() {
