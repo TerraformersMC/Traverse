@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "traverse-client",
-  "name": "Traverse client module",
+  "name": "Traverse: Client",
   "version": "$version",
   "environment": "client",
   "license": "LGPL-3.0-only",
@@ -14,51 +14,8 @@
   "mixins": [
   ],
   "custom": {
-    "parent": {
-      "id": "traverse",
-      "name": "Traverse",
-      "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes",
-      "icon": "assets/traverse/icon.png"
-    },
     "modmenu": {
-      "badges": [ "library" ]
+      "parent": "traverse"
     }
-  },
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
-    "issues": "https://github.com/TerraformersMC/Traverse/issues"
-  },
-  "depends": {
-    "fabricloader": ">=0.7.2",
-    "fabric": ">=0.4.1",
-    "minecraft": ">=1.18.2",
-    "java": ">=17"
-  },
-  "authors": [
-    "Prospector",
-    "NeusFear",
-    "TerraformersMC"
-  ],
-  "contributors": [
-    "coderbot16",
-    "SuperCoder79",
-    "200542053",
-    "DoloresMcDoodle",
-    "PinkGoosik",
-    "taowaren",
-    "bentterp",
-    "Hugman76",
-    "JanThomas118",
-    "feliixpe",
-    "luciobortoletto",
-    "haykam821",
-    "mxcoff",
-    "saltyseadoggo",
-    "jhbuchanan45",
-    "Brun333rp",
-    "Fourmisain",
-    "Trinsdar",
-    "gniftygnome"
-  ],
-  "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes"
+  }
 }

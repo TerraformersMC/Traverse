@@ -6,20 +6,12 @@
   "environment": "*",
   "license": "LGPL-3.0-only",
   "icon": "assets/traverse/icon.png",
-  "custom": {
-    "parent": {
-      "id": "traverse",
-      "name": "Traverse",
-      "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes",
-      "icon": "assets/traverse/icon.png"
-    }
-  },
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
-    "fabricloader": ">=0.7.2",
+    "fabricloader": ">=0.12.12",
     "fabric": ">=0.4.1",
     "minecraft": ">=1.18.2",
     "java": ">=17"
@@ -48,7 +40,8 @@
     "Brun333rp",
     "Fourmisain",
     "Trinsdar",
-    "gniftygnome"
+    "gniftygnome",
+    "tambry"
   ],
   "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes"
 }
