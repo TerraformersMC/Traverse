@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.biomegen;
 
 import com.mojang.datafixers.util.Pair;
 import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.config.TraverseBiomeConfig;
 import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -16,6 +17,7 @@ import java.util.function.Consumer;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
 public class TraverseTerraBlenderGeneration extends Region implements Runnable, TerraBlenderApi {
+	TraverseBiomeConfig BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
 
 	public TraverseTerraBlenderGeneration() {
 		super(new Identifier(Traverse.MOD_ID, "overworld"), RegionType.OVERWORLD, 5);
@@ -24,13 +26,13 @@ public class TraverseTerraBlenderGeneration extends Region implements Runnable, 
 	@Override
 	public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
 		this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-			builder.replaceBiome(BiomeKeys.FOREST, AUTUMNAL_WOODS);
-			builder.replaceBiome(BiomeKeys.TAIGA, CONIFEROUS_FOREST);
-			builder.replaceBiome(BiomeKeys.DESERT, DESERT_SHRUBLAND);
-			builder.replaceBiome(BiomeKeys.PLAINS, FLATLANDS);
-			builder.replaceBiome(BiomeKeys.SWAMP, LUSH_SWAMP);
-			builder.replaceBiome(BiomeKeys.SNOWY_TAIGA, SNOWY_CONIFEROUS_FOREST);
-			builder.replaceBiome(BiomeKeys.BIRCH_FOREST, WOODLANDS);
+			if (BIOME_CONFIG.isBiomeEnabled(AUTUMNAL_WOODS))          { builder.replaceBiome(BiomeKeys.FOREST, AUTUMNAL_WOODS); }
+			if (BIOME_CONFIG.isBiomeEnabled(CONIFEROUS_FOREST))       { builder.replaceBiome(BiomeKeys.TAIGA, CONIFEROUS_FOREST); }
+			if (BIOME_CONFIG.isBiomeEnabled(DESERT_SHRUBLAND))        { builder.replaceBiome(BiomeKeys.DESERT, DESERT_SHRUBLAND); }
+			if (BIOME_CONFIG.isBiomeEnabled(FLATLANDS))               { builder.replaceBiome(BiomeKeys.PLAINS, FLATLANDS); }
+			if (BIOME_CONFIG.isBiomeEnabled(LUSH_SWAMP))              { builder.replaceBiome(BiomeKeys.SWAMP, LUSH_SWAMP); }
+			if (BIOME_CONFIG.isBiomeEnabled(SNOWY_CONIFEROUS_FOREST)) { builder.replaceBiome(BiomeKeys.SNOWY_TAIGA, SNOWY_CONIFEROUS_FOREST); }
+			if (BIOME_CONFIG.isBiomeEnabled(WOODLANDS))               { builder.replaceBiome(BiomeKeys.BIRCH_FOREST, WOODLANDS); }
 		});
 	}
 
