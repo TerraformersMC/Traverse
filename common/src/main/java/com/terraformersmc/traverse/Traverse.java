@@ -2,6 +2,7 @@ package com.terraformersmc.traverse;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
@@ -22,6 +23,8 @@ public class Traverse implements ModInitializer {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	private static final TraverseConfigManager CONFIG_MANAGER = new TraverseConfigManager();
+
 	private static Boolean initialized = false;
 	private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
 
@@ -32,6 +35,9 @@ public class Traverse implements ModInitializer {
 		TraverseBiomes.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
+
+		// This must be after TraverseBiomes.init()
+		CONFIG_MANAGER.getBiomeConfig();
 
 		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
 			if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
@@ -61,5 +67,9 @@ public class Traverse implements ModInitializer {
 		} else {
 			runnables.add(callback);
 		}
+	}
+
+	public static TraverseConfigManager getConfigManager() {
+		return CONFIG_MANAGER;
 	}
 }
