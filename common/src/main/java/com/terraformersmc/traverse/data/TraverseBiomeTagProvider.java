@@ -11,7 +11,7 @@ import net.minecraft.world.biome.Biome;
 
 public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryTagProvider<Biome> {
 	public TraverseBiomeTagProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, BuiltinRegistries.BIOME.getKey(), "worldgen/biome", "Biome Tags");
+		super(dataGenerator, BuiltinRegistries.BIOME.getKey());
 	}
 
 	@Override

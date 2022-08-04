@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Калитка из пихты",
   "block.traverse.fir_door": "Дверь из пихты",
   "block.traverse.fir_trapdoor": "Люк из пихты",
-  "item.traverse.fir_boat": "Лодка из пихты",
-  "entity.traverse.fir_boat": "Лодка из пихты"
+  "item.traverse.fir_boat": "Лодка из пихты"
 }

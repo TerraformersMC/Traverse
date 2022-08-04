@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Cancelletto di cedro",
   "block.traverse.fir_door": "Porta di cedro",
   "block.traverse.fir_trapdoor": "Botola di cedro",
-  "item.traverse.fir_boat": "Barca di cedro",
-  "entity.traverse.fir_boat": "Barca di cedro"
+  "item.traverse.fir_boat": "Barca di cedro"
 }

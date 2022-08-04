@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Portão de abeto",
   "block.traverse.fir_door": "Porta de abeto",
   "block.traverse.fir_trapdoor": "Alçapão de abeto",
-  "item.traverse.fir_boat": "Bote de abeto",
-  "entity.traverse.fir_boat": "Bote de abeto"
+  "item.traverse.fir_boat": "Bote de abeto"
 }

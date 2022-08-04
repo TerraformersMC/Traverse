@@ -25,13 +25,8 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
-		new ShapedRecipeJsonBuilder(TraverseBoatTypes.fir.getItem(), 1)
-			.group("boat")
-			.pattern("P P")
-			.pattern("PPP")
-			.input('P', TraverseBlocks.FIR_PLANKS)
-			.criterion("in_water", EnterBlockCriterion.Conditions.block(Blocks.WATER))
-			.offerTo(exporter, new Identifier(Traverse.MOD_ID, "fir_boat"));
+		FabricRecipeProvider.offerBoatRecipe(exporter, TraverseBoatTypes.fir.getItem(), TraverseBlocks.FIR_PLANKS);
+		FabricRecipeProvider.offerChestBoatRecipe(exporter, TraverseBoatTypes.fir.getChestItem(), TraverseBoatTypes.fir.getItem());
 
 		new ShapelessRecipeJsonBuilder(TraverseBlocks.FIR_BUTTON, 1)
 			.group("wooden_button")

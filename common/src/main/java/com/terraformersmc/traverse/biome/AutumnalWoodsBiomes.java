@@ -15,7 +15,6 @@ public class AutumnalWoodsBiomes {
 
 	static final Biome AUTUMNAL_WOODS = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings())
-			.category(Biome.Category.FOREST)
 			.spawnSettings(spawnSettings())
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0xD6C23D)

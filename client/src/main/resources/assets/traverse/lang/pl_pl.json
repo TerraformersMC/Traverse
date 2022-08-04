@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Jodłowa furtka",
   "block.traverse.fir_door": "Jodłowe drzwi",
   "block.traverse.fir_trapdoor": "Jodłowa klapa",
-  "item.traverse.fir_boat": "Jodłowa łódka",
-  "entity.traverse.fir_boat": "Jodłowa Łódka"
+  "item.traverse.fir_boat": "Jodłowa łódka"
 }

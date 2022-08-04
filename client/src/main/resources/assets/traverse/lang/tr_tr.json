@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Köknar Çit Kapısı",
   "block.traverse.fir_door": "Köknar Kapı",
   "block.traverse.fir_trapdoor": "Köknar Tuzak Kapısı",
-  "item.traverse.fir_boat": "Köknar Tekne",
-  "entity.traverse.fir_boat": "Köknar Tekne"
+  "item.traverse.fir_boat": "Köknar Tekne"
 }

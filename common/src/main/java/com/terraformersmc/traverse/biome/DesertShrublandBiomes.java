@@ -20,7 +20,6 @@ public class DesertShrublandBiomes {
 					.grassColor(0xBFB755)
 					.foliageColor(0xAEA42A).build()
 			)
-			.category(Biome.Category.DESERT)
 			.temperature(2.0F)
 			.downfall(0.0F)
 			.build();

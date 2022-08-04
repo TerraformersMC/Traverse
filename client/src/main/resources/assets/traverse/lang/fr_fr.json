@@ -43,6 +43,5 @@
   "block.traverse.fir_fence_gate": "Portillon en épicéa",
   "block.traverse.fir_door": "Porte en épicéa",
   "block.traverse.fir_trapdoor": "Trappe en épicéa",
-  "item.traverse.fir_boat": "Bateau en épicéa",
-  "entity.traverse.fir_boat": "Bateau en épicéa"
+  "item.traverse.fir_boat": "Bateau en épicéa"
 }

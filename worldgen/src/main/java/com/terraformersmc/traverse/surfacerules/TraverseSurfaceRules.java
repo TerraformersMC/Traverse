@@ -7,6 +7,7 @@ import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.dynamic.CodecHolder;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
@@ -42,26 +43,25 @@ public class TraverseSurfaceRules {
 	}
 
 	public static void register() {
-		Registry.register(Registry.MATERIAL_RULE, new Identifier(Traverse.MOD_ID,"sand_with_patches_rule"), SandWithPatchesSurfaceRule.CONDITION_CODEC);
+		Registry.register(Registry.MATERIAL_RULE, new Identifier(Traverse.MOD_ID, "sand_with_patches"), SandWithPatchesSurfaceRule.CODEC.codec());
 	}
 
 	record SandWithPatchesSurfaceRule(double threshold, RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise, MaterialRule thenRun, MaterialRule elseRun) implements MaterialRule {
-
-		static final Codec<SandWithPatchesSurfaceRule> CONDITION_CODEC = RecordCodecBuilder.create(instance -> instance.group(Codec.DOUBLE.fieldOf("threshold").forGetter(SandWithPatchesSurfaceRule::threshold),
-				RegistryKey.createCodec(Registry.NOISE_WORLDGEN).fieldOf("noise").forGetter(SandWithPatchesSurfaceRule::noise),
+		static final CodecHolder<SandWithPatchesSurfaceRule> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.DOUBLE.fieldOf("threshold").forGetter(SandWithPatchesSurfaceRule::threshold),
+				RegistryKey.createCodec(Registry.NOISE_KEY).fieldOf("noise").forGetter(SandWithPatchesSurfaceRule::noise),
 				MaterialRule.CODEC.fieldOf("then_run").forGetter(SandWithPatchesSurfaceRule::thenRun),
-				MaterialRule.CODEC.fieldOf("else_run").forGetter(SandWithPatchesSurfaceRule::elseRun)).apply(instance, SandWithPatchesSurfaceRule::new));
+				MaterialRule.CODEC.fieldOf("else_run").forGetter(SandWithPatchesSurfaceRule::elseRun)).apply(instance, SandWithPatchesSurfaceRule::new)));
 
 		@Override
-		public Codec<? extends MaterialRule> codec() {
-			return CONDITION_CODEC;
+		public CodecHolder<? extends MaterialRule> codec() {
+			return CODEC;
 		}
 
 		@Override
-		public MaterialRules.BlockStateRule apply(MaterialRules.MaterialRuleContext context) {
+		public MaterialRules.BlockStateRule apply(final MaterialRules.MaterialRuleContext context) {
 			MaterialRules.BlockStateRule followup1 = thenRun.apply(context);
 			MaterialRules.BlockStateRule followup2 = elseRun.apply(context);
-			final DoublePerlinNoiseSampler doublePerlinNoiseSampler = context.surfaceBuilder.getNoiseSampler(this.noise);
+			final DoublePerlinNoiseSampler doublePerlinNoiseSampler = context.noiseConfig.getOrCreateSampler(this.noise);
 			return (x, y, z) -> {
 				double noise = doublePerlinNoiseSampler.sample(x, 0.0, z);
 				if (noise > threshold){

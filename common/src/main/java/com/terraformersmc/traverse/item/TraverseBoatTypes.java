@@ -11,9 +11,13 @@ public class TraverseBoatTypes {
 	public static TerraformBoatType fir;
 
 	public static void register() {
-		var item = TerraformBoatItemHelper.registerBoatItem(new Identifier(Traverse.MOD_ID, "fir_boat"), () -> fir);
+		var item = TerraformBoatItemHelper.registerBoatItem(new Identifier(Traverse.MOD_ID, "fir_boat"), () -> fir, false);
+		var chestItem = TerraformBoatItemHelper.registerBoatItem(new Identifier(Traverse.MOD_ID, "fir_chest_boat"), () -> fir, true);
 
-		fir = new TerraformBoatType.Builder().item(item).build();
+		fir = new TerraformBoatType.Builder()
+				.item(item)
+				.chestItem(chestItem)
+				.build();
 		Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(Traverse.MOD_ID, "fir"), fir);
 	}
 }

@@ -45,5 +45,5 @@
   "block.traverse.fir_door": "Fir Door",
   "block.traverse.fir_trapdoor": "Fir Trapdoor",
   "item.traverse.fir_boat": "Fir Boat",
-  "entity.traverse.fir_boat": "Fir Boat"
+  "item.traverse.fir_chest_boat": "Fir Boat with Chest"
 }

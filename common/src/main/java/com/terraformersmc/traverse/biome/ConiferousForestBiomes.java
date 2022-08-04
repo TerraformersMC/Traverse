@@ -15,7 +15,6 @@ public class ConiferousForestBiomes {
 	private static final Biome.Builder CONIFEROUS_FOREST_TEMPLATE = TraverseBiomes.BIOME_TEMPLATE
 			.generationSettings(generationSettings(false))
 			.spawnSettings(spawnSettings())
-			.category(Biome.Category.FOREST)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338235)
 					.foliageColor(0x338235).build()
@@ -29,7 +28,6 @@ public class ConiferousForestBiomes {
 	static final Biome SNOWY_CONIFEROUS_FOREST = CONIFEROUS_FOREST_TEMPLATE
 			.generationSettings(generationSettings(true))
 			.precipitation(Biome.Precipitation.SNOW)
-			.category(Biome.Category.TAIGA)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0x338251)
 					.foliageColor(0x338251).build()
