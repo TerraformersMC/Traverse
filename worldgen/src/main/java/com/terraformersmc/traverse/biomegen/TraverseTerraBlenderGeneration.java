@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
 public class TraverseTerraBlenderGeneration extends Region implements Runnable, TerraBlenderApi {
-	TraverseBiomeConfig BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
+	TraverseBiomeConfig BIOME_CONFIG;
 
 	public TraverseTerraBlenderGeneration() {
 		super(new Identifier(Traverse.MOD_ID, "overworld"), RegionType.OVERWORLD, 5);
@@ -53,6 +53,7 @@ public class TraverseTerraBlenderGeneration extends Region implements Runnable, 
 		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Traverse.MOD_ID, TraverseSurfaceRules.createRules());
 
 		// Add the biomes to Overworld generation via TerraBlender.
+		BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
 		Regions.register(this);
 	}
 }
