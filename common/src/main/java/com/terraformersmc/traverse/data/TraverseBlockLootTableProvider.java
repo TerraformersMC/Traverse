@@ -3,6 +3,7 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.data.server.BlockLootTableGenerator;
 
 public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider {
 	protected TraverseBlockLootTableProvider(FabricDataGenerator dataGenerator) {
@@ -14,7 +15,6 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		// simple blocks
 		addDrop(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);
 		addDrop(TraverseBlocks.FIR_BUTTON);
-		addDrop(TraverseBlocks.FIR_DOOR);
 		addDrop(TraverseBlocks.FIR_FENCE);
 		addDrop(TraverseBlocks.FIR_FENCE_GATE);
 		addDrop(TraverseBlocks.FIR_LOG);
@@ -22,7 +22,6 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.FIR_PRESSURE_PLATE);
 		addDrop(TraverseBlocks.FIR_SAPLING);
 		addDrop(TraverseBlocks.FIR_SIGN);
-		addDrop(TraverseBlocks.FIR_SLAB);
 		addDrop(TraverseBlocks.FIR_STAIRS);
 		addDrop(TraverseBlocks.FIR_TRAPDOOR);
 		addDrop(TraverseBlocks.FIR_WALL_SIGN);
@@ -32,6 +31,10 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.STRIPPED_FIR_LOG);
 		addDrop(TraverseBlocks.STRIPPED_FIR_WOOD);
 		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING);
+
+		// less simple blocks
+		addDrop(TraverseBlocks.FIR_DOOR, BlockLootTableGenerator::addDoorDrop);
+		addDrop(TraverseBlocks.FIR_SLAB, BlockLootTableGenerator::slabDrops);
 
 		// potted things
 		addPottedPlantDrop(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING);
