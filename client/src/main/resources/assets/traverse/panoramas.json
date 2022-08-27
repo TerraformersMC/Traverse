@@ -5,7 +5,33 @@
     },
     "cubemaps": [
       {
-        "cubemapId": "traverse:textures/gui/panorama/panorama",
+        "cubemapId": "traverse:textures/gui/panorama/autumnal_woodlands",
+        "visualControl": {
+          "addedY": 0.0
+        }
+      }
+    ]
+  },
+  "coniferous": {
+    "musicSound": {
+      "sound": "minecraft:music.menu"
+    },
+    "cubemaps": [
+      {
+        "cubemapId": "traverse:textures/gui/panorama/coniferous",
+        "visualControl": {
+          "addedY": 0.0
+        }
+      }
+    ]
+  },
+  "swamplands": {
+    "musicSound": {
+      "sound": "minecraft:music.menu"
+    },
+    "cubemaps": [
+      {
+        "cubemapId": "traverse:textures/gui/panorama/swamplands",
         "visualControl": {
           "addedY": 0.0
         }
