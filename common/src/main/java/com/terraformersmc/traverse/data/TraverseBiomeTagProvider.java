@@ -16,7 +16,12 @@ public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryT
 
 	@Override
 	protected void generateTags() {
-		// biome categories
+		/*
+		 * Vanilla biome categories
+		 */
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS.id()))
+			.add(TraverseBiomes.LUSH_SWAMP);
+
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_FOREST.id()))
 			.add(TraverseBiomes.AUTUMNAL_WOODS)
 			.add(TraverseBiomes.CONIFEROUS_FOREST)
@@ -25,16 +30,62 @@ public class TraverseBiomeTagProvider extends FabricTagProvider.DynamicRegistryT
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_TAIGA.id()))
 			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.SPAWNS_COLD_VARIANT_FROGS.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.SPAWNS_WARM_VARIANT_FROGS.id()))
+			.add(TraverseBiomes.DESERT_SHRUBLAND);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.WATER_ON_MAP_OUTLINES.id()))
+			.add(TraverseBiomes.LUSH_SWAMP);
+
+
+		/*
+		 * Conventional biome categories
+		 */
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.CLIMATE_TEMPERATE.id()))
+			.add(TraverseBiomes.AUTUMNAL_WOODS)
+			.add(TraverseBiomes.CONIFEROUS_FOREST)
+			.add(TraverseBiomes.FLATLANDS)
+			.add(TraverseBiomes.LUSH_SWAMP)
+			.add(TraverseBiomes.WOODLANDS);
+
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.DESERT.id()))
 			.add(TraverseBiomes.DESERT_SHRUBLAND);
 
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.PLAINS.id()))
 			.add(TraverseBiomes.FLATLANDS);
 
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.IN_OVERWORLD.id()))
+			.add(TraverseBiomes.AUTUMNAL_WOODS)
+			.add(TraverseBiomes.CONIFEROUS_FOREST)
+			.add(TraverseBiomes.DESERT_SHRUBLAND)
+			.add(TraverseBiomes.FLATLANDS)
+			.add(TraverseBiomes.LUSH_SWAMP)
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
+			.add(TraverseBiomes.WOODLANDS);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SNOWY.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.SWAMP.id()))
 			.add(TraverseBiomes.LUSH_SWAMP);
 
-		// biome structure generation tags
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.TREE_CONIFEROUS.id()))
+			.add(TraverseBiomes.CONIFEROUS_FOREST);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.TREE_DECIDUOUS.id()))
+			.add(TraverseBiomes.AUTUMNAL_WOODS)
+			.add(TraverseBiomes.LUSH_SWAMP)
+			.add(TraverseBiomes.WOODLANDS);
+
+
+		/*
+		 * Biome structure generation tags
+		 */
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IGLOO_HAS_STRUCTURE.id()))
+			.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
 		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.MINESHAFT_HAS_STRUCTURE.id()))
 			.add(TraverseBiomes.DESERT_SHRUBLAND)
 			.add(TraverseBiomes.FLATLANDS)
