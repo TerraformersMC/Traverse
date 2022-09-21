@@ -7,7 +7,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
@@ -19,9 +18,8 @@ import static com.terraformersmc.traverse.feature.TraverseConfiguredFeatures.reg
 
 public class TraversePlacedFeatures {
 	/* Shrubs */
-	public static final RegistryEntry<PlacedFeature> ARID_SHRUBS = createPlacedFeature("arid_shrubs", TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.createCountExtraModifier(0, 0.5f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 	public static final RegistryEntry<PlacedFeature> DESERT_EXTRA_CACTUS = createPlacedFeature("desert_extra_cactus", VegetationConfiguredFeatures.PATCH_CACTUS, RarityFilterPlacementModifier.of(13), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-	public static final RegistryEntry<PlacedFeature> DESERT_SHRUBS = createPlacedFeature("desert_shrubs", TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.SAND)));
+	public static final RegistryEntry<PlacedFeature> DESERT_SHRUBS = createPlacedFeature("desert_shrubs", TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 
 	/* Autumnal Trees */
 	private static final RegistryEntry<PlacedFeature> RED_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("red_autumnal_tree", TraverseConfiguredFeatures.RED_AUTUMNAL_TREE);
@@ -41,33 +39,16 @@ public class TraversePlacedFeatures {
 	);
 	public static final RegistryEntry<PlacedFeature> AUTUMNAL_TREES = createPlacedFeature("autumnal_trees", AUTUMNAL_TREES_CONFIGURED, PlacedFeatures.createCountExtraModifier(10, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 
-	/* Low Ores */
-	public static final RegistryEntry<PlacedFeature> LOW_DIRT = createPlacedFeature("low_dirt", TraverseConfiguredFeatures.LOW_DIRT, CountPlacementModifier.of(10), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.aboveBottom(70)));
-	public static final RegistryEntry<PlacedFeature> LOW_GRAVEL = createPlacedFeature("low_gravel", TraverseConfiguredFeatures.LOW_GRAVEL, CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.aboveBottom(70)));
-	public static final RegistryEntry<PlacedFeature> LOW_GRANITE = createPlacedFeature("low_granite", TraverseConfiguredFeatures.LOW_GRANITE, CountPlacementModifier.of(10), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.aboveBottom(70)));
-	public static final RegistryEntry<PlacedFeature> LOW_DIORITE = createPlacedFeature("low_diorite", TraverseConfiguredFeatures.LOW_DIORITE, CountPlacementModifier.of(10), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.aboveBottom(70)));
-	public static final RegistryEntry<PlacedFeature> LOW_ANDESITE = createPlacedFeature("low_andesite", TraverseConfiguredFeatures.LOW_ANDESITE, CountPlacementModifier.of(10), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.aboveBottom(70)));
-
 	/* Fir Trees */
 	public static final RegistryEntry<PlacedFeature> CONIFEROUS_TREES = createPlacedFeature("coniferous_trees", TraverseConfiguredFeatures.FIR_TREE, PlacedFeatures.createCountExtraModifier(7, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 
 	/* Swamp Trees */
-	public static final RegistryEntry<PlacedFeature> TALL_SWAMP_TREE = createPlacedFeature("tall_swamp_tree", TraverseConfiguredFeatures.TALL_SWAMP_TREE, SurfaceWaterDepthFilterPlacementModifier.of(1));
 	public static final RegistryEntry<PlacedFeature> LUSH_SWAMP_TREES = createPlacedFeature("lush_swamp_trees", TraverseConfiguredFeatures.TALL_SWAMP_TREE, PlacedFeatures.createCountExtraModifier(2, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, SurfaceWaterDepthFilterPlacementModifier.of(3), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 
 	/* Lush Vegetation */
 	public static final RegistryEntry<PlacedFeature> LUSH_FLOWERS = createPlacedFeature("lush_flowers", TraverseConfiguredFeatures.LUSH_FLOWERS, RarityFilterPlacementModifier.of(32), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 	public static final RegistryEntry<PlacedFeature> FLATLANDS_GRASS = createPlacedFeature("flatlands_grass", TraverseConfiguredFeatures.FLATLANDS_GRASS, VegetationPlacedFeatures.modifiers(15));
 	public static final RegistryEntry<PlacedFeature> FLATLANDS_TREES = createPlacedFeature("flatlands_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(0, 0.2F, 1), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
-	public static final RegistryEntry<PlacedFeature> ROLLING_HILLS_GRASS = createPlacedFeature("rolling_hills_grass", TraverseConfiguredFeatures.ROLLING_HILLS_GRASS, VegetationPlacedFeatures.modifiers(3));
-	public static final RegistryEntry<PlacedFeature> ROLLING_HILLS_TREES = createPlacedFeature("rolling_hills_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(2, 0.2f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
-
-	/* Mini Jungle */
-	public static final RegistryEntry<PlacedFeature> MINI_JUNGLE_SEAGRASS = createPlacedFeature("mini_jungle_seagrass", OceanConfiguredFeatures.SEAGRASS_SHORT, PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP);
-	public static final RegistryEntry<PlacedFeature> MINI_JUNGLE_TREES = createPlacedFeature("mini_jungle_trees", TraverseConfiguredFeatures.MINI_JUNGLE_TREES, PlacedFeatures.createCountExtraModifier(50, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
-
-	/* Rocky Edge */
-	public static final RegistryEntry<PlacedFeature> ROCKY_EDGE_BOULDER = createPlacedFeature("rocky_edge_boulder", TraverseConfiguredFeatures.ROCKY_EDGE_BOULDER,  CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP);
 
 	/* Woodlands */
 	private static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> WOODLANDS_TREES_CONFIGURED = register("woodlands_trees", Feature.RANDOM_SELECTOR,
