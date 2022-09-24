@@ -9,9 +9,10 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class FlatlandsBiomes {
-	static final Biome FLATLANDS = TraverseBiomes.BIOME_TEMPLATE
+	static final Biome FLATLANDS = new Biome.Builder()
 			.generationSettings(generationSettings())
 			.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
+			.precipitation(Biome.Precipitation.RAIN)
 			.temperature(0.8F)
 			.downfall(0.7F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

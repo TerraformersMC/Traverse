@@ -12,9 +12,10 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class WoodlandsBiomes {
-	static final Biome WOODLANDS = TraverseBiomes.BIOME_TEMPLATE
+	static final Biome WOODLANDS = new Biome.Builder()
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
+			.precipitation(Biome.Precipitation.RAIN)
 			.temperature(0.8F)
 			.downfall(0.4F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()

@@ -12,16 +12,16 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class AutumnalWoodsBiomes {
-
-	static final Biome AUTUMNAL_WOODS = TraverseBiomes.BIOME_TEMPLATE
+	static final Biome AUTUMNAL_WOODS = new Biome.Builder()
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
+			.precipitation(Biome.Precipitation.RAIN)
+			.temperature(0.8F)
+			.downfall(0.4F)
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0xD6C23D)
 					.foliageColor(0xD2D31F).build()
 			)
-			.temperature(0.8F)
-			.downfall(0.4F)
 			.build();
 
 	private static GenerationSettings generationSettings(){

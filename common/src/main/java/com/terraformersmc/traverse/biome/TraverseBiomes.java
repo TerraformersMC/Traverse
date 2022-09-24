@@ -24,10 +24,6 @@ public class TraverseBiomes {
 
 	public static final Map<RegistryKey<Biome>, Biome> BIOMES = new HashMap<>();
 
-	static final Biome.Builder BIOME_TEMPLATE = new Biome.Builder()
-			.precipitation(Biome.Precipitation.RAIN)
-			.effects(createDefaultBiomeEffects().build());
-
 	static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
 		DefaultBiomeFeatures.addLandCarvers(generationSettings);
 		DefaultBiomeFeatures.addAmethystGeodes(generationSettings);

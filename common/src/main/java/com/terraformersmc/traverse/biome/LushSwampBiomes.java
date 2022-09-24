@@ -13,7 +13,6 @@ import net.minecraft.world.gen.feature.OceanPlacedFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class LushSwampBiomes {
-
 	static final Biome LUSH_SWAMP = new Biome.Builder()
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
