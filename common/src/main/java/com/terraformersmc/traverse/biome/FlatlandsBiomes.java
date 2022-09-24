@@ -9,7 +9,8 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class FlatlandsBiomes {
-	static final Biome FLATLANDS = TraverseBiomes.BIOME_TEMPLATE
+	static final Biome FLATLANDS = new Biome.Builder()
+			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings())
 			.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
 			.category(Biome.Category.PLAINS)

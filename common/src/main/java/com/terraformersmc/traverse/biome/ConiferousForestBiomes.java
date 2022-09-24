@@ -12,7 +12,8 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class ConiferousForestBiomes {
-	private static final Biome.Builder CONIFEROUS_FOREST_TEMPLATE = TraverseBiomes.BIOME_TEMPLATE
+	private static final Biome.Builder CONIFEROUS_FOREST_TEMPLATE = new Biome.Builder()
+			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings(false))
 			.spawnSettings(spawnSettings())
 			.category(Biome.Category.FOREST)

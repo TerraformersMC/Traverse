@@ -12,9 +12,9 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class DesertShrublandBiomes {
-	static final Biome DESERT_SHRUBLAND = TraverseBiomes.BIOME_TEMPLATE
-			.generationSettings(generationSettings())
+	static final Biome DESERT_SHRUBLAND = new Biome.Builder()
 			.precipitation(Biome.Precipitation.NONE)
+			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
 			.effects(TraverseBiomes.createDefaultBiomeEffects()
 					.grassColor(0xBFB755)

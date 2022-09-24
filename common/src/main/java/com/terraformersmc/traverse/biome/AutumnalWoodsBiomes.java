@@ -13,7 +13,8 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class AutumnalWoodsBiomes {
 
-	static final Biome AUTUMNAL_WOODS = TraverseBiomes.BIOME_TEMPLATE
+	static final Biome AUTUMNAL_WOODS = new Biome.Builder()
+			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings())
 			.category(Biome.Category.FOREST)
 			.spawnSettings(spawnSettings())

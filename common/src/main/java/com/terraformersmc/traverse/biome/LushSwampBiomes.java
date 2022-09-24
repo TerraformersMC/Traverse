@@ -15,9 +15,9 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 public class LushSwampBiomes {
 
 	static final Biome LUSH_SWAMP = new Biome.Builder()
+			.precipitation(Biome.Precipitation.RAIN)
 			.generationSettings(generationSettings())
 			.spawnSettings(spawnSettings())
-			.precipitation(Biome.Precipitation.RAIN)
 			.category(Biome.Category.SWAMP)
 			.temperature(0.8F)
 			.downfall(0.9F)
