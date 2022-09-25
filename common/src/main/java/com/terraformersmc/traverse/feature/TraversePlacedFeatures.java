@@ -44,6 +44,14 @@ public class TraversePlacedFeatures {
 
 	/* Swamp Trees */
 	public static final RegistryEntry<PlacedFeature> LUSH_SWAMP_TREES = createPlacedFeature("lush_swamp_trees", TraverseConfiguredFeatures.TALL_SWAMP_TREE, PlacedFeatures.createCountExtraModifier(2, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, SurfaceWaterDepthFilterPlacementModifier.of(3), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	private static final RegistryEntry<ConfiguredFeature<RandomBooleanFeatureConfig, ?>> SWAMP_FUNGUS_CONFIGURED = register("swamp_fungus",
+			Feature.RANDOM_BOOLEAN_SELECTOR,
+			new RandomBooleanFeatureConfig(
+					PlacedFeatures.createEntry(TreeConfiguredFeatures.HUGE_RED_MUSHROOM),
+					PlacedFeatures.createEntry(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM)
+			)
+	);
+	public static final RegistryEntry<PlacedFeature> SWAMP_FUNGUS = createPlacedFeature("swamp_fungus", SWAMP_FUNGUS_CONFIGURED, PlacedFeatures.createCountExtraModifier(0, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
 
 	/* Lush Vegetation */
 	public static final RegistryEntry<PlacedFeature> LUSH_FLOWERS = createPlacedFeature("lush_flowers", TraverseConfiguredFeatures.LUSH_FLOWERS, RarityFilterPlacementModifier.of(32), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
