@@ -4,6 +4,7 @@ import com.terraformersmc.terraform.boat.api.TerraformBoatType;
 import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -17,6 +18,7 @@ public class TraverseBoatTypes {
 		fir = new TerraformBoatType.Builder()
 				.item(item)
 				.chestItem(chestItem)
+				.planks(TraverseBlocks.FIR_PLANKS.asItem())
 				.build();
 		Registry.register(TerraformBoatTypeRegistry.INSTANCE, new Identifier(Traverse.MOD_ID, "fir"), fir);
 	}
