@@ -1,18 +1,24 @@
 package com.terraformersmc.traverse.block;
 
-import com.terraformersmc.terraform.leaves.ComposterRecipes;
-import com.terraformersmc.terraform.sign.block.*;
+import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.item.TraverseItems;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.item.SignItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
@@ -75,7 +81,6 @@ public class TraverseBlocks {
 		add(name, block);
 		if (item != null) {
 			TraverseItems.add(name, item);
-			ComposterRecipes.registerCompostableBlock(block);
 		}
 		return block;
 	}
@@ -89,16 +94,27 @@ public class TraverseBlocks {
 		for (Identifier id : BLOCKS.keySet()) {
 			Registry.register(Registries.BLOCK, id, BLOCKS.get(id));
 		}
-		addFuels();
+		addCompostables();
 		addFlammables();
+		addFuels();
 		addStrippables();
 	}
 
-	private static void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+	private static void addCompostables() {
+		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
+		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
 
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
+		compostingRegistry.add(FIR_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(FIR_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_SAPLING, SAPLING_CHANCE);
 	}
 
 	private static void addFlammables() {
@@ -118,6 +134,13 @@ public class TraverseBlocks {
 		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(ORANGE_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
+	}
+
+	private static void addFuels() {
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+
+		fuelRegistry.add(FIR_FENCE, 300);
+		fuelRegistry.add(FIR_FENCE_GATE, 300);
 	}
 
 	private static void addStrippables() {
