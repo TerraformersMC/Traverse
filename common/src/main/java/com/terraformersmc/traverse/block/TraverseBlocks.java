@@ -1,6 +1,5 @@
 package com.terraformersmc.traverse.block;
 
-import com.terraformersmc.terraform.leaves.ComposterRecipes;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.wood.block.*;
@@ -8,14 +7,12 @@ import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -75,7 +72,6 @@ public class TraverseBlocks {
 		if (item != null) {
 			item.appendBlocks(Item.BLOCK_ITEMS, item);
 			ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
-			ComposterRecipes.registerCompostableBlock(block);
 		}
 		return block;
 	}
@@ -100,12 +96,24 @@ public class TraverseBlocks {
 		}
 		addFuels();
 		addFlammables();
+		addCompostables();
 	}
 
-	private static void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
+	private static void addCompostables() {
+		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
+		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
+
+		compostingRegistry.add(FIR_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(FIR_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_SAPLING, SAPLING_CHANCE);
 	}
 
 	private static void addFlammables() {
@@ -124,6 +132,12 @@ public class TraverseBlocks {
 		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(ORANGE_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
+	}
+
+	private static void addFuels() {
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+		fuelRegistry.add(FIR_FENCE, 300);
+		fuelRegistry.add(FIR_FENCE_GATE, 300);
 	}
 
 	// Todo: fix when Fabric API supports `of(Material material, Function<BlockState, MapColor> mapColor)`
