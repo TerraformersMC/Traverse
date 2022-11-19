@@ -51,7 +51,7 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 
 	protected static boolean placeTrunkBlock(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, BlockPos blockPos, TreeFeatureConfig treeFeatureConfig, Direction.Axis axis, List<FoliagePlacer.TreeNode> treeNodes) {
 		if (TreeFeature.canReplace(world, blockPos)) {
-			replacer.accept(blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis));
+			replacer.accept(blockPos, treeFeatureConfig.trunkProvider.get(random, blockPos).with(PillarBlock.AXIS, axis));
 			treeNodes.add(new FoliagePlacer.TreeNode(blockPos.toImmutable(), 0, false));
 			return true;
 		} else {

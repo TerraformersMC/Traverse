@@ -2,11 +2,12 @@ package com.terraformersmc.traverse.feature;
 
 import com.google.common.collect.ImmutableList;
 import com.terraformersmc.traverse.Traverse;
-import net.minecraft.tag.BlockTags;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
@@ -14,78 +15,117 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.terraformersmc.traverse.feature.TraverseConfiguredFeatures.register;
-
+@SuppressWarnings("UnstableApiUsage")
 public class TraversePlacedFeatures {
 	/* Shrubs */
-	public static final RegistryEntry<PlacedFeature> DESERT_EXTRA_CACTUS = createPlacedFeature("desert_extra_cactus", VegetationConfiguredFeatures.PATCH_CACTUS, RarityFilterPlacementModifier.of(13), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-	public static final RegistryEntry<PlacedFeature> DESERT_SHRUBS = createPlacedFeature("desert_shrubs", TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	public static final RegistryKey<PlacedFeature> DESERT_EXTRA_CACTUS = createRegistryKey("desert_extra_cactus");
+	public static final RegistryKey<PlacedFeature> DESERT_SHRUBS = createRegistryKey("desert_shrubs");
 
 	/* Autumnal Trees */
-	private static final RegistryEntry<PlacedFeature> RED_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("red_autumnal_tree", TraverseConfiguredFeatures.RED_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> ORANGE_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("orange_autumnal_tree", TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> YELLOW_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("yellow_autumnal_tree", TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE);
-	private static final RegistryEntry<PlacedFeature> BROWN_AUTUMNAL_TREE = createPlacedFeatureWithoutBiomeFilter("brown_autumnal_tree", TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE);
-	private static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> AUTUMNAL_TREES_CONFIGURED = register("autumnal_trees",
-			Feature.RANDOM_SELECTOR,
-			new RandomFeatureConfig(
-					ImmutableList.of(
-							new RandomFeatureEntry(RED_AUTUMNAL_TREE, 0.25F),
-							new RandomFeatureEntry(ORANGE_AUTUMNAL_TREE, 0.25F),
-							new RandomFeatureEntry(YELLOW_AUTUMNAL_TREE, 0.25F),
-							new RandomFeatureEntry(BROWN_AUTUMNAL_TREE, 0.25F)
-					), TreePlacedFeatures.OAK_CHECKED
-			)
-	);
-	public static final RegistryEntry<PlacedFeature> AUTUMNAL_TREES = createPlacedFeature("autumnal_trees", AUTUMNAL_TREES_CONFIGURED, PlacedFeatures.createCountExtraModifier(10, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	private static final RegistryKey<PlacedFeature> BROWN_AUTUMNAL_TREE = createRegistryKey("brown_autumnal_tree");
+	private static final RegistryKey<PlacedFeature> ORANGE_AUTUMNAL_TREE = createRegistryKey("orange_autumnal_tree");
+	private static final RegistryKey<PlacedFeature> RED_AUTUMNAL_TREE = createRegistryKey("red_autumnal_tree");
+	private static final RegistryKey<PlacedFeature> YELLOW_AUTUMNAL_TREE = createRegistryKey("yellow_autumnal_tree");
+	private static final RegistryKey<ConfiguredFeature<?, ?>> AUTUMNAL_TREES_CONFIGURED = TraverseConfiguredFeatures.createRegistryKey("autumnal_trees");
+	public static final RegistryKey<PlacedFeature> AUTUMNAL_TREES = createRegistryKey("autumnal_trees");
 
 	/* Fir Trees */
-	public static final RegistryEntry<PlacedFeature> CONIFEROUS_TREES = createPlacedFeature("coniferous_trees", TraverseConfiguredFeatures.FIR_TREE, PlacedFeatures.createCountExtraModifier(7, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	public static final RegistryKey<PlacedFeature> CONIFEROUS_TREES = createRegistryKey("coniferous_trees");
 
 	/* Swamp Trees */
-	public static final RegistryEntry<PlacedFeature> LUSH_SWAMP_TREES = createPlacedFeature("lush_swamp_trees", TraverseConfiguredFeatures.TALL_SWAMP_TREE, PlacedFeatures.createCountExtraModifier(2, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, SurfaceWaterDepthFilterPlacementModifier.of(3), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
-	private static final RegistryEntry<ConfiguredFeature<RandomBooleanFeatureConfig, ?>> SWAMP_FUNGUS_CONFIGURED = register("swamp_fungus",
-			Feature.RANDOM_BOOLEAN_SELECTOR,
-			new RandomBooleanFeatureConfig(
-					PlacedFeatures.createEntry(TreeConfiguredFeatures.HUGE_RED_MUSHROOM),
-					PlacedFeatures.createEntry(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM)
-			)
-	);
-	public static final RegistryEntry<PlacedFeature> SWAMP_FUNGUS = createPlacedFeature("swamp_fungus", SWAMP_FUNGUS_CONFIGURED, PlacedFeatures.createCountExtraModifier(0, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	public static final RegistryKey<PlacedFeature> LUSH_SWAMP_TREES = createRegistryKey("lush_swamp_trees");
+	private static final RegistryKey<ConfiguredFeature<?, ?>> SWAMP_FUNGUS_CONFIGURED = TraverseConfiguredFeatures.createRegistryKey("swamp_fungus");
+	public static final RegistryKey<PlacedFeature> SWAMP_FUNGUS = createRegistryKey("swamp_fungus");
 
 	/* Lush Vegetation */
-	public static final RegistryEntry<PlacedFeature> LUSH_FLOWERS = createPlacedFeature("lush_flowers", TraverseConfiguredFeatures.LUSH_FLOWERS, RarityFilterPlacementModifier.of(32), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
-	public static final RegistryEntry<PlacedFeature> FLATLANDS_GRASS = createPlacedFeature("flatlands_grass", TraverseConfiguredFeatures.FLATLANDS_GRASS, VegetationPlacedFeatures.modifiers(15));
-	public static final RegistryEntry<PlacedFeature> FLATLANDS_TREES = createPlacedFeature("flatlands_trees", TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(0, 0.2F, 1), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	public static final RegistryKey<PlacedFeature> FLATLANDS_GRASS = createRegistryKey("flatlands_grass");
+	public static final RegistryKey<PlacedFeature> FLATLANDS_TREES = createRegistryKey("flatlands_trees");
+	public static final RegistryKey<PlacedFeature> LUSH_FLOWERS = createRegistryKey("lush_flowers");
 
 	/* Woodlands */
-	private static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> WOODLANDS_TREES_CONFIGURED = register("woodlands_trees", Feature.RANDOM_SELECTOR,
-					new RandomFeatureConfig(
-							ImmutableList.of(
-									new RandomFeatureEntry(createPlacedFeatureWithoutBiomeFilter("oak_shrub", TraverseConfiguredFeatures.OAK_SHRUB), 0.2F),
-									new RandomFeatureEntry(createPlacedFeatureWithoutBiomeFilter("fallen_oak_tree", register("fallen_aok_tree", Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG)), 0.3F)
-							), TreePlacedFeatures.OAK_CHECKED));
-	public static final RegistryEntry<PlacedFeature> WOODLANDS_TREES = createPlacedFeature("woodlands_trees", WOODLANDS_TREES_CONFIGURED, CountPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT)));
+	private static final RegistryKey<PlacedFeature> WOODLANDS_SHRUB = createRegistryKey("woodlands_shrub");
+	private static final RegistryKey<PlacedFeature> WOODLANDS_FALLEN_LOG = createRegistryKey("woodlands_fallen_log");
+	private static final RegistryKey<ConfiguredFeature<?, ?>> WOODLANDS_TREES_CONFIGURED = TraverseConfiguredFeatures.createRegistryKey("woodlands_trees");
+	public static final RegistryKey<PlacedFeature> WOODLANDS_TREES = createRegistryKey("woodlands_trees");
 
-	public static void init() {
+	public static void populate(FabricDynamicRegistryProvider.Entries entries) {
+		/* Shrubs */
+		entries.add(DESERT_EXTRA_CACTUS, placeFeature(entries, VegetationConfiguredFeatures.PATCH_CACTUS, RarityFilterPlacementModifier.of(13), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP));
+		entries.add(DESERT_SHRUBS, placeFeature(entries, TraverseConfiguredFeatures.OAK_SHRUB, PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+
+		/* Autumnal Trees */
+		entries.add(BROWN_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE));
+		entries.add(ORANGE_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE));
+		entries.add(RED_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.RED_AUTUMNAL_TREE));
+		entries.add(YELLOW_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE));
+		entries.add(AUTUMNAL_TREES_CONFIGURED, TraverseConfiguredFeatures.configureFeature(
+				Feature.RANDOM_SELECTOR,
+				new RandomFeatureConfig(
+						ImmutableList.of(
+								new RandomFeatureEntry(entries.ref(BROWN_AUTUMNAL_TREE), 0.25F),
+								new RandomFeatureEntry(entries.ref(ORANGE_AUTUMNAL_TREE), 0.25F),
+								new RandomFeatureEntry(entries.ref(RED_AUTUMNAL_TREE), 0.25F),
+								new RandomFeatureEntry(entries.ref(YELLOW_AUTUMNAL_TREE), 0.25F)
+						), entries.ref(TreePlacedFeatures.OAK_CHECKED)
+				)
+		));
+		entries.add(AUTUMNAL_TREES, placeFeature(entries, AUTUMNAL_TREES_CONFIGURED, PlacedFeatures.createCountExtraModifier(10, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+
+		/* Fir Trees */
+		entries.add(CONIFEROUS_TREES, placeFeature(entries, TraverseConfiguredFeatures.FIR_TREE, PlacedFeatures.createCountExtraModifier(7, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+
+		/* Swamp Trees */
+		entries.add(LUSH_SWAMP_TREES, placeFeature(entries, TraverseConfiguredFeatures.TALL_SWAMP_TREE, PlacedFeatures.createCountExtraModifier(2, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, SurfaceWaterDepthFilterPlacementModifier.of(3), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+		entries.add(SWAMP_FUNGUS_CONFIGURED, TraverseConfiguredFeatures.configureFeature(
+				Feature.RANDOM_BOOLEAN_SELECTOR,
+				new RandomBooleanFeatureConfig(
+						PlacedFeatures.createEntry(entries.ref(TreeConfiguredFeatures.HUGE_RED_MUSHROOM)),
+						PlacedFeatures.createEntry(entries.ref(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM))
+				)
+		));
+		entries.add(SWAMP_FUNGUS, placeFeature(entries, SWAMP_FUNGUS_CONFIGURED, PlacedFeatures.createCountExtraModifier(0, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+
+		/* Lush Vegetation */
+		entries.add(FLATLANDS_GRASS, placeFeature(entries, TraverseConfiguredFeatures.FLATLANDS_GRASS, VegetationPlacedFeatures.modifiers(15)));
+		entries.add(FLATLANDS_TREES, placeFeature(entries, TreeConfiguredFeatures.OAK_BEES_005, PlacedFeatures.createCountExtraModifier(0, 0.2F, 1), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+		entries.add(LUSH_FLOWERS, placeFeature(entries, TraverseConfiguredFeatures.LUSH_FLOWERS, RarityFilterPlacementModifier.of(32), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
+
+		/* Woodlands */
+		entries.add(WOODLANDS_SHRUB, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.OAK_SHRUB));
+		entries.add(WOODLANDS_FALLEN_LOG, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.FALLEN_OAK_TREE));
+		entries.add(WOODLANDS_TREES_CONFIGURED, TraverseConfiguredFeatures.configureFeature(
+				Feature.RANDOM_SELECTOR,
+				new RandomFeatureConfig(
+						ImmutableList.of(
+								new RandomFeatureEntry(entries.ref(WOODLANDS_SHRUB), 0.2F),
+								new RandomFeatureEntry(entries.ref(WOODLANDS_FALLEN_LOG), 0.3F)
+						), entries.ref(TreePlacedFeatures.OAK_CHECKED)
+				)
+		));
+		entries.add(WOODLANDS_TREES, placeFeature(entries, WOODLANDS_TREES_CONFIGURED, CountPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));
 	}
 
-	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {
+	public static RegistryKey<PlacedFeature> createRegistryKey(String name) {
+		return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Traverse.MOD_ID, name));
+	}
+
+	private static PlacedFeature placeFeature(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?, ?>> feature, PlacementModifier... placementModifiers) {
 		List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
 		list.add(BiomePlacementModifier.of());
-		return createPlacedFeature(id, feature, list);
+		return placeFeature(entries, feature, list);
+
 	}
 
-	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeatureWithoutBiomeFilter(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, PlacementModifier... placementModifiers) {
+	private static PlacedFeature placeFeatureWithoutBiomeFilter(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?, ?>> feature, PlacementModifier... placementModifiers) {
 		List<PlacementModifier> list = new ArrayList<>(List.of(placementModifiers));
-		return createPlacedFeature(id, feature, list);
+		return placeFeature(entries, feature, list);
 	}
 
-	public static <FC extends FeatureConfig> RegistryEntry<PlacedFeature> createPlacedFeature(String id, RegistryEntry<ConfiguredFeature<FC, ?>> feature, List<PlacementModifier> placementModifiers) {
-		Identifier realID = new Identifier(Traverse.MOD_ID, id);
-		if (BuiltinRegistries.PLACED_FEATURE.getIds().contains(realID))
-			throw new IllegalStateException("Placed Feature ID: \"" + realID.toString() + "\" already exists in the Placed Features registry!");
+	private static PlacedFeature placeFeature(FabricDynamicRegistryProvider.Entries entries, RegistryKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> list) {
+		return new PlacedFeature(entries.ref(feature), list);
+	}
 
-		return BuiltinRegistries.add(BuiltinRegistries.PLACED_FEATURE, realID, new PlacedFeature(RegistryEntry.upcast(feature), List.copyOf(placementModifiers)));
+	public static void register() {
+		// This just creates the registry keys.  Placed Features are requested and consumed by datagen now.
 	}
 }

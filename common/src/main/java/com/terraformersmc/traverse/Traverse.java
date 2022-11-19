@@ -3,17 +3,15 @@ package com.terraformersmc.traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
+import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
+import com.terraformersmc.traverse.item.TraverseItemGroups;
+import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,25 +28,22 @@ public class Traverse implements ModInitializer {
 
 	private static void register() {
 		TraverseBlocks.register();
+		TraverseItems.register();
 		TraverseBoatTypes.register();
-		TraversePlacedFeatures.init();
+		TraverseConfiguredFeatures.register();
+		TraversePlacedFeatures.register();
 		TraverseBiomes.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
-
-		// This must be after TraverseBiomes.init()
-		CONFIG_MANAGER.getBiomeConfig();
-
-		FabricItemGroupBuilder.create(new Identifier(MOD_ID, "items")).icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack()).appendItems(stacks -> Registry.ITEM.forEach(item -> {
-			if (Registry.ITEM.getId(item).getNamespace().equals(MOD_ID)) {
-				item.appendStacks(item.getGroup(), (DefaultedList<ItemStack>) stacks);
-			}
-		})).build();
+		TraverseItemGroups.register();
 	}
 
 	@Override
 	public void onInitialize() {
 		register();
+
+		// This must be after TraverseBiomes.register()
+		CONFIG_MANAGER.getBiomeConfig();
 
 		if (!FabricLoader.getInstance().isModLoaded("traverse-worldgen")) {
 			Traverse.LOGGER.info("No Traverse worldgen module present; Traverse biomes will not generate.");

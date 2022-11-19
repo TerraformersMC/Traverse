@@ -5,8 +5,8 @@ import com.terraformersmc.terraform.boat.api.TerraformBoatTypeRegistry;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class TraverseBoatTypes {
 	public static TerraformBoatType fir;

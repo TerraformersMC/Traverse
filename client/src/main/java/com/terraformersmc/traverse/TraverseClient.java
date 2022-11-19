@@ -19,7 +19,7 @@ public class TraverseClient implements ClientModInitializer {
 	}
 
 	private static void registerEntityRenderers() {
-		TerraformBoatClientHelper.registerModelLayers(new Identifier(Traverse.MOD_ID, "fir"));
+		TerraformBoatClientHelper.registerModelLayers(new Identifier(Traverse.MOD_ID, "fir"), false);
 	}
 
 	private static void registerRenderLayers() {
@@ -30,7 +30,7 @@ public class TraverseClient implements ClientModInitializer {
 	}
 
 	private static void registerTextures() {
-		Identifier texture = TraverseBlocks.FIR_SIGN.getTexture();
-		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, texture));
+		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, TraverseBlocks.FIR_SIGN.getTexture()));
+		SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, TraverseBlocks.FIR_HANGING_SIGN.getTexture()));
 	}
 }

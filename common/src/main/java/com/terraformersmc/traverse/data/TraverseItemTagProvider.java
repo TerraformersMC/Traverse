@@ -3,74 +3,61 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.tag.ItemTags;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
+
+import java.util.concurrent.CompletableFuture;
 
 public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
-	public TraverseItemTagProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+	public TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, BlockTagProvider blockTagProvider) {
+		super(output, registriesFuture, blockTagProvider);
 	}
 
 	@Override
-	protected void generateTags() {
-		this.getOrCreateTagBuilder(ItemTags.BOATS)
+	protected void configure(RegistryWrapper.WrapperLookup registries) {
+		getOrCreateTagBuilder(ItemTags.BOATS)
 			.add(TraverseBoatTypes.fir.getItem());
 
-		this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
+		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
 			.add(TraverseBoatTypes.fir.getChestItem());
 
-		this.getOrCreateTagBuilder(ItemTags.LEAVES)
-			.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES.asItem())
-			.add(TraverseBlocks.RED_AUTUMNAL_LEAVES.asItem())
-			.add(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES.asItem())
-			.add(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES.asItem())
-			.add(TraverseBlocks.FIR_LEAVES.asItem());
+		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
-		this.getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
-			.addTag(TraverseItemTags.FIR_LOGS);
+		copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
 
-		this.getOrCreateTagBuilder(ItemTags.PLANKS)
-			.add(TraverseBlocks.FIR_PLANKS.asItem());
+		copy(BlockTags.PLANKS, ItemTags.PLANKS);
 
-		this.getOrCreateTagBuilder(ItemTags.SAPLINGS)
-			.add(TraverseBlocks.BROWN_AUTUMNAL_SAPLING.asItem())
-			.add(TraverseBlocks.RED_AUTUMNAL_SAPLING.asItem())
-			.add(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING.asItem())
-			.add(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING.asItem())
-			.add(TraverseBlocks.FIR_SAPLING.asItem());
+		copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
 
-		this.getOrCreateTagBuilder(ItemTags.SIGNS)
-			.add(TraverseBlocks.FIR_SIGN.asItem());
+		copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
-			.add(TraverseBlocks.FIR_BUTTON.asItem());
+		copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
-			.add(TraverseBlocks.FIR_DOOR.asItem());
+		copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
-			.add(TraverseBlocks.FIR_FENCE.asItem());
+		copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
-			.add(TraverseBlocks.FIR_PRESSURE_PLATE.asItem());
+		copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
-			.add(TraverseBlocks.FIR_SLAB.asItem());
+		copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
-			.add(TraverseBlocks.FIR_STAIRS.asItem());
+		copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
 
-		this.getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
-			.add(TraverseBlocks.FIR_TRAPDOOR.asItem());
+		copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
 
-		this.getOrCreateTagBuilder(TraverseItemTags.FIR_LOGS)
+		copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
+
+
+		getOrCreateTagBuilder(TraverseItemTags.FIR_LOGS)
 			.add(TraverseBlocks.FIR_LOG.asItem())
 			.add(TraverseBlocks.FIR_WOOD.asItem())
 			.add(TraverseBlocks.STRIPPED_FIR_LOG.asItem())
 			.add(TraverseBlocks.STRIPPED_FIR_WOOD.asItem());
 
-		this.getOrCreateTagBuilder(TraverseItemTags.PLANKS_THAT_BURN)
+		getOrCreateTagBuilder(TraverseItemTags.PLANKS_THAT_BURN)
 			.add(TraverseBlocks.FIR_PLANKS.asItem());
 	}
 }

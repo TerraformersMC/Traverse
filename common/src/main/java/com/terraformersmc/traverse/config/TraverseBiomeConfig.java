@@ -1,8 +1,8 @@
 package com.terraformersmc.traverse.config;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 
 import java.util.Map;

@@ -2,7 +2,7 @@ package com.terraformersmc.traverse.villager;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerTypeHelper;
-import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biome;
 
@@ -20,7 +20,7 @@ public class TraverseVillagerTypes extends TraverseBiomes {
 	@SafeVarargs
 	private static void register(VillagerType type, RegistryKey<Biome>... biomes) {
 		for (RegistryKey<Biome> biome : biomes) {
-			VillagerTypeHelper.addVillagerTypeToBiome(biome, type);
+			VillagerType.BIOME_TO_TYPE.put(biome, type);
 		}
 	}
 }

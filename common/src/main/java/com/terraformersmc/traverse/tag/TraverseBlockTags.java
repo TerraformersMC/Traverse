@@ -3,9 +3,9 @@ package com.terraformersmc.traverse.tag;
 import com.terraformersmc.traverse.Traverse;
 
 import net.minecraft.block.Block;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public final class TraverseBlockTags {
 	public static final TagKey<Block> FIR_LOGS = TraverseBlockTags.of("fir_logs");
@@ -19,6 +19,6 @@ public final class TraverseBlockTags {
 	}
 
 	private static TagKey<Block> of(Identifier id) {
-		return TagKey.of(Registry.BLOCK_KEY, id);
+		return TagKey.of(RegistryKeys.BLOCK, id);
 	}
 }
