@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
@@ -142,7 +143,8 @@ public class TraverseItemGroups {
 					ITEM_GROUP_ENTRY_MAPS.values().stream()
 							.map(HashMap::values).flatMap(Collection::stream)
 							.map(ItemGroupEntries::getCollection).flatMap(Collection::stream)
-							.collect(Collectors.groupingByConcurrent(ItemStack::getItem)).keySet().forEach(entries::add);
+							.collect(Collectors.groupingByConcurrent(ItemStack::getItem)).keySet().stream()
+							.sorted(Comparator.comparing((item) -> item.getName().getString())).forEach(entries::add);
 				}).build();
 	}
 
