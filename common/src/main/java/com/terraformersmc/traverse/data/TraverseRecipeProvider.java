@@ -22,8 +22,8 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	public void generate(Consumer<RecipeJsonProvider> exporter) {
-		offerBoatRecipe(exporter, TraverseBoatTypes.fir.getItem(), TraverseBlocks.FIR_PLANKS);
-		offerChestBoatRecipe(exporter, TraverseBoatTypes.fir.getChestItem(), TraverseBoatTypes.fir.getItem());
+		offerBoatRecipe(exporter, TraverseBoatTypes.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
+		offerChestBoatRecipe(exporter, TraverseBoatTypes.FIR_CHEST_BOAT, TraverseBoatTypes.FIR_BOAT);
 
 		offerSingleOutputShapelessRecipe(exporter, TraverseBlocks.FIR_BUTTON, TraverseBlocks.FIR_PLANKS, "wooden_button");
 

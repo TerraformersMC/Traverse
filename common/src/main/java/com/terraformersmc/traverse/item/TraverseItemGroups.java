@@ -93,8 +93,8 @@ public class TraverseItemGroups {
 		// TOOLS
 
 		// Boats
-		addGroupEntry(TraverseBoatTypes.fir.getItem(), ItemGroups.TOOLS, TOOLS_BOAT);
-		addGroupEntry(TraverseBoatTypes.fir.getChestItem(), ItemGroups.TOOLS, TOOLS_BOAT);
+		addGroupEntry(TraverseBoatTypes.FIR_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
+		addGroupEntry(TraverseBoatTypes.FIR_CHEST_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
 
 
 		// COMBAT

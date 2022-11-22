@@ -19,10 +19,10 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup registries) {
 		getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TraverseBoatTypes.fir.getItem());
+			.add(TraverseBoatTypes.FIR_BOAT);
 
 		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
-			.add(TraverseBoatTypes.fir.getChestItem());
+			.add(TraverseBoatTypes.FIR_CHEST_BOAT);
 
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
