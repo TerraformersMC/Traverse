@@ -64,8 +64,10 @@ public class TraverseBlocks {
 	public static final TerraformWallSignBlock FIR_WALL_SIGN = add("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)));
 	public static final Item FIR_SIGN_ITEM = TraverseItems.add("fir_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN));
 	private static final Identifier FIR_HANGING_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/hanging/fir");
-	public static final TerraformHangingSignBlock FIR_HANGING_SIGN = add("fir_hanging_sign", new TerraformHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
-	public static final TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN = add("fir_wall_hanging_sign", new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
+	private static final Identifier FIR_HANGING_SIGN_GUI_TEXTURE = new Identifier(Traverse.MOD_ID, "textures/gui/hanging_signs/fir");
+
+	public static final TerraformHangingSignBlock FIR_HANGING_SIGN = add("fir_hanging_sign", new TerraformHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
+	public static final TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN = add("fir_wall_hanging_sign", new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
 	public static final Item FIR_HANGING_SIGN_ITEM = TraverseItems.add("fir_hanging_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN));
 	public static final Block POTTED_RED_AUTUMNAL_SAPLING = add("potted_red_autumnal_sapling", new FlowerPotBlock(RED_AUTUMNAL_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 	public static final Block POTTED_BROWN_AUTUMNAL_SAPLING = add("potted_brown_autumnal_sapling", new FlowerPotBlock(BROWN_AUTUMNAL_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
