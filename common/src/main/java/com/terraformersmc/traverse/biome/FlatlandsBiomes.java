@@ -12,7 +12,7 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 public class FlatlandsBiomes {
 	public static Biome create(FabricDynamicRegistryProvider.Entries entries) {
 		return new Biome.Builder()
-				.generationSettings(generationSettings(entries))
+				.generationSettings(createGenerationSettings(entries))
 				.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
 				.precipitation(Biome.Precipitation.RAIN)
 				.temperature(0.8F)
@@ -25,7 +25,7 @@ public class FlatlandsBiomes {
 				.build();
 	}
 
-	private static GenerationSettings generationSettings(FabricDynamicRegistryProvider.Entries entries) {
+	private static GenerationSettings createGenerationSettings(FabricDynamicRegistryProvider.Entries entries) {
 		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(entries.placedFeatures(), entries.configuredCarvers());
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addDefaultOres(builder);

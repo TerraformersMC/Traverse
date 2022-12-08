@@ -15,8 +15,8 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 public class ConiferousForestBiomes {
 	public static Biome create(FabricDynamicRegistryProvider.Entries entries, boolean snowy) {
 		return new Biome.Builder()
-				.generationSettings(generationSettings(entries, snowy))
-				.spawnSettings(spawnSettings())
+				.generationSettings(createGenerationSettings(entries, snowy))
+				.spawnSettings(createSpawnSettings())
 				.precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN)
 				.temperature(snowy ? -0.5F : 0.6F)
 				.downfall(0.9F)
@@ -28,7 +28,7 @@ public class ConiferousForestBiomes {
 				.build();
 	}
 
-	private static GenerationSettings generationSettings(FabricDynamicRegistryProvider.Entries entries, boolean snowy) {
+	private static GenerationSettings createGenerationSettings(FabricDynamicRegistryProvider.Entries entries, boolean snowy) {
 		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(entries.placedFeatures(), entries.configuredCarvers());
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addLargeFerns(builder);
@@ -46,7 +46,7 @@ public class ConiferousForestBiomes {
 		return builder.build();
 	}
 
-	private static SpawnSettings spawnSettings() {
+	private static SpawnSettings createSpawnSettings() {
 		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
 		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
 		return builder.build();

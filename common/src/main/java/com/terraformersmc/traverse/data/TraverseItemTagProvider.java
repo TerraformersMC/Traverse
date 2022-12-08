@@ -12,12 +12,12 @@ import net.minecraft.registry.tag.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
 public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
-	public TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, BlockTagProvider blockTagProvider) {
+	protected TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, BlockTagProvider blockTagProvider) {
 		super(output, registriesFuture, blockTagProvider);
 	}
 
 	@Override
-	protected void configure(RegistryWrapper.WrapperLookup registries) {
+	public void configure(RegistryWrapper.WrapperLookup registries) {
 		getOrCreateTagBuilder(ItemTags.BOATS)
 			.add(TraverseBoatTypes.FIR_BOAT);
 

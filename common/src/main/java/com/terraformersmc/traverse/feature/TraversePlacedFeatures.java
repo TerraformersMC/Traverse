@@ -5,6 +5,7 @@ import com.terraformersmc.traverse.Traverse;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -59,14 +60,14 @@ public class TraversePlacedFeatures {
 		entries.add(RED_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.RED_AUTUMNAL_TREE));
 		entries.add(YELLOW_AUTUMNAL_TREE, placeFeatureWithoutBiomeFilter(entries, TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE));
 		entries.add(AUTUMNAL_TREES_CONFIGURED, TraverseConfiguredFeatures.configureFeature(
-				Feature.RANDOM_SELECTOR,
-				new RandomFeatureConfig(
-						ImmutableList.of(
-								new RandomFeatureEntry(entries.ref(BROWN_AUTUMNAL_TREE), 0.25F),
-								new RandomFeatureEntry(entries.ref(ORANGE_AUTUMNAL_TREE), 0.25F),
-								new RandomFeatureEntry(entries.ref(RED_AUTUMNAL_TREE), 0.25F),
-								new RandomFeatureEntry(entries.ref(YELLOW_AUTUMNAL_TREE), 0.25F)
-						), entries.ref(TreePlacedFeatures.OAK_CHECKED)
+				Feature.SIMPLE_RANDOM_SELECTOR,
+				new SimpleRandomFeatureConfig(
+						RegistryEntryList.of(
+								entries.ref(BROWN_AUTUMNAL_TREE),
+								entries.ref(ORANGE_AUTUMNAL_TREE),
+								entries.ref(RED_AUTUMNAL_TREE),
+								entries.ref(YELLOW_AUTUMNAL_TREE)
+						)
 				)
 		));
 		entries.add(AUTUMNAL_TREES, placeFeature(entries, AUTUMNAL_TREES_CONFIGURED, PlacedFeatures.createCountExtraModifier(10, 0.1f, 1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(Direction.DOWN.getVector(), BlockTags.DIRT))));

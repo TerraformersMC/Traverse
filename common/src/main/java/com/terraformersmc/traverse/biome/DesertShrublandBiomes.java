@@ -15,8 +15,8 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 public class DesertShrublandBiomes {
 	public static Biome create(FabricDynamicRegistryProvider.Entries entries) {
 		return new Biome.Builder()
-				.generationSettings(generationSettings(entries))
-				.spawnSettings(spawnSettings())
+				.generationSettings(createGenerationSettings(entries))
+				.spawnSettings(createSpawnSettings())
 				.precipitation(Biome.Precipitation.NONE)
 				.temperature(2.0F)
 				.downfall(0.0F)
@@ -28,7 +28,7 @@ public class DesertShrublandBiomes {
 				.build();
 	}
 
-	private static GenerationSettings generationSettings(FabricDynamicRegistryProvider.Entries entries) {
+	private static GenerationSettings createGenerationSettings(FabricDynamicRegistryProvider.Entries entries) {
 		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(entries.placedFeatures(), entries.configuredCarvers());
 		DefaultBiomeFeatures.addFossils(builder);
 		addBasicFeatures(builder);
@@ -45,7 +45,7 @@ public class DesertShrublandBiomes {
 		return builder.build();
 	}
 
-	private static SpawnSettings spawnSettings() {
+	private static SpawnSettings createSpawnSettings() {
 		SpawnSettings.Builder builder = new SpawnSettings.Builder();
 		TraverseBiomes.addDefaultAmbientSpawnEntries(builder);
 		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));

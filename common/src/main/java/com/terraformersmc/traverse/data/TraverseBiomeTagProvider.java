@@ -13,7 +13,7 @@ import net.minecraft.world.biome.Biome;
 import java.util.concurrent.CompletableFuture;
 
 public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
-	public TraverseBiomeTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseBiomeTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 		super(output, RegistryKeys.BIOME, registriesFuture);
 	}
 

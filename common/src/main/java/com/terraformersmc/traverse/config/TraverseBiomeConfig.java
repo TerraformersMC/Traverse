@@ -13,7 +13,7 @@ public class TraverseBiomeConfig {
 
 	TraverseBiomeConfig() {
 		// This is where to set biomes to default disabled if needed (replace "k -> true").
-		biomes = TraverseBiomes.BIOMES.keySet().stream().collect(Collectors.toMap(k -> k.getValue().getPath(), k -> true));
+		biomes = TraverseBiomes.BIOMES.stream().collect(Collectors.toMap(k -> k.getValue().getPath(), k -> true));
 	}
 
 	public boolean isBiomeEnabled(String name) {

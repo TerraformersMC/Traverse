@@ -25,7 +25,7 @@ public class TraverseItemGroups {
 		 * These items are the last Vanilla item of a "similar" type to items we add to Vanilla groups.
 		 * Each is used to build a collection of items which will be inserted below the Vanilla item.
 		 */
-		final Item BUILDING_BLOCKS_WOOD_ITEMS = Items.MANGROVE_TRAPDOOR;
+		final Item BUILDING_WOOD_ITEMS = Items.MANGROVE_BUTTON;
 		final Item FUNCTIONAL_SIGN = Items.MANGROVE_SIGN;  // TODO: s.b. MANGROVE_HANGING_SIGN but that breaks
 		final Item NATURAL_LEAVES = Items.FLOWERING_AZALEA_LEAVES;
 		final Item NATURAL_SAPLING = Items.MANGROVE_PROPAGULE;
@@ -41,17 +41,19 @@ public class TraverseItemGroups {
 		// BUILDING BLOCKS
 
 		// Wood items
-		addGroupEntry(TraverseBlocks.FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.STRIPPED_FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.STRIPPED_FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_PLANKS, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_STAIRS, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_SLAB, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_FENCE, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_FENCE_GATE, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_DOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_TRAPDOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_BLOCKS_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.STRIPPED_FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.STRIPPED_FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_PLANKS, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_STAIRS, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_SLAB, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_FENCE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_FENCE_GATE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_DOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_TRAPDOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_BUTTON, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
 
 
 		// NATURAL
@@ -126,6 +128,7 @@ public class TraverseItemGroups {
 						// Target the end of the Item Group
 						content.addAll(entries.getCollection());
 					} else {
+						//Traverse.LOGGER.warn("About to add to Vanilla Item Group '{}' after Item '{}': '{}'", group.getId(), relative, entries.getCollection().stream().map(ItemStack::getItem).collect(Collectors.toList()));
 						content.addAfter(relative, entries.getCollection());
 					}
 				}
@@ -137,7 +140,7 @@ public class TraverseItemGroups {
 		 * Also add all the items to Traverse's own item group.
 		 */
 		ITEM_GROUP = FabricItemGroup.builder(new Identifier(Traverse.MOD_ID, "items"))
-				.displayName(Text.literal("Traverse Items"))
+				.displayName(Text.literal("Traverse"))
 				.icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack())
 				.entries((enabledFeatures, entries, operatorEnabled) -> {
 					ITEM_GROUP_ENTRY_MAPS.values().stream()

@@ -13,13 +13,13 @@ public class TraverseItems {
 	private static final Map<Identifier, Item> ITEMS = new HashMap<>();
 
 	public static Item add(String name, Item item) {
-		ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
+		ITEMS.put(Identifier.of(Traverse.MOD_ID, name), item);
 		return item;
 	}
 
 	public static <I extends BlockItem> I add(String name, I item) {
 		item.appendBlocks(Item.BLOCK_ITEMS, item);
-		ITEMS.put(new Identifier(Traverse.MOD_ID, name), item);
+		ITEMS.put(Identifier.of(Traverse.MOD_ID, name), item);
 		return item;
 	}
 

@@ -15,8 +15,8 @@ import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 public class AutumnalWoodsBiomes {
 	public static Biome create(FabricDynamicRegistryProvider.Entries entries) {
 		return new Biome.Builder()
-				.generationSettings(generationSettings(entries))
-				.spawnSettings(spawnSettings())
+				.generationSettings(createGenerationSettings(entries))
+				.spawnSettings(createSpawnSettings())
 				.precipitation(Biome.Precipitation.RAIN)
 				.temperature(0.8F)
 				.downfall(0.4F)
@@ -28,7 +28,7 @@ public class AutumnalWoodsBiomes {
 				.build();
 	}
 
-	private static GenerationSettings generationSettings(FabricDynamicRegistryProvider.Entries entries) {
+	private static GenerationSettings createGenerationSettings(FabricDynamicRegistryProvider.Entries entries) {
 		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(entries.placedFeatures(), entries.configuredCarvers());
 		addBasicFeatures(builder);
 		DefaultBiomeFeatures.addDefaultOres(builder);
@@ -42,7 +42,7 @@ public class AutumnalWoodsBiomes {
 		return builder.build();
 	}
 
-	private static SpawnSettings spawnSettings() {
+	private static SpawnSettings createSpawnSettings() {
 		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
 		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
 		return builder.build();

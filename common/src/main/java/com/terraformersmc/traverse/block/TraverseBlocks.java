@@ -65,7 +65,6 @@ public class TraverseBlocks {
 	public static final Item FIR_SIGN_ITEM = TraverseItems.add("fir_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN));
 	private static final Identifier FIR_HANGING_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/hanging/fir");
 	private static final Identifier FIR_HANGING_SIGN_GUI_TEXTURE = new Identifier(Traverse.MOD_ID, "textures/gui/hanging_signs/fir");
-
 	public static final TerraformHangingSignBlock FIR_HANGING_SIGN = add("fir_hanging_sign", new TerraformHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
 	public static final TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN = add("fir_wall_hanging_sign", new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).requires(FeatureFlags.UPDATE_1_20)));
 	public static final Item FIR_HANGING_SIGN_ITEM = TraverseItems.add("fir_hanging_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN));
@@ -88,7 +87,7 @@ public class TraverseBlocks {
 	}
 
 	private static <B extends Block> B add(String name, B block) {
-		BLOCKS.put(new Identifier(Traverse.MOD_ID, name), block);
+		BLOCKS.put(Identifier.of(Traverse.MOD_ID, name), block);
 		return block;
 	}
 
@@ -96,6 +95,7 @@ public class TraverseBlocks {
 		for (Identifier id : BLOCKS.keySet()) {
 			Registry.register(Registries.BLOCK, id, BLOCKS.get(id));
 		}
+
 		addCompostables();
 		addFlammables();
 		addFuels();

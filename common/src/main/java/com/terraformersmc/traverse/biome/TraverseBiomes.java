@@ -11,12 +11,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @SuppressWarnings("UnstableApiUsage")
 public class TraverseBiomes {
-
 	public static final RegistryKey<Biome> AUTUMNAL_WOODS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "autumnal_woods"));
 	public static final RegistryKey<Biome> CONIFEROUS_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "coniferous_forest"));
 	public static final RegistryKey<Biome> DESERT_SHRUBLAND = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "desert_shrubland"));
@@ -25,14 +23,24 @@ public class TraverseBiomes {
 	public static final RegistryKey<Biome> SNOWY_CONIFEROUS_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "snowy_coniferous_forest"));
 	public static final RegistryKey<Biome> WOODLANDS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "woodlands"));
 
+	public static final List<RegistryKey<Biome>> BIOMES = List.of(
+			AUTUMNAL_WOODS,
+			CONIFEROUS_FOREST,
+			DESERT_SHRUBLAND,
+			FLATLANDS,
+			LUSH_SWAMP,
+			SNOWY_CONIFEROUS_FOREST,
+			WOODLANDS
+	);
+
 	public static void populate(FabricDynamicRegistryProvider.Entries entries) {
-		entries.add(TraverseBiomes.AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(entries));
-		entries.add(TraverseBiomes.CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, false));
-		entries.add(TraverseBiomes.DESERT_SHRUBLAND, DesertShrublandBiomes.create(entries));
-		entries.add(TraverseBiomes.FLATLANDS, FlatlandsBiomes.create(entries));
-		entries.add(TraverseBiomes.LUSH_SWAMP, LushSwampBiomes.create(entries));
-		entries.add(TraverseBiomes.SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, true));
-		entries.add(TraverseBiomes.WOODLANDS, WoodlandsBiomes.create(entries));
+		entries.add(AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(entries));
+		entries.add(CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, false));
+		entries.add(DESERT_SHRUBLAND, DesertShrublandBiomes.create(entries));
+		entries.add(FLATLANDS, FlatlandsBiomes.create(entries));
+		entries.add(LUSH_SWAMP, LushSwampBiomes.create(entries));
+		entries.add(SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, true));
+		entries.add(WOODLANDS, WoodlandsBiomes.create(entries));
 	}
 
 	private static int getSkyColor(float temperature) {
@@ -40,8 +48,6 @@ public class TraverseBiomes {
 		f = MathHelper.clamp(f, -1.0F, 1.0F);
 		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
 	}
-
-	public static final Map<RegistryKey<Biome>, Biome> BIOMES = new HashMap<>();
 
 	static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings) {
 		DefaultBiomeFeatures.addLandCarvers(generationSettings);
