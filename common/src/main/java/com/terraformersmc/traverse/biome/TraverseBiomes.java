@@ -43,12 +43,6 @@ public class TraverseBiomes {
 		entries.add(WOODLANDS, WoodlandsBiomes.create(entries));
 	}
 
-	private static int getSkyColor(float temperature) {
-		float f = temperature / 3.0F;
-		f = MathHelper.clamp(f, -1.0F, 1.0F);
-		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
-	}
-
 	static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings) {
 		DefaultBiomeFeatures.addLandCarvers(generationSettings);
 		DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
@@ -94,6 +88,12 @@ public class TraverseBiomes {
 				.waterFogColor(0x50533)
 				.skyColor(getSkyColor(0.2F))
 				.fogColor(0xC0D8FF);
+	}
+
+	private static int getSkyColor(float temperature) {
+		float f = temperature / 3.0F;
+		f = MathHelper.clamp(f, -1.0F, 1.0F);
+		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
 	}
 
 	public static void register() {
