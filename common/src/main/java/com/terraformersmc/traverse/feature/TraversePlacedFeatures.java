@@ -66,7 +66,8 @@ public class TraversePlacedFeatures {
 								entries.ref(BROWN_AUTUMNAL_TREE),
 								entries.ref(ORANGE_AUTUMNAL_TREE),
 								entries.ref(RED_AUTUMNAL_TREE),
-								entries.ref(YELLOW_AUTUMNAL_TREE)
+								entries.ref(YELLOW_AUTUMNAL_TREE),
+								entries.ref(TreePlacedFeatures.OAK_CHECKED)
 						)
 				)
 		));
