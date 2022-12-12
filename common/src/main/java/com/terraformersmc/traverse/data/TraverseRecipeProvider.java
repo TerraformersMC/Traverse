@@ -16,7 +16,7 @@ import net.minecraft.util.Identifier;
 import java.util.function.Consumer;
 
 public class TraverseRecipeProvider extends FabricRecipeProvider {
-	public TraverseRecipeProvider(FabricDataOutput dataOutput) {
+	protected TraverseRecipeProvider(FabricDataOutput dataOutput) {
 		super(dataOutput);
 	}
 
@@ -39,6 +39,8 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
 			.offerTo(exporter);
 
+		offerHangingSignRecipe(exporter, TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_PLANKS);
+
 		offerPlanksRecipe(exporter, TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS, 4);
 
 		offerPressurePlateRecipe(exporter, TraverseBlocks.FIR_PRESSURE_PLATE, TraverseBlocks.FIR_PLANKS);
@@ -46,8 +48,6 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 		createSignRecipe(TraverseBlocks.FIR_SIGN, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
 			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
 			.offerTo(exporter);
-
-		offerHangingSignRecipe(exporter, TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_PLANKS);
 
 		offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, TraverseBlocks.FIR_SLAB, TraverseBlocks.FIR_PLANKS);
 

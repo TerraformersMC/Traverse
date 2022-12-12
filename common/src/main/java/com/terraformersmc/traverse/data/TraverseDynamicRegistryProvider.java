@@ -11,12 +11,12 @@ import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("UnstableApiUsage")
 public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvider {
-	public TraverseDynamicRegistryProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseDynamicRegistryProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 		super(output, registriesFuture);
 	}
 
 	@Override
-	protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
+	public void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
 		TraverseConfiguredFeatures.populate(entries);
 		TraversePlacedFeatures.populate(entries);
 		TraverseBiomes.populate(entries);
