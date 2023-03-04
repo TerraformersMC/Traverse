@@ -17,7 +17,7 @@ public class ConiferousForestBiomes {
 		return new Biome.Builder()
 				.generationSettings(createGenerationSettings(entries, snowy))
 				.spawnSettings(createSpawnSettings())
-				.precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN)
+				.precipitation(true)
 				.temperature(snowy ? -0.5F : 0.6F)
 				.downfall(0.9F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()

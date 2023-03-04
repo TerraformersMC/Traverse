@@ -17,7 +17,7 @@ public class WoodlandsBiomes {
 		return new Biome.Builder()
 				.generationSettings(createGenerationSettings(entries))
 				.spawnSettings(createSpawnSettings())
-				.precipitation(Biome.Precipitation.RAIN)
+				.precipitation(true)
 				.temperature(0.8F)
 				.downfall(0.4F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()

@@ -22,7 +22,10 @@
       "parent": "traverse"
     }
   },
-  "depends": {
+  "recommends": {
+    "biolith": "*"
+  },
+  "suggests": {
     "terrablender": "*"
   }
 }

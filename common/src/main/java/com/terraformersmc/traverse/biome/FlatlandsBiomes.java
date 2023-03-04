@@ -14,7 +14,7 @@ public class FlatlandsBiomes {
 		return new Biome.Builder()
 				.generationSettings(createGenerationSettings(entries))
 				.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
-				.precipitation(Biome.Precipitation.RAIN)
+				.precipitation(true)
 				.temperature(0.8F)
 				.downfall(0.7F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
