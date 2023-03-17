@@ -40,6 +40,7 @@ public class TraverseTerraBlenderGeneration extends Region implements Runnable, 
 	public void onTerraBlenderInitialized() {
 		// We can't do registration stuff until both Traverse and TerraBlender are ready.
 		// The run() method below will be called when Traverse is done initializing.
+		//Traverse.callbackWhenInitialized(TraverseSurfaceBuilders::init);
 		Traverse.callbackWhenInitialized(this);
 	}
 
@@ -51,6 +52,9 @@ public class TraverseTerraBlenderGeneration extends Region implements Runnable, 
 
 		// Add the Traverse Overworld surface rules via TerraBlender.
 		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Traverse.MOD_ID, TraverseSurfaceRules.createRules());
+
+		// Register the Traverse surface builders.
+		//TraverseSurfaceBuilders.getBuilders().forEach(SurfaceGeneration::addSurfaceBuilder);
 
 		// Add the biomes to Overworld generation via TerraBlender.
 		BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
