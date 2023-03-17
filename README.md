@@ -1,7 +1,7 @@
 [![Traverse](https://i.imgur.com/ezG6I1H.png)](https://www.curseforge.com/minecraft/mc-mods/traverse)
 
 <p align="center">
-<b>NOTE</b>: Traverse for 1.19.4 is in ALPHA. Use of these releases will result in discontinuous biome placement. Please report any errors.
+<b>NOTE</b>: Traverse for 1.19.4 no longer packages TerraBlender, which is now available from Modrinth as well as CurseForge. It is strongly recommended to download and use <a href="https://modrinth.com/mod/terrablender">TerraBlender</a>, as Biolith worldgen is EXPERIMENTAL.
 </p>
 
 <p align="center">
