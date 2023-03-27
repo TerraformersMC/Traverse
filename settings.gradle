@@ -8,7 +8,11 @@ pluginManagement {
 	}
 }
 
-rootProject.name = "traverse"
 include "client"
 include "common"
 include "worldgen"
+
+rootProject.name = "traverse"
+project(':client').name = "traverse-client"
+project(':common').name = "traverse-common"
+project(':worldgen').name = "traverse-worldgen"
