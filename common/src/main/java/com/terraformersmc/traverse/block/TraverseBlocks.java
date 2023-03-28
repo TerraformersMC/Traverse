@@ -4,7 +4,7 @@ import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
-import com.terraformersmc.terraform.wood.block.StrippableLogBlock;
+import com.terraformersmc.terraform.wood.block.PillarLogHelper;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
@@ -41,10 +41,10 @@ public class TraverseBlocks {
 
 	public static final Block FIR_LEAVES = withItem("fir_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)));
 	public static final Block FIR_SAPLING = withItem("fir_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.FIR_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING)));
-	public static final Block FIR_LOG = withItem("fir_log", StrippableLogBlock.of(MapColor.OAK_TAN, MapColor.BROWN));
-	public static final Block FIR_WOOD = withItem("fir_wood", StrippableLogBlock.of(MapColor.BROWN));
-	public static final Block STRIPPED_FIR_LOG = withItem("stripped_fir_log", StrippableLogBlock.of(MapColor.OAK_TAN));
-	public static final Block STRIPPED_FIR_WOOD = withItem("stripped_fir_wood", StrippableLogBlock.of(MapColor.OAK_TAN));
+	public static final Block FIR_LOG = withItem("fir_log", PillarLogHelper.of(MapColor.OAK_TAN, MapColor.BROWN));
+	public static final Block FIR_WOOD = withItem("fir_wood", PillarLogHelper.of(MapColor.BROWN));
+	public static final Block STRIPPED_FIR_LOG = withItem("stripped_fir_log", PillarLogHelper.of(MapColor.OAK_TAN));
+	public static final Block STRIPPED_FIR_WOOD = withItem("stripped_fir_wood", PillarLogHelper.of(MapColor.OAK_TAN));
 	public static final Block FIR_PLANKS = withItem("fir_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 	public static final Block FIR_SLAB = withItem("fir_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
 	public static final Block FIR_PRESSURE_PLATE = withItem("fir_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
