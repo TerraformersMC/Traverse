@@ -27,12 +27,12 @@ public class TraverseItemGroups {
 		 * These items are the last Vanilla item of a "similar" type to items we add to Vanilla groups.
 		 * Each is used to build a collection of items which will be inserted below the Vanilla item.
 		 */
-		final Item BUILDING_WOOD_ITEMS = Items.MANGROVE_BUTTON;
-		final Item FUNCTIONAL_SIGN = Items.MANGROVE_HANGING_SIGN;
+		final Item BUILDING_WOOD_ITEMS = Items.CHERRY_BUTTON;
+		final Item FUNCTIONAL_SIGN = Items.CHERRY_HANGING_SIGN;
 		final Item NATURAL_LEAVES = Items.FLOWERING_AZALEA_LEAVES;
-		final Item NATURAL_SAPLING = Items.MANGROVE_PROPAGULE;
-		final Item NATURAL_LOG = Items.MANGROVE_LOG;
-		final Item TOOLS_BOAT = Items.MANGROVE_CHEST_BOAT;
+		final Item NATURAL_SAPLING = Items.CHERRY_SAPLING;
+		final Item NATURAL_LOG = Items.CHERRY_LOG;
+		final Item TOOLS_BOAT = Items.CHERRY_CHEST_BOAT;
 
 
 		/*
@@ -132,8 +132,6 @@ public class TraverseItemGroups {
 					if (relative == null) {
 						// Target the end of the Item Group
 						content.addAll(entries.getCollection());
-					} else if (relative.equals(Items.MANGROVE_HANGING_SIGN) && !Items.MANGROVE_HANGING_SIGN.isEnabled(featureSet)) {
-						content.addAfter(Items.MANGROVE_SIGN, entries.getCollection());
 					} else {
 						//Traverse.LOGGER.warn("About to add to Vanilla Item Group '{}' after Item '{}': '{}'", group.getId(), relative, entries.getCollection().stream().map(ItemStack::getItem).collect(Collectors.toList()));
 						content.addAfter(relative, entries.getCollection());
