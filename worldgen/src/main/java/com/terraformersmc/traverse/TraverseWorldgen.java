@@ -8,15 +8,13 @@ public class TraverseWorldgen implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		if (FabricLoader.getInstance().isModLoaded("terrablender")) {
-			Traverse.LOGGER.info("Enabling Traverse's TerraBlender worldgen module.");
-		} else if (FabricLoader.getInstance().isModLoaded("biolith")) {
+		if (FabricLoader.getInstance().isModLoaded("biolith")) {
 			Traverse.LOGGER.info("Enabling Traverse's Biolith worldgen module.");
 
 			//Traverse.callbackWhenInitialized(TraverseSurfaceBuilders::init);
 			Traverse.callbackWhenInitialized(new TraverseBiolithGeneration());
 		} else {
-			Traverse.LOGGER.warn("Traverse world generation disabled; neither Biolith nor TerraBlender is present.");
+			Traverse.LOGGER.warn("Traverse world generation disabled; Biolith is not present.");
 		}
 	}
 }
