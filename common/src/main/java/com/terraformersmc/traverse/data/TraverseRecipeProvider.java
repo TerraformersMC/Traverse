@@ -39,7 +39,7 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 			.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
 			.offerTo(exporter);
 
-		offerHangingSignRecipe(exporter, TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_PLANKS);
+		offerHangingSignRecipe(exporter, TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
 
 		offerPlanksRecipe(exporter, TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS, 4);
 
