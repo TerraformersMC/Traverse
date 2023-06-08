@@ -7,13 +7,14 @@
   "license": "LGPL-3.0-only",
   "icon": "assets/traverse/icon.png",
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/traverse",
+    "homepage": "https://modrinth.com/mod/traverse",
+    "sources": "https://github.com/TerraformersMC/Traverse",
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
     "fabricloader": ">=0.14.11",
     "fabric": ">=0.77.0",
-    "minecraft": ">=1.20-beta.2 <1.21",
+    "minecraft": ">=1.20 <1.21",
     "java": ">=17"
   },
   "authors": [
