@@ -9,6 +9,8 @@ import net.minecraft.util.registry.Registry;
 public final class TraverseItemTags {
 	public static final TagKey<Item> FIR_LOGS = TraverseItemTags.of("fir_logs");
 	public static final TagKey<Item> PLANKS_THAT_BURN = TraverseItemTags.of(new Identifier("c", "planks_that_burn"));
+	public static final TagKey<Item> STRIPPED_LOGS = TraverseItemTags.of(new Identifier("c", "stripped_logs"));
+	public static final TagKey<Item> STRIPPED_WOOD = TraverseItemTags.of(new Identifier("c", "stripped_wood"));
 
 	private TraverseItemTags() {
 		return;

@@ -64,6 +64,7 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
 			.add(TraverseBlocks.FIR_TRAPDOOR.asItem());
 
+
 		this.getOrCreateTagBuilder(TraverseItemTags.FIR_LOGS)
 			.add(TraverseBlocks.FIR_LOG.asItem())
 			.add(TraverseBlocks.FIR_WOOD.asItem())
@@ -72,5 +73,11 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 		this.getOrCreateTagBuilder(TraverseItemTags.PLANKS_THAT_BURN)
 			.add(TraverseBlocks.FIR_PLANKS.asItem());
+
+		this.getOrCreateTagBuilder(TraverseItemTags.STRIPPED_LOGS)
+			.add(TraverseBlocks.STRIPPED_FIR_LOG.asItem());
+
+		this.getOrCreateTagBuilder(TraverseItemTags.STRIPPED_WOOD)
+			.add(TraverseBlocks.STRIPPED_FIR_WOOD.asItem());
 	}
 }
