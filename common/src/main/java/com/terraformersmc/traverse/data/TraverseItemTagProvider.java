@@ -1,7 +1,7 @@
 package com.terraformersmc.traverse.data;
 
-import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.item.TraverseBoatTypes;
+import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -51,13 +51,12 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
 
 
-		getOrCreateTagBuilder(TraverseItemTags.FIR_LOGS)
-			.add(TraverseBlocks.FIR_LOG.asItem())
-			.add(TraverseBlocks.FIR_WOOD.asItem())
-			.add(TraverseBlocks.STRIPPED_FIR_LOG.asItem())
-			.add(TraverseBlocks.STRIPPED_FIR_WOOD.asItem());
+		copy(TraverseBlockTags.FIR_LOGS, TraverseItemTags.FIR_LOGS);
 
-		getOrCreateTagBuilder(TraverseItemTags.PLANKS_THAT_BURN)
-			.add(TraverseBlocks.FIR_PLANKS.asItem());
+		copy(TraverseBlockTags.PLANKS_THAT_BURN, TraverseItemTags.PLANKS_THAT_BURN);
+
+		copy(TraverseBlockTags.STRIPPED_LOGS, TraverseItemTags.STRIPPED_LOGS);
+
+		copy(TraverseBlockTags.STRIPPED_WOOD, TraverseItemTags.STRIPPED_WOOD);
 	}
 }
