@@ -86,10 +86,20 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 		getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
 			.add(TraverseBlocks.FIR_TRAPDOOR);
 
+
 		getOrCreateTagBuilder(TraverseBlockTags.FIR_LOGS)
 			.add(TraverseBlocks.FIR_LOG)
 			.add(TraverseBlocks.FIR_WOOD)
 			.add(TraverseBlocks.STRIPPED_FIR_LOG)
+			.add(TraverseBlocks.STRIPPED_FIR_WOOD);
+
+		getOrCreateTagBuilder(TraverseBlockTags.PLANKS_THAT_BURN)
+			.add(TraverseBlocks.FIR_PLANKS);
+
+		getOrCreateTagBuilder(TraverseBlockTags.STRIPPED_LOGS)
+			.add(TraverseBlocks.STRIPPED_FIR_LOG);
+
+		getOrCreateTagBuilder(TraverseBlockTags.STRIPPED_WOOD)
 			.add(TraverseBlocks.STRIPPED_FIR_WOOD);
 	}
 }
