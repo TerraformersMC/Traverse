@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "block/oak_hanging_sign" }
+    "": { "model": "traverse:block/fir_hanging_sign" }
   }
 }

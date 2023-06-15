@@ -23,12 +23,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TraverseBlocks {
-	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
-
 	public static final Block RED_AUTUMNAL_LEAVES = withItem("red_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_RED).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)));
 	public static final Block RED_AUTUMNAL_SAPLING = withItem("red_autumnal_sapling", new SaplingBlock(new TraverseSaplingGenerator(() -> TraverseConfiguredFeatures.RED_AUTUMNAL_TREE), SaplingBlock.Settings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_RED)));
 	public static final Block BROWN_AUTUMNAL_LEAVES = withItem("brown_autumnal_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_BROWN).allowsSpawning(TraverseBlocks::canSpawnOnLeaves).suffocates(TraverseBlocks::never).blockVision(TraverseBlocks::never)));
@@ -55,12 +50,12 @@ public class TraverseBlocks {
 	public static final Block FIR_DOOR = withItem("fir_door", new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK));
 	private static final Identifier FIR_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/fir");
 	public static final TerraformSignBlock FIR_SIGN = add("fir_sign", new TerraformSignBlock(FIR_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)));
-	public static final TerraformWallSignBlock FIR_WALL_SIGN = add("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)));
+	public static final TerraformWallSignBlock FIR_WALL_SIGN = add("fir_wall_sign", new TerraformWallSignBlock(FIR_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(FIR_SIGN)));
 	public static final SignItem FIR_SIGN_ITEM = TraverseItems.add("fir_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN));
 	private static final Identifier FIR_HANGING_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/hanging/fir");
-	private static final Identifier FIR_HANGING_SIGN_GUI_TEXTURE = new Identifier(Traverse.MOD_ID, "textures/gui/hanging_signs/fir");
+	private static final Identifier FIR_HANGING_SIGN_GUI_TEXTURE = Identifier.of(Traverse.MOD_ID, "textures/gui/hanging_signs/fir");
 	public static final TerraformHangingSignBlock FIR_HANGING_SIGN = add("fir_hanging_sign", new TerraformHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)));
-	public static final TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN = add("fir_wall_hanging_sign", new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)));
+	public static final TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN = add("fir_wall_hanging_sign", new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(FIR_HANGING_SIGN)));
 	public static final HangingSignItem FIR_HANGING_SIGN_ITEM = TraverseItems.add("fir_hanging_sign", new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)));
 	public static final Block POTTED_RED_AUTUMNAL_SAPLING = add("potted_red_autumnal_sapling", new FlowerPotBlock(RED_AUTUMNAL_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 	public static final Block POTTED_BROWN_AUTUMNAL_SAPLING = add("potted_brown_autumnal_sapling", new FlowerPotBlock(BROWN_AUTUMNAL_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
@@ -69,27 +64,18 @@ public class TraverseBlocks {
 	public static final Block POTTED_FIR_SAPLING = add("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
 	private static <B extends Block> B withItem(String name, B block) {
-		return add(name, block, new BlockItem(block, new Item.Settings()));
-	}
+		TraverseItems.add(name, new BlockItem(block, new Item.Settings()));
 
-	private static <B extends Block> B add(String name, B block, BlockItem item) {
-		add(name, block);
-		if (item != null) {
-			TraverseItems.add(name, item);
-		}
-		return block;
+		return add(name, block);
 	}
 
 	private static <B extends Block> B add(String name, B block) {
-		BLOCKS.put(Identifier.of(Traverse.MOD_ID, name), block);
+		Registry.register(Registries.BLOCK, Identifier.of(Traverse.MOD_ID, name), block);
+
 		return block;
 	}
 
 	public static void register() {
-		for (Identifier id : BLOCKS.keySet()) {
-			Registry.register(Registries.BLOCK, id, BLOCKS.get(id));
-		}
-
 		addCompostables();
 		addFlammables();
 		addFuels();
