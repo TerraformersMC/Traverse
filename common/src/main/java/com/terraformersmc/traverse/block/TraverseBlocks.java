@@ -10,13 +10,10 @@ import com.terraformersmc.traverse.block.sapling.TraverseSaplingGenerator;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -100,27 +97,8 @@ public class TraverseBlocks {
 		POTTED_YELLOW_AUTUMNAL_SAPLING = TraverseRegistry.register("potted_yellow_autumnal_sapling", new FlowerPotBlock(YELLOW_AUTUMNAL_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 		POTTED_FIR_SAPLING = TraverseRegistry.register("potted_fir_sapling", new FlowerPotBlock(FIR_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
-		addCompostables();
 		addFlammables();
-		addFuels();
 		addStrippables();
-	}
-
-	private static void addCompostables() {
-		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
-		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
-		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
-
-		compostingRegistry.add(FIR_LEAVES, LEAVES_CHANCE);
-		compostingRegistry.add(FIR_SAPLING, SAPLING_CHANCE);
-		compostingRegistry.add(BROWN_AUTUMNAL_LEAVES, LEAVES_CHANCE);
-		compostingRegistry.add(BROWN_AUTUMNAL_SAPLING, SAPLING_CHANCE);
-		compostingRegistry.add(ORANGE_AUTUMNAL_LEAVES, LEAVES_CHANCE);
-		compostingRegistry.add(ORANGE_AUTUMNAL_SAPLING, SAPLING_CHANCE);
-		compostingRegistry.add(RED_AUTUMNAL_LEAVES, LEAVES_CHANCE);
-		compostingRegistry.add(RED_AUTUMNAL_SAPLING, SAPLING_CHANCE);
-		compostingRegistry.add(YELLOW_AUTUMNAL_LEAVES, LEAVES_CHANCE);
-		compostingRegistry.add(YELLOW_AUTUMNAL_SAPLING, SAPLING_CHANCE);
 	}
 
 	private static void addFlammables() {
@@ -140,13 +118,6 @@ public class TraverseBlocks {
 		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(ORANGE_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(YELLOW_AUTUMNAL_LEAVES, 30, 60);
-	}
-
-	private static void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
 	}
 
 	private static void addStrippables() {

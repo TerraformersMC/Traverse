@@ -2,8 +2,11 @@ package com.terraformersmc.traverse.item;
 
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.HangingSignItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.SignItem;
 
 public class TraverseItems {
@@ -65,5 +68,32 @@ public class TraverseItems {
 
 		FIR_SIGN = TraverseRegistry.register("fir_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN));
 		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)));
+
+		addCompostables();
+		addFuels();
+	}
+
+	private static void addCompostables() {
+		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
+		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
+
+		compostingRegistry.add(FIR_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(FIR_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(BROWN_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(ORANGE_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(RED_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_LEAVES, LEAVES_CHANCE);
+		compostingRegistry.add(YELLOW_AUTUMNAL_SAPLING, SAPLING_CHANCE);
+	}
+
+	private static void addFuels() {
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+
+		fuelRegistry.add(FIR_FENCE, 300);
+		fuelRegistry.add(FIR_FENCE_GATE, 300);
 	}
 }
