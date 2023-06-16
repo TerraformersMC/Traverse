@@ -11,15 +11,17 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
 public class TraverseBoatTypes {
-	public static final Identifier FIR_BOAT_ID = new Identifier(Traverse.MOD_ID, "fir_boat");
-	public static final Identifier FIR_CHEST_BOAT_ID = new Identifier(Traverse.MOD_ID, "fir_chest_boat");
-
-	public static final RegistryKey<TerraformBoatType> FIR_BOAT_KEY = TerraformBoatTypeRegistry.createKey(Identifier.of(Traverse.MOD_ID, "fir"));
-
-	public static final Item FIR_BOAT = TerraformBoatItemHelper.registerBoatItem(FIR_BOAT_ID, FIR_BOAT_KEY, false);
-	public static final Item FIR_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(FIR_CHEST_BOAT_ID, FIR_BOAT_KEY, true);
+	public static Item FIR_BOAT;
+	public static Item FIR_CHEST_BOAT;
 
 	public static void register() {
+		final Identifier FIR_BOAT_ID = Identifier.of(Traverse.MOD_ID, "fir_boat");
+		final Identifier FIR_CHEST_BOAT_ID = Identifier.of(Traverse.MOD_ID, "fir_chest_boat");
+		final RegistryKey<TerraformBoatType> FIR_BOAT_KEY = TerraformBoatTypeRegistry.createKey(Identifier.of(Traverse.MOD_ID, "fir"));
+
+		FIR_BOAT = TerraformBoatItemHelper.registerBoatItem(FIR_BOAT_ID, FIR_BOAT_KEY, false);
+		FIR_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(FIR_CHEST_BOAT_ID, FIR_BOAT_KEY, true);
+
 		TerraformBoatType FIR = new TerraformBoatType.Builder()
 				.item(FIR_BOAT)
 				.chestItem(FIR_CHEST_BOAT)
