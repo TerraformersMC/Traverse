@@ -23,20 +23,22 @@ Join the Terraformers team discord for support or to chat about the mods: <a hr
 Visit the <a href="https://github.com/TerraformersMC/Traverse/wiki">Traverse Wiki</a> to learn more about each biome.
 </h5>
 
-<h4>
+<h4 align="center">
 Biomes:
 </h4>
 
-* [Autumnal Woods](https://github.com/TerraformersMC/Traverse/wiki/Autumnal-Woods)
-* [Coniferous Forest](https://github.com/TerraformersMC/Traverse/wiki/Coniferous-Forest)
-* [Desert Shrubland](https://github.com/TerraformersMC/Traverse/wiki/Desert-Shrubland)
-* [Flatlands](https://github.com/TerraformersMC/Traverse/wiki/Flatlands)
-* [Lush Swamp](https://github.com/TerraformersMC/Traverse/wiki/Lush-Swamp)
-* [Snowy Coniferous Forest](https://github.com/TerraformersMC/Traverse/wiki/Snowy-Coniferous-Forest)
-* [Woodlands](https://github.com/TerraformersMC/Traverse/wiki/Woodlands)
+<ul style="text-align: center; list-style: none;">
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Autumnal-Woods">Autumnal Woods</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Coniferous-Forest">Coniferous Forest</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Desert-Shrubland">Desert Shrubland</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Flatlands">Flatlands</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Lush-Swamp">Lush Swamp</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Snowy-Coniferous-Forest">Snowy Coniferous Forest</a></li>
+<li><a href="https://github.com/TerraformersMC/Traverse/wiki/Woodlands">Woodlands</a></li>
+</ul>
 
 <h5 align="center">
-Images of the biomes can be found on the CurseForge [Images page](https://www.curseforge.com/minecraft/mc-mods/traverse/screenshots).
+Images of the biomes can be found on the Modrinth <a href="https://modrinth.com/mod/traverse/gallery">Gallery page</a>.
 </h5>
 
 <h4 align="center">
