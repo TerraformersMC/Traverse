@@ -51,7 +51,7 @@ Other Mods by Terraformers:
 
 <p align="center">
     <strong>Check out the Terraformers Nether biome expansion, <a href="https://modrinth.com/mod/cinderscapes">Cinderscapes</a>:</strong><br />
-    <a href="https://modrinth.com/mod/cinderscapes"><img title="Cinderscapes" width="267" height="100" src="banners/Cinderscapes-preview-1.0.0.png" /></a><br />
+    <a href="https://modrinth.com/mod/cinderscapes"><img title="Cinderscapes" width="267" height="100" src="https://github.com/TerraformersMC/Terrestria/raw/1.20.2/banners/Cinderscapes-preview-1.0.0.png" /></a><br />
     Cinderscapes complements Traverse by providing an expansion to the nether, much like Traverse does to the overworld. Cinderscapes brings more life and beauty to the nether, while also keeping it frightening.
 </p>
 
