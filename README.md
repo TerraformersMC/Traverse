@@ -65,6 +65,6 @@ Other Mods by Terraformers:
 
 <h5 align="center">
 	Traverse is a mod for Fabric, and there are no plans to port this mod to Forge.<br />
-	However, another team is maintaining a Forge fork of this mod at <a href="https://www.curseforge.com/minecraft/mc-mods/traverse-legacy-continued">Traverse: Legacy Continued.</a><br />
-	Traverse: Legacy Continued is unaffiliated with Terraformers, so please do not ask us for support regarding their mod.
+	However, another team is maintaining a Forge fork of this mod at <a href="https://www.curseforge.com/minecraft/mc-mods/traverse-reforged">Traverse Reforged.</a><br />
+	Traverse Reforged is unaffiliated with Terraformers, so please do not ask us for support regarding their mod.
 </h5>
