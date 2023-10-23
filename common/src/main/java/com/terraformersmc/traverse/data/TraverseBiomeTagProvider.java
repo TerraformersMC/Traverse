@@ -8,6 +8,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,44 +23,44 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 		/*
 		 * Vanilla biome categories
 		 */
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS.id()))
+		getOrCreateTagBuilder(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_FOREST.id()))
+		getOrCreateTagBuilder(BiomeTags.IS_FOREST)
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IS_TAIGA.id()))
+		getOrCreateTagBuilder(BiomeTags.IS_TAIGA)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.SPAWNS_COLD_VARIANT_FROGS.id()))
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.SPAWNS_WARM_VARIANT_FROGS.id()))
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.WATER_ON_MAP_OUTLINES.id()))
+		getOrCreateTagBuilder(BiomeTags.WATER_ON_MAP_OUTLINES)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
 
 		/*
 		 * Conventional biome categories
 		 */
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.CLIMATE_TEMPERATE.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.CLIMATE_TEMPERATE)
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.LUSH_SWAMP)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.DESERT.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.DESERT)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.PLAINS.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.PLAINS)
 			.addOptional(TraverseBiomes.FLATLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.IN_OVERWORLD.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.IN_OVERWORLD)
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
@@ -68,16 +69,16 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.SNOWY.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.SNOWY)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.SWAMP.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.SWAMP)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.TREE_CONIFEROUS.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.TREE_CONIFEROUS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, ConventionalBiomeTags.TREE_DECIDUOUS.id()))
+		getOrCreateTagBuilder(ConventionalBiomeTags.TREE_DECIDUOUS)
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.LUSH_SWAMP)
 			.addOptional(TraverseBiomes.WOODLANDS);
@@ -86,34 +87,34 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 		/*
 		 * Biome structure generation tags
 		 */
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.IGLOO_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.IGLOO_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.MINESHAFT_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.MINESHAFT_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.PILLAGER_OUTPOST_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.PILLAGER_OUTPOST_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.RUINED_PORTAL_DESERT_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_DESERT_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.RUINED_PORTAL_STANDARD_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_STANDARD_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.RUINED_PORTAL_SWAMP_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_SWAMP_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.STRONGHOLD_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.STRONGHOLD_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
@@ -122,14 +123,46 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.SWAMP_HUT_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.SWAMP_HUT_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.VILLAGE_DESERT_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.VILLAGE_DESERT_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
 
-		getOrCreateTagBuilder(TagKey.of(RegistryKeys.BIOME, BiomeTags.VILLAGE_PLAINS_HAS_STRUCTURE.id()))
+		getOrCreateTagBuilder(BiomeTags.VILLAGE_PLAINS_HAS_STRUCTURE)
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.WOODLANDS);
+
+		/*
+		 * Compatibility tags
+		 */
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "forest_grass")))
+			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+			.addOptional(TraverseBiomes.WOODLANDS);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "has_carnation")))
+			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+			.addOptional(TraverseBiomes.WOODLANDS);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "has_seeding_dandelion")))
+			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+			.addOptional(TraverseBiomes.WOODLANDS);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "has_rare_seeding_dandelion")))
+			.addOptional(TraverseBiomes.FLATLANDS);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "has_milkweed")))
+			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+			.addOptional(TraverseBiomes.LUSH_SWAMP);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "has_cattail_common")))
+			.addOptional(TraverseBiomes.LUSH_SWAMP);
+
+		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "firefly_spawnable_during_day")))
+			.addOptional(TraverseBiomes.LUSH_SWAMP);
 	}
 }
