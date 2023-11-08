@@ -133,10 +133,10 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 			.addOptional(TraverseBiomes.FLATLANDS)
 			.addOptional(TraverseBiomes.WOODLANDS);
 
-		/*
-		 * Compatibility tags
-		 */
 
+		/*
+		 * Compatibility tags for Wilder Wild
+		 */
 		getOrCreateTagBuilder(TagKey.of(registryRef, new Identifier("wilderwild", "forest_grass")))
 			.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 			.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
