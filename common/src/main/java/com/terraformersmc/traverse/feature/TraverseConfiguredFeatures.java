@@ -15,7 +15,6 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 import java.util.List;
 
-@SuppressWarnings("UnstableApiUsage")
 public class TraverseConfiguredFeatures {
 	/* Logs and Shrubs */
 	static final RegistryKey<ConfiguredFeature<?, ?>> FALLEN_OAK_TREE = createRegistryKey("fallen_oak_tree");

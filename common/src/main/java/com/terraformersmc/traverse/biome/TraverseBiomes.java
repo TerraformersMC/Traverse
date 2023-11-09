@@ -13,7 +13,6 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 import java.util.List;
 
-@SuppressWarnings("UnstableApiUsage")
 public class TraverseBiomes {
 	public static final RegistryKey<Biome> AUTUMNAL_WOODS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "autumnal_woods"));
 	public static final RegistryKey<Biome> CONIFEROUS_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(Traverse.MOD_ID, "coniferous_forest"));

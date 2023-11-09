@@ -16,7 +16,6 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("UnstableApiUsage")
 public class TraversePlacedFeatures {
 	/* Shrubs */
 	public static final RegistryKey<PlacedFeature> DESERT_EXTRA_CACTUS = createRegistryKey("desert_extra_cactus");

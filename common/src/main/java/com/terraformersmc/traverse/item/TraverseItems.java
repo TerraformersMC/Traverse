@@ -89,8 +89,10 @@ public class TraverseItems {
 
 	private static void addFuels() {
 		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+		int FENCE_CHANCE = fuelRegistry.get(Items.OAK_FENCE);
+		int FENCE_GATE_CHANCE = fuelRegistry.get(Items.OAK_FENCE_GATE);
 
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
+		fuelRegistry.add(FIR_FENCE, FENCE_CHANCE);
+		fuelRegistry.add(FIR_FENCE_GATE, FENCE_GATE_CHANCE);
 	}
 }
