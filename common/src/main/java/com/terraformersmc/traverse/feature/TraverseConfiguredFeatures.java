@@ -54,7 +54,7 @@ public class TraverseConfiguredFeatures {
 		entries.add(TALL_SWAMP_TREE, configureFeature(Feature.TREE, TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG));
 
 		/* Lush Vegetation */
-		entries.add(FLATLANDS_GRASS, configureFeature(Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.GRASS)), List.of(), 32)));
+		entries.add(FLATLANDS_GRASS, configureFeature(Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS)), List.of(), 32)));
 		entries.add(LUSH_FLOWERS, configureFeature(Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG));
 	}
 
