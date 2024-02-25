@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.registry.RegistryBuilder;
 
 public class TraverseDatagen implements DataGeneratorEntrypoint {
 	@Override
@@ -14,5 +15,10 @@ public class TraverseDatagen implements DataGeneratorEntrypoint {
 		TraverseBlockTagProvider blockTagProvider = pack.addProvider(TraverseBlockTagProvider::new);
 		pack.addProvider((output, registries) -> new TraverseItemTagProvider(output, registries, blockTagProvider));
 		pack.addProvider(TraverseRecipeProvider::new);
+	}
+
+	@Override
+	public void buildRegistry(RegistryBuilder registryBuilder) {
+		TraverseDynamicRegistryProvider.buildRegistry(registryBuilder);
 	}
 }

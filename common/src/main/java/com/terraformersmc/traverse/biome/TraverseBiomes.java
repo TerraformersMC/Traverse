@@ -1,9 +1,9 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.Traverse;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
@@ -32,14 +32,14 @@ public class TraverseBiomes {
 			WOODLANDS
 	);
 
-	public static void populate(FabricDynamicRegistryProvider.Entries entries) {
-		entries.add(AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(entries));
-		entries.add(CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, false));
-		entries.add(DESERT_SHRUBLAND, DesertShrublandBiomes.create(entries));
-		entries.add(FLATLANDS, FlatlandsBiomes.create(entries));
-		entries.add(LUSH_SWAMP, LushSwampBiomes.create(entries));
-		entries.add(SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(entries, true));
-		entries.add(WOODLANDS, WoodlandsBiomes.create(entries));
+	public static void bootstrap(Registerable<Biome> registerable) {
+		registerable.register(AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(registerable));
+		registerable.register(CONIFEROUS_FOREST, ConiferousForestBiomes.create(registerable, false));
+		registerable.register(DESERT_SHRUBLAND, DesertShrublandBiomes.create(registerable));
+		registerable.register(FLATLANDS, FlatlandsBiomes.create(registerable));
+		registerable.register(LUSH_SWAMP, LushSwampBiomes.create(registerable));
+		registerable.register(SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(registerable, true));
+		registerable.register(WOODLANDS, WoodlandsBiomes.create(registerable));
 	}
 
 	static void addBasicFeatures(GenerationSettings.LookupBackedBuilder generationSettings) {
@@ -93,9 +93,5 @@ public class TraverseBiomes {
 		float f = temperature / 3.0F;
 		f = MathHelper.clamp(f, -1.0F, 1.0F);
 		return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
-	}
-
-	public static void register() {
-		// This just creates the registry keys.  Biome objects are requested and consumed by datagen now.
 	}
 }

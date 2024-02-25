@@ -3,10 +3,13 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider {
-	protected TraverseBlockLootTableProvider(FabricDataOutput dataOutput) {
-		super(dataOutput);
+	protected TraverseBlockLootTableProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+		super(output, registriesFuture);
 	}
 
 	@Override
