@@ -55,6 +55,7 @@ public class LushSwampBiomes {
 	private static SpawnSettings createSpawnSettings() {
 		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
 		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 1, 1, 1));
+		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.BOGGED, 50, 4, 4));
 		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FROG, 10, 2, 5));
 		return builder.build();
 	}

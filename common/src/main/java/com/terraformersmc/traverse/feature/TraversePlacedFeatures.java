@@ -79,7 +79,7 @@ public class TraversePlacedFeatures {
 		register(registerable, WOODLANDS_TREES, TraverseConfiguredFeatures.WOODLANDS_TREES, CountPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 	}
 
-	public static RegistryKey<PlacedFeature> createRegistryKey(String name) {
+	private static RegistryKey<PlacedFeature> createRegistryKey(String name) {
 		return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Traverse.MOD_ID, name));
 	}
 

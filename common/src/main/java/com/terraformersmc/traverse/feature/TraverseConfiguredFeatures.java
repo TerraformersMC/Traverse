@@ -91,11 +91,11 @@ public class TraverseConfiguredFeatures {
 		register(registerable, LUSH_FLOWERS, Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
 	}
 
-	public static RegistryKey<ConfiguredFeature<?, ?>> createRegistryKey(String name) {
+	private static RegistryKey<ConfiguredFeature<?, ?>> createRegistryKey(String name) {
 		return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(Traverse.MOD_ID, name));
 	}
 
-	public static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
+	private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
 		ConfiguredFeatures.register(registerable, key, feature, config);
 	}
 }
