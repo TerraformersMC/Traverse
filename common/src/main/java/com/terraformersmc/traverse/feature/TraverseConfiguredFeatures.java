@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.feature;
 
 import com.google.common.collect.ImmutableList;
 import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
@@ -43,9 +44,9 @@ public class TraverseConfiguredFeatures {
 		RegistryEntryLookup<PlacedFeature> placedFeatures = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 
 		/* Logs and Shrubs */
-		register(registerable, FALLEN_OAK_TREE, Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG);
-		register(registerable, OAK_SHRUB, Feature.TREE, TraverseFeatureConfigs.OAK_SHRUB_CONFIG);
-		register(registerable, WOODLANDS_TREES,
+		TraverseRegistry.register(registerable, FALLEN_OAK_TREE, Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG);
+		TraverseRegistry.register(registerable, OAK_SHRUB, Feature.TREE, TraverseFeatureConfigs.OAK_SHRUB_CONFIG);
+		TraverseRegistry.register(registerable, WOODLANDS_TREES,
 				Feature.RANDOM_SELECTOR,
 				new RandomFeatureConfig(
 						ImmutableList.of(
@@ -56,11 +57,11 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Autumnal Trees */
-		register(registerable, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG);
-		register(registerable, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG);
-		register(registerable, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG);
-		register(registerable, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG);
-		register(registerable, AUTUMNAL_TREES,
+		TraverseRegistry.register(registerable, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG);
+		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG);
+		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG);
+		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG);
+		TraverseRegistry.register(registerable, AUTUMNAL_TREES,
 				Feature.SIMPLE_RANDOM_SELECTOR,
 				new SimpleRandomFeatureConfig(
 						RegistryEntryList.of(
@@ -74,11 +75,11 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Fir Trees */
-		register(registerable, FIR_TREE, Feature.TREE, TraverseFeatureConfigs.FIR_TREE_CONFIG);
+		TraverseRegistry.register(registerable, FIR_TREE, Feature.TREE, TraverseFeatureConfigs.FIR_TREE_CONFIG);
 
 		/* Swamp Trees */
-		register(registerable, TALL_SWAMP_TREE, Feature.TREE, TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG);
-		register(registerable, SWAMP_FUNGUS,
+		TraverseRegistry.register(registerable, TALL_SWAMP_TREE, Feature.TREE, TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG);
+		TraverseRegistry.register(registerable, SWAMP_FUNGUS,
 				Feature.RANDOM_BOOLEAN_SELECTOR,
 				new RandomBooleanFeatureConfig(
 						PlacedFeatures.createEntry(configuredFeatures.getOrThrow(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM)),
@@ -87,15 +88,11 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Lush Vegetation */
-		register(registerable, FLATLANDS_GRASS, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS)), List.of(), 32));
-		register(registerable, LUSH_FLOWERS, Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
+		TraverseRegistry.register(registerable, FLATLANDS_GRASS, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS)), List.of(), 32));
+		TraverseRegistry.register(registerable, LUSH_FLOWERS, Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
 	}
 
 	private static RegistryKey<ConfiguredFeature<?, ?>> createRegistryKey(String name) {
 		return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(Traverse.MOD_ID, name));
-	}
-
-	private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
-		ConfiguredFeatures.register(registerable, key, feature, config);
 	}
 }
