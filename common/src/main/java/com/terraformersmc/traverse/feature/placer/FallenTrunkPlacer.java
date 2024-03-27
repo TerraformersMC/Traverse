@@ -2,7 +2,7 @@ package com.terraformersmc.traverse.feature.placer;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.block.BlockState;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class FallenTrunkPlacer extends StraightTrunkPlacer {
-	public static final Codec<FallenTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> fillTrunkPlacerFields(instance).apply(instance, FallenTrunkPlacer::new));
+	public static final MapCodec<FallenTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> fillTrunkPlacerFields(instance).apply(instance, FallenTrunkPlacer::new));
 
 	public FallenTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
 		super(baseHeight, firstRandomHeight, secondRandomHeight);

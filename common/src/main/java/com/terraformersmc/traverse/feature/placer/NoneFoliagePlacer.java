@@ -1,6 +1,6 @@
 package com.terraformersmc.traverse.feature.placer;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -11,7 +11,7 @@ import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class NoneFoliagePlacer extends FoliagePlacer {
-	public static final Codec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> fillFoliagePlacerFields(instance).apply(instance, (uniformIntDistribution, uniformIntDistribution2) -> new NoneFoliagePlacer()));
+	public static final MapCodec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> fillFoliagePlacerFields(instance).apply(instance, (uniformIntDistribution, uniformIntDistribution2) -> new NoneFoliagePlacer()));
 
 	public NoneFoliagePlacer() {
 		super(ConstantIntProvider.create(0), ConstantIntProvider.create(0));
