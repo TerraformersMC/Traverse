@@ -47,5 +47,8 @@
     "block.traverse.fir_door": "Jedlové dveře",
     "block.traverse.fir_trapdoor": "Jedlový poklop",
     "item.traverse.fir_boat": "Jedlový člun",
-    "item.traverse.fir_chest_boat": "Jedlový člun s truhlou"
-  }
+    "item.traverse.fir_chest_boat": "Jedlový člun s truhlou",
+    "tag.item.c.planks_that_burn": "Prkna co hoří",
+    "tag.item.c.stripped_logs": "Oloupané kmeny",
+    "tag.item.c.stripped_wood": "Oloupané dřevo"
+}
