@@ -3,6 +3,8 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -14,6 +16,9 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 
 	@Override
 	public void generate() {
+		//noinspection unused
+		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+
 		// simple blocks
 		addDrop(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);
 		addDrop(TraverseBlocks.FIR_BUTTON);
