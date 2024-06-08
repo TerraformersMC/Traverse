@@ -7,9 +7,9 @@
   "biome.traverse.desert_shrubland": "Пустыня кустарников",
   "biome.traverse.lush_swamp": "Пышное болото",
   "biome.traverse.flatlands": "Равнинная местность",
-  "biome.traverse.mini_jungle": "Мини джунгли",
+  "biome.traverse.mini_jungle": "Мини-джунгли",
   "biome.traverse.rolling_hills": "Холмистая местность",
-  "biome.traverse.snowy_coniferous_forest": "Снежный хвойный лес",
+  "biome.traverse.snowy_coniferous_forest": "Заснеженный хвойный лес",
   "biome.traverse.woodlands": "Лесистая местность",
 
   "block.traverse.red_autumnal_leaves": "Красные осенние листья",
@@ -46,5 +46,9 @@
   "block.traverse.fir_door": "Дверь из пихты",
   "block.traverse.fir_trapdoor": "Люк из пихты",
   "item.traverse.fir_boat": "Лодка из пихты",
-  "item.traverse.fir_chest_boat": "Лодка из пихты с сундуком"
+  "item.traverse.fir_chest_boat": "Грузовая лодка из пихты",
+  "tag.item.traverse.fir_logs": "Брёвна пихты",
+  "tag.item.c.planks_that_burn": "Горючие доски",
+  "tag.item.c.stripped_logs": "Обтёсанные брёвна",
+  "tag.item.c.stripped_wood": "Обтёсанная древесина"
 }
