@@ -37,8 +37,8 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING);
 
 		// less simple blocks
-		doorDrops(TraverseBlocks.FIR_DOOR);
-		slabDrops(TraverseBlocks.FIR_SLAB);
+		addDrop(TraverseBlocks.FIR_DOOR, this::doorDrops);
+		addDrop(TraverseBlocks.FIR_SLAB, this::slabDrops);
 
 		// potted things
 		addPottedPlantDrops(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING);
