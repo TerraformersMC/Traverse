@@ -7,7 +7,7 @@ plugins {
 	id 'io.github.juuxel.loom-vineflower' version '1.11.0'
 }
 
-apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.5/ferry.gradle'
+apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.7/ferry.gradle'
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
