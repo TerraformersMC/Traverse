@@ -2,10 +2,10 @@ package com.terraformersmc.traverse;
 
 import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.boat.TraverseBoats;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.Identifier;
 
 public class TraverseClient implements ClientModInitializer {
 	@Override
@@ -15,7 +15,7 @@ public class TraverseClient implements ClientModInitializer {
 	}
 
 	private static void registerEntityRenderers() {
-		TerraformBoatClientHelper.registerModelLayers(Identifier.of(Traverse.MOD_ID, "fir"), false);
+		TerraformBoatClientHelper.registerModelLayers(TraverseBoats.FIR);
 	}
 
 	private static void registerRenderLayers() {

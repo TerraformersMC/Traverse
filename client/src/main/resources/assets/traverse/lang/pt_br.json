@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Traverse",
-
   "biome.traverse.arid_highlands": "Altiplano árido",
   "biome.traverse.autumnal_woods": "Bosque sasonal",
   "biome.traverse.coniferous_forest": "Floresta de coníferas",
@@ -43,5 +41,35 @@
   "block.traverse.fir_fence_gate": "Portão de abeto",
   "block.traverse.fir_door": "Porta de abeto",
   "block.traverse.fir_trapdoor": "Alçapão de abeto",
+
+  "itemGroup.traverse.items": "Traverse",
+  "item.traverse.red_autumnal_leaves": "Folhas sasonais vermelhas",
+  "item.traverse.brown_autumnal_leaves": "Folhas sasonais marrons",
+  "item.traverse.orange_autumnal_leaves": "Folhas sasonais laranjas",
+  "item.traverse.yellow_autumnal_leaves": "Folhas sasonais amarelas",
+
+  "item.traverse.red_autumnal_sapling": "Muda sasonal vermelha",
+  "item.traverse.brown_autumnal_sapling": "Muda sasonal marrom",
+  "item.traverse.orange_autumnal_sapling": "Muda sasonal laranja",
+  "item.traverse.yellow_autumnal_sapling": "Muda sasonal amarela",
+
+  "item.traverse.fir_log": "Tronco de abeto",
+  "item.traverse.stripped_fir_log": "Tronco de abeto descascado",
+  "item.traverse.stripped_fir_wood": "Madeira de abeto descascada",
+  "item.traverse.fir_wood": "Madeira de abeto",
+  "item.traverse.fir_leaves": "Folhas de abeto",
+  "item.traverse.fir_sapling": "Muda de abeto",
+  "item.traverse.potted_fir_sapling": "Muda de abeto envasada",
+  "item.traverse.fir_planks": "Tábuas de abeto",
+  "item.traverse.fir_stairs": "Escadas de abeto",
+  "item.traverse.fir_slab": "Laje de abeto",
+  "item.traverse.fir_sign": "Placa dea beto",
+  "item.traverse.fir_button": "Botão de abeto",
+  "item.traverse.fir_pressure_plate": "Placa de pressão de abeto",
+  "item.traverse.fir_fence": "Cerca de abeto",
+  "item.traverse.fir_fence_gate": "Portão de abeto",
+  "item.traverse.fir_door": "Porta de abeto",
+  "item.traverse.fir_trapdoor": "Alçapão de abeto",
+
   "item.traverse.fir_boat": "Bote de abeto"
 }

@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Oggetti di Traverse",
-
   "biome.traverse.arid_highlands": "Altopiani aridi",
   "biome.traverse.autumnal_woods": "Boschi autunnali",
   "biome.traverse.coniferous_forest": "Foresta di conifere",
@@ -43,5 +41,35 @@
   "block.traverse.fir_fence_gate": "Cancelletto di cedro",
   "block.traverse.fir_door": "Porta di cedro",
   "block.traverse.fir_trapdoor": "Botola di cedro",
+
+  "itemGroup.traverse.items": "Oggetti di Traverse",
+  "item.traverse.red_autumnal_leaves": "Foglie autunnali rosse",
+  "item.traverse.brown_autumnal_leaves": "Foglie autunnali marroni",
+  "item.traverse.orange_autumnal_leaves": "Foglie autunnali arancioni",
+  "item.traverse.yellow_autumnal_leaves": "Foglie autunnali gialle",
+
+  "item.traverse.red_autumnal_sapling": "Arboscello autunnale rosso",
+  "item.traverse.brown_autumnal_sapling": "Arboscello autunnale marrone",
+  "item.traverse.orange_autumnal_sapling": "Arboscello autunnale arancione",
+  "item.traverse.yellow_autumnal_sapling": "Arboscello autunnale giallo",
+
+  "item.traverse.fir_log": "Tronco di cedro",
+  "item.traverse.stripped_fir_log": "Tronco di cedro scortecciato",
+  "item.traverse.stripped_fir_wood": "Legno di cedro scortecciato",
+  "item.traverse.fir_wood": "Legno di cedro",
+  "item.traverse.fir_leaves": "Foglie di cedro",
+  "item.traverse.fir_sapling": "Arboscello di cedro",
+  "item.traverse.potted_fir_sapling": "Arboscello di cedro nel vaso",
+  "item.traverse.fir_planks": "Assi di cedro",
+  "item.traverse.fir_stairs": "Scalini di cedro",
+  "item.traverse.fir_slab": "Lastra di cedro",
+  "item.traverse.fir_sign": "Cartello di cedro",
+  "item.traverse.fir_button": "Pulsante di cedro",
+  "item.traverse.fir_pressure_plate": "Pedana a pressione di cedro",
+  "item.traverse.fir_fence": "Staccionata di cedro",
+  "item.traverse.fir_fence_gate": "Cancelletto di cedro",
+  "item.traverse.fir_door": "Porta di cedro",
+  "item.traverse.fir_trapdoor": "Botola di cedro",
+
   "item.traverse.fir_boat": "Barca di cedro"
 }

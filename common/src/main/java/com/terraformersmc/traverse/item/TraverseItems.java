@@ -3,7 +3,7 @@ package com.terraformersmc.traverse.item;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.*;
 
 public class TraverseItems {
@@ -63,8 +63,8 @@ public class TraverseItems {
 		FIR_BUTTON = TraverseRegistry.registerBlockItem("fir_button", TraverseBlocks.FIR_BUTTON);
 		FIR_DOOR = TraverseRegistry.registerBlockItem("fir_door", TraverseBlocks.FIR_DOOR);
 
-		FIR_SIGN = TraverseRegistry.register("fir_sign", new SignItem(new Item.Settings().maxCount(16), TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN));
-		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)));
+		FIR_SIGN = TraverseRegistry.register("fir_sign", settings -> new SignItem(TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN, settings), new Item.Settings().maxCount(16));
+		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", settings -> new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, settings), new Item.Settings().maxCount(16));
 
 		addCompostables();
 		addFuels();
@@ -88,9 +88,9 @@ public class TraverseItems {
 	}
 
 	private static void addFuels() {
-		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
-
-		fuelRegistry.add(FIR_FENCE, 300);
-		fuelRegistry.add(FIR_FENCE_GATE, 300);
+		FuelRegistryEvents.BUILD.register((builder, context) -> {
+			builder.add(FIR_FENCE, 300);
+			builder.add(FIR_FENCE_GATE, 300);
+		});
 	}
 }

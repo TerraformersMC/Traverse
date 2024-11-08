@@ -4,7 +4,7 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
 import com.terraformersmc.traverse.init.TraverseTrades;
-import com.terraformersmc.traverse.item.TraverseBoatTypes;
+import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.item.TraverseItemGroups;
 import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
@@ -22,12 +22,12 @@ public class Traverse implements ModInitializer {
 	private static final TraverseConfigManager CONFIG_MANAGER = new TraverseConfigManager();
 
 	private static Boolean initialized = false;
-	private static final ArrayList<Runnable> runnables = new ArrayList<>(1);
+	private static final ArrayList<Runnable> RUNNABLES = new ArrayList<>(1);
 
 	private static void register() {
 		TraverseBlocks.register();
 		TraverseItems.register();
-		TraverseBoatTypes.register();
+		TraverseBoats.register();
 		TraverseTrades.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
@@ -47,7 +47,7 @@ public class Traverse implements ModInitializer {
 
 		// At this point Traverse is completely initialized.
 		initialized = true;
-		for (Runnable callback : runnables) {
+		for (Runnable callback : RUNNABLES) {
 			callback.run();
 		}
 	}
@@ -56,7 +56,7 @@ public class Traverse implements ModInitializer {
 		if (initialized) {
 			callback.run();
 		} else {
-			runnables.add(callback);
+			RUNNABLES.add(callback);
 		}
 	}
 

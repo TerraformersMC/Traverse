@@ -2,6 +2,7 @@ package com.terraformersmc.traverse.item;
 
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.boat.TraverseBoats;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -101,8 +102,8 @@ public class TraverseItemGroups {
 		// TOOLS
 
 		// Boats
-		addGroupEntry(TraverseBoatTypes.FIR_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
-		addGroupEntry(TraverseBoatTypes.FIR_CHEST_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
+		addGroupEntry(TraverseBoats.FIR_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
+		addGroupEntry(TraverseBoats.FIR_CHEST_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
 
 
 		// COMBAT

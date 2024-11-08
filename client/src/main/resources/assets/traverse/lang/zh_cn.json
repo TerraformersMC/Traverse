@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "遍历丨物品",
-
   "biome.traverse.arid_highlands": "干旱高原",
   "biome.traverse.autumnal_woods": "秋树林",
   "biome.traverse.coniferous_forest": "针叶林",
@@ -45,6 +43,37 @@
   "block.traverse.fir_fence_gate": "冷杉木栅栏门",
   "block.traverse.fir_door": "冷杉木门",
   "block.traverse.fir_trapdoor": "冷杉木活板门",
+
+  "itemGroup.traverse.items": "遍历丨物品",
+  "item.traverse.red_autumnal_leaves": "红色秋叶",
+  "item.traverse.brown_autumnal_leaves": "棕色秋叶",
+  "item.traverse.orange_autumnal_leaves": "橙色秋叶",
+  "item.traverse.yellow_autumnal_leaves": "黄色秋叶",
+
+  "item.traverse.red_autumnal_sapling": "红色秋树苗",
+  "item.traverse.brown_autumnal_sapling": "棕色秋树苗",
+  "item.traverse.orange_autumnal_sapling": "橙色秋树苗",
+  "item.traverse.yellow_autumnal_sapling": "黄色秋树苗",
+
+  "item.traverse.fir_log": "冷杉原木",
+  "item.traverse.stripped_fir_log": "去皮冷杉原木",
+  "item.traverse.stripped_fir_wood": "去皮冷杉木",
+  "item.traverse.fir_wood": "冷杉木",
+  "item.traverse.fir_leaves": "冷杉树叶",
+  "item.traverse.fir_sapling": "冷杉树苗",
+  "item.traverse.potted_fir_sapling": "冷杉树苗盆栽",
+  "item.traverse.fir_planks": "冷杉木板",
+  "item.traverse.fir_stairs": "冷杉木楼梯",
+  "item.traverse.fir_slab": "冷杉木台阶",
+  "item.traverse.fir_sign": "冷杉木告示牌",
+  "item.traverse.fir_hanging_sign": "悬挂式冷杉木告示牌",
+  "item.traverse.fir_button": "冷杉木按钮",
+  "item.traverse.fir_pressure_plate": "冷杉木压力板",
+  "item.traverse.fir_fence": "冷杉木栅栏",
+  "item.traverse.fir_fence_gate": "冷杉木栅栏门",
+  "item.traverse.fir_door": "冷杉木门",
+  "item.traverse.fir_trapdoor": "冷杉木活板门",
+
   "item.traverse.fir_boat": "冷杉木船",
   "item.traverse.fir_chest_boat": "冷杉木运输船"
 }

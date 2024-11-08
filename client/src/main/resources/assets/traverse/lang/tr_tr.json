@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Traverse Eşyaları",
-
   "biome.traverse.arid_highlands": "Kurak Yaylalar",
   "biome.traverse.autumnal_woods": "Sonbahar Ormanı",
   "biome.traverse.coniferous_forest": "İğne Yapraklılar Ormanı",
@@ -43,5 +41,35 @@
   "block.traverse.fir_fence_gate": "Köknar Çit Kapısı",
   "block.traverse.fir_door": "Köknar Kapı",
   "block.traverse.fir_trapdoor": "Köknar Tuzak Kapısı",
+
+  "itemGroup.traverse.items": "Traverse Eşyaları",
+  "item.traverse.red_autumnal_leaves": "Kırmızı Sonbahar Yaprakları",
+  "item.traverse.brown_autumnal_leaves": "Kahverengi Sonbahar Yaprakları",
+  "item.traverse.orange_autumnal_leaves": "Turuncu Sonbahar Yaprakları",
+  "item.traverse.yellow_autumnal_leaves": "Sarı Sonbahar Yaprakları",
+
+  "item.traverse.red_autumnal_sapling": "Kırmızı Sonbahar Fidanı",
+  "item.traverse.brown_autumnal_sapling": "Kahverengi Sonbahar Fidanı",
+  "item.traverse.orange_autumnal_sapling": "Turuncu Sonbahar Fidanı",
+  "item.traverse.yellow_autumnal_sapling": "Sarı Sonbahar Fidanı",
+
+  "item.traverse.fir_log": "Köknar Kütüğü",
+  "item.traverse.stripped_fir_log": "Soyulmuş Köknar Kütüğü",
+  "item.traverse.stripped_fir_wood": "Soyulmuş Köknar Odunu",
+  "item.traverse.fir_wood": "Köknar Odunu",
+  "item.traverse.fir_leaves": "Köknar Yaprakları",
+  "item.traverse.fir_sapling": "Köknar Fidanı",
+  "item.traverse.potted_fir_sapling": "Köknar Fidanı Saksısı",
+  "item.traverse.fir_planks": "Köknar Tahta",
+  "item.traverse.fir_stairs": "Köknar Merdiven",
+  "item.traverse.fir_slab": "Köknar Basamak",
+  "item.traverse.fir_sign": "Köknar Tabela",
+  "item.traverse.fir_button": "Köknar Düğme",
+  "item.traverse.fir_pressure_plate": "Köknar Basınç Plakası",
+  "item.traverse.fir_fence": "Köknar Çit",
+  "item.traverse.fir_fence_gate": "Köknar Çit Kapısı",
+  "item.traverse.fir_door": "Köknar Kapı",
+  "item.traverse.fir_trapdoor": "Köknar Tuzak Kapısı",
+
   "item.traverse.fir_boat": "Köknar Tekne"
 }

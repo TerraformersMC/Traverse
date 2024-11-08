@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Traverse Items",
-
   "biome.traverse.arid_highlands": "Jałowe wyżyny",
   "biome.traverse.autumnal_woods": "Jesienne lasy",
   "biome.traverse.coniferous_forest": "Las iglasty",
@@ -43,5 +41,35 @@
   "block.traverse.fir_fence_gate": "Jodłowa furtka",
   "block.traverse.fir_door": "Jodłowe drzwi",
   "block.traverse.fir_trapdoor": "Jodłowa klapa",
+
+  "itemGroup.traverse.items": "Traverse Items",
+  "item.traverse.red_autumnal_leaves": "Czerwone jesienne liście",
+  "item.traverse.brown_autumnal_leaves": "Brązowe jesienne liście",
+  "item.traverse.orange_autumnal_leaves": "Pomarańczowe jesienne liście",
+  "item.traverse.yellow_autumnal_leaves": "Żółte jesienne liście",
+
+  "item.traverse.red_autumnal_sapling": "Czerwona jesienna sadzonka",
+  "item.traverse.brown_autumnal_sapling": "Brązowa jesienna sadzonka",
+  "item.traverse.orange_autumnal_sapling": "Pomarańczowa jesienna sadzonka",
+  "item.traverse.yellow_autumnal_sapling": "Żółta jesienna sadzonka",
+
+  "item.traverse.fir_log": "Jodłowy pień",
+  "item.traverse.stripped_fir_log": "Okorowany jodłowy pień",
+  "item.traverse.stripped_fir_wood": "Okorowane jodłowe drewno",
+  "item.traverse.fir_wood": "Jodłowe drewno",
+  "item.traverse.fir_leaves": "Jodłowe liście",
+  "item.traverse.fir_sapling": "Sadzonka jodły",
+  "item.traverse.potted_fir_sapling": "Doniczkowa jodłowa sadzonka",
+  "item.traverse.fir_planks": "Jodłowe deski",
+  "item.traverse.fir_stairs": "Jodłowe schody",
+  "item.traverse.fir_slab": "Jodłowa płyta",
+  "item.traverse.fir_sign": "Jodłowa tabliczka",
+  "item.traverse.fir_button": "Jodłowy przycisk",
+  "item.traverse.fir_pressure_plate": "Jodłowa płyta naciskowa",
+  "item.traverse.fir_fence": "Jodłowy płot",
+  "item.traverse.fir_fence_gate": "Jodłowa furtka",
+  "item.traverse.fir_door": "Jodłowe drzwi",
+  "item.traverse.fir_trapdoor": "Jodłowa klapa",
+
   "item.traverse.fir_boat": "Jodłowa łódka"
 }

@@ -27,9 +27,9 @@ public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvid
 
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.CONFIGURED_FEATURE), Traverse.MOD_ID);
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE), Traverse.MOD_ID);
-		addAll(entries, registries.getWrapperOrThrow(RegistryKeys.BIOME), Traverse.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE), Traverse.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.PLACED_FEATURE), Traverse.MOD_ID);
+		addAll(entries, registries.getOrThrow(RegistryKeys.BIOME), Traverse.MOD_ID);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.terraformersmc.traverse.data;
 
-import com.terraformersmc.traverse.item.TraverseBoatTypes;
+import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -19,10 +19,10 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries) {
 		getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TraverseBoatTypes.FIR_BOAT);
+			.add(TraverseBoats.FIR_BOAT);
 
 		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
-			.add(TraverseBoatTypes.FIR_CHEST_BOAT);
+			.add(TraverseBoats.FIR_CHEST_BOAT);
 
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 

@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Предметы Traverse",
-
   "biome.traverse.arid_highlands": "Засушливое нагорье",
   "biome.traverse.autumnal_woods": "Осенние леса",
   "biome.traverse.coniferous_forest": "Хвойный лес",
@@ -45,10 +43,43 @@
   "block.traverse.fir_fence_gate": "Калитка из пихты",
   "block.traverse.fir_door": "Дверь из пихты",
   "block.traverse.fir_trapdoor": "Люк из пихты",
+
+  "itemGroup.traverse.items": "Предметы Traverse",
+  "item.traverse.red_autumnal_leaves": "Красные осенние листья",
+  "item.traverse.brown_autumnal_leaves": "Коричневые осенние листья",
+  "item.traverse.orange_autumnal_leaves": "Оранжевые осенние листья",
+  "item.traverse.yellow_autumnal_leaves": "Желтые осенние листья",
+
+  "item.traverse.red_autumnal_sapling": "Саженец красного осеннего дерева",
+  "item.traverse.brown_autumnal_sapling": "Саженец коричневого осеннего дерева",
+  "item.traverse.orange_autumnal_sapling": "Саженец оранжевого осеннего дерева",
+  "item.traverse.yellow_autumnal_sapling": "Саженец желтого осеннего дерева",
+
+  "item.traverse.fir_log": "Бревно пихты",
+  "item.traverse.stripped_fir_log": "Обтёсанное бревно пихты",
+  "item.traverse.stripped_fir_wood": "Обтёсанная древесина пихты",
+  "item.traverse.fir_wood": "Древесина пихты",
+  "item.traverse.fir_leaves": "Листья пихты",
+  "item.traverse.fir_sapling": "Саженец пихты",
+  "item.traverse.potted_fir_sapling": "Саженец пихты в горшке",
+  "item.traverse.fir_planks": "Доски пихты",
+  "item.traverse.fir_stairs": "Ступеньки из пихты",
+  "item.traverse.fir_slab": "Плита из пихты",
+  "item.traverse.fir_sign": "Табличка из пихты",
+  "item.traverse.fir_hanging_sign": "Подвесная табличка из пихты",
+  "item.traverse.fir_button": "Кнопка из пихты",
+  "item.traverse.fir_pressure_plate": "Нажимная плита из пихты",
+  "item.traverse.fir_fence": "Забор из пихты",
+  "item.traverse.fir_fence_gate": "Калитка из пихты",
+  "item.traverse.fir_door": "Дверь из пихты",
+  "item.traverse.fir_trapdoor": "Люк из пихты",
+
   "item.traverse.fir_boat": "Лодка из пихты",
   "item.traverse.fir_chest_boat": "Грузовая лодка из пихты",
+
   "tag.item.traverse.fir_logs": "Брёвна пихты",
+
   "tag.item.c.planks_that_burn": "Горючие доски",
   "tag.item.c.stripped_logs": "Обтёсанные брёвна",
-  "tag.item.c.stripped_wood": "Обтёсанная древесина"
+  "tag.item.c.stripped_woods": "Обтёсанная древесина"
 }

@@ -1,5 +1,4 @@
 {
-  "itemGroup.traverse.items": "Предмети Traverse",
   "biome.traverse.arid_highlands": "Посушливі височини",
   "biome.traverse.autumnal_woods": "Осінній ліс",
   "biome.traverse.coniferous_forest": "Хвойний ліс",
@@ -10,18 +9,22 @@
   "biome.traverse.rolling_hills": "Пагорби",
   "biome.traverse.snowy_coniferous_forest": "Засніжений хвойний ліс",
   "biome.traverse.woodlands": "Лісиста місцевість",
+
   "block.traverse.red_autumnal_leaves": "Червоне осіннє листя",
   "block.traverse.brown_autumnal_leaves": "Коричневе осіннє листя",
   "block.traverse.orange_autumnal_leaves": "Помаранчеве осіннє листя",
   "block.traverse.yellow_autumnal_leaves": "Жовте осіннє листя",
+
   "block.traverse.red_autumnal_sapling": "Червоний осінній паросток",
   "block.traverse.brown_autumnal_sapling": "Коричневий осінній паросток",
   "block.traverse.orange_autumnal_sapling": "Помаранчевий осінній паросток",
   "block.traverse.yellow_autumnal_sapling": "Жовтий осінній паросток",
+
   "block.traverse.potted_red_autumnal_sapling": "Червоний осінній паросток у горщику",
   "block.traverse.potted_brown_autumnal_sapling": "Коричневий осінній паросток у горщику",
   "block.traverse.potted_orange_autumnal_sapling": "Помаранчевий осінній паросток у горщику",
   "block.traverse.potted_yellow_autumnal_sapling": "Жовтий осінній паросток у горщику",
+
   "block.traverse.fir_log": "Ялицева колода",
   "block.traverse.stripped_fir_log": "Обтесана ялицева колода",
   "block.traverse.stripped_fir_wood": "Обтесана ялицева деревина",
@@ -40,6 +43,37 @@
   "block.traverse.fir_fence_gate": "Ялицева хвіртка",
   "block.traverse.fir_door": "Ялицеві двері",
   "block.traverse.fir_trapdoor": "Ялицевий люк",
+
+  "itemGroup.traverse.items": "Предмети Traverse",
+  "item.traverse.red_autumnal_leaves": "Червоне осіннє листя",
+  "item.traverse.brown_autumnal_leaves": "Коричневе осіннє листя",
+  "item.traverse.orange_autumnal_leaves": "Помаранчеве осіннє листя",
+  "item.traverse.yellow_autumnal_leaves": "Жовте осіннє листя",
+
+  "item.traverse.red_autumnal_sapling": "Червоний осінній паросток",
+  "item.traverse.brown_autumnal_sapling": "Коричневий осінній паросток",
+  "item.traverse.orange_autumnal_sapling": "Помаранчевий осінній паросток",
+  "item.traverse.yellow_autumnal_sapling": "Жовтий осінній паросток",
+
+  "item.traverse.fir_log": "Ялицева колода",
+  "item.traverse.stripped_fir_log": "Обтесана ялицева колода",
+  "item.traverse.stripped_fir_wood": "Обтесана ялицева деревина",
+  "item.traverse.fir_wood": "Ялицева деревина",
+  "item.traverse.fir_leaves": "Ялицеве листя",
+  "item.traverse.fir_sapling": "Паросток ялиці",
+  "item.traverse.potted_fir_sapling": "Паросток ялиці в горщику",
+  "item.traverse.fir_planks": "Ялицеві дошки",
+  "item.traverse.fir_stairs": "Ялицеві сходи",
+  "item.traverse.fir_slab": "Ялицева плита",
+  "item.traverse.fir_sign": "Ялицева табличка",
+  "item.traverse.fir_hanging_sign": "Ялицева вивіска",
+  "item.traverse.fir_button": "Ялицева кнопка",
+  "item.traverse.fir_pressure_plate": "Ялицева натискна плита",
+  "item.traverse.fir_fence": "Ялицевий паркан",
+  "item.traverse.fir_fence_gate": "Ялицева хвіртка",
+  "item.traverse.fir_door": "Ялицеві двері",
+  "item.traverse.fir_trapdoor": "Ялицевий люк",
+
   "item.traverse.fir_boat": "Ялицевий човен",
   "item.traverse.fir_chest_boat": "Ялицевий човен зі скринею"
 }

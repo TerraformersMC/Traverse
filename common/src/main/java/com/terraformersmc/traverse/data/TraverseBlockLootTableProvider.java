@@ -17,7 +17,7 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 	@Override
 	public void generate() {
 		//noinspection unused
-		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
 
 		// simple blocks
 		addDrop(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);

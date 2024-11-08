@@ -1,6 +1,4 @@
 {
-  "itemGroup.traverse.items": "Objets de Traverse",
-
   "biome.traverse.arid_highlands": "Hautes terres arides",
   "biome.traverse.autumnal_woods": "Bois automnaux",
   "biome.traverse.coniferous_forest": "Forêt de conifères",
@@ -43,5 +41,35 @@
   "block.traverse.fir_fence_gate": "Portillon en épicéa",
   "block.traverse.fir_door": "Porte en épicéa",
   "block.traverse.fir_trapdoor": "Trappe en épicéa",
+
+  "itemGroup.traverse.items": "Objets de Traverse",
+  "item.traverse.red_autumnal_leaves": "Feuilles automnales rouges",
+  "item.traverse.brown_autumnal_leaves": "Feuilles automnales brunes",
+  "item.traverse.orange_autumnal_leaves": "Feuilles automnales oranges",
+  "item.traverse.yellow_autumnal_leaves": "Feuilles automnales jaunes",
+
+  "item.traverse.red_autumnal_sapling": "Pousse automnale rouge",
+  "item.traverse.brown_autumnal_sapling": "Pousse automnale brune",
+  "item.traverse.orange_autumnal_sapling": "Pousse automnale orange",
+  "item.traverse.yellow_autumnal_sapling": "Pousse automnale jaune",
+
+  "item.traverse.fir_log": "Bûche d'épicéa",
+  "item.traverse.stripped_fir_log": "Bûche d'épicéa écorcée",
+  "item.traverse.stripped_fir_wood": "Bois d'épicéa écorcé",
+  "item.traverse.fir_wood": "Bois d'épicéa",
+  "item.traverse.fir_leaves": "Feuilles d'épicéa",
+  "item.traverse.fir_sapling": "Pousse d'épicéa",
+  "item.traverse.potted_fir_sapling": "Pousse d'épicéa en pot",
+  "item.traverse.fir_planks": "Planches d'épicéa",
+  "item.traverse.fir_stairs": "Escalier en épicéa",
+  "item.traverse.fir_slab": "Dalle en épicéa",
+  "item.traverse.fir_sign": "Pancarte en épicéa",
+  "item.traverse.fir_button": "Bouton en épicéa",
+  "item.traverse.fir_pressure_plate": "Plaque de pression en épicéa",
+  "item.traverse.fir_fence": "Barrière en épicéa",
+  "item.traverse.fir_fence_gate": "Portillon en épicéa",
+  "item.traverse.fir_door": "Porte en épicéa",
+  "item.traverse.fir_trapdoor": "Trappe en épicéa",
+
   "item.traverse.fir_boat": "Bateau en épicéa"
 }

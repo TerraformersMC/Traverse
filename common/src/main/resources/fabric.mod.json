@@ -13,7 +13,10 @@
     "terraform-biome-remapper": [
       "com.terraformersmc.traverse.biome.TraverseBiomeRemappings"
     ],
-      "fabric-datagen": [
+    "terraform-boat-dfu": [
+      "com.terraformersmc.traverse.init.helpers.TraverseBoatDfu"
+    ],
+    "fabric-datagen": [
       "com.terraformersmc.traverse.data.TraverseDatagen"
     ]
   },
