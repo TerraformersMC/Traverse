@@ -5,6 +5,8 @@ import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
@@ -18,11 +20,14 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries) {
+		/*
+		 * Vanilla item tags
+		 */
 		getOrCreateTagBuilder(ItemTags.BOATS)
-			.add(TraverseBoats.FIR_BOAT);
+				.add(TraverseBoats.FIR_BOAT);
 
 		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
-			.add(TraverseBoats.FIR_CHEST_BOAT);
+				.add(TraverseBoats.FIR_CHEST_BOAT);
 
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
@@ -51,12 +56,19 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
 
 
-		copy(TraverseBlockTags.FIR_LOGS, TraverseItemTags.FIR_LOGS);
-
+		/*
+		 * Conventional item tags
+		 */
 		copy(TraverseBlockTags.PLANKS_THAT_BURN, TraverseItemTags.PLANKS_THAT_BURN);
 
-		copy(TraverseBlockTags.STRIPPED_LOGS, TraverseItemTags.STRIPPED_LOGS);
+		copy(ConventionalBlockTags.STRIPPED_LOGS, ConventionalItemTags.STRIPPED_LOGS);
 
-		copy(TraverseBlockTags.STRIPPED_WOOD, TraverseItemTags.STRIPPED_WOOD);
+		copy(ConventionalBlockTags.STRIPPED_WOODS, ConventionalItemTags.STRIPPED_WOODS);
+
+
+		/*
+		 * Local item tags
+		 */
+		copy(TraverseBlockTags.FIR_LOGS, TraverseItemTags.FIR_LOGS);
 	}
 }

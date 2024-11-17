@@ -79,7 +79,5 @@
 
   "tag.item.traverse.fir_logs": "Брёвна пихты",
 
-  "tag.item.c.planks_that_burn": "Горючие доски",
-  "tag.item.c.stripped_logs": "Обтёсанные брёвна",
-  "tag.item.c.stripped_woods": "Обтёсанная древесина"
+  "tag.item.c.planks_that_burn": "Горючие доски"
 }

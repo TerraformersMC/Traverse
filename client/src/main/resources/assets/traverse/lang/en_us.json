@@ -82,7 +82,5 @@
 
   "tag.item.traverse.fir_logs": "Fir Logs",
 
-  "tag.item.c.planks_that_burn": "Planks that Burn",
-  "tag.item.c.stripped_logs": "Stripped Logs",
-  "tag.item.c.stripped_woods": "Stripped Woods"
+  "tag.item.c.planks_that_burn": "Planks that Burn"
 }
