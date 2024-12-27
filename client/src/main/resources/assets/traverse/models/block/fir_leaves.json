@@ -1,6 +1,0 @@
-{
-  "parent": "block/leaves",
-  "textures": {
-    "all": "traverse:block/fir_leaves"
-  }
-}

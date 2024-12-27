@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "traverse:block/brown_autumnal_sapling"
-  }
-}

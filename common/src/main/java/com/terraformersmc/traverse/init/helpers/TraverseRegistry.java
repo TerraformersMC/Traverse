@@ -26,16 +26,21 @@ public class TraverseRegistry {
 	/**
 	 * Registers a block item and associates it with its block.
 	 *
+	 * This method applies {@code settings.useBlockPrefixedTranslationKey()}.
+	 *
 	 * @param name Name ({@link Identifier} path string) of the block item
 	 * @param block {@link Block} to associate to the block item
 	 * @return Newly created {@link BlockItem}
 	 */
 	public static BlockItem registerBlockItem(String name, Block block) {
-		return register(name, settings -> new BlockItem(block, settings), new Item.Settings());
+		return register(name, settings -> new BlockItem(block, settings), new Item.Settings().useBlockPrefixedTranslationKey());
 	}
 
 	/**
 	 * Registers an item.
+	 *
+	 * When using this method directly, the caller should apply
+	 * {@code settings.useBlockPrefixedTranslationKey()} if desired.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the item
 	 * @param factory Factory function to create {@link Item} from settings

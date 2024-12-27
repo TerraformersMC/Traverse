@@ -59,4 +59,9 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.RED_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.RED_AUTUMNAL_LEAVES, TraverseBlocks.RED_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 	}
+
+	@Override
+	public String getName() {
+		return "Traverse Block Loot Tables";
+	}
 }

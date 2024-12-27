@@ -71,4 +71,9 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		 */
 		copy(TraverseBlockTags.FIR_LOGS, TraverseItemTags.FIR_LOGS);
 	}
+
+	@Override
+	public String getName() {
+		return "Traverse Item Tags";
+	}
 }

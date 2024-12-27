@@ -117,4 +117,9 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 				.add(TraverseBlocks.STRIPPED_FIR_LOG)
 				.add(TraverseBlocks.STRIPPED_FIR_WOOD);
 	}
+
+	@Override
+	public String getName() {
+		return "Traverse Block Tags";
+	}
 }

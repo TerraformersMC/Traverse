@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "traverse:block/yellow_autumnal_sapling"
-  }
-}

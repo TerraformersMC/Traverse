@@ -1,17 +1,17 @@
 package com.terraformersmc.traverse.data;
 
 import com.terraformersmc.traverse.Traverse;
+import com.terraformersmc.traverse.block.TraverseBlockFamilies;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.RecipeGenerator;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,56 +26,20 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 		return new RecipeGenerator(registryLookup, exporter) {
 			@Override
 			public void generate() {
-				offerBoatRecipe(TraverseBoats.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
-				offerChestBoatRecipe(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
+				// We don't really use feature sets, so this is good enough...
+				FeatureSet enabledFeatures = FeatureSet.of(FeatureFlags.VANILLA);
 
-				offerSingleOutputShapelessRecipe(TraverseBlocks.FIR_BUTTON, TraverseBlocks.FIR_PLANKS, "wooden_button");
-
-				createDoorRecipe(TraverseBlocks.FIR_DOOR, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
-
-				createFenceRecipe(TraverseBlocks.FIR_FENCE, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
-
-				createFenceGateRecipe(TraverseBlocks.FIR_FENCE_GATE, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
-
-				offerHangingSignRecipe(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
+				generateFamily(TraverseBlockFamilies.FIR, enabledFeatures);
 
 				offerPlanksRecipe(TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS, 4);
 
-				offerPressurePlateRecipe(TraverseBlocks.FIR_PRESSURE_PLATE, TraverseBlocks.FIR_PLANKS);
+				offerBarkBlockRecipe(TraverseBlocks.FIR_WOOD, TraverseBlocks.FIR_LOG);
+				offerBarkBlockRecipe(TraverseBlocks.STRIPPED_FIR_WOOD, TraverseBlocks.STRIPPED_FIR_LOG);
 
-				createSignRecipe(TraverseBlocks.FIR_SIGN, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
+				offerBoatRecipe(TraverseBoats.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
+				offerChestBoatRecipe(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
 
-				offerSlabRecipe(RecipeCategory.BUILDING_BLOCKS, TraverseBlocks.FIR_SLAB, TraverseBlocks.FIR_PLANKS);
-
-				createStairsRecipe(TraverseBlocks.FIR_STAIRS, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
-
-				createTrapdoorRecipe(TraverseBlocks.FIR_TRAPDOOR, Ingredient.ofItems(TraverseBlocks.FIR_PLANKS))
-						.criterion("has_planks", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_PLANKS))
-						.offerTo(exporter);
-
-				createShaped(RecipeCategory.BUILDING_BLOCKS, TraverseBlocks.FIR_WOOD, 3)
-						.pattern("LL")
-						.pattern("LL")
-						.input('L', TraverseBlocks.FIR_LOG)
-						.criterion("has_logs", InventoryChangedCriterion.Conditions.items(TraverseBlocks.FIR_LOG))
-						.offerTo(exporter, "fir_wood");
-
-				createShaped(RecipeCategory.BUILDING_BLOCKS, TraverseBlocks.STRIPPED_FIR_WOOD, 3)
-						.pattern("LL")
-						.pattern("LL")
-						.input('L', TraverseBlocks.STRIPPED_FIR_LOG)
-						.criterion("has_logs", InventoryChangedCriterion.Conditions.items(TraverseBlocks.STRIPPED_FIR_LOG))
-						.offerTo(exporter, "stripped_fir_wood");
+				offerHangingSignRecipe(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
 			}
 		};
 	}

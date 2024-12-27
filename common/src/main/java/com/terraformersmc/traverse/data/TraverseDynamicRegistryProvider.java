@@ -34,7 +34,7 @@ public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvid
 
 	@Override
 	public String getName() {
-		return "Traverse";
+		return "Traverse Dynamic Registries";
 	}
 
 	/**

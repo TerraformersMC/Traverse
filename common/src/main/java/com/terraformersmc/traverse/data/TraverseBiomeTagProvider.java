@@ -184,4 +184,9 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 		getOrCreateTagBuilder(TagKey.of(registryRef, Identifier.of("wilderwild", "firefly_spawnable_during_day")))
 				.addOptional(TraverseBiomes.LUSH_SWAMP);
 	}
+
+	@Override
+	public String getName() {
+		return "Traverse Biome Tags";
+	}
 }
