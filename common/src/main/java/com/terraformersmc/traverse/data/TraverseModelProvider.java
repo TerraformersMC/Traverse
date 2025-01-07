@@ -34,15 +34,15 @@ public class TraverseModelProvider extends FabricModelProvider {
 		generator.registerFlowerPotPlantAndItem(TraverseBlocks.FIR_SAPLING, TraverseBlocks.POTTED_FIR_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
 		generator.registerSingleton(TraverseBlocks.FIR_LEAVES, TexturedModel.LEAVES);
 
-		// TODO: why must I do the rest of this when vanilla seems not to need it ???
-
 		this.registerBlockItemModel(generator, TraverseBlocks.BROWN_AUTUMNAL_LEAVES);
 		this.registerBlockItemModel(generator, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES);
 		this.registerBlockItemModel(generator, TraverseBlocks.RED_AUTUMNAL_LEAVES);
 		this.registerBlockItemModel(generator, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES);
 
-		this.registerBlockItemModel(generator, TraverseBlocks.FIR_FENCE_GATE);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_LEAVES);
+
+		// Item models missed by vanilla code
+		this.registerBlockItemModel(generator, TraverseBlocks.FIR_FENCE_GATE);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_LOG);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_PLANKS);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_PRESSURE_PLATE);
