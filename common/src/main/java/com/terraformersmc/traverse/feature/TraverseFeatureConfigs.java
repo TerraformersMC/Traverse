@@ -7,14 +7,10 @@ import com.terraformersmc.traverse.feature.placer.NoneFoliagePlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
-import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
@@ -59,8 +55,8 @@ public class TraverseFeatureConfigs {
 		).ignoreVines().build();
 	}
 
-	private static DataPool.Builder<BlockState> createStatePoolBuilder() {
-		return DataPool.builder();
+	private static Pool.Builder<BlockState> createStatePoolBuilder() {
+		return Pool.builder();
 	}
 
 	static {

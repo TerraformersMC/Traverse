@@ -54,18 +54,18 @@ public class DesertShrublandBiomes {
 
 	private static SpawnSettings createSpawnSettings() {
 		SpawnSettings.Builder builder = new SpawnSettings.Builder();
-		TraverseBiomes.addDefaultAmbientSpawnEntries(builder);
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 38, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 2, 1, 1));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.HUSK, 60, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 100, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 100, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 100, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4));
-		builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.WITCH, 5, 1, 1));
-		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2, 3));
-		builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.ARMADILLO, 1, 1, 2));
+		TraverseBiomes.addDefaultCaveSpawnEntries(builder);
+		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,   38, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,    2, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1));
+		builder.spawn(SpawnGroup.MONSTER,   60, new SpawnSettings.SpawnEntry(EntityType.HUSK, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SLIME, 4, 4));
+		builder.spawn(SpawnGroup.MONSTER,   10, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 1, 4));
+		builder.spawn(SpawnGroup.MONSTER,    5, new SpawnSettings.SpawnEntry(EntityType.WITCH, 1, 1));
+		builder.spawn(SpawnGroup.CREATURE,   4, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 3));
+		builder.spawn(SpawnGroup.CREATURE,   1, new SpawnSettings.SpawnEntry(EntityType.ARMADILLO, 1, 2));
 		return builder.build();
 	}
 }

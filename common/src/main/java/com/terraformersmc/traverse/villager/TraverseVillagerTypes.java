@@ -17,7 +17,7 @@ public class TraverseVillagerTypes extends TraverseBiomes {
 	}
 
 	@SafeVarargs
-	private static void register(VillagerType type, RegistryKey<Biome>... biomes) {
+	private static void register(RegistryKey<VillagerType> type, RegistryKey<Biome>... biomes) {
 		for (RegistryKey<Biome> biome : biomes) {
 			VillagerType.BIOME_TO_TYPE.put(biome, type);
 		}
