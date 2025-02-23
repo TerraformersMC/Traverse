@@ -6,6 +6,8 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.MusicType;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
@@ -26,6 +28,7 @@ public class LushSwampBiomes {
 				.temperature(0.8F)
 				.downfall(0.9F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
+						.music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_SWAMP))
 						.grassColor(0x7FE03E)
 						.foliageColor(0x58EA33)
 						.waterColor(0x617B64)

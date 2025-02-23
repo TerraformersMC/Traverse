@@ -43,12 +43,8 @@ public class TraverseModelProvider extends FabricModelProvider {
 
 		// Item models missed by vanilla code
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_FENCE_GATE);
-		this.registerBlockItemModel(generator, TraverseBlocks.FIR_LOG);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_PLANKS);
 		this.registerBlockItemModel(generator, TraverseBlocks.FIR_PRESSURE_PLATE);
-		this.registerBlockItemModel(generator, TraverseBlocks.FIR_WOOD);
-		this.registerBlockItemModel(generator, TraverseBlocks.STRIPPED_FIR_LOG);
-		this.registerBlockItemModel(generator, TraverseBlocks.STRIPPED_FIR_WOOD);
 	}
 
 	@Override
