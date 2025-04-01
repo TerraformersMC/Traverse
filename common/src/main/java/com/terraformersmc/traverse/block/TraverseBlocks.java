@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.block;
 
+import com.terraformersmc.terraform.leaves.api.block.ColoredParticleLeavesBlock;
 import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
