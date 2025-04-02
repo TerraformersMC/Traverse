@@ -14,6 +14,7 @@ public class TraverseDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(TraverseBlockLootTableProvider::new);
 		TraverseBlockTagProvider blockTagProvider = pack.addProvider(TraverseBlockTagProvider::new);
 		pack.addProvider((output, registries) -> new TraverseItemTagProvider(output, registries, blockTagProvider));
+		pack.addProvider(TraverseEntityTypeTagProvider::new);
 		pack.addProvider(TraverseModelProvider::new);
 		pack.addProvider(TraverseRecipeProvider::new);
 	}

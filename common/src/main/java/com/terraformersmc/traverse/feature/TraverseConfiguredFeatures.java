@@ -12,10 +12,15 @@ import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.PlaceOnGroundTreeDecorator;
 
 import java.util.List;
 
 public class TraverseConfiguredFeatures {
+	private static final PlaceOnGroundTreeDecorator LEAF_LITTER = new PlaceOnGroundTreeDecorator(96, 4, 2, new WeightedBlockStateProvider(VegetationConfiguredFeatures.leafLitter(1, 3)));
+	private static final PlaceOnGroundTreeDecorator DENSE_LEAF_LITTER = new PlaceOnGroundTreeDecorator(150, 2, 2, new WeightedBlockStateProvider(VegetationConfiguredFeatures.leafLitter(1, 4)));
+
 	/* Logs and Shrubs */
 	public static final RegistryKey<ConfiguredFeature<?, ?>> FALLEN_OAK_TREE = createRegistryKey("fallen_oak_tree");
 	public static final RegistryKey<ConfiguredFeature<?, ?>> OAK_SHRUB = createRegistryKey("oak_shrub");
@@ -26,6 +31,10 @@ public class TraverseConfiguredFeatures {
 	public static final RegistryKey<ConfiguredFeature<?, ?>> ORANGE_AUTUMNAL_TREE = createRegistryKey("orange_autumnal_tree");
 	public static final RegistryKey<ConfiguredFeature<?, ?>> RED_AUTUMNAL_TREE = createRegistryKey("red_autumnal_tree");
 	public static final RegistryKey<ConfiguredFeature<?, ?>> YELLOW_AUTUMNAL_TREE = createRegistryKey("yellow_autumnal_tree");
+	public static final RegistryKey<ConfiguredFeature<?, ?>> BROWN_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("brown_autumnal_tree_leaf_litter");
+	public static final RegistryKey<ConfiguredFeature<?, ?>> ORANGE_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("orange_autumnal_tree_leaf_litter");
+	public static final RegistryKey<ConfiguredFeature<?, ?>> RED_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("red_autumnal_tree_leaf_litter");
+	public static final RegistryKey<ConfiguredFeature<?, ?>> YELLOW_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("yellow_autumnal_tree_leaf_litter");
 	public static final RegistryKey<ConfiguredFeature<?, ?>> AUTUMNAL_TREES = createRegistryKey("autumnal_trees");
 
 	/* Fir Trees */
@@ -52,24 +61,29 @@ public class TraverseConfiguredFeatures {
 						ImmutableList.of(
 								new RandomFeatureEntry(placedFeatures.getOrThrow(TraversePlacedFeatures.WOODLANDS_SHRUB), 0.2F),
 								new RandomFeatureEntry(placedFeatures.getOrThrow(TraversePlacedFeatures.WOODLANDS_FALLEN_LOG), 0.3F)
-						), placedFeatures.getOrThrow(TreePlacedFeatures.OAK_CHECKED)
+						), placedFeatures.getOrThrow(TreePlacedFeatures.OAK_LEAF_LITTER)
 				)
 		);
 
 		/* Autumnal Trees */
-		TraverseRegistry.register(registerable, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG);
-		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG);
-		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG);
-		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG);
+		TraverseRegistry.register(registerable, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG.build());
+
+		TraverseRegistry.register(registerable, BROWN_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
 		TraverseRegistry.register(registerable, AUTUMNAL_TREES,
 				Feature.SIMPLE_RANDOM_SELECTOR,
 				new SimpleRandomFeatureConfig(
 						RegistryEntryList.of(
-								placedFeatures.getOrThrow(TraversePlacedFeatures.BROWN_AUTUMNAL_TREE),
-								placedFeatures.getOrThrow(TraversePlacedFeatures.ORANGE_AUTUMNAL_TREE),
-								placedFeatures.getOrThrow(TraversePlacedFeatures.RED_AUTUMNAL_TREE),
-								placedFeatures.getOrThrow(TraversePlacedFeatures.YELLOW_AUTUMNAL_TREE),
-								placedFeatures.getOrThrow(TreePlacedFeatures.OAK_CHECKED)
+								placedFeatures.getOrThrow(TraversePlacedFeatures.BROWN_AUTUMNAL_TREE_LEAF_LITTER),
+								placedFeatures.getOrThrow(TraversePlacedFeatures.ORANGE_AUTUMNAL_TREE_LEAF_LITTER),
+								placedFeatures.getOrThrow(TraversePlacedFeatures.RED_AUTUMNAL_TREE_LEAF_LITTER),
+								placedFeatures.getOrThrow(TraversePlacedFeatures.YELLOW_AUTUMNAL_TREE_LEAF_LITTER),
+								placedFeatures.getOrThrow(TreePlacedFeatures.OAK_LEAF_LITTER)
 						)
 				)
 		);

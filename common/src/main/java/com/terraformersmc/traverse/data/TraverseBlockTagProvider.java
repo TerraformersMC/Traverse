@@ -20,6 +20,9 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 		/*
 		 * Basic block tags
 		 */
+		getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+				.add(TraverseBlocks.FIR_FENCE_GATE);
+
 		getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
 				.add(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING)
@@ -36,6 +39,9 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
 		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
 				.addTag(TraverseBlockTags.FIR_LOGS);
+
+		getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
+				.add(TraverseBlocks.FIR_LOG);
 
 		getOrCreateTagBuilder(BlockTags.PLANKS)
 				.add(TraverseBlocks.FIR_PLANKS);
@@ -79,20 +85,6 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
 		getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
 				.add(TraverseBlocks.FIR_TRAPDOOR);
-
-
-		/*
-		 * Tool block tags
-		 */
-		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-				.add(TraverseBlocks.FIR_FENCE_GATE);
-
-		getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
-				.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.RED_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.FIR_LEAVES);
 
 
 		/*

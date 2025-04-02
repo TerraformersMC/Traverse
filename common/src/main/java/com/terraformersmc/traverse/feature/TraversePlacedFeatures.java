@@ -26,6 +26,10 @@ public class TraversePlacedFeatures {
 	public static final RegistryKey<PlacedFeature> ORANGE_AUTUMNAL_TREE = createRegistryKey("orange_autumnal_tree");
 	public static final RegistryKey<PlacedFeature> RED_AUTUMNAL_TREE = createRegistryKey("red_autumnal_tree");
 	public static final RegistryKey<PlacedFeature> YELLOW_AUTUMNAL_TREE = createRegistryKey("yellow_autumnal_tree");
+	public static final RegistryKey<PlacedFeature> BROWN_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("brown_autumnal_tree_leaf_litter");
+	public static final RegistryKey<PlacedFeature> ORANGE_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("orange_autumnal_tree_leaf_litter");
+	public static final RegistryKey<PlacedFeature> RED_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("red_autumnal_tree_leaf_litter");
+	public static final RegistryKey<PlacedFeature> YELLOW_AUTUMNAL_TREE_LEAF_LITTER = createRegistryKey("yellow_autumnal_tree_leaf_litter");
 	public static final RegistryKey<PlacedFeature> AUTUMNAL_TREES = createRegistryKey("autumnal_trees");
 
 	/* Fir Trees */
@@ -57,6 +61,11 @@ public class TraversePlacedFeatures {
 		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE, TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE, PlacedFeatures.wouldSurvive(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING));
 		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE, TraverseConfiguredFeatures.RED_AUTUMNAL_TREE, PlacedFeatures.wouldSurvive(TraverseBlocks.RED_AUTUMNAL_SAPLING));
 		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE, TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE, PlacedFeatures.wouldSurvive(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING));
+
+		TraverseRegistry.register(registerable, BROWN_AUTUMNAL_TREE_LEAF_LITTER, TraverseConfiguredFeatures.BROWN_AUTUMNAL_TREE_LEAF_LITTER, PlacedFeatures.wouldSurvive(TraverseBlocks.BROWN_AUTUMNAL_SAPLING));
+		TraverseRegistry.register(registerable, ORANGE_AUTUMNAL_TREE_LEAF_LITTER, TraverseConfiguredFeatures.ORANGE_AUTUMNAL_TREE_LEAF_LITTER, PlacedFeatures.wouldSurvive(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING));
+		TraverseRegistry.register(registerable, RED_AUTUMNAL_TREE_LEAF_LITTER, TraverseConfiguredFeatures.RED_AUTUMNAL_TREE_LEAF_LITTER, PlacedFeatures.wouldSurvive(TraverseBlocks.RED_AUTUMNAL_SAPLING));
+		TraverseRegistry.register(registerable, YELLOW_AUTUMNAL_TREE_LEAF_LITTER, TraverseConfiguredFeatures.YELLOW_AUTUMNAL_TREE_LEAF_LITTER, PlacedFeatures.wouldSurvive(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING));
 		TraverseRegistry.register(registerable, AUTUMNAL_TREES, TraverseConfiguredFeatures.AUTUMNAL_TREES, VegetationPlacedFeatures.treeModifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
 
 		/* Fir Trees */

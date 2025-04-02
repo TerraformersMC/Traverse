@@ -23,10 +23,10 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 
 public class TraverseFeatureConfigs {
-	public static final TreeFeatureConfig RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES, 4);
-	public static final TreeFeatureConfig ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, 4);
-	public static final TreeFeatureConfig YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, 6);
-	public static final TreeFeatureConfig BROWN_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.BROWN_AUTUMNAL_LEAVES, 4);
+	public static final TreeFeatureConfig.Builder RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES, 4);
+	public static final TreeFeatureConfig.Builder ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, 4);
+	public static final TreeFeatureConfig.Builder YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, 6);
+	public static final TreeFeatureConfig.Builder BROWN_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.BROWN_AUTUMNAL_LEAVES, 4);
 	public static final TreeFeatureConfig FIR_TREE_CONFIG = new TreeFeatureConfig.Builder(
 			BlockStateProvider.of(TraverseBlocks.FIR_LOG.getDefaultState()),
 			new StraightTrunkPlacer(15, 15, 4),
@@ -45,14 +45,14 @@ public class TraverseFeatureConfigs {
 	public static final TreeFeatureConfig FALLEN_OAK_TREE_CONFIG = new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()), new FallenTrunkPlacer(3, 2, 0), BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()), new NoneFoliagePlacer(), new TwoLayersFeatureSize(0, 0, 0)).build();
 	public static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
 
-	private static TreeFeatureConfig oakLike(Block trunk, Block leaves, int height) {
+	private static TreeFeatureConfig.Builder oakLike(Block trunk, Block leaves, int height) {
 		return new TreeFeatureConfig.Builder(
 				BlockStateProvider.of(trunk.getDefaultState()),
 				new StraightTrunkPlacer(height, 2, 0),
 				BlockStateProvider.of(leaves.getDefaultState()),
 				new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
 				new TwoLayersFeatureSize(1, 0, 1)
-		).ignoreVines().build();
+		).ignoreVines();
 	}
 
 	private static Pool.Builder<BlockState> createStatePoolBuilder() {

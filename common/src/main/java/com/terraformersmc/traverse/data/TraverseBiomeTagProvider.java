@@ -26,19 +26,59 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 		getOrCreateTagBuilder(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS)
 				.addOptional(TraverseBiomes.LUSH_SWAMP);
 
+		getOrCreateTagBuilder(BiomeTags.HAS_CLOSER_WATER_FOG)
+				.addOptional(TraverseBiomes.LUSH_SWAMP);
+
+		getOrCreateTagBuilder(BiomeTags.INCREASED_FIRE_BURNOUT)
+				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+				.addOptional(TraverseBiomes.LUSH_SWAMP)
+				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
 		getOrCreateTagBuilder(BiomeTags.IS_FOREST)
 				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
 				.addOptional(TraverseBiomes.WOODLANDS);
 
+		getOrCreateTagBuilder(BiomeTags.IS_OVERWORLD)
+				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+				.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
+				.addOptional(TraverseBiomes.FLATLANDS)
+				.addOptional(TraverseBiomes.LUSH_SWAMP)
+				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
+				.addOptional(TraverseBiomes.WOODLANDS);
+
 		getOrCreateTagBuilder(BiomeTags.IS_TAIGA)
+				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		getOrCreateTagBuilder(BiomeTags.SNOW_GOLEM_MELTS)
+				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
+
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
 		getOrCreateTagBuilder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)
 				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
 
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_GOLD_RABBITS)
+				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
+
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_SNOW_FOXES)
+				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
+
+		getOrCreateTagBuilder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)
+				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
+
 		getOrCreateTagBuilder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS)
 				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
+
+		getOrCreateTagBuilder(BiomeTags.STRONGHOLD_BIASED_TO)
+				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
+				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
+				.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
+				.addOptional(TraverseBiomes.FLATLANDS)
+				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
+				.addOptional(TraverseBiomes.WOODLANDS);
 
 		getOrCreateTagBuilder(BiomeTags.WATER_ON_MAP_OUTLINES)
 				.addOptional(TraverseBiomes.LUSH_SWAMP);
@@ -63,15 +103,6 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_HOT_OVERWORLD)
 				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
-
-		getOrCreateTagBuilder(ConventionalBiomeTags.IS_OVERWORLD)
-				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
-				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
-				.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
-				.addOptional(TraverseBiomes.FLATLANDS)
-				.addOptional(TraverseBiomes.LUSH_SWAMP)
-				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
-				.addOptional(TraverseBiomes.WOODLANDS);
 
 		getOrCreateTagBuilder(ConventionalBiomeTags.IS_PLAINS)
 				.addOptional(TraverseBiomes.FLATLANDS);
@@ -119,15 +150,6 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_SWAMP_HAS_STRUCTURE)
 				.addOptional(TraverseBiomes.LUSH_SWAMP);
-
-		getOrCreateTagBuilder(BiomeTags.STRONGHOLD_HAS_STRUCTURE)
-				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
-				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
-				.addOptional(TraverseBiomes.DESERT_SHRUBLAND)
-				.addOptional(TraverseBiomes.FLATLANDS)
-				.addOptional(TraverseBiomes.LUSH_SWAMP)
-				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST)
-				.addOptional(TraverseBiomes.WOODLANDS);
 
 		getOrCreateTagBuilder(BiomeTags.SWAMP_HUT_HAS_STRUCTURE)
 				.addOptional(TraverseBiomes.LUSH_SWAMP);

@@ -29,6 +29,8 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
 				.add(TraverseBoats.FIR_CHEST_BOAT);
 
+		copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
+
 		copy(BlockTags.LEAVES, ItemTags.LEAVES);
 
 		copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
@@ -40,6 +42,8 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
 
 		copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
+
+		copy(BlockTags.STONE_BUTTONS, ItemTags.STONE_BUTTONS);
 
 		copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
 
