@@ -1,19 +1,13 @@
 package com.terraformersmc.traverse.block;
 
 import com.terraformersmc.terraform.leaves.api.block.ColoredParticleLeavesBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.api.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.wood.api.block.PillarLogHelper;
-import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
@@ -46,10 +40,10 @@ public class TraverseBlocks {
 	public static Block FIR_BUTTON;
 	public static Block FIR_DOOR;
 
-	public static TerraformSignBlock FIR_SIGN;
-	public static TerraformWallSignBlock FIR_WALL_SIGN;
-	public static TerraformHangingSignBlock FIR_HANGING_SIGN;
-	public static TerraformWallHangingSignBlock FIR_WALL_HANGING_SIGN;
+	public static SignBlock FIR_SIGN;
+	public static WallSignBlock FIR_WALL_SIGN;
+	public static HangingSignBlock FIR_HANGING_SIGN;
+	public static WallHangingSignBlock FIR_WALL_HANGING_SIGN;
 
 	public static Block POTTED_RED_AUTUMNAL_SAPLING;
 	public static Block POTTED_BROWN_AUTUMNAL_SAPLING;
@@ -76,21 +70,17 @@ public class TraverseBlocks {
 		STRIPPED_FIR_WOOD = TraverseRegistry.register("stripped_fir_wood", PillarBlock::new, PillarLogHelper.createSettings(MapColor.OAK_TAN));
 		FIR_PLANKS = TraverseRegistry.register("fir_planks", Block::new, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS));
 		FIR_SLAB = TraverseRegistry.register("fir_slab", SlabBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_SLAB));
-		FIR_PRESSURE_PLATE = TraverseRegistry.register("fir_pressure_plate", settings -> new PressurePlateBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE));
+		FIR_PRESSURE_PLATE = TraverseRegistry.register("fir_pressure_plate", settings -> new PressurePlateBlock(TraverseBlockSetTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE));
 		FIR_FENCE = TraverseRegistry.register("fir_fence", FenceBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_FENCE));
-		FIR_TRAPDOOR = TraverseRegistry.register("fir_trapdoor", settings -> new TrapdoorBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR));
-		FIR_FENCE_GATE = TraverseRegistry.register("fir_fence_gate", settings -> new FenceGateBlock(WoodType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE));
+		FIR_TRAPDOOR = TraverseRegistry.register("fir_trapdoor", settings -> new TrapdoorBlock(TraverseBlockSetTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR));
+		FIR_FENCE_GATE = TraverseRegistry.register("fir_fence_gate", settings -> new FenceGateBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE));
 		FIR_STAIRS = TraverseRegistry.register("fir_stairs", settings -> new StairsBlock(FIR_PLANKS.getDefaultState(), settings), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS));
-		FIR_BUTTON = TraverseRegistry.register("fir_button", settings -> new ButtonBlock(BlockSetType.OAK, 30, settings), AbstractBlock.Settings.copy(Blocks.OAK_BUTTON));
-		FIR_DOOR = TraverseRegistry.register("fir_door", settings -> new DoorBlock(BlockSetType.OAK, settings), AbstractBlock.Settings.copy(Blocks.OAK_DOOR));
-
-		final Identifier FIR_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/fir");
-		FIR_SIGN = TraverseRegistry.register("fir_sign", settings -> new TerraformSignBlock(FIR_SIGN_TEXTURE, settings), AbstractBlock.Settings.copy(Blocks.OAK_SIGN));
-		FIR_WALL_SIGN = TraverseRegistry.register("fir_wall_sign", settings -> new TerraformWallSignBlock(FIR_SIGN_TEXTURE, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).lootTable(FIR_SIGN.getLootTableKey()));
-		final Identifier FIR_HANGING_SIGN_TEXTURE = Identifier.of(Traverse.MOD_ID, "entity/signs/hanging/fir");
-		final Identifier FIR_HANGING_SIGN_GUI_TEXTURE = Identifier.of(Traverse.MOD_ID, "textures/gui/hanging_signs/fir");
-		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", settings -> new TerraformHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, settings), AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN));
-		FIR_WALL_HANGING_SIGN = TraverseRegistry.register("fir_wall_hanging_sign", settings -> new TerraformWallHangingSignBlock(FIR_HANGING_SIGN_TEXTURE, FIR_HANGING_SIGN_GUI_TEXTURE, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).lootTable(FIR_HANGING_SIGN.getLootTableKey()));
+		FIR_BUTTON = TraverseRegistry.register("fir_button", settings -> new ButtonBlock(TraverseBlockSetTypes.FIR, 30, settings), AbstractBlock.Settings.copy(Blocks.OAK_BUTTON));
+		FIR_DOOR = TraverseRegistry.register("fir_door", settings -> new DoorBlock(TraverseBlockSetTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_DOOR));
+		FIR_SIGN = TraverseRegistry.registerSignBlock("fir_sign", settings -> new SignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_SIGN));
+		FIR_WALL_SIGN = TraverseRegistry.registerSignBlock("fir_wall_sign", settings -> new WallSignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).lootTable(FIR_SIGN.getLootTableKey()));
+		FIR_HANGING_SIGN = TraverseRegistry.registerSignBlock("fir_hanging_sign", settings -> new HangingSignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN));
+		FIR_WALL_HANGING_SIGN = TraverseRegistry.registerSignBlock("fir_wall_hanging_sign", settings -> new WallHangingSignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).lootTable(FIR_HANGING_SIGN.getLootTableKey()));
 
 		POTTED_RED_AUTUMNAL_SAPLING = TraverseRegistry.register("potted_red_autumnal_sapling", settings -> new FlowerPotBlock(RED_AUTUMNAL_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_OAK_SAPLING));
 		POTTED_BROWN_AUTUMNAL_SAPLING = TraverseRegistry.register("potted_brown_autumnal_sapling", settings -> new FlowerPotBlock(BROWN_AUTUMNAL_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_OAK_SAPLING));

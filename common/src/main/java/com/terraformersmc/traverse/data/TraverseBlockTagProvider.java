@@ -20,90 +20,90 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 		/*
 		 * Basic block tags
 		 */
-		getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+		valueLookupBuilder(BlockTags.FENCE_GATES)
 				.add(TraverseBlocks.FIR_FENCE_GATE);
 
-		getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
+		valueLookupBuilder(BlockTags.FLOWER_POTS)
 				.add(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.POTTED_YELLOW_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.POTTED_ORANGE_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.POTTED_FIR_SAPLING);
 
-		getOrCreateTagBuilder(BlockTags.LEAVES)
+		valueLookupBuilder(BlockTags.LEAVES)
 				.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES)
 				.add(TraverseBlocks.RED_AUTUMNAL_LEAVES)
 				.add(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES)
 				.add(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES)
 				.add(TraverseBlocks.FIR_LEAVES);
 
-		getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+		valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
 				.addTag(TraverseBlockTags.FIR_LOGS);
 
-		getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
+		valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
 				.add(TraverseBlocks.FIR_LOG);
 
-		getOrCreateTagBuilder(BlockTags.PLANKS)
+		valueLookupBuilder(BlockTags.PLANKS)
 				.add(TraverseBlocks.FIR_PLANKS);
 
-		getOrCreateTagBuilder(BlockTags.SAPLINGS)
+		valueLookupBuilder(BlockTags.SAPLINGS)
 				.add(TraverseBlocks.BROWN_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.RED_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING)
 				.add(TraverseBlocks.FIR_SAPLING);
 
-		getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS)
+		valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
 				.add(TraverseBlocks.FIR_HANGING_SIGN);
 
-		getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS)
+		valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
 				.add(TraverseBlocks.FIR_WALL_HANGING_SIGN);
 
-		getOrCreateTagBuilder(BlockTags.STANDING_SIGNS)
+		valueLookupBuilder(BlockTags.STANDING_SIGNS)
 				.add(TraverseBlocks.FIR_SIGN);
 
-		getOrCreateTagBuilder(BlockTags.WALL_SIGNS)
+		valueLookupBuilder(BlockTags.WALL_SIGNS)
 				.add(TraverseBlocks.FIR_WALL_SIGN);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+		valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
 				.add(TraverseBlocks.FIR_BUTTON);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
+		valueLookupBuilder(BlockTags.WOODEN_DOORS)
 				.add(TraverseBlocks.FIR_DOOR);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+		valueLookupBuilder(BlockTags.WOODEN_FENCES)
 				.add(TraverseBlocks.FIR_FENCE);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+		valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
 				.add(TraverseBlocks.FIR_PRESSURE_PLATE);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
+		valueLookupBuilder(BlockTags.WOODEN_SLABS)
 				.add(TraverseBlocks.FIR_SLAB);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+		valueLookupBuilder(BlockTags.WOODEN_STAIRS)
 				.add(TraverseBlocks.FIR_STAIRS);
 
-		getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+		valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
 				.add(TraverseBlocks.FIR_TRAPDOOR);
 
 
 		/*
 		 * Conventional block tags
 		 */
-		getOrCreateTagBuilder(TraverseBlockTags.PLANKS_THAT_BURN)
+		valueLookupBuilder(TraverseBlockTags.PLANKS_THAT_BURN)
 				.add(TraverseBlocks.FIR_PLANKS);
 
-		getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_LOGS)
+		valueLookupBuilder(ConventionalBlockTags.STRIPPED_LOGS)
 				.add(TraverseBlocks.STRIPPED_FIR_LOG);
 
-		getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS)
+		valueLookupBuilder(ConventionalBlockTags.STRIPPED_WOODS)
 				.add(TraverseBlocks.STRIPPED_FIR_WOOD);
 
 
 		/*
 		 * Local block tags
 		 */
-		getOrCreateTagBuilder(TraverseBlockTags.FIR_LOGS)
+		valueLookupBuilder(TraverseBlockTags.FIR_LOGS)
 				.add(TraverseBlocks.FIR_LOG)
 				.add(TraverseBlocks.FIR_WOOD)
 				.add(TraverseBlocks.STRIPPED_FIR_LOG)

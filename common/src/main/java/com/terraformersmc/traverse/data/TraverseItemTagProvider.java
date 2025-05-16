@@ -23,10 +23,10 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		/*
 		 * Vanilla item tags
 		 */
-		getOrCreateTagBuilder(ItemTags.BOATS)
+		valueLookupBuilder(ItemTags.BOATS)
 				.add(TraverseBoats.FIR_BOAT);
 
-		getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
+		valueLookupBuilder(ItemTags.CHEST_BOATS)
 				.add(TraverseBoats.FIR_CHEST_BOAT);
 
 		copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);

@@ -22,14 +22,14 @@ public class TraverseEntityTypeTagProvider extends FabricTagProvider.EntityTypeT
 		/*
 		 * Basic entity type tags
 		 */
-		getOrCreateTagBuilder(EntityTypeTags.BOAT)
+		getTagBuilder(EntityTypeTags.BOAT)
 				.add(TraverseBoats.FIR.withSuffixedPath("_boat"));
 
 
 		/*
 		 * Conventional entity type tags
 		 */
-		getOrCreateTagBuilder(ConventionalEntityTypeTags.BOATS)
+		getTagBuilder(ConventionalEntityTypeTags.BOATS)
 				.add(TraverseBoats.FIR.withSuffixedPath("_chest_boat"));
 	}
 
