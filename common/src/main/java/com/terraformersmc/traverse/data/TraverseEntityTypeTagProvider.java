@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse.data;
 
+import com.terraformersmc.terraform.boat.api.data.TerraformBoatData;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -16,21 +17,18 @@ public class TraverseEntityTypeTagProvider extends FabricTagProvider.EntityTypeT
 
 	@Override
 	public void configure(RegistryWrapper.WrapperLookup registries) {
-		// TODO: Hard-coded hack until Terraform API provides access to boat entity types.
-		//       This relies on the fact the API uses the same resource name for item and entity type.
-
 		/*
 		 * Basic entity type tags
 		 */
 		getTagBuilder(EntityTypeTags.BOAT)
-				.add(TraverseBoats.FIR.withSuffixedPath("_boat"));
+				.add(TerraformBoatData.get(TraverseBoats.FIR).boatEntityTypeId());
 
 
 		/*
 		 * Conventional entity type tags
 		 */
 		getTagBuilder(ConventionalEntityTypeTags.BOATS)
-				.add(TraverseBoats.FIR.withSuffixedPath("_chest_boat"));
+				.add(TerraformBoatData.get(TraverseBoats.FIR).chestBoatEntityTypeId());
 	}
 
 	@Override
