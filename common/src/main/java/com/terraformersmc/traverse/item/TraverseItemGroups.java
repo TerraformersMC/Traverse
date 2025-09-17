@@ -32,12 +32,13 @@ public class TraverseItemGroups {
 		 * These items are the last Vanilla item of a "similar" type to items we add to Vanilla groups.
 		 * Each is used to build a collection of items which will be inserted below the Vanilla item.
 		 */
-		final Item BUILDING_WOOD_ITEMS = Items.CHERRY_BUTTON;
-		final Item FUNCTIONAL_SIGN = Items.CHERRY_HANGING_SIGN;
+		final Item BUILDING_WOOD_ITEMS = Items.PALE_OAK_BUTTON;
+		final Item FUNCTIONAL_SHELF = Items.PALE_OAK_SHELF;
+		final Item FUNCTIONAL_SIGN = Items.PALE_OAK_HANGING_SIGN;
 		final Item NATURAL_LEAVES = Items.FLOWERING_AZALEA_LEAVES;
-		final Item NATURAL_SAPLING = Items.CHERRY_SAPLING;
-		final Item NATURAL_LOG = Items.CHERRY_LOG;
-		final Item TOOLS_BOAT = Items.CHERRY_CHEST_BOAT;
+		final Item NATURAL_SAPLING = Items.PALE_OAK_SAPLING;
+		final Item NATURAL_LOG = Items.PALE_OAK_LOG;
+		final Item TOOLS_BOAT = Items.PALE_OAK_CHEST_BOAT;
 
 
 		/*
@@ -86,6 +87,7 @@ public class TraverseItemGroups {
 		// FUNCTIONAL
 
 		// Wood Items
+		addGroupEntry(TraverseBlocks.FIR_SHELF, ItemGroups.FUNCTIONAL, FUNCTIONAL_SHELF);
 		addGroupEntry(TraverseBlocks.FIR_SIGN, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
 		addGroupEntry(TraverseBlocks.FIR_HANGING_SIGN, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
 

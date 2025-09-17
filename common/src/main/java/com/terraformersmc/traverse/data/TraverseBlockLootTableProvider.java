@@ -29,6 +29,7 @@ public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider
 		addDrop(TraverseBlocks.FIR_PRESSURE_PLATE);
 		addDrop(TraverseBlocks.FIR_SAPLING);
 		addDrop(TraverseBlocks.FIR_HANGING_SIGN);
+		addDrop(TraverseBlocks.FIR_SHELF);
 		addDrop(TraverseBlocks.FIR_SIGN);
 		addDrop(TraverseBlocks.FIR_STAIRS);
 		addDrop(TraverseBlocks.FIR_TRAPDOOR);

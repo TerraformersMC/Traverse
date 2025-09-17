@@ -32,6 +32,7 @@ public class TraverseItems {
 	public static BlockItem FIR_STAIRS;
 	public static BlockItem FIR_BUTTON;
 	public static BlockItem FIR_DOOR;
+	public static BlockItem FIR_SHELF;
 
 	public static SignItem FIR_SIGN;
 	public static HangingSignItem FIR_HANGING_SIGN;
@@ -62,6 +63,7 @@ public class TraverseItems {
 		FIR_STAIRS = TraverseRegistry.registerBlockItem("fir_stairs", TraverseBlocks.FIR_STAIRS);
 		FIR_BUTTON = TraverseRegistry.registerBlockItem("fir_button", TraverseBlocks.FIR_BUTTON);
 		FIR_DOOR = TraverseRegistry.registerBlockItem("fir_door", TraverseBlocks.FIR_DOOR);
+		FIR_SHELF = TraverseRegistry.registerBlockItem("fir_shelf", TraverseBlocks.FIR_SHELF);
 
 		FIR_SIGN = TraverseRegistry.register("fir_sign", settings -> new SignItem(TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());
 		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", settings -> new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());

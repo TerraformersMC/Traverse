@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse;
 
+import com.terraformersmc.traverse.block.TraverseBlockEntityTypes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
@@ -27,6 +28,7 @@ public class Traverse implements ModInitializer {
 	private static void register() {
 		TraverseBlocks.register();
 		TraverseItems.register();
+		TraverseBlockEntityTypes.register();
 		TraverseBoats.register();
 		TraverseTrades.register();
 		TraverseVillagerTypes.register();

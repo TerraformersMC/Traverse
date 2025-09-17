@@ -4,6 +4,7 @@ import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlockFamilies;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
+import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -40,6 +41,8 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 				offerChestBoatRecipe(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
 
 				offerHangingSignRecipe(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
+
+				offerShelfRecipe(TraverseBlocks.FIR_SHELF, TraverseItems.STRIPPED_FIR_LOG);
 			}
 		};
 	}

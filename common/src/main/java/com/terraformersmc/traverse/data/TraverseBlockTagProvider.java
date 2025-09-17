@@ -77,6 +77,9 @@ public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider
 		valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
 				.add(TraverseBlocks.FIR_PRESSURE_PLATE);
 
+		valueLookupBuilder(BlockTags.WOODEN_SHELVES)
+				.add(TraverseBlocks.FIR_SHELF);
+
 		valueLookupBuilder(BlockTags.WOODEN_SLABS)
 				.add(TraverseBlocks.FIR_SLAB);
 

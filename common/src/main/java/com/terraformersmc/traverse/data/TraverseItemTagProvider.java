@@ -53,6 +53,8 @@ public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 		copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
 
+		copy(BlockTags.WOODEN_SHELVES, ItemTags.WOODEN_SHELVES);
+
 		copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
 
 		copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);

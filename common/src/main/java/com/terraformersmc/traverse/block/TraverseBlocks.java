@@ -39,6 +39,7 @@ public class TraverseBlocks {
 	public static Block FIR_STAIRS;
 	public static Block FIR_BUTTON;
 	public static Block FIR_DOOR;
+	public static Block FIR_SHELF;
 
 	public static SignBlock FIR_SIGN;
 	public static WallSignBlock FIR_WALL_SIGN;
@@ -77,6 +78,7 @@ public class TraverseBlocks {
 		FIR_STAIRS = TraverseRegistry.register("fir_stairs", settings -> new StairsBlock(FIR_PLANKS.getDefaultState(), settings), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS));
 		FIR_BUTTON = TraverseRegistry.register("fir_button", settings -> new ButtonBlock(TraverseBlockSetTypes.FIR, 30, settings), AbstractBlock.Settings.copy(Blocks.OAK_BUTTON));
 		FIR_DOOR = TraverseRegistry.register("fir_door", settings -> new DoorBlock(TraverseBlockSetTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_DOOR));
+		FIR_SHELF = TraverseRegistry.register("fir_shelf", ShelfBlock::new, AbstractBlock.Settings.copy(Blocks.OAK_SHELF));
 		FIR_SIGN = TraverseRegistry.registerSignBlock("fir_sign", settings -> new SignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_SIGN));
 		FIR_WALL_SIGN = TraverseRegistry.registerSignBlock("fir_wall_sign", settings -> new WallSignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).lootTable(FIR_SIGN.getLootTableKey()));
 		FIR_HANGING_SIGN = TraverseRegistry.registerSignBlock("fir_hanging_sign", settings -> new HangingSignBlock(TraverseWoodTypes.FIR, settings), AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN));
@@ -104,6 +106,7 @@ public class TraverseBlocks {
 		flammableRegistry.add(STRIPPED_FIR_LOG, 5, 5);
 		flammableRegistry.add(STRIPPED_FIR_WOOD, 5, 5);
 		flammableRegistry.add(FIR_WOOD, 5, 5);
+		flammableRegistry.add(FIR_SHELF, 30, 20);
 		flammableRegistry.add(FIR_LEAVES, 30, 60);
 		flammableRegistry.add(RED_AUTUMNAL_LEAVES, 30, 60);
 		flammableRegistry.add(BROWN_AUTUMNAL_LEAVES, 30, 60);

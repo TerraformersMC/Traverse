@@ -28,6 +28,7 @@ public class TraverseModelProvider extends FabricModelProvider {
 
 		// Fir
 		generator.registerCubeAllModelTexturePool(TraverseBlockFamilies.FIR.getBaseBlock()).family(TraverseBlockFamilies.FIR);
+		generator.registerShelf(TraverseBlocks.FIR_SHELF, TraverseBlocks.STRIPPED_FIR_LOG);
 		generator.createLogTexturePool(TraverseBlocks.FIR_LOG).log(TraverseBlocks.FIR_LOG).wood(TraverseBlocks.FIR_WOOD);
 		generator.createLogTexturePool(TraverseBlocks.STRIPPED_FIR_LOG).log(TraverseBlocks.STRIPPED_FIR_LOG).wood(TraverseBlocks.STRIPPED_FIR_WOOD);
 		generator.registerHangingSign(TraverseBlockFamilies.FIR.getBaseBlock(), TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN);
