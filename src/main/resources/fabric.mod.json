@@ -14,7 +14,7 @@
   "depends": {
     "fabricloader": ">=0.15.3",
     "fabric-api": ">=0.77.0",
-    "minecraft": ">=1.21.6 <1.22",
+    "minecraft": ">1.21.8 <1.22",
     "java": ">=21"
   },
   "authors": [
@@ -43,7 +43,8 @@
     "Trinsdar",
     "gniftygnome",
     "tambry",
-    "alicia"
+    "alicia",
+    "fredleon"
   ],
   "description": "A biome expansion mod that embraces the simplistic nature of Minecraft biomes"
 }
