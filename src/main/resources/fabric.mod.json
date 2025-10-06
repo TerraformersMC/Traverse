@@ -12,7 +12,7 @@
     "issues": "https://github.com/TerraformersMC/Traverse/issues"
   },
   "depends": {
-    "fabricloader": ">=0.15.3",
+    "fabricloader": ">=0.16.0",
     "fabric-api": ">=0.77.0",
     "minecraft": ">=1.21.5 <1.21.6",
     "java": ">=21"
