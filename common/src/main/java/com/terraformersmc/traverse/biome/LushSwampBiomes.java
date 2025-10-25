@@ -6,8 +6,10 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.MusicType;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.attribute.FloatModifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
@@ -28,12 +30,18 @@ public class LushSwampBiomes {
 				.temperature(0.8F)
 				.downfall(0.9F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_SWAMP))
 						.grassColor(0x7FE03E)
 						.foliageColor(0x58EA33)
 						.waterColor(0x617B64)
-						.waterFogColor(0x232317)
-						.build())
+						.build()
+				)
+				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_SWAMP))
+						.with(EnvironmentAttributes.INCREASED_FIRE_BURNOUT_GAMEPLAY, true)
+						.with(EnvironmentAttributes.WATER_FOG_COLOR_VISUAL, 0x232317)
+						.with(EnvironmentAttributes.WATER_FOG_RADIUS_VISUAL, FloatModifier.MULTIPLY, 0.85f)
+						.build()
+				)
 				.build();
 	}
 

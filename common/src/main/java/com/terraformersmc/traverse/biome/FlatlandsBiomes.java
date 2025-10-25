@@ -26,6 +26,7 @@ public class FlatlandsBiomes {
 						.foliageColor(0x5DD64A)
 						.build()
 				)
+				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes())
 				.build();
 	}
 

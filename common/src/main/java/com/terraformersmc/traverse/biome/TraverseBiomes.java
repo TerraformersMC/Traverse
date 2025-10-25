@@ -8,6 +8,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.attribute.EnvironmentAttributeMap;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
@@ -84,10 +86,14 @@ public class TraverseBiomes {
 
 	public static BiomeEffects.Builder createDefaultBiomeEffects() {
 		return new BiomeEffects.Builder()
-				.waterColor(0x3F76E4)
-				.waterFogColor(0x50533)
-				.skyColor(getSkyColor(0.2F))
-				.fogColor(0xC0D8FF);
+			.waterColor(0x3F76E4);
+	}
+
+	public static EnvironmentAttributeMap.Builder createDefaultEnvironmentAttributes() {
+		return EnvironmentAttributeMap.builder()
+			.with(EnvironmentAttributes.WATER_FOG_COLOR_VISUAL, 0x50533)
+			.with(EnvironmentAttributes.SKY_COLOR_VISUAL, getSkyColor(0.2F))
+			.with(EnvironmentAttributes.FOG_COLOR_VISUAL, 0xC0D8FF);
 	}
 
 	private static int getSkyColor(float temperature) {

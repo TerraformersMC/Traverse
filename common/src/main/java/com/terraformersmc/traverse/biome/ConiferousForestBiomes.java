@@ -6,6 +6,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
@@ -27,6 +28,10 @@ public class ConiferousForestBiomes {
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
 						.grassColor(snowy ? 0x338251 : 0x338235)
 						.foliageColor(snowy ? 0x338251 : 0x338235)
+						.build()
+				)
+				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.with(EnvironmentAttributes.INCREASED_FIRE_BURNOUT_GAMEPLAY, true)
 						.build()
 				)
 				.build();

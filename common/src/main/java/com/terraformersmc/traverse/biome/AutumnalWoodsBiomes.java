@@ -6,8 +6,9 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.MusicType;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
@@ -27,9 +28,12 @@ public class AutumnalWoodsBiomes {
 				.temperature(0.8F)
 				.downfall(0.4F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_FOREST))
 						.grassColor(0xD6C23D)
 						.foliageColor(0xD2D31F)
+						.build()
+				)
+				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_FOREST))
 						.build()
 				)
 				.build();

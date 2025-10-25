@@ -6,8 +6,9 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.MusicType;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
@@ -28,9 +29,13 @@ public class DesertShrublandBiomes {
 				.temperature(2.0F)
 				.downfall(0.0F)
 				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_DESERT))
 						.grassColor(0xBFB755)
 						.foliageColor(0xAEA42A)
+						.build()
+				)
+				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_DESERT))
+						.with(EnvironmentAttributes.SNOW_GOLEM_MELTS_GAMEPLAY, true)
 						.build()
 				)
 				.build();

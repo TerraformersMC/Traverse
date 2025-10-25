@@ -26,14 +26,6 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 		builder(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS)
 				.addOptional(TraverseBiomes.LUSH_SWAMP);
 
-		builder(BiomeTags.HAS_CLOSER_WATER_FOG)
-				.addOptional(TraverseBiomes.LUSH_SWAMP);
-
-		builder(BiomeTags.INCREASED_FIRE_BURNOUT)
-				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
-				.addOptional(TraverseBiomes.LUSH_SWAMP)
-				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
-
 		builder(BiomeTags.IS_FOREST)
 				.addOptional(TraverseBiomes.AUTUMNAL_WOODS)
 				.addOptional(TraverseBiomes.CONIFEROUS_FOREST)
@@ -50,9 +42,6 @@ public class TraverseBiomeTagProvider extends FabricTagProvider<Biome> {
 
 		builder(BiomeTags.IS_TAIGA)
 				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
-
-		builder(BiomeTags.SNOW_GOLEM_MELTS)
-				.addOptional(TraverseBiomes.DESERT_SHRUBLAND);
 
 		builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS)
 				.addOptional(TraverseBiomes.SNOWY_CONIFEROUS_FOREST);
