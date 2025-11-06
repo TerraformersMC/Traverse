@@ -39,7 +39,7 @@ public class LushSwampBiomes {
 						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_SWAMP))
 						.with(EnvironmentAttributes.INCREASED_FIRE_BURNOUT_GAMEPLAY, true)
 						.with(EnvironmentAttributes.WATER_FOG_COLOR_VISUAL, 0x232317)
-						.with(EnvironmentAttributes.WATER_FOG_RADIUS_VISUAL, FloatModifier.MULTIPLY, 0.85f)
+						.with(EnvironmentAttributes.WATER_FOG_END_DISTANCE_VISUAL, FloatModifier.MULTIPLY, 0.85F)
 						.build()
 				)
 				.build();
