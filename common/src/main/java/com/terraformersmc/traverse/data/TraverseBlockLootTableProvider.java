@@ -3,62 +3,64 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.enchantment.Enchantment;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class TraverseBlockLootTableProvider extends FabricBlockLootTableProvider {
-	protected TraverseBlockLootTableProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseBlockLootTableProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 
 	@Override
 	public void generate() {
 		//noinspection unused
-		RegistryWrapper.Impl<Enchantment> enchantmentRegistry = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
+		HolderLookup.RegistryLookup<Enchantment> enchantmentRegistry = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
 		// simple blocks
-		addDrop(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);
-		addDrop(TraverseBlocks.FIR_BUTTON);
-		addDrop(TraverseBlocks.FIR_FENCE);
-		addDrop(TraverseBlocks.FIR_FENCE_GATE);
-		addDrop(TraverseBlocks.FIR_LOG);
-		addDrop(TraverseBlocks.FIR_PLANKS);
-		addDrop(TraverseBlocks.FIR_PRESSURE_PLATE);
-		addDrop(TraverseBlocks.FIR_SAPLING);
-		addDrop(TraverseBlocks.FIR_HANGING_SIGN);
-		addDrop(TraverseBlocks.FIR_SHELF);
-		addDrop(TraverseBlocks.FIR_SIGN);
-		addDrop(TraverseBlocks.FIR_STAIRS);
-		addDrop(TraverseBlocks.FIR_TRAPDOOR);
-		addDrop(TraverseBlocks.FIR_WALL_HANGING_SIGN);
-		addDrop(TraverseBlocks.FIR_WALL_SIGN);
-		addDrop(TraverseBlocks.FIR_WOOD);
-		addDrop(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING);
-		addDrop(TraverseBlocks.RED_AUTUMNAL_SAPLING);
-		addDrop(TraverseBlocks.STRIPPED_FIR_LOG);
-		addDrop(TraverseBlocks.STRIPPED_FIR_WOOD);
-		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING);
+		dropSelf(TraverseBlocks.BROWN_AUTUMNAL_SAPLING);
+		dropSelf(TraverseBlocks.FIR_BUTTON);
+		dropSelf(TraverseBlocks.FIR_FENCE);
+		dropSelf(TraverseBlocks.FIR_FENCE_GATE);
+		dropSelf(TraverseBlocks.FIR_LOG);
+		dropSelf(TraverseBlocks.FIR_PLANKS);
+		dropSelf(TraverseBlocks.FIR_PRESSURE_PLATE);
+		dropSelf(TraverseBlocks.FIR_SAPLING);
+		dropSelf(TraverseBlocks.FIR_HANGING_SIGN);
+		dropSelf(TraverseBlocks.FIR_SHELF);
+		dropSelf(TraverseBlocks.FIR_SIGN);
+		dropSelf(TraverseBlocks.FIR_STAIRS);
+		dropSelf(TraverseBlocks.FIR_TRAPDOOR);
+		dropSelf(TraverseBlocks.FIR_WALL_HANGING_SIGN);
+		dropSelf(TraverseBlocks.FIR_WALL_SIGN);
+		dropSelf(TraverseBlocks.FIR_WOOD);
+		dropSelf(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING);
+		dropSelf(TraverseBlocks.RED_AUTUMNAL_SAPLING);
+		dropSelf(TraverseBlocks.STRIPPED_FIR_LOG);
+		dropSelf(TraverseBlocks.STRIPPED_FIR_WOOD);
+		dropSelf(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING);
 
 		// less simple blocks
-		addDrop(TraverseBlocks.FIR_DOOR, this::doorDrops);
-		addDrop(TraverseBlocks.FIR_SLAB, this::slabDrops);
+		add(TraverseBlocks.FIR_DOOR, this::createDoorTable);
+		add(TraverseBlocks.FIR_SLAB, this::createSlabItemTable);
 
 		// potted things
-		addPottedPlantDrops(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING);
-		addPottedPlantDrops(TraverseBlocks.POTTED_FIR_SAPLING);
-		addPottedPlantDrops(TraverseBlocks.POTTED_ORANGE_AUTUMNAL_SAPLING);
-		addPottedPlantDrops(TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING);
-		addPottedPlantDrops(TraverseBlocks.POTTED_YELLOW_AUTUMNAL_SAPLING);
+		dropPottedContents(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING);
+		dropPottedContents(TraverseBlocks.POTTED_FIR_SAPLING);
+		dropPottedContents(TraverseBlocks.POTTED_ORANGE_AUTUMNAL_SAPLING);
+		dropPottedContents(TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING);
+		dropPottedContents(TraverseBlocks.POTTED_YELLOW_AUTUMNAL_SAPLING);
 
 		// tree leaves
-		addDrop(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, TraverseBlocks.BROWN_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
-		addDrop(TraverseBlocks.FIR_LEAVES, leavesDrops(TraverseBlocks.FIR_LEAVES, TraverseBlocks.FIR_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
-		addDrop(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, TraverseBlocks.ORANGE_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
-		addDrop(TraverseBlocks.RED_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.RED_AUTUMNAL_LEAVES, TraverseBlocks.RED_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
-		addDrop(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, leavesDrops(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+		add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, createLeavesDrops(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, TraverseBlocks.BROWN_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+		add(TraverseBlocks.FIR_LEAVES, createLeavesDrops(TraverseBlocks.FIR_LEAVES, TraverseBlocks.FIR_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+		add(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, createLeavesDrops(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, TraverseBlocks.ORANGE_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+		add(TraverseBlocks.RED_AUTUMNAL_LEAVES, createLeavesDrops(TraverseBlocks.RED_AUTUMNAL_LEAVES, TraverseBlocks.RED_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
+		add(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, createLeavesDrops(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, 0.05f, 0.0625f, 0.083333336f, 0.1f));
 	}
 
 	@Override

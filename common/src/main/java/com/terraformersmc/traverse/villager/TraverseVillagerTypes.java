@@ -1,9 +1,9 @@
 package com.terraformersmc.traverse.villager;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.village.VillagerType;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.npc.villager.VillagerType;
+import net.minecraft.world.level.biome.Biome;
 
 public class TraverseVillagerTypes extends TraverseBiomes {
 	public static void register() {
@@ -17,9 +17,9 @@ public class TraverseVillagerTypes extends TraverseBiomes {
 	}
 
 	@SafeVarargs
-	private static void register(RegistryKey<VillagerType> type, RegistryKey<Biome>... biomes) {
-		for (RegistryKey<Biome> biome : biomes) {
-			VillagerType.BIOME_TO_TYPE.put(biome, type);
+	private static void register(ResourceKey<VillagerType> type, ResourceKey<Biome>... biomes) {
+		for (ResourceKey<Biome> biome : biomes) {
+			VillagerType.BY_BIOME.put(biome, type);
 		}
 	}
 }

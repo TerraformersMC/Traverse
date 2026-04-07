@@ -5,18 +5,20 @@ import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class TraverseBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-	protected TraverseBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseBlockTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 
 	@Override
-	public void configure(RegistryWrapper.WrapperLookup registries) {
+	public void addTags(HolderLookup.Provider registries) {
 		/*
 		 * Basic block tags
 		 */

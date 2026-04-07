@@ -4,7 +4,7 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
-import net.minecraft.item.*;
+import net.minecraft.world.item.*;
 
 public class TraverseItems {
 	public static BlockItem RED_AUTUMNAL_LEAVES;
@@ -65,8 +65,8 @@ public class TraverseItems {
 		FIR_DOOR = TraverseRegistry.registerBlockItem("fir_door", TraverseBlocks.FIR_DOOR);
 		FIR_SHELF = TraverseRegistry.registerBlockItem("fir_shelf", TraverseBlocks.FIR_SHELF);
 
-		FIR_SIGN = TraverseRegistry.register("fir_sign", settings -> new SignItem(TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());
-		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", settings -> new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, settings), new Item.Settings().maxCount(16).useBlockPrefixedTranslationKey());
+		FIR_SIGN = TraverseRegistry.register("fir_sign", settings -> new SignItem(TraverseBlocks.FIR_SIGN, TraverseBlocks.FIR_WALL_SIGN, settings), new Item.Properties().stacksTo(16).useBlockDescriptionPrefix());
+		FIR_HANGING_SIGN = TraverseRegistry.register("fir_hanging_sign", settings -> new HangingSignItem(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN, settings), new Item.Properties().stacksTo(16).useBlockDescriptionPrefix());
 
 		addCompostables();
 		addFuels();

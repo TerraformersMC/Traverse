@@ -5,14 +5,15 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.resource.featuretoggle.FeatureSet;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -21,9 +22,9 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class TraverseItemGroups {
-	private static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(Traverse.MOD_ID, "items"));
+	private static final ResourceKey<CreativeModeTab> ITEM_GROUP = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "items"));
 
-	private static final HashMap<RegistryKey<ItemGroup>, HashMap<ItemConvertible, ItemGroupEntries>> ITEM_GROUP_ENTRY_MAPS;
+	private static final HashMap<ResourceKey<CreativeModeTab>, HashMap<ItemLike, ItemGroupEntries>> ITEM_GROUP_ENTRY_MAPS;
 
 	static {
 		ITEM_GROUP_ENTRY_MAPS = new HashMap<>(8);
@@ -49,47 +50,47 @@ public class TraverseItemGroups {
 		// BUILDING BLOCKS
 
 		// Wood items
-		addGroupEntry(TraverseBlocks.FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.STRIPPED_FIR_LOG, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.STRIPPED_FIR_WOOD, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_PLANKS, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_STAIRS, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_SLAB, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_FENCE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_FENCE_GATE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_DOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_TRAPDOOR, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
-		addGroupEntry(TraverseBlocks.FIR_BUTTON, ItemGroups.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_LOG, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_WOOD, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.STRIPPED_FIR_LOG, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.STRIPPED_FIR_WOOD, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_PLANKS, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_STAIRS, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_SLAB, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_FENCE, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_FENCE_GATE, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_DOOR, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_TRAPDOOR, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_PRESSURE_PLATE, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
+		addGroupEntry(TraverseBlocks.FIR_BUTTON, CreativeModeTabs.BUILDING_BLOCKS, BUILDING_WOOD_ITEMS);
 
 
 		// NATURAL
 
 		// Wood Items
-		addGroupEntry(TraverseBlocks.FIR_LOG, ItemGroups.NATURAL, NATURAL_LOG);
+		addGroupEntry(TraverseBlocks.FIR_LOG, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LOG);
 
 		// Saplings
-		addGroupEntry(TraverseBlocks.BROWN_AUTUMNAL_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TraverseBlocks.RED_AUTUMNAL_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
-		addGroupEntry(TraverseBlocks.FIR_SAPLING, ItemGroups.NATURAL, NATURAL_SAPLING);
+		addGroupEntry(TraverseBlocks.BROWN_AUTUMNAL_SAPLING, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_SAPLING);
+		addGroupEntry(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_SAPLING);
+		addGroupEntry(TraverseBlocks.RED_AUTUMNAL_SAPLING, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_SAPLING);
+		addGroupEntry(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_SAPLING);
+		addGroupEntry(TraverseBlocks.FIR_SAPLING, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_SAPLING);
 
 		// Leaves
-		addGroupEntry(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
-		addGroupEntry(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
-		addGroupEntry(TraverseBlocks.RED_AUTUMNAL_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
-		addGroupEntry(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
-		addGroupEntry(TraverseBlocks.FIR_LEAVES, ItemGroups.NATURAL, NATURAL_LEAVES);
+		addGroupEntry(TraverseBlocks.BROWN_AUTUMNAL_LEAVES, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LEAVES);
+		addGroupEntry(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LEAVES);
+		addGroupEntry(TraverseBlocks.RED_AUTUMNAL_LEAVES, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LEAVES);
+		addGroupEntry(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LEAVES);
+		addGroupEntry(TraverseBlocks.FIR_LEAVES, CreativeModeTabs.NATURAL_BLOCKS, NATURAL_LEAVES);
 
 
 		// FUNCTIONAL
 
 		// Wood Items
-		addGroupEntry(TraverseBlocks.FIR_SHELF, ItemGroups.FUNCTIONAL, FUNCTIONAL_SHELF);
-		addGroupEntry(TraverseBlocks.FIR_SIGN, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
-		addGroupEntry(TraverseBlocks.FIR_HANGING_SIGN, ItemGroups.FUNCTIONAL, FUNCTIONAL_SIGN);
+		addGroupEntry(TraverseBlocks.FIR_SHELF, CreativeModeTabs.FUNCTIONAL_BLOCKS, FUNCTIONAL_SHELF);
+		addGroupEntry(TraverseBlocks.FIR_SIGN, CreativeModeTabs.FUNCTIONAL_BLOCKS, FUNCTIONAL_SIGN);
+		addGroupEntry(TraverseBlocks.FIR_HANGING_SIGN, CreativeModeTabs.FUNCTIONAL_BLOCKS, FUNCTIONAL_SIGN);
 
 
 		// REDSTONE
@@ -104,8 +105,8 @@ public class TraverseItemGroups {
 		// TOOLS
 
 		// Boats
-		addGroupEntry(TraverseBoats.FIR_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
-		addGroupEntry(TraverseBoats.FIR_CHEST_BOAT, ItemGroups.TOOLS, TOOLS_BOAT);
+		addGroupEntry(TraverseBoats.FIR_BOAT, CreativeModeTabs.TOOLS_AND_UTILITIES, TOOLS_BOAT);
+		addGroupEntry(TraverseBoats.FIR_CHEST_BOAT, CreativeModeTabs.TOOLS_AND_UTILITIES, TOOLS_BOAT);
 
 
 		// COMBAT
@@ -126,19 +127,19 @@ public class TraverseItemGroups {
 		/*
 		 * Add the items configured above to the Vanilla item groups.
 		 */
-		for (RegistryKey<ItemGroup> group : ITEM_GROUP_ENTRY_MAPS.keySet()) {
+		for (ResourceKey<CreativeModeTab> group : ITEM_GROUP_ENTRY_MAPS.keySet()) {
 			ItemGroupEvents.modifyEntriesEvent(group).register((content) -> {
-				FeatureSet featureSet = content.getEnabledFeatures();
-				HashMap<ItemConvertible, ItemGroupEntries> entryMap = ITEM_GROUP_ENTRY_MAPS.get(group);
+				FeatureFlagSet featureSet = content.getEnabledFeatures();
+				HashMap<ItemLike, ItemGroupEntries> entryMap = ITEM_GROUP_ENTRY_MAPS.get(group);
 
-				for (ItemConvertible relative : entryMap.keySet()) {
+				for (ItemLike relative : entryMap.keySet()) {
 					ItemGroupEntries entries = entryMap.get(relative);
 
 					// FAPI does not give us a way to add at a feature-flag-disabled location.
 					// So, below we have to adjust for any items which may be disabled.
 					if (relative == null) {
 						// Target the end of the Item Group
-						content.addAll(entries.getCollection());
+						content.acceptAll(entries.getCollection());
 					} else {
 						//Traverse.LOGGER.warn("About to add to Vanilla Item Group '{}' after Item '{}': '{}'", group.getValue(), relative, entries.getCollection().stream().map(ItemStack::getItem).collect(Collectors.toList()));
 						content.addAfter(relative, entries.getCollection());
@@ -151,26 +152,26 @@ public class TraverseItemGroups {
 		/*
 		 * Also add all the items to Traverse's own item group.
 		 */
-		Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
-				.displayName(Text.literal("Traverse"))
-				.icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultStack())
-				.entries((context, entries) -> {
+		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ITEM_GROUP, FabricItemGroup.builder()
+				.title(Component.literal("Traverse"))
+				.icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultInstance())
+				.displayItems((context, entries) -> {
 					ITEM_GROUP_ENTRY_MAPS.values().stream()
 							.map(HashMap::values).flatMap(Collection::stream)
 							.map(ItemGroupEntries::getCollection).flatMap(Collection::stream)
 							.collect(Collectors.groupingByConcurrent(ItemStack::getItem)).keySet().stream()
-							.sorted(Comparator.comparing((item) -> item.getName().getString())).forEach(entries::add);
+							.sorted(Comparator.comparing((item) -> item.getName().getString())).forEach(entries::accept);
 				}).build()
 		);
 	}
 
-	public static void addGroupEntry(ItemConvertible item, RegistryKey<ItemGroup> group) {
+	public static void addGroupEntry(ItemLike item, ResourceKey<CreativeModeTab> group) {
 		// Appends the item to the bottom of the group.
 		addGroupEntry(item, group, null);
 	}
 
-	public static void addGroupEntry(ItemConvertible item, RegistryKey<ItemGroup> group, @Nullable ItemConvertible relative) {
-		HashMap<ItemConvertible, ItemGroupEntries> entryMap = ITEM_GROUP_ENTRY_MAPS.computeIfAbsent(group, (key) -> new HashMap<>(32));
+	public static void addGroupEntry(ItemLike item, ResourceKey<CreativeModeTab> group, @Nullable ItemLike relative) {
+		HashMap<ItemLike, ItemGroupEntries> entryMap = ITEM_GROUP_ENTRY_MAPS.computeIfAbsent(group, (key) -> new HashMap<>(32));
 		ItemGroupEntries entries = entryMap.computeIfAbsent(relative, ItemGroupEntries::empty);
 		entries.addItem(item);
 	}

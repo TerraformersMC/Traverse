@@ -8,41 +8,43 @@ import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.recipe.RecipeExporter;
-import net.minecraft.data.recipe.RecipeGenerator;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
-import net.minecraft.resource.featuretoggle.FeatureSet;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.flag.FeatureFlags;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class TraverseRecipeProvider extends FabricRecipeProvider {
-	protected TraverseRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 
 	@Override
-	public RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registryLookup, RecipeExporter exporter) {
-		return new RecipeGenerator(registryLookup, exporter) {
+	public RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+		return new RecipeProvider(registryLookup, exporter) {
 			@Override
-			public void generate() {
+			public void buildRecipes() {
 				// We don't really use feature sets, so this is good enough...
-				FeatureSet enabledFeatures = FeatureSet.of(FeatureFlags.VANILLA);
+				FeatureFlagSet enabledFeatures = FeatureFlagSet.of(FeatureFlags.VANILLA);
 
-				generateFamily(TraverseBlockFamilies.FIR, enabledFeatures);
+				generateRecipes(TraverseBlockFamilies.FIR, enabledFeatures);
 
-				offerPlanksRecipe(TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS, 4);
+				planksFromLogs(TraverseBlocks.FIR_PLANKS, TraverseItemTags.FIR_LOGS, 4);
 
-				offerBarkBlockRecipe(TraverseBlocks.FIR_WOOD, TraverseBlocks.FIR_LOG);
-				offerBarkBlockRecipe(TraverseBlocks.STRIPPED_FIR_WOOD, TraverseBlocks.STRIPPED_FIR_LOG);
+				woodFromLogs(TraverseBlocks.FIR_WOOD, TraverseBlocks.FIR_LOG);
+				woodFromLogs(TraverseBlocks.STRIPPED_FIR_WOOD, TraverseBlocks.STRIPPED_FIR_LOG);
 
-				offerBoatRecipe(TraverseBoats.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
-				offerChestBoatRecipe(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
+				woodenBoat(TraverseBoats.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
+				chestBoat(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
 
-				offerHangingSignRecipe(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
+				hangingSign(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
 
-				offerShelfRecipe(TraverseBlocks.FIR_SHELF, TraverseItems.STRIPPED_FIR_LOG);
+				shelf(TraverseBlocks.FIR_SHELF, TraverseItems.STRIPPED_FIR_LOG);
 			}
 		};
 	}
@@ -54,6 +56,6 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	protected Identifier getRecipeIdentifier(Identifier identifier) {
-		return Identifier.of(Traverse.MOD_ID, identifier.getPath());
+		return Identifier.fromNamespaceAndPath(Traverse.MOD_ID, identifier.getPath());
 	}
 }

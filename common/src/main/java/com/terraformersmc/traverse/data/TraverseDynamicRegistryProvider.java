@@ -6,30 +6,32 @@ import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvider {
-	protected TraverseDynamicRegistryProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+	protected TraverseDynamicRegistryProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 
-	public static void buildRegistry(RegistryBuilder registryBuilder) {
-		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, TraverseConfiguredFeatures::bootstrap);
-		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, TraversePlacedFeatures::bootstrap);
-		registryBuilder.addRegistry(RegistryKeys.BIOME, TraverseBiomes::bootstrap);
+	public static void buildRegistry(RegistrySetBuilder registryBuilder) {
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, TraverseConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.PLACED_FEATURE, TraversePlacedFeatures::bootstrap);
+		registryBuilder.add(Registries.BIOME, TraverseBiomes::bootstrap);
 	}
 
 	@Override
-	public void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-		addAll(entries, registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE), Traverse.MOD_ID);
-		addAll(entries, registries.getOrThrow(RegistryKeys.PLACED_FEATURE), Traverse.MOD_ID);
-		addAll(entries, registries.getOrThrow(RegistryKeys.BIOME), Traverse.MOD_ID);
+	public void configure(HolderLookup.Provider registries, Entries entries) {
+		addAll(entries, registries.lookupOrThrow(Registries.CONFIGURED_FEATURE), Traverse.MOD_ID);
+		addAll(entries, registries.lookupOrThrow(Registries.PLACED_FEATURE), Traverse.MOD_ID);
+		addAll(entries, registries.lookupOrThrow(Registries.BIOME), Traverse.MOD_ID);
 	}
 
 	@Override
@@ -41,9 +43,9 @@ public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvid
 	 * Version of FabricDynamicRegistryProvider.Entries.addAll() using specified mod ID.
 	 */
 	@SuppressWarnings("UnusedReturnValue")
-	public <T> List<RegistryEntry<T>> addAll(Entries entries, RegistryWrapper.Impl<T> registry, String modId) {
-		return registry.streamKeys()
-				.filter(registryKey -> registryKey.getValue().getNamespace().equals(modId))
+	public <T> List<Holder<T>> addAll(Entries entries, HolderLookup.RegistryLookup<T> registry, String modId) {
+		return registry.listElementIds()
+				.filter(registryKey -> registryKey.identifier().getNamespace().equals(modId))
 				.map(key -> entries.add(registry, key))
 				.toList();
 	}

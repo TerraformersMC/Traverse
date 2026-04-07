@@ -1,44 +1,40 @@
 package com.terraformersmc.traverse.surfacerules;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.noise.NoiseParametersKeys;
-import net.minecraft.world.gen.surfacebuilder.MaterialRules;
-import net.minecraft.world.gen.surfacebuilder.MaterialRules.MaterialRule;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Noises;
+import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 
-import static net.minecraft.world.gen.surfacebuilder.MaterialRules.*;
+import static net.minecraft.world.level.levelgen.SurfaceRules.*;
 
 public class TraverseSurfaceRules {
 
-	private static MaterialRule block(Block block) {
-		return MaterialRules.block(block.getDefaultState());
+	private static RuleSource block(Block block) {
+		return SurfaceRules.state(block.defaultBlockState());
 	}
 
-	public static MaterialRule createRules() {
+	public static RuleSource createRules() {
 
 		// Sandy surface rules
-		MaterialRule sandAndSandstone = sequence(condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH,
+		RuleSource sandAndSandstone = sequence(ifTrue(UNDER_FLOOR,
 			block(Blocks.SAND)), block(Blocks.SANDSTONE));
-		MaterialRule redSandAndSandstone = sequence(condition(STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH,
+		RuleSource redSandAndSandstone = sequence(ifTrue(UNDER_FLOOR,
 			block(Blocks.RED_SAND)), block(Blocks.RED_SANDSTONE));
 
 		// Biome-level rules
-		MaterialRule desertShrubland = condition(MaterialRules.biome(TraverseBiomes.DESERT_SHRUBLAND),
-			condition(noiseThreshold(NoiseParametersKeys.BADLANDS_SURFACE, 0.01D), sandAndSandstone));
-		MaterialRule lushSwamp = condition(MaterialRules.biome(TraverseBiomes.LUSH_SWAMP),
-			condition(MaterialRules.STONE_DEPTH_FLOOR,
-				condition(MaterialRules.aboveY(YOffset.fixed(62), 0),
-					condition(MaterialRules.not(MaterialRules.aboveY(YOffset.fixed(63), 0)),
-						condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE_SWAMP, 0.0),
+		RuleSource desertShrubland = ifTrue(SurfaceRules.isBiome(TraverseBiomes.DESERT_SHRUBLAND),
+			ifTrue(noiseCondition(Noises.BADLANDS_SURFACE, 0.01D), sandAndSandstone));
+		RuleSource lushSwamp = ifTrue(SurfaceRules.isBiome(TraverseBiomes.LUSH_SWAMP),
+			ifTrue(SurfaceRules.ON_FLOOR,
+				ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(62), 0),
+					ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(63), 0)),
+						ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0),
 							block(Blocks.WATER))))));
 
 		// Return a surface-only sequence of our surface rules
-		return condition(surface(),
+		return ifTrue(abovePreliminarySurface(),
 				sequence(desertShrubland, lushSwamp));
-	}
-
-	public static void register() {
 	}
 }

@@ -4,74 +4,78 @@ import com.google.common.collect.ImmutableList;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.feature.placer.FallenTrunkPlacer;
 import com.terraformersmc.traverse.feature.placer.NoneFoliagePlacer;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.collection.Pool;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
 import java.util.List;
 
 public class TraverseFeatureConfigs {
-	public static final TreeFeatureConfig.Builder RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES, 4);
-	public static final TreeFeatureConfig.Builder ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, 4);
-	public static final TreeFeatureConfig.Builder YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, 6);
-	public static final TreeFeatureConfig.Builder BROWN_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.BROWN_AUTUMNAL_LEAVES, 4);
-	public static final TreeFeatureConfig FIR_TREE_CONFIG = new TreeFeatureConfig.Builder(
-			BlockStateProvider.of(TraverseBlocks.FIR_LOG.getDefaultState()),
+	public static final TreeConfiguration.TreeConfigurationBuilder RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES, 4);
+	public static final TreeConfiguration.TreeConfigurationBuilder ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, 4);
+	public static final TreeConfiguration.TreeConfigurationBuilder YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, 6);
+	public static final TreeConfiguration.TreeConfigurationBuilder BROWN_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.BROWN_AUTUMNAL_LEAVES, 4);
+	public static final TreeConfiguration FIR_TREE_CONFIG = new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(TraverseBlocks.FIR_LOG.defaultBlockState()),
 			new StraightTrunkPlacer(15, 15, 4),
-			BlockStateProvider.of(TraverseBlocks.FIR_LEAVES.getDefaultState()),
-			new SpruceFoliagePlacer(UniformIntProvider.create(2, 3), UniformIntProvider.create(1, 1), UniformIntProvider.create(4, 12)),
+			BlockStateProvider.simple(TraverseBlocks.FIR_LEAVES.defaultBlockState()),
+			new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(1, 1), UniformInt.of(4, 12)),
 			new TwoLayersFeatureSize(2, 0, 4)
 	).ignoreVines().build();
-	public static final TreeFeatureConfig TALL_SWAMP_TREE_CONFIG = new TreeFeatureConfig.Builder(
-			BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
+	public static final TreeConfiguration TALL_SWAMP_TREE_CONFIG = new TreeConfiguration.TreeConfigurationBuilder(
+			BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()),
 			new StraightTrunkPlacer(7, 3, 0),
-			BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()),
-			new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), 3),
+			BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()),
+			new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
 			new TwoLayersFeatureSize(1, 0, 1)
-	).decorators(ImmutableList.of(new LeavesVineTreeDecorator(0.25f))).build();
-	public static final TreeFeatureConfig OAK_SHRUB_CONFIG = (new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()), new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build();
-	public static final TreeFeatureConfig FALLEN_OAK_TREE_CONFIG = new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()), new FallenTrunkPlacer(3, 2, 0), BlockStateProvider.of(Blocks.OAK_LEAVES.getDefaultState()), new NoneFoliagePlacer(), new TwoLayersFeatureSize(0, 0, 0)).build();
-	public static final RandomPatchFeatureConfig LUSH_FLOWER_CONFIG;
+	).decorators(ImmutableList.of(new LeaveVineDecorator(0.25f))).build();
+	public static final TreeConfiguration OAK_SHRUB_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), new StraightTrunkPlacer(1, 0, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()), new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2), new TwoLayersFeatureSize(0, 0, 0))).build();
+	public static final TreeConfiguration FALLEN_OAK_TREE_CONFIG = new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()), new FallenTrunkPlacer(3, 2, 0), BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()), new NoneFoliagePlacer(), new TwoLayersFeatureSize(0, 0, 0)).build();
+	public static final RandomPatchConfiguration LUSH_FLOWER_CONFIG;
 
-	private static TreeFeatureConfig.Builder oakLike(Block trunk, Block leaves, int height) {
-		return new TreeFeatureConfig.Builder(
-				BlockStateProvider.of(trunk.getDefaultState()),
+	private static TreeConfiguration.TreeConfigurationBuilder oakLike(Block trunk, Block leaves, int height) {
+		return new TreeConfiguration.TreeConfigurationBuilder(
+				BlockStateProvider.simple(trunk.defaultBlockState()),
 				new StraightTrunkPlacer(height, 2, 0),
-				BlockStateProvider.of(leaves.getDefaultState()),
-				new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+				BlockStateProvider.simple(leaves.defaultBlockState()),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
 				new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines();
 	}
 
-	private static Pool.Builder<BlockState> createStatePoolBuilder() {
-		return Pool.builder();
+	private static WeightedList.Builder<BlockState> createStatePoolBuilder() {
+		return WeightedList.builder();
 	}
 
 	static {
 		{ // Lush Flower Config
-			WeightedBlockStateProvider flowers = new WeightedBlockStateProvider(createStatePoolBuilder()
-					.add(Blocks.POPPY.getDefaultState(), 12)
-					.add(Blocks.AZURE_BLUET.getDefaultState(), 12)
-					.add(Blocks.OXEYE_DAISY.getDefaultState(), 12)
-					.add(Blocks.DANDELION.getDefaultState(), 8)
-					.add(Blocks.ORANGE_TULIP.getDefaultState(), 1)
-					.add(Blocks.PINK_TULIP.getDefaultState(), 1)
-					.add(Blocks.RED_TULIP.getDefaultState(), 1)
-					.add(Blocks.WHITE_TULIP.getDefaultState(), 1));
+			WeightedStateProvider flowers = new WeightedStateProvider(createStatePoolBuilder()
+					.add(Blocks.POPPY.defaultBlockState(), 12)
+					.add(Blocks.AZURE_BLUET.defaultBlockState(), 12)
+					.add(Blocks.OXEYE_DAISY.defaultBlockState(), 12)
+					.add(Blocks.DANDELION.defaultBlockState(), 8)
+					.add(Blocks.ORANGE_TULIP.defaultBlockState(), 1)
+					.add(Blocks.PINK_TULIP.defaultBlockState(), 1)
+					.add(Blocks.RED_TULIP.defaultBlockState(), 1)
+					.add(Blocks.WHITE_TULIP.defaultBlockState(), 1));
 
-			LUSH_FLOWER_CONFIG = ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(flowers), List.of(), 64);
+			LUSH_FLOWER_CONFIG = FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(flowers), List.of(), 64);
 		}
 	}
 }

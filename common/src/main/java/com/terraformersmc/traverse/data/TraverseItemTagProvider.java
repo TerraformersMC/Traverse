@@ -7,19 +7,21 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
-	protected TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, BlockTagProvider blockTagProvider) {
+	protected TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, BlockTagProvider blockTagProvider) {
 		super(output, registriesFuture, blockTagProvider);
 	}
 
 	@Override
-	public void configure(RegistryWrapper.WrapperLookup registries) {
+	public void addTags(HolderLookup.Provider registries) {
 		/*
 		 * Vanilla item tags
 		 */

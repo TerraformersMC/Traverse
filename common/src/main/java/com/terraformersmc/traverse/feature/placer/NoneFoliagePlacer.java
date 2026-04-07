@@ -2,38 +2,39 @@ package com.terraformersmc.traverse.feature.placer;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import org.jspecify.annotations.NullMarked;
 
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.TestableWorld;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.foliage.FoliagePlacer;
-import net.minecraft.world.gen.foliage.FoliagePlacerType;
-
+@NullMarked
 public class NoneFoliagePlacer extends FoliagePlacer {
-	public static final MapCodec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> fillFoliagePlacerFields(instance).apply(instance, (uniformIntDistribution, uniformIntDistribution2) -> new NoneFoliagePlacer()));
+	public static final MapCodec<NoneFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> foliagePlacerParts(instance).apply(instance, (uniformIntDistribution, uniformIntDistribution2) -> new NoneFoliagePlacer()));
 
 	public NoneFoliagePlacer() {
-		super(ConstantIntProvider.create(0), ConstantIntProvider.create(0));
+		super(ConstantInt.of(0), ConstantInt.of(0));
 	}
 
 	@Override
-	protected FoliagePlacerType<?> getType() {
+	protected FoliagePlacerType<?> type() {
 		return TraversePlacerTypes.NONE_FOLIAGE_PLACER;
 	}
 
 	@Override
-	protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+	protected void createFoliage(LevelSimulatedReader world, FoliageSetter placer, RandomSource random, TreeConfiguration config, int trunkHeight, FoliageAttachment treeNode, int foliageHeight, int radius, int offset) {
 		// It's the "None" placer, after all...
 	}
 
 	@Override
-	public int getRandomHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
+	public int foliageHeight(RandomSource random, int trunkHeight, TreeConfiguration config) {
 		return 0;
 	}
 
 	@Override
-	protected boolean isInvalidForLeaves(Random random, int baseHeight, int dx, int dy, int dz, boolean bl) {
+	protected boolean shouldSkipLocation(RandomSource random, int baseHeight, int dx, int dy, int dz, boolean bl) {
 		return false;
 	}
 }

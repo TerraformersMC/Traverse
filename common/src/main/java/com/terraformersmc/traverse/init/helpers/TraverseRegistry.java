@@ -1,18 +1,30 @@
 package com.terraformersmc.traverse.init.helpers;
 
 import com.terraformersmc.traverse.Traverse;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.*;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.List;
 import java.util.function.Function;
 
+@NullMarked
 public class TraverseRegistry {
 	@SuppressWarnings("UnnecessaryReturnStatement")
 	private TraverseRegistry() {
@@ -25,20 +37,20 @@ public class TraverseRegistry {
 
 	/**
 	 * Registers a sign block.
-	 *
+	 * <br/>
 	 * In addition to registering the block, this method also registers the block as a support for its block entity.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the block
 	 * @param factory Factory function to create {@link Block} from settings
-	 * @param settings {@link AbstractBlock.Settings} of the block
+	 * @param settings {@link BlockBehaviour.Properties} of the block
 	 * @return Newly registered {@link Block}
 	 */
-	public static <S extends AbstractSignBlock> S registerSignBlock(String name, Function<AbstractBlock.Settings, S> factory, AbstractBlock.Settings settings) {
+	public static <S extends SignBlock> S registerSignBlock(String name, Function<BlockBehaviour.Properties, S> factory, BlockBehaviour.Properties settings) {
 		S block = register(name, factory, settings);
 
-		if (block instanceof SignBlock || block instanceof WallSignBlock) {
+		if (block instanceof StandingSignBlock || block instanceof WallSignBlock) {
 			BlockEntityType.SIGN.addSupportedBlock(block);
-		} else if (block instanceof HangingSignBlock || block instanceof WallHangingSignBlock) {
+		} else if (block instanceof CeilingHangingSignBlock || block instanceof WallHangingSignBlock) {
 			BlockEntityType.HANGING_SIGN.addSupportedBlock(block);
 		} else {
 			throw new IllegalArgumentException("This method only accepts vanilla sign blocks and descendants!");
@@ -52,19 +64,19 @@ public class TraverseRegistry {
 	 *
 	 * @param name Name ({@link Identifier} path string) of the block
 	 * @param factory Factory function to create {@link Block} from settings
-	 * @param settings {@link AbstractBlock.Settings} of the block
+	 * @param settings {@link BlockBehaviour.Properties} of the block
 	 * @return Newly registered {@link Block}
 	 */
-	public static <B extends Block> B register(String name, Function<AbstractBlock.Settings, B> factory, AbstractBlock.Settings settings) {
-		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Traverse.MOD_ID, name));
-		B block = factory.apply(settings.registryKey(key));
+	public static <B extends Block> B register(String name, Function<BlockBehaviour.Properties, B> factory, BlockBehaviour.Properties settings) {
+		ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, name));
+		B block = factory.apply(settings.setId(key));
 
-		return Registry.register(Registries.BLOCK, key, block);
+		return Registry.register(BuiltInRegistries.BLOCK, key, block);
 	}
 
 	/**
 	 * Registers a block item and associates it with its block.
-	 *
+	 * <br/>
 	 * This method applies {@code settings.useBlockPrefixedTranslationKey()}.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the block item
@@ -72,29 +84,29 @@ public class TraverseRegistry {
 	 * @return Newly created {@link BlockItem}
 	 */
 	public static BlockItem registerBlockItem(String name, Block block) {
-		return register(name, settings -> new BlockItem(block, settings), new Item.Settings().useBlockPrefixedTranslationKey());
+		return register(name, settings -> new BlockItem(block, settings), new net.minecraft.world.item.Item.Properties().useBlockDescriptionPrefix());
 	}
 
 	/**
 	 * Registers an item.
-	 *
+	 * <br/>
 	 * When using this method directly, the caller should apply
 	 * {@code settings.useBlockPrefixedTranslationKey()} if desired.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the item
 	 * @param factory Factory function to create {@link Item} from settings
-	 * @param settings {@link Item.Settings} of the item
+	 * @param settings {@link net.minecraft.world.item.Item.Properties} of the item
 	 * @return Newly registered {@link Item}
 	 */
-	public static <I extends Item> I register(String name, Function<Item.Settings, I> factory, Item.Settings settings) {
-		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Traverse.MOD_ID, name));
-		I item = factory.apply(settings.registryKey(key));
+	public static <I extends Item> I register(String name, Function<net.minecraft.world.item.Item.Properties, I> factory, net.minecraft.world.item.Item.Properties settings) {
+		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, name));
+		I item = factory.apply(settings.setId(key));
 
 		if (item instanceof BlockItem blockItem) {
-			blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem);
+			blockItem.registerBlocks(Item.BY_BLOCK, blockItem);
 		}
 
-		return Registry.register(Registries.ITEM, key, item);
+		return Registry.register(BuiltInRegistries.ITEM, key, item);
 	}
 
 	/*
@@ -108,8 +120,8 @@ public class TraverseRegistry {
 	 * @param feature {@link Feature} to be registered
 	 * @return Newly registered {@link Feature}
 	 */
-	public static <T extends Feature<FC>, FC extends FeatureConfig> T register(String name, T feature) {
-		return Registry.register(Registries.FEATURE, Identifier.of(Traverse.MOD_ID, name), feature);
+	public static <T extends Feature<FC>, FC extends FeatureConfiguration> T register(String name, T feature) {
+		return Registry.register(BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, name), feature);
 	}
 
 	/**
@@ -117,12 +129,12 @@ public class TraverseRegistry {
 	 * with the provided feature config and registered to the provided registerable under the provided key.
 	 *
 	 * @param registerable A registration-capable abstraction of a registry of configured features
-	 * @param key {@link RegistryKey} of {@link ConfiguredFeature} being registered
+	 * @param key {@link ResourceKey} of {@link ConfiguredFeature} being registered
 	 * @param feature {@link Feature} being configured
-	 * @param config {@link FeatureConfig} to apply to {@link Feature} being registered
+	 * @param config {@link FeatureConfiguration} to apply to {@link Feature} being registered
 	 */
-	public static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
-		ConfiguredFeatures.register(registerable, key, feature, config);
+	public static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> registerable, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
+		FeatureUtils.register(registerable, key, feature, config);
 	}
 
 	/**
@@ -130,11 +142,11 @@ public class TraverseRegistry {
 	 * the provided placement modifiers and registered to the provided registerable under the provided key.
 	 *
 	 * @param registerable A registration-capable abstraction of a registry of placed features
-	 * @param key {@link RegistryKey} of {@link PlacedFeature} being registered
-	 * @param feature {@link RegistryKey} of {@link ConfiguredFeature} being placed
+	 * @param key {@link ResourceKey} of {@link PlacedFeature} being registered
+	 * @param feature {@link ResourceKey} of {@link ConfiguredFeature} being placed
 	 * @param placementModifiers Any {@link PlacementModifier}(s) to apply to {@link ConfiguredFeature} being registered
 	 */
-	public static void register(Registerable<PlacedFeature> registerable, RegistryKey<PlacedFeature> key, RegistryKey<ConfiguredFeature<?, ?>> feature, PlacementModifier... placementModifiers) {
+	public static void register(BootstrapContext<PlacedFeature> registerable, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, PlacementModifier... placementModifiers) {
 		register(registerable, key, feature, List.of(placementModifiers));
 	}
 
@@ -143,13 +155,13 @@ public class TraverseRegistry {
 	 * the provided placement modifiers and registered to the provided registerable under the provided key.
 	 *
 	 * @param registerable A registration-capable abstraction of a registry of placed features
-	 * @param key {@link RegistryKey} of {@link PlacedFeature} being registered
-	 * @param feature {@link RegistryKey} of {@link ConfiguredFeature} being placed
+	 * @param key {@link ResourceKey} of {@link PlacedFeature} being registered
+	 * @param feature {@link ResourceKey} of {@link ConfiguredFeature} being placed
 	 * @param placementModifiers {@link List} of {@link PlacementModifier}(s) to apply to {@link ConfiguredFeature} being registered
 	 */
-	public static void register(Registerable<PlacedFeature> registerable, RegistryKey<PlacedFeature> key, RegistryKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placementModifiers) {
-		PlacedFeatures.register(registerable, key,
-				registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE).getOrThrow(feature),
+	public static void register(BootstrapContext<PlacedFeature> registerable, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placementModifiers) {
+		PlacementUtils.register(registerable, key,
+				registerable.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(feature),
 				placementModifiers);
 	}
 }

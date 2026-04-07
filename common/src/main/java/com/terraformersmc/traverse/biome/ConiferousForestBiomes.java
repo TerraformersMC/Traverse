@@ -1,66 +1,66 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class ConiferousForestBiomes {
-	public static Biome create(Registerable<Biome> registerable, boolean snowy) {
-		return new Biome.Builder()
+	public static Biome create(BootstrapContext<Biome> registerable, boolean snowy) {
+		return new Biome.BiomeBuilder()
 				.generationSettings(createGenerationSettings(registerable, snowy))
-				.spawnSettings(createSpawnSettings())
-				.precipitation(true)
+				.mobSpawnSettings(createSpawnSettings())
+				.hasPrecipitation(true)
 				.temperature(snowy ? -0.5F : 0.6F)
 				.downfall(0.9F)
-				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.grassColor(snowy ? 0x338251 : 0x338235)
-						.foliageColor(snowy ? 0x338251 : 0x338235)
+				.specialEffects(TraverseBiomes.createDefaultBiomeEffects()
+						.grassColorOverride(snowy ? 0x338251 : 0x338235)
+						.foliageColorOverride(snowy ? 0x338251 : 0x338235)
 						.build()
 				)
-				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
-						.with(EnvironmentAttributes.INCREASED_FIRE_BURNOUT_GAMEPLAY, true)
+				.putAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.set(EnvironmentAttributes.INCREASED_FIRE_BURNOUT, true)
 						.build()
 				)
 				.build();
 	}
 
-	private static GenerationSettings createGenerationSettings(Registerable<Biome> registerable, boolean snowy) {
-		RegistryEntryLookup<ConfiguredCarver<?>> configuredCarvers = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
-		RegistryEntryLookup<PlacedFeature> placedFeatures = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+	private static BiomeGenerationSettings createGenerationSettings(BootstrapContext<Biome> registerable, boolean snowy) {
+		HolderGetter<ConfiguredWorldCarver<?>> configuredCarvers = registerable.lookup(Registries.CONFIGURED_CARVER);
+		HolderGetter<PlacedFeature> placedFeatures = registerable.lookup(Registries.PLACED_FEATURE);
 
-		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(placedFeatures, configuredCarvers);
+		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(placedFeatures, configuredCarvers);
 		addBasicFeatures(builder);
-		DefaultBiomeFeatures.addLargeFerns(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addDefaultDisks(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.CONIFEROUS_TREES));
-		DefaultBiomeFeatures.addDefaultFlowers(builder);
-		DefaultBiomeFeatures.addTaigaGrass(builder);
-		DefaultBiomeFeatures.addDefaultVegetation(builder, true);
+		BiomeDefaultFeatures.addFerns(builder);
+		BiomeDefaultFeatures.addDefaultOres(builder);
+		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.CONIFEROUS_TREES));
+		BiomeDefaultFeatures.addDefaultFlowers(builder);
+		BiomeDefaultFeatures.addTaigaGrass(builder);
+		BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
 		if (snowy) {
-			DefaultBiomeFeatures.addSweetBerryBushesSnowy(builder);
+			BiomeDefaultFeatures.addRareBerryBushes(builder);
 		} else {
-			DefaultBiomeFeatures.addSweetBerryBushes(builder);
+			BiomeDefaultFeatures.addCommonBerryBushes(builder);
 		}
 		return builder.build();
 	}
 
-	private static SpawnSettings createSpawnSettings() {
-		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
-		builder.spawn(SpawnGroup.CREATURE, 5, new SpawnSettings.SpawnEntry(EntityType.WOLF, 4, 4));
+	private static MobSpawnSettings createSpawnSettings() {
+		net.minecraft.world.level.biome.MobSpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
+		builder.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
 		return builder.build();
 	}
 }

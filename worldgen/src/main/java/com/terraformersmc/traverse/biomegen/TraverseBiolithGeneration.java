@@ -7,8 +7,8 @@ import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.config.TraverseBiomeConfig;
 import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.biome.Biomes;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
@@ -16,13 +16,13 @@ public class TraverseBiolithGeneration implements Runnable {
 	TraverseBiomeConfig BIOME_CONFIG;
 
 	public void addBiomes() {
-		if (BIOME_CONFIG.isBiomeEnabled(AUTUMNAL_WOODS))           { BiomePlacement.replaceOverworld(BiomeKeys.FOREST, AUTUMNAL_WOODS, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(CONIFEROUS_FOREST))        { BiomePlacement.replaceOverworld(BiomeKeys.TAIGA, CONIFEROUS_FOREST, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(DESERT_SHRUBLAND))         { BiomePlacement.replaceOverworld(BiomeKeys.DESERT, DESERT_SHRUBLAND, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(FLATLANDS))                { BiomePlacement.replaceOverworld(BiomeKeys.PLAINS, FLATLANDS, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(LUSH_SWAMP))               { BiomePlacement.replaceOverworld(BiomeKeys.SWAMP, LUSH_SWAMP, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_CONIFEROUS_FOREST))  { BiomePlacement.replaceOverworld(BiomeKeys.SNOWY_TAIGA, SNOWY_CONIFEROUS_FOREST, 0.2D); }
-		if (BIOME_CONFIG.isBiomeEnabled(WOODLANDS))                { BiomePlacement.replaceOverworld(BiomeKeys.BIRCH_FOREST, WOODLANDS, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(AUTUMNAL_WOODS))           { BiomePlacement.replaceOverworld(Biomes.FOREST, AUTUMNAL_WOODS, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(CONIFEROUS_FOREST))        { BiomePlacement.replaceOverworld(Biomes.TAIGA, CONIFEROUS_FOREST, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(DESERT_SHRUBLAND))         { BiomePlacement.replaceOverworld(Biomes.DESERT, DESERT_SHRUBLAND, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(FLATLANDS))                { BiomePlacement.replaceOverworld(Biomes.PLAINS, FLATLANDS, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(LUSH_SWAMP))               { BiomePlacement.replaceOverworld(Biomes.SWAMP, LUSH_SWAMP, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(SNOWY_CONIFEROUS_FOREST))  { BiomePlacement.replaceOverworld(Biomes.SNOWY_TAIGA, SNOWY_CONIFEROUS_FOREST, 0.2D); }
+		if (BIOME_CONFIG.isBiomeEnabled(WOODLANDS))                { BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, WOODLANDS, 0.2D); }
 
 		// Target some Moderner Beta biomes for replacement by ours.
 		if (BiolithCompats.isCompatEnabled(BiolithCompats.MODERNER_BETA)) {
@@ -90,7 +90,7 @@ public class TraverseBiolithGeneration implements Runnable {
 	public void run() {
 		// Register the Traverse surface rules.
 		SurfaceGeneration.addOverworldSurfaceRules(
-				Identifier.of(Traverse.MOD_ID, "surface_rules"),
+				Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "surface_rules"),
 				TraverseSurfaceRules.createRules());
 
 		// Register the Traverse surface builders.

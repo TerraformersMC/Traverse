@@ -1,73 +1,73 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.attribute.FloatModifier;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.OceanPlacedFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.attribute.modifier.FloatModifier;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class LushSwampBiomes {
-	public static Biome create(Registerable<Biome> registerable) {
-		return new Biome.Builder()
+	public static Biome create(BootstrapContext<Biome> registerable) {
+		return new Biome.BiomeBuilder()
 				.generationSettings(createGenerationSettings(registerable))
-				.spawnSettings(createSpawnSettings())
-				.precipitation(true)
+				.mobSpawnSettings(createSpawnSettings())
+				.hasPrecipitation(true)
 				.temperature(0.8F)
 				.downfall(0.9F)
-				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.grassColor(0x7FE03E)
-						.foliageColor(0x58EA33)
+				.specialEffects(TraverseBiomes.createDefaultBiomeEffects()
+						.grassColorOverride(0x7FE03E)
+						.foliageColorOverride(0x58EA33)
 						.waterColor(0x617B64)
 						.build()
 				)
-				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
-						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_SWAMP))
-						.with(EnvironmentAttributes.INCREASED_FIRE_BURNOUT_GAMEPLAY, true)
-						.with(EnvironmentAttributes.WATER_FOG_COLOR_VISUAL, 0x232317)
-						.with(EnvironmentAttributes.WATER_FOG_END_DISTANCE_VISUAL, FloatModifier.MULTIPLY, 0.85F)
+				.putAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_SWAMP))
+						.set(EnvironmentAttributes.INCREASED_FIRE_BURNOUT, true)
+						.set(EnvironmentAttributes.WATER_FOG_COLOR, 0x232317)
+						.modify(EnvironmentAttributes.WATER_FOG_END_DISTANCE, FloatModifier.MULTIPLY, 0.85F)
 						.build()
 				)
 				.build();
 	}
 
-	public static GenerationSettings createGenerationSettings(Registerable<Biome> registerable) {
-		RegistryEntryLookup<ConfiguredCarver<?>> configuredCarvers = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
-		RegistryEntryLookup<PlacedFeature> placedFeatures = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+	public static BiomeGenerationSettings createGenerationSettings(BootstrapContext<Biome> registerable) {
+		HolderGetter<ConfiguredWorldCarver<?>> configuredCarvers = registerable.lookup(Registries.CONFIGURED_CARVER);
+		HolderGetter<PlacedFeature> placedFeatures = registerable.lookup(Registries.PLACED_FEATURE);
 
-		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(placedFeatures, configuredCarvers);
-		DefaultBiomeFeatures.addFossils(builder);
+		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(placedFeatures, configuredCarvers);
+		BiomeDefaultFeatures.addFossilDecoration(builder);
 		addBasicFeatures(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addClayDisk(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.SWAMP_FUNGUS));
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.LUSH_SWAMP_TREES));
-		DefaultBiomeFeatures.addSwampFeatures(builder);
-		DefaultBiomeFeatures.addDefaultMushrooms(builder);
-		DefaultBiomeFeatures.addSwampVegetation(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.SEAGRASS_SWAMP);
+		BiomeDefaultFeatures.addDefaultOres(builder);
+		BiomeDefaultFeatures.addSwampClayDisk(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.SWAMP_FUNGUS));
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.LUSH_SWAMP_TREES));
+		BiomeDefaultFeatures.addSwampVegetation(builder);
+		BiomeDefaultFeatures.addDefaultMushrooms(builder);
+		BiomeDefaultFeatures.addSwampExtraVegetation(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AquaticPlacements.SEAGRASS_SWAMP);
 		return builder.build();
 	}
 
-	private static SpawnSettings createSpawnSettings() {
-		SpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
-		builder.spawn(SpawnGroup.MONSTER,   1, new SpawnSettings.SpawnEntry(EntityType.SLIME, 1, 1));
-		builder.spawn(SpawnGroup.MONSTER,  50, new SpawnSettings.SpawnEntry(EntityType.BOGGED, 4, 4));
-		builder.spawn(SpawnGroup.CREATURE, 10, new SpawnSettings.SpawnEntry(EntityType.FROG, 2, 5));
+	private static MobSpawnSettings createSpawnSettings() {
+		net.minecraft.world.level.biome.MobSpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
+		builder.addSpawn(MobCategory.MONSTER,   1, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 1, 1));
+		builder.addSpawn(MobCategory.MONSTER,  50, new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 4, 4));
+		builder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 5));
 		return builder.build();
 	}
 }

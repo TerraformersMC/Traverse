@@ -1,6 +1,6 @@
 package com.terraformersmc.traverse.block;
 
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class TraverseBlockEntityTypes {
 	public static void register() {

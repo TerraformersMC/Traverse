@@ -1,10 +1,10 @@
 package com.terraformersmc.traverse.block;
 
-import net.minecraft.data.family.BlockFamilies;
-import net.minecraft.data.family.BlockFamily;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 
 public class TraverseBlockFamilies {
-	public static final BlockFamily FIR = BlockFamilies.register(TraverseBlocks.FIR_PLANKS)
+	public static final BlockFamily FIR = BlockFamilies.familyBuilder(TraverseBlocks.FIR_PLANKS)
 			.button(TraverseBlocks.FIR_BUTTON)
 			.fence(TraverseBlocks.FIR_FENCE)
 			.fenceGate(TraverseBlocks.FIR_FENCE_GATE)
@@ -14,7 +14,7 @@ public class TraverseBlockFamilies {
 			.stairs(TraverseBlocks.FIR_STAIRS)
 			.door(TraverseBlocks.FIR_DOOR)
 			.trapdoor(TraverseBlocks.FIR_TRAPDOOR)
-			.group("wooden")
-			.unlockCriterionName("has_planks")
-			.build();
+			.recipeGroupPrefix("wooden")
+			.recipeUnlockedBy("has_planks")
+			.getFamily();
 }

@@ -1,48 +1,48 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class FlatlandsBiomes {
-	public static Biome create(Registerable<Biome> registerable) {
-		return new Biome.Builder()
+	public static Biome create(BootstrapContext<Biome> registerable) {
+		return new Biome.BiomeBuilder()
 				.generationSettings(createGenerationSettings(registerable))
-				.spawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
-				.precipitation(true)
+				.mobSpawnSettings(TraverseBiomes.createDefaultSpawnSettings().build())
+				.hasPrecipitation(true)
 				.temperature(0.8F)
 				.downfall(0.7F)
-				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.grassColor(0x65CC53)
-						.foliageColor(0x5DD64A)
+				.specialEffects(TraverseBiomes.createDefaultBiomeEffects()
+						.grassColorOverride(0x65CC53)
+						.foliageColorOverride(0x5DD64A)
 						.build()
 				)
-				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes())
+				.putAttributes(TraverseBiomes.createDefaultEnvironmentAttributes())
 				.build();
 	}
 
-	private static GenerationSettings createGenerationSettings(Registerable<Biome> registerable) {
-		RegistryEntryLookup<ConfiguredCarver<?>> configuredCarvers = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
-		RegistryEntryLookup<PlacedFeature> placedFeatures = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+	private static BiomeGenerationSettings createGenerationSettings(BootstrapContext<Biome> registerable) {
+		HolderGetter<ConfiguredWorldCarver<?>> configuredCarvers = registerable.lookup(Registries.CONFIGURED_CARVER);
+		HolderGetter<PlacedFeature> placedFeatures = registerable.lookup(Registries.PLACED_FEATURE);
 
-		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(placedFeatures, configuredCarvers);
+		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(placedFeatures, configuredCarvers);
 		addBasicFeatures(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addDefaultDisks(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.FLATLANDS_TREES));
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.LUSH_FLOWERS));
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.FLATLANDS_GRASS));
-		DefaultBiomeFeatures.addDefaultMushrooms(builder);
-		DefaultBiomeFeatures.addDefaultVegetation(builder, true);
+		BiomeDefaultFeatures.addDefaultOres(builder);
+		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.FLATLANDS_TREES));
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.LUSH_FLOWERS));
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.FLATLANDS_GRASS));
+		BiomeDefaultFeatures.addDefaultMushrooms(builder);
+		BiomeDefaultFeatures.addDefaultExtraVegetation(builder, true);
 		return builder.build();
 	}
 }

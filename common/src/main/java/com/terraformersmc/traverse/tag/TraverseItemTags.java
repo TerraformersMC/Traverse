@@ -1,14 +1,14 @@
 package com.terraformersmc.traverse.tag;
 
 import com.terraformersmc.traverse.Traverse;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 public final class TraverseItemTags {
 	public static final TagKey<Item> FIR_LOGS = TraverseItemTags.of("fir_logs");
-	public static final TagKey<Item> PLANKS_THAT_BURN = TraverseItemTags.of(Identifier.of("c", "planks_that_burn"));
+	public static final TagKey<Item> PLANKS_THAT_BURN = TraverseItemTags.of(Identifier.fromNamespaceAndPath("c", "planks_that_burn"));
 
 	@SuppressWarnings("UnnecessaryReturnStatement")
 	private TraverseItemTags() {
@@ -16,10 +16,10 @@ public final class TraverseItemTags {
 	}
 
 	private static TagKey<Item> of(String path) {
-		return TraverseItemTags.of(Identifier.of(Traverse.MOD_ID, path));
+		return TraverseItemTags.of(Identifier.fromNamespaceAndPath(Traverse.MOD_ID, path));
 	}
 
 	private static TagKey<Item> of(Identifier id) {
-		return TagKey.of(RegistryKeys.ITEM, id);
+		return TagKey.create(Registries.ITEM, id);
 	}
 }

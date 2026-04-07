@@ -1,80 +1,80 @@
 package com.terraformersmc.traverse.biome;
 
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.ConfiguredCarver;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.addBasicFeatures;
 
 public class DesertShrublandBiomes {
-	public static Biome create(Registerable<Biome> registerable) {
-		return new Biome.Builder()
+	public static Biome create(BootstrapContext<Biome> registerable) {
+		return new Biome.BiomeBuilder()
 				.generationSettings(createGenerationSettings(registerable))
-				.spawnSettings(createSpawnSettings())
-				.precipitation(false)
+				.mobSpawnSettings(createSpawnSettings())
+				.hasPrecipitation(false)
 				.temperature(2.0F)
 				.downfall(0.0F)
-				.effects(TraverseBiomes.createDefaultBiomeEffects()
-						.grassColor(0xBFB755)
-						.foliageColor(0xAEA42A)
+				.specialEffects(TraverseBiomes.createDefaultBiomeEffects()
+						.grassColorOverride(0xBFB755)
+						.foliageColorOverride(0xAEA42A)
 						.build()
 				)
-				.addEnvironmentAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
-						.with(EnvironmentAttributes.BACKGROUND_MUSIC_AUDIO, new BackgroundMusic(SoundEvents.MUSIC_OVERWORLD_DESERT))
-						.with(EnvironmentAttributes.SNOW_GOLEM_MELTS_GAMEPLAY, true)
+				.putAttributes(TraverseBiomes.createDefaultEnvironmentAttributes()
+						.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
+						.set(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
 						.build()
 				)
 				.build();
 	}
 
-	private static GenerationSettings createGenerationSettings(Registerable<Biome> registerable) {
-		RegistryEntryLookup<ConfiguredCarver<?>> configuredCarvers = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
-		RegistryEntryLookup<PlacedFeature> placedFeatures = registerable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+	private static BiomeGenerationSettings createGenerationSettings(BootstrapContext<Biome> registerable) {
+		HolderGetter<ConfiguredWorldCarver<?>> configuredCarvers = registerable.lookup(Registries.CONFIGURED_CARVER);
+		HolderGetter<PlacedFeature> placedFeatures = registerable.lookup(Registries.PLACED_FEATURE);
 
-		GenerationSettings.LookupBackedBuilder builder = new GenerationSettings.LookupBackedBuilder(placedFeatures, configuredCarvers);
-		DefaultBiomeFeatures.addFossils(builder);
+		BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(placedFeatures, configuredCarvers);
+		BiomeDefaultFeatures.addFossilDecoration(builder);
 		addBasicFeatures(builder);
-		DefaultBiomeFeatures.addDefaultOres(builder);
-		DefaultBiomeFeatures.addDefaultDisks(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.DESERT_SHRUBS));
-		DefaultBiomeFeatures.addDefaultFlowers(builder);
-		DefaultBiomeFeatures.addDefaultGrass(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_DEAD_BUSH_2);
-		DefaultBiomeFeatures.addDefaultMushrooms(builder);
-		DefaultBiomeFeatures.addDesertVegetation(builder);
-		builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.DESERT_EXTRA_CACTUS));
-		DefaultBiomeFeatures.addDesertFeatures(builder);
+		BiomeDefaultFeatures.addDefaultOres(builder);
+		BiomeDefaultFeatures.addDefaultSoftDisks(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.DESERT_SHRUBS));
+		BiomeDefaultFeatures.addDefaultFlowers(builder);
+		BiomeDefaultFeatures.addDefaultGrass(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH_2);
+		BiomeDefaultFeatures.addDefaultMushrooms(builder);
+		BiomeDefaultFeatures.addDesertExtraVegetation(builder);
+		builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatures.getOrThrow(TraversePlacedFeatures.DESERT_EXTRA_CACTUS));
+		BiomeDefaultFeatures.addDesertExtraDecoration(builder);
 		return builder.build();
 	}
 
-	private static SpawnSettings createSpawnSettings() {
-		SpawnSettings.Builder builder = new SpawnSettings.Builder();
+	private static MobSpawnSettings createSpawnSettings() {
+		net.minecraft.world.level.biome.MobSpawnSettings.Builder builder = new net.minecraft.world.level.biome.MobSpawnSettings.Builder();
 		TraverseBiomes.addDefaultCaveSpawnEntries(builder);
-		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,   38, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,    2, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1));
-		builder.spawn(SpawnGroup.MONSTER,   60, new SpawnSettings.SpawnEntry(EntityType.HUSK, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,  100, new SpawnSettings.SpawnEntry(EntityType.SLIME, 4, 4));
-		builder.spawn(SpawnGroup.MONSTER,   10, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 1, 4));
-		builder.spawn(SpawnGroup.MONSTER,    5, new SpawnSettings.SpawnEntry(EntityType.WITCH, 1, 1));
-		builder.spawn(SpawnGroup.CREATURE,   4, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 2, 3));
-		builder.spawn(SpawnGroup.CREATURE,   1, new SpawnSettings.SpawnEntry(EntityType.ARMADILLO, 1, 2));
+		builder.addSpawn(MobCategory.MONSTER,  100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,   38, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,    2, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+		builder.addSpawn(MobCategory.MONSTER,   60, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,  100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,  100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,  100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+		builder.addSpawn(MobCategory.MONSTER,   10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+		builder.addSpawn(MobCategory.MONSTER,    5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+		builder.addSpawn(MobCategory.CREATURE,   4, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
+		builder.addSpawn(MobCategory.CREATURE,   1, new MobSpawnSettings.SpawnerData(EntityType.ARMADILLO, 1, 2));
 		return builder.build();
 	}
 }

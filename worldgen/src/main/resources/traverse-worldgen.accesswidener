@@ -1,7 +1,7 @@
 accessWidener	v1	named
 
-accessible class net/minecraft/world/gen/surfacebuilder/MaterialRules$BlockStateRule
-accessible class net/minecraft/world/gen/surfacebuilder/MaterialRules$MaterialRuleContext
-accessible class net/minecraft/world/gen/surfacebuilder/MaterialRules$BooleanSupplier
-accessible field net/minecraft/world/gen/surfacebuilder/MaterialRules$MaterialRuleContext surfaceBuilder Lnet/minecraft/world/gen/surfacebuilder/SurfaceBuilder;
-accessible field net/minecraft/world/gen/surfacebuilder/MaterialRules$MaterialRuleContext noiseConfig Lnet/minecraft/world/gen/noise/NoiseConfig;
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$SurfaceRule
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$Context
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$Condition
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context system Lnet/minecraft/world/level/levelgen/SurfaceSystem;
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context randomState Lnet/minecraft/world/level/levelgen/RandomState;

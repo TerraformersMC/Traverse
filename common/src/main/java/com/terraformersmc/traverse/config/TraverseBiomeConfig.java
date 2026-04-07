@@ -1,9 +1,9 @@
 package com.terraformersmc.traverse.config;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ public class TraverseBiomeConfig {
 
 	TraverseBiomeConfig() {
 		// This is where to set biomes to default disabled if needed (replace "k -> true").
-		biomes = TraverseBiomes.BIOMES.stream().collect(Collectors.toMap(k -> k.getValue().getPath(), k -> true));
+		biomes = TraverseBiomes.BIOMES.stream().collect(Collectors.toMap(k -> k.identifier().getPath(), k -> true));
 	}
 
 	public boolean isBiomeEnabled(String name) {
@@ -24,7 +24,7 @@ public class TraverseBiomeConfig {
 		return isBiomeEnabled(identifier.getPath());
 	}
 
-	public boolean isBiomeEnabled(RegistryKey<Biome> biomeKey) {
-		return isBiomeEnabled(biomeKey.getValue());
+	public boolean isBiomeEnabled(ResourceKey<Biome> biomeKey) {
+		return isBiomeEnabled(biomeKey.identifier());
 	}
 }
