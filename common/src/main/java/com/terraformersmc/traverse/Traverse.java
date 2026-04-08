@@ -5,7 +5,6 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
-import com.terraformersmc.traverse.init.TraverseTrades;
 import com.terraformersmc.traverse.item.TraverseItemGroups;
 import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
@@ -30,7 +29,6 @@ public class Traverse implements ModInitializer {
 		TraverseItems.register();
 		TraverseBlockEntityTypes.register();
 		TraverseBoats.register();
-		TraverseTrades.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
 		TraverseItemGroups.register();

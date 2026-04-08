@@ -4,6 +4,7 @@ import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
+import com.terraformersmc.traverse.villager.TraverseVillagerTrades;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.Holder;
@@ -25,6 +26,7 @@ public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvid
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, TraverseConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, TraversePlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.BIOME, TraverseBiomes::bootstrap);
+		registryBuilder.add(Registries.VILLAGER_TRADE, TraverseVillagerTrades::bootstrap);
 	}
 
 	@Override
@@ -32,6 +34,7 @@ public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvid
 		addAll(entries, registries.lookupOrThrow(Registries.CONFIGURED_FEATURE), Traverse.MOD_ID);
 		addAll(entries, registries.lookupOrThrow(Registries.PLACED_FEATURE), Traverse.MOD_ID);
 		addAll(entries, registries.lookupOrThrow(Registries.BIOME), Traverse.MOD_ID);
+		addAll(entries, registries.lookupOrThrow(Registries.VILLAGER_TRADE), Traverse.MOD_ID);
 	}
 
 	@Override
