@@ -4,7 +4,7 @@ import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import com.terraformersmc.traverse.feature.TraverseConfiguredFeatures;
 import com.terraformersmc.traverse.feature.TraversePlacedFeatures;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 
 @NullMarked
 public class TraverseDynamicRegistryProvider extends FabricDynamicRegistryProvider {
-	protected TraverseDynamicRegistryProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+	protected TraverseDynamicRegistryProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 

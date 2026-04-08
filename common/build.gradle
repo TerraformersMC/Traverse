@@ -1,4 +1,4 @@
-archivesBaseName = "traverse-common"
+base.archivesName = "traverse-common"
 
 fabricApi {
 	configureDataGeneration {

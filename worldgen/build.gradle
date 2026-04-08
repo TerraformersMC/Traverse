@@ -1,4 +1,4 @@
-archivesBaseName = "traverse-worldgen"
+base.archivesName = "traverse-worldgen"
 
 loom {
 	accessWidenerPath = file("src/main/resources/traverse-worldgen.accesswidener")
@@ -6,7 +6,7 @@ loom {
 
 dependencies {
 	// Biolith for the worldgen API module
-	modImplementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+	implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
 
 	implementation project(path: ':traverse-common')
 }

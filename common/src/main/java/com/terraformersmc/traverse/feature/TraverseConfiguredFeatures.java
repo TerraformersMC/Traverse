@@ -7,7 +7,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -26,8 +25,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-import java.util.List;
 
 public class TraverseConfiguredFeatures {
 	private static final PlaceOnGroundDecorator LEAF_LITTER = new PlaceOnGroundDecorator(96, 4, 2, new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 3)));
@@ -114,8 +111,8 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Lush Vegetation */
-		TraverseRegistry.register(registerable, FLATLANDS_GRASS, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SHORT_GRASS)), List.of(), 32));
-		TraverseRegistry.register(registerable, LUSH_FLOWERS, Feature.FLOWER, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
+		TraverseRegistry.register(registerable, FLATLANDS_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SHORT_GRASS)));
+		TraverseRegistry.register(registerable, LUSH_FLOWERS, Feature.SIMPLE_BLOCK, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
 	}
 
 	private static ResourceKey<ConfiguredFeature<?, ?>> createRegistryKey(String name) {

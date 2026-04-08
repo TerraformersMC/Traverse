@@ -7,7 +7,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
@@ -34,8 +34,8 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 	}
 
 	@Override
-	public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, int trunkHeight, BlockPos pos, TreeConfiguration treeFeatureConfig) {
-		setDirtAt(world, replacer, random, pos.below(), treeFeatureConfig);
+	public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel level, BiConsumer<BlockPos, BlockState> trunkSetter, RandomSource random, int treeHeight, BlockPos origin, TreeConfiguration config) {
+		placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
 
 		List<FoliagePlacer.FoliageAttachment> treeNodes = Lists.newArrayList();
 
@@ -43,16 +43,16 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
 		Direction.Axis axis = random.nextBoolean() ? Direction.Axis.X : Direction.Axis.Z;
 		Direction direction = Direction.fromAxisAndDirection(axis, random.nextBoolean() ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE);
 
-		for (int i = 0; i < trunkHeight; ++i) {
-			placeTrunkBlock(world, replacer, random, pos.relative(direction, i), treeFeatureConfig, axis, treeNodes);
+		for (int i = 0; i < treeHeight; ++i) {
+			placeTrunkBlock(level, trunkSetter, random, origin.relative(direction, i), config, axis, treeNodes);
 		}
 
-		return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pos, 0, false));
+		return ImmutableList.of(new FoliagePlacer.FoliageAttachment(origin, 0, false));
 	}
 
-	protected static boolean placeTrunkBlock(LevelSimulatedReader world, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, BlockPos blockPos, TreeConfiguration treeFeatureConfig, Direction.Axis axis, List<FoliagePlacer.FoliageAttachment> treeNodes) {
-		if (TreeFeature.validTreePos(world, blockPos)) {
-			replacer.accept(blockPos, treeFeatureConfig.trunkProvider.getState(random, blockPos).setValue(RotatedPillarBlock.AXIS, axis));
+	protected static boolean placeTrunkBlock(WorldGenLevel level, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, BlockPos blockPos, TreeConfiguration treeFeatureConfig, Direction.Axis axis, List<FoliagePlacer.FoliageAttachment> treeNodes) {
+		if (TreeFeature.validTreePos(level, blockPos)) {
+			replacer.accept(blockPos, treeFeatureConfig.trunkProvider.getState(level, random, blockPos).setValue(RotatedPillarBlock.AXIS, axis));
 			treeNodes.add(new FoliagePlacer.FoliageAttachment(blockPos.immutable(), 0, false));
 			return true;
 		} else {

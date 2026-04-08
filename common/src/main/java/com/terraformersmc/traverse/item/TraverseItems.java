@@ -2,8 +2,8 @@ package com.terraformersmc.traverse.item;
 
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.init.helpers.TraverseRegistry;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.CompostableRegistry;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.world.item.*;
 
 public class TraverseItems {
@@ -73,7 +73,7 @@ public class TraverseItems {
 	}
 
 	private static void addCompostables() {
-		CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+		CompostableRegistry compostingRegistry = CompostableRegistry.INSTANCE;
 		float LEAVES_CHANCE = compostingRegistry.get(Items.OAK_LEAVES);
 		float SAPLING_CHANCE = compostingRegistry.get(Items.OAK_SAPLING);
 
@@ -90,7 +90,7 @@ public class TraverseItems {
 	}
 
 	private static void addFuels() {
-		FuelRegistryEvents.BUILD.register((builder, context) -> {
+		FuelValueEvents.BUILD.register((builder, context) -> {
 			builder.add(FIR_FENCE, 300);
 			builder.add(FIR_FENCE_GATE, 300);
 		});

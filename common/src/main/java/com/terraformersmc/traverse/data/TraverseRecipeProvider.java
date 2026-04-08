@@ -6,7 +6,7 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 @NullMarked
 public class TraverseRecipeProvider extends FabricRecipeProvider {
-	protected TraverseRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+	protected TraverseRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 

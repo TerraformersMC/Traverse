@@ -5,6 +5,8 @@ import com.terraformersmc.traverse.item.TraverseItems;
 
 public class TraverseTrades {
 	public static void register() {
+// TODO: This needs to be replaced with datagen before release.
+/*
 		TerraformSaplingTradeHelper.registerWanderingTraderSaplingTrades(
 				TraverseItems.BROWN_AUTUMNAL_SAPLING,
 				TraverseItems.ORANGE_AUTUMNAL_SAPLING,
@@ -12,5 +14,6 @@ public class TraverseTrades {
 				TraverseItems.YELLOW_AUTUMNAL_SAPLING,
 				TraverseItems.FIR_SAPLING
 		);
+*/
 	}
 }

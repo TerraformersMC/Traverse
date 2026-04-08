@@ -1,7 +1,4 @@
-archivesBaseName = "traverse-client"
-
-loom {
-}
+base.archivesName = "traverse-client"
 
 dependencies {
 	implementation project(path: ':traverse-common')

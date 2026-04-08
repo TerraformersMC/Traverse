@@ -3,8 +3,8 @@ package com.terraformersmc.traverse.data;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import com.terraformersmc.traverse.tag.TraverseItemTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
@@ -15,8 +15,8 @@ import org.jspecify.annotations.NullMarked;
 import java.util.concurrent.CompletableFuture;
 
 @NullMarked
-public class TraverseItemTagProvider extends FabricTagProvider.ItemTagProvider {
-	protected TraverseItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, BlockTagProvider blockTagProvider) {
+public class TraverseItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+	protected TraverseItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, FabricTagsProvider.BlockTagsProvider blockTagProvider) {
 		super(output, registriesFuture, blockTagProvider);
 	}
 

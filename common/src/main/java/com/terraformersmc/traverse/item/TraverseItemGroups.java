@@ -3,8 +3,8 @@ package com.terraformersmc.traverse.item;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,7 +19,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class TraverseItemGroups {
 	private static final ResourceKey<CreativeModeTab> ITEM_GROUP = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "items"));
@@ -128,8 +127,8 @@ public class TraverseItemGroups {
 		 * Add the items configured above to the Vanilla item groups.
 		 */
 		for (ResourceKey<CreativeModeTab> group : ITEM_GROUP_ENTRY_MAPS.keySet()) {
-			ItemGroupEvents.modifyEntriesEvent(group).register((content) -> {
-				FeatureFlagSet featureSet = content.getEnabledFeatures();
+			CreativeModeTabEvents.modifyOutputEvent(group).register((output) -> {
+				FeatureFlagSet featureSet = output.getEnabledFeatures();
 				HashMap<ItemLike, ItemGroupEntries> entryMap = ITEM_GROUP_ENTRY_MAPS.get(group);
 
 				for (ItemLike relative : entryMap.keySet()) {
@@ -139,10 +138,10 @@ public class TraverseItemGroups {
 					// So, below we have to adjust for any items which may be disabled.
 					if (relative == null) {
 						// Target the end of the Item Group
-						content.acceptAll(entries.getCollection());
+						output.acceptAll(entries.getStackCollection());
 					} else {
-						//Traverse.LOGGER.warn("About to add to Vanilla Item Group '{}' after Item '{}': '{}'", group.getValue(), relative, entries.getCollection().stream().map(ItemStack::getItem).collect(Collectors.toList()));
-						content.addAfter(relative, entries.getCollection());
+						//Traverse.LOGGER.warn("About to add to Vanilla Item Group '{}' after Item '{}': '{}'", group.getValue(), relative, entries.getStackCollection().stream().map(ItemStack::getItem).collect(Collectors.toList()));
+						output.insertAfter(relative, entries.getStackCollection());
 					}
 				}
 			});
@@ -152,16 +151,16 @@ public class TraverseItemGroups {
 		/*
 		 * Also add all the items to Traverse's own item group.
 		 */
-		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ITEM_GROUP, FabricItemGroup.builder()
+		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ITEM_GROUP, FabricCreativeModeTab.builder()
 				.title(Component.literal("Traverse"))
 				.icon(() -> TraverseBlocks.FIR_SAPLING.asItem().getDefaultInstance())
-				.displayItems((context, entries) -> {
+				.displayItems((context, output) ->
 					ITEM_GROUP_ENTRY_MAPS.values().stream()
 							.map(HashMap::values).flatMap(Collection::stream)
-							.map(ItemGroupEntries::getCollection).flatMap(Collection::stream)
-							.collect(Collectors.groupingByConcurrent(ItemStack::getItem)).keySet().stream()
-							.sorted(Comparator.comparing((item) -> item.getName().getString())).forEach(entries::accept);
-				}).build()
+							.flatMap(ItemGroupEntries::getItemStream).distinct()
+							.sorted(Comparator.comparing(ItemLike::toString))
+							.forEach(output::accept)
+				).build()
 		);
 	}
 

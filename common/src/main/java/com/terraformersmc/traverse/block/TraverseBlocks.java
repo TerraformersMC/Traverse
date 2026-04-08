@@ -69,10 +69,10 @@ public class TraverseBlocks {
 		FIR_LEAVES = TraverseRegistry.register("fir_leaves", settings -> new ColoredParticleLeavesBlock(0.01f, 0x184017, settings), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).mapColor(MapColor.PLANT).isValidSpawn(TraverseBlocks::canSpawnOnLeaves).isSuffocating(TraverseBlocks::never).isViewBlocking(TraverseBlocks::never));
 		FIR_SAPLING = TraverseRegistry.register("fir_sapling", settings -> new SaplingBlock(new TreeGrower("fir", Optional.empty(), Optional.of(TraverseConfiguredFeatures.FIR_TREE), Optional.empty()), settings), SaplingBlock.Properties.ofFullCopy(Blocks.OAK_SAPLING).mapColor(MapColor.PLANT));
 
-		FIR_LOG = TraverseRegistry.register("fir_log", RotatedPillarBlock::new, PillarLogHelper.createSettings(MapColor.WOOD, MapColor.COLOR_BROWN));
-		FIR_WOOD = TraverseRegistry.register("fir_wood", RotatedPillarBlock::new, PillarLogHelper.createSettings(MapColor.COLOR_BROWN));
-		STRIPPED_FIR_LOG = TraverseRegistry.register("stripped_fir_log", RotatedPillarBlock::new, PillarLogHelper.createSettings(MapColor.WOOD));
-		STRIPPED_FIR_WOOD = TraverseRegistry.register("stripped_fir_wood", RotatedPillarBlock::new, PillarLogHelper.createSettings(MapColor.WOOD));
+		FIR_LOG = TraverseRegistry.register("fir_log", RotatedPillarBlock::new, PillarLogHelper.createProperties(MapColor.WOOD, MapColor.COLOR_BROWN));
+		FIR_WOOD = TraverseRegistry.register("fir_wood", RotatedPillarBlock::new, PillarLogHelper.createProperties(MapColor.COLOR_BROWN));
+		STRIPPED_FIR_LOG = TraverseRegistry.register("stripped_fir_log", RotatedPillarBlock::new, PillarLogHelper.createProperties(MapColor.WOOD));
+		STRIPPED_FIR_WOOD = TraverseRegistry.register("stripped_fir_wood", RotatedPillarBlock::new, PillarLogHelper.createProperties(MapColor.WOOD));
 		FIR_PLANKS = TraverseRegistry.register("fir_planks", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.WOOD));
 		FIR_SLAB = TraverseRegistry.register("fir_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.WOOD));
 		FIR_PRESSURE_PLATE = TraverseRegistry.register("fir_pressure_plate", settings -> new PressurePlateBlock(TraverseBlockSetTypes.FIR, settings), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.WOOD));
