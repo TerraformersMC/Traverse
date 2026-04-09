@@ -1,5 +1,6 @@
 package com.terraformersmc.traverse;
 
+import com.terraformersmc.traverse.biomegen.TraverseBiolithGeneration;
 import com.terraformersmc.traverse.block.TraverseBlockEntityTypes;
 import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
@@ -13,18 +14,14 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-
 public class Traverse implements ModInitializer {
 	public static final String MOD_ID = "traverse";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	private static final TraverseConfigManager CONFIG_MANAGER = new TraverseConfigManager();
 
-	private static Boolean initialized = false;
-	private static final ArrayList<Runnable> RUNNABLES = new ArrayList<>(1);
-
-	private static void register() {
+	@Override
+	public void onInitialize() {
 		TraverseBlocks.register();
 		TraverseItems.register();
 		TraverseBlockEntityTypes.register();
@@ -32,31 +29,12 @@ public class Traverse implements ModInitializer {
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
 		TraverseItemGroups.register();
-	}
 
-	@Override
-	public void onInitialize() {
-		register();
-
-		// This must be after TraverseBiomes.register()
-		CONFIG_MANAGER.getBiomeConfig();
-
-		if (!FabricLoader.getInstance().isModLoaded("traverse-worldgen")) {
-			Traverse.LOGGER.info("No Traverse worldgen module present; Traverse biomes will not generate.");
-		}
-
-		// At this point Traverse is completely initialized.
-		initialized = true;
-		for (Runnable callback : RUNNABLES) {
-			callback.run();
-		}
-	}
-
-	public static void callbackWhenInitialized(Runnable callback) {
-		if (initialized) {
-			callback.run();
+		if (FabricLoader.getInstance().isModLoaded("biolith")) {
+			Traverse.LOGGER.info("Enabling Traverse's Biolith worldgen module.");
+			TraverseBiolithGeneration.register();
 		} else {
-			RUNNABLES.add(callback);
+			Traverse.LOGGER.warn("Traverse world generation disabled; Biolith is not present.");
 		}
 	}
 

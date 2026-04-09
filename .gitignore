@@ -21,7 +21,7 @@ build
 # other
 eclipse
 run
-common/src/main/generated/
+src/*/generated/
 
 Thumbs.db
 *.psd

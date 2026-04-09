@@ -1,7 +1,0 @@
-base.archivesName = "traverse-common"
-
-fabricApi {
-	configureDataGeneration {
-		client = true
-	}
-}

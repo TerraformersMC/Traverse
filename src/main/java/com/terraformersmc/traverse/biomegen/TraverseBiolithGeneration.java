@@ -12,10 +12,19 @@ import net.minecraft.world.level.biome.Biomes;
 
 import static com.terraformersmc.traverse.biome.TraverseBiomes.*;
 
-public class TraverseBiolithGeneration implements Runnable {
-	TraverseBiomeConfig BIOME_CONFIG;
+public class TraverseBiolithGeneration {
+	private static final TraverseBiomeConfig BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
 
-	public void addBiomes() {
+	public static void register() {
+		// Register the Traverse surface rules.
+		SurfaceGeneration.addOverworldSurfaceRules(
+			Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "surface_rules"),
+			TraverseSurfaceRules.createRules());
+
+		// Register the Traverse surface builders.
+		//TraverseSurfaceBuilders.getBuilders().forEach(SurfaceGeneration::addSurfaceBuilder);
+
+		// Register the Traverse biomes.
 		if (BIOME_CONFIG.isBiomeEnabled(AUTUMNAL_WOODS))           { BiomePlacement.replaceOverworld(Biomes.FOREST, AUTUMNAL_WOODS, 0.2D); }
 		if (BIOME_CONFIG.isBiomeEnabled(CONIFEROUS_FOREST))        { BiomePlacement.replaceOverworld(Biomes.TAIGA, CONIFEROUS_FOREST, 0.2D); }
 		if (BIOME_CONFIG.isBiomeEnabled(DESERT_SHRUBLAND))         { BiomePlacement.replaceOverworld(Biomes.DESERT, DESERT_SHRUBLAND, 0.2D); }
@@ -81,23 +90,5 @@ public class TraverseBiolithGeneration implements Runnable {
 				BiomePlacement.replaceOverworld(ModernerBetaBiomeKeys.PE_FOREST, WOODLANDS, 0.2D);
 			}
 		}
-	}
-
-	// Use Biolith to register our Biome placements.
-	// We can't do registration stuff until Traverse's common module is ready.
-	// This method will be called when Traverse is done initializing.
-	@Override
-	public void run() {
-		// Register the Traverse surface rules.
-		SurfaceGeneration.addOverworldSurfaceRules(
-				Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "surface_rules"),
-				TraverseSurfaceRules.createRules());
-
-		// Register the Traverse surface builders.
-		//TraverseSurfaceBuilders.getBuilders().forEach(SurfaceGeneration::addSurfaceBuilder);
-
-		// Add the biomes to Overworld generation via Biolith.
-		BIOME_CONFIG = Traverse.getConfigManager().getBiomeConfig();
-		this.addBiomes();
 	}
 }
