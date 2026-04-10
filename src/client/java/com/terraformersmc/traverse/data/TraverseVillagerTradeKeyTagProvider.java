@@ -12,8 +12,8 @@ import org.jspecify.annotations.NullMarked;
 import java.util.concurrent.CompletableFuture;
 
 @NullMarked
-public class TraverseVillagerTradeTagProvider extends KeyTagProvider<VillagerTrade> {
-	protected TraverseVillagerTradeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+public class TraverseVillagerTradeKeyTagProvider extends KeyTagProvider<VillagerTrade> {
+	protected TraverseVillagerTradeKeyTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
 		super(output, Registries.VILLAGER_TRADE, lookupProvider);
 	}
 

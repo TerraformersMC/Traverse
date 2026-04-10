@@ -26,13 +26,13 @@ public class TraverseVillagerTrades {
 	public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_RED_AUTUMNAL_SAPLING = resourceKey("wandering_trader/emerald_red_autumnal_sapling");
 	public static final ResourceKey<VillagerTrade> WANDERING_TRADER_EMERALD_YELLOW_AUTUMNAL_SAPLING = resourceKey("wandering_trader/emerald_yellow_autumnal_sapling");
 
-	public static void bootstrap(BootstrapContext<VillagerTrade> registerable) {
-		HolderGetter<Item> items = registerable.lookup(Registries.ITEM);
+	public static void bootstrap(BootstrapContext<VillagerTrade> context) {
+		HolderGetter<Item> items = context.lookup(Registries.ITEM);
 
 		for (Pair<ResourceKey<VillagerTrade>, Item> pair : List.of(
 			Pair.of(WANDERING_TRADER_EMERALD_FIR_LOG, TraverseItems.FIR_LOG.asItem())
 		)) {
-			registerable.register(pair.getLeft(), new VillagerTrade(
+			context.register(pair.getLeft(), new VillagerTrade(
 				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(pair.getRight(), 8),
 				4,
@@ -50,7 +50,7 @@ public class TraverseVillagerTrades {
 			Pair.of(WANDERING_TRADER_EMERALD_RED_AUTUMNAL_SAPLING, TraverseItems.RED_AUTUMNAL_SAPLING.asItem()),
 			Pair.of(WANDERING_TRADER_EMERALD_YELLOW_AUTUMNAL_SAPLING, TraverseItems.YELLOW_AUTUMNAL_SAPLING.asItem())
 		)) {
-			registerable.register(entry.getLeft(), new VillagerTrade(
+			context.register(entry.getLeft(), new VillagerTrade(
 				new TradeCost(Items.EMERALD, 5),
 				new ItemStackTemplate(entry.getRight()),
 				8,

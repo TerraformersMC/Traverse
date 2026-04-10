@@ -12,8 +12,8 @@ import org.jspecify.annotations.NullMarked;
 import java.util.concurrent.CompletableFuture;
 
 @NullMarked
-public class TraverseBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
-	protected TraverseBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+public class TraverseBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
+	protected TraverseBlockTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
 

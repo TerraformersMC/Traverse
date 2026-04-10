@@ -6,7 +6,7 @@ import com.terraformersmc.traverse.block.TraverseBlocks;
 import com.terraformersmc.traverse.boat.TraverseBoats;
 import com.terraformersmc.traverse.config.TraverseConfigManager;
 import com.terraformersmc.traverse.feature.placer.TraversePlacerTypes;
-import com.terraformersmc.traverse.item.TraverseItemGroups;
+import com.terraformersmc.traverse.item.TraverseCreativeModeTabs;
 import com.terraformersmc.traverse.item.TraverseItems;
 import com.terraformersmc.traverse.villager.TraverseVillagerTypes;
 import net.fabricmc.api.ModInitializer;
@@ -28,7 +28,7 @@ public class Traverse implements ModInitializer {
 		TraverseBoats.register();
 		TraverseVillagerTypes.register();
 		TraversePlacerTypes.register();
-		TraverseItemGroups.register();
+		TraverseCreativeModeTabs.register();
 
 		if (FabricLoader.getInstance().isModLoaded("biolith")) {
 			Traverse.LOGGER.info("Enabling Traverse's Biolith worldgen module.");

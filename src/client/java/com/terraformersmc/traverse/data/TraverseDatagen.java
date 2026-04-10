@@ -12,12 +12,12 @@ public class TraverseDatagen implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = dataGenerator.createPack();
 
 		pack.addProvider(TraverseDynamicRegistryProvider::new);
-		pack.addProvider(TraverseBiomeTagProvider::new);
-		pack.addProvider(TraverseBlockLootTableProvider::new);
-		TraverseBlockTagProvider blockTagProvider = pack.addProvider(TraverseBlockTagProvider::new);
-		pack.addProvider((output, registries) -> new TraverseItemTagProvider(output, registries, blockTagProvider));
-		pack.addProvider(TraverseVillagerTradeTagProvider::new);
-		pack.addProvider(TraverseEntityTypeTagProvider::new);
+		pack.addProvider(TraverseBiomeTagsProvider::new);
+		pack.addProvider(TraverseBlockLootSubProvider::new);
+		TraverseBlockTagsProvider blockTagProvider = pack.addProvider(TraverseBlockTagsProvider::new);
+		pack.addProvider((output, registries) -> new TraverseItemTagsProvider(output, registries, blockTagProvider));
+		pack.addProvider(TraverseVillagerTradeKeyTagProvider::new);
+		pack.addProvider(TraverseEntityTypeTagsProvider::new);
 		pack.addProvider(TraverseModelProvider::new);
 		pack.addProvider(TraverseRecipeProvider::new);
 	}

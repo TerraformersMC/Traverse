@@ -36,14 +36,14 @@ public class TraverseBiomes {
 			WOODLANDS
 	);
 
-	public static void bootstrap(BootstrapContext<Biome> registerable) {
-		registerable.register(AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(registerable));
-		registerable.register(CONIFEROUS_FOREST, ConiferousForestBiomes.create(registerable, false));
-		registerable.register(DESERT_SHRUBLAND, DesertShrublandBiomes.create(registerable));
-		registerable.register(FLATLANDS, FlatlandsBiomes.create(registerable));
-		registerable.register(LUSH_SWAMP, LushSwampBiomes.create(registerable));
-		registerable.register(SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(registerable, true));
-		registerable.register(WOODLANDS, WoodlandsBiomes.create(registerable));
+	public static void bootstrap(BootstrapContext<Biome> context) {
+		context.register(AUTUMNAL_WOODS, AutumnalWoodsBiomes.create(context));
+		context.register(CONIFEROUS_FOREST, ConiferousForestBiomes.create(context, false));
+		context.register(DESERT_SHRUBLAND, DesertShrublandBiomes.create(context));
+		context.register(FLATLANDS, FlatlandsBiomes.create(context));
+		context.register(LUSH_SWAMP, LushSwampBiomes.create(context));
+		context.register(SNOWY_CONIFEROUS_FOREST, ConiferousForestBiomes.create(context, true));
+		context.register(WOODLANDS, WoodlandsBiomes.create(context));
 	}
 
 	static void addBasicFeatures(BiomeGenerationSettings.Builder generationSettings) {

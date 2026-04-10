@@ -77,7 +77,7 @@ public class TraverseRegistry {
 	/**
 	 * Registers a block item and associates it with its block.
 	 * <br/>
-	 * This method applies {@code settings.useBlockPrefixedTranslationKey()}.
+	 * This method applies {@code settings.useBlockDescriptionPrefix()}.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the block item
 	 * @param block {@link Block} to associate to the block item
@@ -91,7 +91,7 @@ public class TraverseRegistry {
 	 * Registers an item.
 	 * <br/>
 	 * When using this method directly, the caller should apply
-	 * {@code settings.useBlockPrefixedTranslationKey()} if desired.
+	 * {@code settings.useBlockDescriptionPrefix()} if desired.
 	 *
 	 * @param name Name ({@link Identifier} path string) of the item
 	 * @param factory Factory function to create {@link Item} from settings
