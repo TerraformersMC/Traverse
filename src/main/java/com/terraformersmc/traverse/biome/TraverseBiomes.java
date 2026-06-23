@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 
 import java.util.List;
@@ -55,27 +56,27 @@ public class TraverseBiomes {
 		BiomeDefaultFeatures.addSurfaceFreezing(generationSettings);
 	}
 
-	public static net.minecraft.world.level.biome.MobSpawnSettings.Builder createDefaultSpawnSettings() {
-		net.minecraft.world.level.biome.MobSpawnSettings.Builder spawnSettings = new net.minecraft.world.level.biome.MobSpawnSettings.Builder();
+	public static MobSpawnSettings.Builder createDefaultSpawnSettings() {
+		MobSpawnSettings.Builder spawnSettings = new MobSpawnSettings.Builder();
 		addDefaultCreatureSpawnEntries(spawnSettings);
 		addDefaultCaveSpawnEntries(spawnSettings);
 		addDefaultMonsterSpawnEntries(spawnSettings);
 		return spawnSettings;
 	}
 
-	public static void addDefaultCreatureSpawnEntries(net.minecraft.world.level.biome.MobSpawnSettings.Builder builder) {
+	public static void addDefaultCreatureSpawnEntries(MobSpawnSettings.Builder builder) {
 		builder.addSpawn(MobCategory.CREATURE, 12, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 4, 4));
 		builder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.PIG, 4, 4));
 		builder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 4, 4));
 		builder.addSpawn(MobCategory.CREATURE,  8, new MobSpawnSettings.SpawnerData(EntityType.COW, 4, 4));
 	}
 
-	public static void addDefaultCaveSpawnEntries(net.minecraft.world.level.biome.MobSpawnSettings.Builder builder) {
+	public static void addDefaultCaveSpawnEntries(MobSpawnSettings.Builder builder) {
 		builder.addSpawn(MobCategory.AMBIENT, 10, new MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8));
 		builder.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 4, 6));
 	}
 
-	public static void addDefaultMonsterSpawnEntries(net.minecraft.world.level.biome.MobSpawnSettings.Builder builder) {
+	public static void addDefaultMonsterSpawnEntries(MobSpawnSettings.Builder builder) {
 		builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
 		builder.addSpawn(MobCategory.MONSTER,  95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
 		builder.addSpawn(MobCategory.MONSTER,   5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
@@ -86,7 +87,7 @@ public class TraverseBiomes {
 		builder.addSpawn(MobCategory.MONSTER,   5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
 	}
 
-	public static net.minecraft.world.level.biome.BiomeSpecialEffects.Builder createDefaultBiomeEffects() {
+	public static BiomeSpecialEffects.Builder createDefaultBiomeEffects() {
 		return new net.minecraft.world.level.biome.BiomeSpecialEffects.Builder()
 			.waterColor(0x3F76E4);
 	}

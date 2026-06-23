@@ -21,7 +21,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
-public class TraverseFeatureConfigs {
+public class TraverseFeatures {
 	public static final TreeConfiguration.TreeConfigurationBuilder RED_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.DARK_OAK_LOG, TraverseBlocks.RED_AUTUMNAL_LEAVES, 4);
 	public static final TreeConfiguration.TreeConfigurationBuilder ORANGE_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.OAK_LOG, TraverseBlocks.ORANGE_AUTUMNAL_LEAVES, 4);
 	public static final TreeConfiguration.TreeConfigurationBuilder YELLOW_AUTUMNAL_TREE_CONFIG = oakLike(Blocks.BIRCH_LOG, TraverseBlocks.YELLOW_AUTUMNAL_LEAVES, 6);
@@ -64,4 +64,6 @@ public class TraverseFeatureConfigs {
 				new TwoLayersFeatureSize(1, 0, 1)
 		).ignoreVines();
 	}
+
+	public static void register() {}
 }

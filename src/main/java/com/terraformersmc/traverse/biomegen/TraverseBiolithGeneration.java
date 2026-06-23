@@ -6,7 +6,7 @@ import com.terraformersmc.biolith.api.compat.ModernerBetaBiomeKeys;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import com.terraformersmc.traverse.Traverse;
 import com.terraformersmc.traverse.config.TraverseBiomeConfig;
-import com.terraformersmc.traverse.surfacerules.TraverseSurfaceRules;
+import com.terraformersmc.traverse.surface.rules.TraverseSurfaceRules;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biomes;
 

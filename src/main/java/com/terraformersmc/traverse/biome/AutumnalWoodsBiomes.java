@@ -57,7 +57,7 @@ public class AutumnalWoodsBiomes {
 	}
 
 	private static MobSpawnSettings createSpawnSettings() {
-		net.minecraft.world.level.biome.MobSpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
+		MobSpawnSettings.Builder builder = TraverseBiomes.createDefaultSpawnSettings();
 		builder.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
 		return builder.build();
 	}

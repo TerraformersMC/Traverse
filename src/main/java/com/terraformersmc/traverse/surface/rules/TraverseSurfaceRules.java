@@ -1,4 +1,4 @@
-package com.terraformersmc.traverse.surfacerules;
+package com.terraformersmc.traverse.surface.rules;
 
 import com.terraformersmc.traverse.biome.TraverseBiomes;
 import net.minecraft.world.level.block.Block;

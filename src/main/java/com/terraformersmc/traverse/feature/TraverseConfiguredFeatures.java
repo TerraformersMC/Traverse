@@ -62,8 +62,8 @@ public class TraverseConfiguredFeatures {
 		HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
 		/* Logs and Shrubs */
-		TraverseRegistry.register(context, FALLEN_OAK_TREE, Feature.TREE, TraverseFeatureConfigs.FALLEN_OAK_TREE_CONFIG);
-		TraverseRegistry.register(context, OAK_SHRUB, Feature.TREE, TraverseFeatureConfigs.OAK_SHRUB_CONFIG);
+		TraverseRegistry.register(context, FALLEN_OAK_TREE, Feature.TREE, TraverseFeatures.FALLEN_OAK_TREE_CONFIG);
+		TraverseRegistry.register(context, OAK_SHRUB, Feature.TREE, TraverseFeatures.OAK_SHRUB_CONFIG);
 		TraverseRegistry.register(context, WOODLANDS_TREES,
 				Feature.RANDOM_SELECTOR,
 				new RandomFeatureConfiguration(
@@ -75,15 +75,15 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Autumnal Trees */
-		TraverseRegistry.register(context, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG.build());
-		TraverseRegistry.register(context, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG.build());
-		TraverseRegistry.register(context, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG.build());
-		TraverseRegistry.register(context, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(context, BROWN_AUTUMNAL_TREE, Feature.TREE, TraverseFeatures.BROWN_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(context, ORANGE_AUTUMNAL_TREE, Feature.TREE, TraverseFeatures.ORANGE_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(context, RED_AUTUMNAL_TREE, Feature.TREE, TraverseFeatures.RED_AUTUMNAL_TREE_CONFIG.build());
+		TraverseRegistry.register(context, YELLOW_AUTUMNAL_TREE, Feature.TREE, TraverseFeatures.YELLOW_AUTUMNAL_TREE_CONFIG.build());
 
-		TraverseRegistry.register(context, BROWN_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.BROWN_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
-		TraverseRegistry.register(context, ORANGE_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.ORANGE_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
-		TraverseRegistry.register(context, RED_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.RED_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
-		TraverseRegistry.register(context, YELLOW_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatureConfigs.YELLOW_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(context, BROWN_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatures.BROWN_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(context, ORANGE_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatures.ORANGE_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(context, RED_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatures.RED_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
+		TraverseRegistry.register(context, YELLOW_AUTUMNAL_TREE_LEAF_LITTER, Feature.TREE, TraverseFeatures.YELLOW_AUTUMNAL_TREE_CONFIG.decorators(ImmutableList.of(LEAF_LITTER, DENSE_LEAF_LITTER)).build());
 		TraverseRegistry.register(context, AUTUMNAL_TREES,
 				Feature.SIMPLE_RANDOM_SELECTOR,
 				new SimpleRandomFeatureConfiguration(
@@ -98,10 +98,10 @@ public class TraverseConfiguredFeatures {
 		);
 
 		/* Fir Trees */
-		TraverseRegistry.register(context, FIR_TREE, Feature.TREE, TraverseFeatureConfigs.FIR_TREE_CONFIG);
+		TraverseRegistry.register(context, FIR_TREE, Feature.TREE, TraverseFeatures.FIR_TREE_CONFIG);
 
 		/* Swamp Trees */
-		TraverseRegistry.register(context, TALL_SWAMP_TREE, Feature.TREE, TraverseFeatureConfigs.TALL_SWAMP_TREE_CONFIG);
+		TraverseRegistry.register(context, TALL_SWAMP_TREE, Feature.TREE, TraverseFeatures.TALL_SWAMP_TREE_CONFIG);
 		TraverseRegistry.register(context, SWAMP_FUNGUS,
 				Feature.RANDOM_BOOLEAN_SELECTOR,
 				new RandomBooleanFeatureConfiguration(
@@ -112,7 +112,7 @@ public class TraverseConfiguredFeatures {
 
 		/* Lush Vegetation */
 		TraverseRegistry.register(context, FLATLANDS_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SHORT_GRASS)));
-		TraverseRegistry.register(context, LUSH_FLOWERS, Feature.SIMPLE_BLOCK, TraverseFeatureConfigs.LUSH_FLOWER_CONFIG);
+		TraverseRegistry.register(context, LUSH_FLOWERS, Feature.SIMPLE_BLOCK, TraverseFeatures.LUSH_FLOWER_CONFIG);
 	}
 
 	private static ResourceKey<ConfiguredFeature<?, ?>> resourceKey(String path) {

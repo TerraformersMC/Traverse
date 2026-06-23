@@ -62,7 +62,7 @@ public class DesertShrublandBiomes {
 	}
 
 	private static MobSpawnSettings createSpawnSettings() {
-		net.minecraft.world.level.biome.MobSpawnSettings.Builder builder = new net.minecraft.world.level.biome.MobSpawnSettings.Builder();
+		MobSpawnSettings.Builder builder = new net.minecraft.world.level.biome.MobSpawnSettings.Builder();
 		TraverseBiomes.addDefaultCaveSpawnEntries(builder);
 		builder.addSpawn(MobCategory.MONSTER,  100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
 		builder.addSpawn(MobCategory.MONSTER,   38, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));

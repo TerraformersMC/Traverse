@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -22,14 +22,13 @@ import java.util.HashMap;
 
 public class TraverseCreativeModeTabs {
 	private static final ResourceKey<CreativeModeTab> CREATIVE_MODE_TAB = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "items"));
-
 	private static final HashMap<ResourceKey<CreativeModeTab>, HashMap<ItemLike, CreativeModeTabEntries>> CREATIVE_MODE_TAB_MAPS;
 
 	static {
 		CREATIVE_MODE_TAB_MAPS = new HashMap<>(8);
 
 		/*
-		 * These items are the last Vanilla item of a "similar" type to items we add to Vanilla groups.
+		 * These items are the last Vanilla item of a "similar" type to items we add to Vanilla tabs.
 		 * Each is used to build a collection of items which will be inserted below the Vanilla item.
 		 */
 		final Item BUILDING_WOOD_ITEMS = Items.PALE_OAK_BUTTON;
