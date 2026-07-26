@@ -19,7 +19,7 @@ public class TraverseBiolithGeneration {
 		// Register the Traverse surface rules.
 		SurfaceGeneration.addOverworldSurfaceRules(
 			Identifier.fromNamespaceAndPath(Traverse.MOD_ID, "surface_rules"),
-			TraverseSurfaceRules.createRules());
+			TraverseSurfaceRules::bootstrap);
 
 		// Register the Traverse surface builders.
 		//TraverseSurfaceBuilders.getBuilders().forEach(SurfaceGeneration::addSurfaceBuilder);

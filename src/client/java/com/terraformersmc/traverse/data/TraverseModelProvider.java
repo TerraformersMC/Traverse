@@ -37,7 +37,6 @@ public class TraverseModelProvider extends FabricModelProvider {
 		generator.createShelf(TraverseBlocks.FIR_SHELF, TraverseBlocks.STRIPPED_FIR_LOG);
 		generator.woodProvider(TraverseBlocks.FIR_LOG).logWithHorizontal(TraverseBlocks.FIR_LOG).wood(TraverseBlocks.FIR_WOOD);
 		generator.woodProvider(TraverseBlocks.STRIPPED_FIR_LOG).logWithHorizontal(TraverseBlocks.STRIPPED_FIR_LOG).wood(TraverseBlocks.STRIPPED_FIR_WOOD);
-		generator.createHangingSign(TraverseBlockFamilies.FIR.getBaseBlock(), TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.FIR_WALL_HANGING_SIGN);
 		generator.createPlantWithDefaultItem(TraverseBlocks.FIR_SAPLING, TraverseBlocks.POTTED_FIR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 		generator.createTrivialBlock(TraverseBlocks.FIR_LEAVES, TexturedModel.LEAVES);
 

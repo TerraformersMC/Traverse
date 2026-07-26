@@ -1,10 +1,10 @@
 package com.terraformersmc.traverse.data;
 
 import com.terraformersmc.traverse.villager.TraverseVillagerTrades;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.tags.VillagerTradeTags;
 import net.minecraft.world.item.trading.VillagerTrade;
 import org.jspecify.annotations.NullMarked;
@@ -12,8 +12,8 @@ import org.jspecify.annotations.NullMarked;
 import java.util.concurrent.CompletableFuture;
 
 @NullMarked
-public class TraverseVillagerTradeKeyTagProvider extends KeyTagProvider<VillagerTrade> {
-	protected TraverseVillagerTradeKeyTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+public class TraverseVillagerTradeKeyTagProvider extends FabricTagsProvider<VillagerTrade> {
+	protected TraverseVillagerTradeKeyTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
 		super(output, Registries.VILLAGER_TRADE, lookupProvider);
 	}
 

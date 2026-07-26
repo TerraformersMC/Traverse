@@ -42,8 +42,6 @@ public class TraverseRecipeProvider extends FabricRecipeProvider {
 				woodenBoat(TraverseBoats.FIR_BOAT, TraverseBlocks.FIR_PLANKS);
 				chestBoat(TraverseBoats.FIR_CHEST_BOAT, TraverseBoats.FIR_BOAT);
 
-				hangingSign(TraverseBlocks.FIR_HANGING_SIGN, TraverseBlocks.STRIPPED_FIR_LOG);
-
 				shelf(TraverseBlocks.FIR_SHELF, TraverseItems.STRIPPED_FIR_LOG);
 			}
 		};

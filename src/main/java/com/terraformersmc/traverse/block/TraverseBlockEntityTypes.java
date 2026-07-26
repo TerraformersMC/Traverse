@@ -1,9 +1,9 @@
 package com.terraformersmc.traverse.block;
 
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 
 public class TraverseBlockEntityTypes {
 	public static void register() {
-		BlockEntityType.SHELF.addValidBlock(TraverseBlocks.FIR_SHELF);
+		BlockEntityTypes.SHELF.addValidBlock(TraverseBlocks.FIR_SHELF);
 	}
 }

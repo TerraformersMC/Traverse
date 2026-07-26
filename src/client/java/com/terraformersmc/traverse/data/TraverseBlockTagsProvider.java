@@ -1,11 +1,12 @@
 package com.terraformersmc.traverse.data;
 
-import com.terraformersmc.traverse.block.TraverseBlocks;
+import com.terraformersmc.traverse.block.TraverseBlockIds;
 import com.terraformersmc.traverse.tag.TraverseBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import org.jspecify.annotations.NullMarked;
 
@@ -22,97 +23,97 @@ public class TraverseBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 		/*
 		 * Basic block tags
 		 */
-		valueLookupBuilder(BlockTags.FENCE_GATES)
-				.add(TraverseBlocks.FIR_FENCE_GATE);
+		tag(BlockTags.FENCE_GATES)
+				.add(TraverseBlockIds.FIR_FENCE_GATE);
 
-		valueLookupBuilder(BlockTags.FLOWER_POTS)
-				.add(TraverseBlocks.POTTED_BROWN_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.POTTED_RED_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.POTTED_YELLOW_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.POTTED_ORANGE_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.POTTED_FIR_SAPLING);
+		tag(BlockTags.FLOWER_POTS)
+				.add(TraverseBlockIds.POTTED_BROWN_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.POTTED_ORANGE_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.POTTED_RED_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.POTTED_YELLOW_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.POTTED_FIR_SAPLING);
 
-		valueLookupBuilder(BlockTags.LEAVES)
-				.add(TraverseBlocks.BROWN_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.RED_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.YELLOW_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.ORANGE_AUTUMNAL_LEAVES)
-				.add(TraverseBlocks.FIR_LEAVES);
+		tag(BlockTags.LEAVES)
+				.add(TraverseBlockIds.BROWN_AUTUMNAL_LEAVES)
+				.add(TraverseBlockIds.ORANGE_AUTUMNAL_LEAVES)
+				.add(TraverseBlockIds.RED_AUTUMNAL_LEAVES)
+				.add(TraverseBlockIds.YELLOW_AUTUMNAL_LEAVES)
+				.add(TraverseBlockIds.FIR_LEAVES);
 
-		valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
+		tag(BlockItemTags.LOGS_THAT_BURN.block())
 				.addTag(TraverseBlockTags.FIR_LOGS);
 
-		valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
-				.add(TraverseBlocks.FIR_LOG);
+		tag(BlockTags.OVERWORLD_NATURAL_LOGS)
+				.add(TraverseBlockIds.FIR_LOG);
 
-		valueLookupBuilder(BlockTags.PLANKS)
-				.add(TraverseBlocks.FIR_PLANKS);
+		tag(BlockTags.PLANKS)
+				.add(TraverseBlockIds.FIR_PLANKS);
 
-		valueLookupBuilder(BlockTags.SAPLINGS)
-				.add(TraverseBlocks.BROWN_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.RED_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.YELLOW_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.ORANGE_AUTUMNAL_SAPLING)
-				.add(TraverseBlocks.FIR_SAPLING);
+		tag(BlockItemTags.SAPLINGS.block())
+				.add(TraverseBlockIds.BROWN_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.ORANGE_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.RED_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.YELLOW_AUTUMNAL_SAPLING)
+				.add(TraverseBlockIds.FIR_SAPLING);
 
-		valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS)
-				.add(TraverseBlocks.FIR_HANGING_SIGN);
+		tag(BlockTags.CEILING_HANGING_SIGNS)
+				.add(TraverseBlockIds.FIR_HANGING_SIGN);
 
-		valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS)
-				.add(TraverseBlocks.FIR_WALL_HANGING_SIGN);
+		tag(BlockTags.WALL_HANGING_SIGNS)
+				.add(TraverseBlockIds.FIR_WALL_HANGING_SIGN);
 
-		valueLookupBuilder(BlockTags.STANDING_SIGNS)
-				.add(TraverseBlocks.FIR_SIGN);
+		tag(BlockTags.STANDING_SIGNS)
+				.add(TraverseBlockIds.FIR_SIGN);
 
-		valueLookupBuilder(BlockTags.WALL_SIGNS)
-				.add(TraverseBlocks.FIR_WALL_SIGN);
+		tag(BlockTags.WALL_SIGNS)
+				.add(TraverseBlockIds.FIR_WALL_SIGN);
 
-		valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
-				.add(TraverseBlocks.FIR_BUTTON);
+		tag(BlockTags.WOODEN_BUTTONS)
+				.add(TraverseBlockIds.FIR_BUTTON);
 
-		valueLookupBuilder(BlockTags.WOODEN_DOORS)
-				.add(TraverseBlocks.FIR_DOOR);
+		tag(BlockTags.WOODEN_DOORS)
+				.add(TraverseBlockIds.FIR_DOOR);
 
-		valueLookupBuilder(BlockTags.WOODEN_FENCES)
-				.add(TraverseBlocks.FIR_FENCE);
+		tag(BlockTags.WOODEN_FENCES)
+				.add(TraverseBlockIds.FIR_FENCE);
 
-		valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-				.add(TraverseBlocks.FIR_PRESSURE_PLATE);
+		tag(BlockTags.WOODEN_PRESSURE_PLATES)
+				.add(TraverseBlockIds.FIR_PRESSURE_PLATE);
 
-		valueLookupBuilder(BlockTags.WOODEN_SHELVES)
-				.add(TraverseBlocks.FIR_SHELF);
+		tag(BlockTags.WOODEN_SHELVES)
+				.add(TraverseBlockIds.FIR_SHELF);
 
-		valueLookupBuilder(BlockTags.WOODEN_SLABS)
-				.add(TraverseBlocks.FIR_SLAB);
+		tag(BlockTags.WOODEN_SLABS)
+				.add(TraverseBlockIds.FIR_SLAB);
 
-		valueLookupBuilder(BlockTags.WOODEN_STAIRS)
-				.add(TraverseBlocks.FIR_STAIRS);
+		tag(BlockTags.WOODEN_STAIRS)
+				.add(TraverseBlockIds.FIR_STAIRS);
 
-		valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
-				.add(TraverseBlocks.FIR_TRAPDOOR);
+		tag(BlockTags.WOODEN_TRAPDOORS)
+				.add(TraverseBlockIds.FIR_TRAPDOOR);
 
 
 		/*
 		 * Conventional block tags
 		 */
-		valueLookupBuilder(TraverseBlockTags.PLANKS_THAT_BURN)
-				.add(TraverseBlocks.FIR_PLANKS);
+		tag(TraverseBlockTags.PLANKS_THAT_BURN)
+				.add(TraverseBlockIds.FIR_PLANKS);
 
-		valueLookupBuilder(ConventionalBlockTags.STRIPPED_LOGS)
-				.add(TraverseBlocks.STRIPPED_FIR_LOG);
+		tag(ConventionalBlockTags.STRIPPED_LOGS)
+				.add(TraverseBlockIds.STRIPPED_FIR_LOG);
 
-		valueLookupBuilder(ConventionalBlockTags.STRIPPED_WOODS)
-				.add(TraverseBlocks.STRIPPED_FIR_WOOD);
+		tag(ConventionalBlockTags.STRIPPED_WOODS)
+				.add(TraverseBlockIds.STRIPPED_FIR_WOOD);
 
 
 		/*
 		 * Local block tags
 		 */
-		valueLookupBuilder(TraverseBlockTags.FIR_LOGS)
-				.add(TraverseBlocks.FIR_LOG)
-				.add(TraverseBlocks.FIR_WOOD)
-				.add(TraverseBlocks.STRIPPED_FIR_LOG)
-				.add(TraverseBlocks.STRIPPED_FIR_WOOD);
+		tag(TraverseBlockTags.FIR_LOGS)
+				.add(TraverseBlockIds.FIR_LOG)
+				.add(TraverseBlockIds.FIR_WOOD)
+				.add(TraverseBlockIds.STRIPPED_FIR_LOG)
+				.add(TraverseBlockIds.STRIPPED_FIR_WOOD);
 	}
 
 	@Override
