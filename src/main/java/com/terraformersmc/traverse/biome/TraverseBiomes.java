@@ -88,7 +88,7 @@ public class TraverseBiomes {
 	}
 
 	public static BiomeSpecialEffects.Builder createDefaultBiomeEffects() {
-		return new net.minecraft.world.level.biome.BiomeSpecialEffects.Builder()
+		return new BiomeSpecialEffects.Builder()
 			.waterColor(0x3F76E4);
 	}
 
