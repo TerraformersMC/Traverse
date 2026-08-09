@@ -19,8 +19,10 @@ public class TraverseVillagerTradeKeyTagProvider extends FabricTagsProvider<Vill
 
 	@Override
 	public void addTags(HolderLookup.Provider registries) {
+		this.tag(VillagerTradeTags.WANDERING_TRADER_UNCOMMON)
+			.add(TraverseVillagerTrades.WANDERING_TRADER_EMERALD_FIR_LOG);
+
 		this.tag(VillagerTradeTags.WANDERING_TRADER_COMMON)
-			.add(TraverseVillagerTrades.WANDERING_TRADER_EMERALD_FIR_LOG)
 			.add(TraverseVillagerTrades.WANDERING_TRADER_EMERALD_FIR_SAPLING)
 			.add(TraverseVillagerTrades.WANDERING_TRADER_EMERALD_BROWN_AUTUMNAL_SAPLING)
 			.add(TraverseVillagerTrades.WANDERING_TRADER_EMERALD_ORANGE_AUTUMNAL_SAPLING)
