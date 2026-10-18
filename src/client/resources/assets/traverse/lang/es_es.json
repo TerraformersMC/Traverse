@@ -8,22 +8,18 @@
   "biome.traverse.rolling_hills": "Colinas onduladas",
   "biome.traverse.snowy_coniferous_forest": "Bosque de coníferas nevado",
   "biome.traverse.woodlands": "Bosque",
-
   "block.traverse.red_autumnal_leaves": "Hojas otoñales rojas",
   "block.traverse.brown_autumnal_leaves": "Hojas otoñales marrones",
   "block.traverse.orange_autumnal_leaves": "Hojas otoñales naranjas",
   "block.traverse.yellow_autumnal_leaves": "Hojas otoñales amarillas",
-
   "block.traverse.red_autumnal_sapling": "Brote otoñal rojo",
   "block.traverse.brown_autumnal_sapling": "Brote otoñal marrón",
   "block.traverse.orange_autumnal_sapling": "Brote otoñal naranja",
   "block.traverse.yellow_autumnal_sapling": "Brote otoñal amarillo",
-
   "block.traverse.potted_red_autumnal_sapling": "Maceta con brote otoñal rojo",
   "block.traverse.potted_brown_autumnal_sapling": "Maceta con brote otoñal marrón",
   "block.traverse.potted_orange_autumnal_sapling": "Maceta con brote otoñal naranja",
   "block.traverse.potted_yellow_autumnal_sapling": "Maceta con brote otoñal amarillo",
-
   "block.traverse.fir_log": "Tronco de abeto gigante",
   "block.traverse.stripped_fir_log": "Tronco de abeto gigante sin corteza",
   "block.traverse.stripped_fir_wood": "Leño de abeto gigante sin corteza",
@@ -36,23 +32,20 @@
   "block.traverse.fir_slab": "Losa de abeto gigante",
   "block.traverse.fir_sign": "Cartel de abeto gigante",
   "block.traverse.fir_button": "Botón de abeto gigante",
-  "block.traverse.fir_pressure_plate": "Placa de presón de abeto gigante",
+  "block.traverse.fir_pressure_plate": "Placa de presión de abeto gigante",
   "block.traverse.fir_fence": "Valla de abeto gigante",
   "block.traverse.fir_fence_gate": "Puerta de valla de abeto gigante",
   "block.traverse.fir_door": "Puerta de abeto gigante",
   "block.traverse.fir_trapdoor": "Trampilla de abeto gigante",
-
   "itemGroup.traverse.items": "Objetos de Traverse",
   "item.traverse.red_autumnal_leaves": "Hojas otoñales rojas",
   "item.traverse.brown_autumnal_leaves": "Hojas otoñales marrones",
   "item.traverse.orange_autumnal_leaves": "Hojas otoñales naranjas",
   "item.traverse.yellow_autumnal_leaves": "Hojas otoñales amarillas",
-
   "item.traverse.red_autumnal_sapling": "Brote otoñal rojo",
   "item.traverse.brown_autumnal_sapling": "Brote otoñal marrón",
   "item.traverse.orange_autumnal_sapling": "Brote otoñal naranja",
   "item.traverse.yellow_autumnal_sapling": "Brote otoñal amarillo",
-
   "item.traverse.fir_log": "Tronco de abeto gigante",
   "item.traverse.stripped_fir_log": "Tronco de abeto gigante sin corteza",
   "item.traverse.stripped_fir_wood": "Leño de abeto gigante sin corteza",
@@ -65,11 +58,18 @@
   "item.traverse.fir_slab": "Losa de abeto gigante",
   "item.traverse.fir_sign": "Cartel de abeto gigante",
   "item.traverse.fir_button": "Botón de abeto gigante",
-  "item.traverse.fir_pressure_plate": "Placa de presón de abeto gigante",
+  "item.traverse.fir_pressure_plate": "Placa de presión de abeto gigante",
   "item.traverse.fir_fence": "Valla de abeto gigante",
   "item.traverse.fir_fence_gate": "Puerta de valla de abeto gigante",
   "item.traverse.fir_door": "Puerta de abeto gigante",
   "item.traverse.fir_trapdoor": "Trampilla de abeto gigante",
-
-  "item.traverse.fir_boat": "Barca de abeto gigante"
+  "item.traverse.fir_boat": "Barca de abeto gigante",
+  "biome.traverse.flatlands": "Tierras llanas",
+  "block.traverse.fir_hanging_sign": "Cartel colgante de abeto gigante",
+  "block.traverse.fir_shelf": "Estante de abeto gigante",
+  "entity.traverse.fir_boat": "Barca de abeto gigante",
+  "entity.traverse.fir_chest_boat": "Barca con cofre de abeto gigante",
+  "item.traverse.fir_chest_boat": "Barca con cofre de abeto gigante",
+  "tag.item.traverse.fir_logs": "Troncos de abeto gigante",
+  "tag.item.c.planks_that_burn": "Tablones inflamables"
 }
